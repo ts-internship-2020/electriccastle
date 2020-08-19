@@ -71,5 +71,4 @@ namespace ConferencePlanner.Api
             });
         }
     }
-    //Am scris ceva aici
 }
