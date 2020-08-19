@@ -37,6 +37,10 @@ namespace ConferencePlanner.Api
 
                     options.UseSqlServer(connectionString, a => a.EnableRetryOnFailure())
                     .UseInternalServiceProvider(serviceProvider);
+
+
+                    //int x = 0;
+
                 });
 
             services.AddScoped<IGetDemoRepository, GetDemoRepository>();
@@ -66,6 +70,6 @@ namespace ConferencePlanner.Api
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-        //Aici a sris Teo
     }
+    //Am scris ceva aici
 }
