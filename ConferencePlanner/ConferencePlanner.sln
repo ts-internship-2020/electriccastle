@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.Abstraction", "ConferencePlanner.Abstraction\ConferencePlanner.Abstraction.csproj", "{C7601997-F0AD-4C57-A0F3-A2F751F771AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.Repository.Ado", "ConferencePlanner.RepositoryAdo\ConferencePlanner.Repository.Ado.csproj", "{7FC95C06-2FF1-441B-A1BA-AF93AA13A96D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.Repository.Ef", "ConferencePlanner.RepositoryEf\ConferencePlanner.Repository.Ef.csproj", "{ADF4BF5C-6D98-4DA0-A537-EE8BB70CF14F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.Repository.Api", "ConferencePlanner.RepositoryApi\ConferencePlanner.Repository.Api.csproj", "{5FDB124F-BC4D-411F-A29C-8715DBF2E514}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.WinUi", "ConferencePlanner.WinUi\ConferencePlanner.WinUi.csproj", "{E5D10966-3971-4CFD-89E7-D03AD291BC43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferencePlanner.Api", "ConferencePlanner.Api\ConferencePlanner.Api.csproj", "{AB64CD52-9F04-4EC3-8209-F13F399E9B34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7601997-F0AD-4C57-A0F3-A2F751F771AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7601997-F0AD-4C57-A0F3-A2F751F771AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7601997-F0AD-4C57-A0F3-A2F751F771AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7601997-F0AD-4C57-A0F3-A2F751F771AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC95C06-2FF1-441B-A1BA-AF93AA13A96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC95C06-2FF1-441B-A1BA-AF93AA13A96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC95C06-2FF1-441B-A1BA-AF93AA13A96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC95C06-2FF1-441B-A1BA-AF93AA13A96D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF4BF5C-6D98-4DA0-A537-EE8BB70CF14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF4BF5C-6D98-4DA0-A537-EE8BB70CF14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF4BF5C-6D98-4DA0-A537-EE8BB70CF14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF4BF5C-6D98-4DA0-A537-EE8BB70CF14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FDB124F-BC4D-411F-A29C-8715DBF2E514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FDB124F-BC4D-411F-A29C-8715DBF2E514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FDB124F-BC4D-411F-A29C-8715DBF2E514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FDB124F-BC4D-411F-A29C-8715DBF2E514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D10966-3971-4CFD-89E7-D03AD291BC43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D10966-3971-4CFD-89E7-D03AD291BC43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D10966-3971-4CFD-89E7-D03AD291BC43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D10966-3971-4CFD-89E7-D03AD291BC43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB64CD52-9F04-4EC3-8209-F13F399E9B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB64CD52-9F04-4EC3-8209-F13F399E9B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB64CD52-9F04-4EC3-8209-F13F399E9B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB64CD52-9F04-4EC3-8209-F13F399E9B34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {908F1034-6CE7-40CC-B539-B6DF1A1E089D}
+	EndGlobalSection
+EndGlobal
