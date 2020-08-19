@@ -66,5 +66,6 @@ namespace ConferencePlanner.Api
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+        //Aici a sris Teo
     }
 }
