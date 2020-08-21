@@ -29,31 +29,33 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartScreen));
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.txtButton = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // submitButton
             // 
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(144, 95);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 26);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submitButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.submitButton.Image = ((System.Drawing.Image)(resources.GetObject("submitButton.Image")));
+            this.submitButton.Location = new System.Drawing.Point(144, 95);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(75, 26);
+            this.submitButton.TabIndex = 2;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // textBox1
+            // txtButton
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(85, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "                Insert your email";
-            this.textBox1.Size = new System.Drawing.Size(193, 23);
-            this.textBox1.TabIndex = 3;
+            this.txtButton.Location = new System.Drawing.Point(85, 66);
+            this.txtButton.Name = "txtButton";
+            this.txtButton.PlaceholderText = "                Insert your email";
+            this.txtButton.Size = new System.Drawing.Size(193, 23);
+            this.txtButton.TabIndex = 3;
+            this.txtButton.Validating += new System.ComponentModel.CancelEventHandler(this.txtButton_Validating);
             // 
             // StartScreen
             // 
@@ -61,8 +63,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(349, 204);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtButton);
+            this.Controls.Add(this.submitButton);
             this.Name = "StartScreen";
             this.Text = "StartScreen";
             this.ResumeLayout(false);
@@ -72,7 +74,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.TextBox t;
+        private System.Windows.Forms.TextBox txtButton;
     }
 }
