@@ -88,6 +88,7 @@
             // 
             // OrganizerNextButton
             // 
+            this.OrganizerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizerNextButton.Location = new System.Drawing.Point(144, 333);
             this.OrganizerNextButton.Name = "OrganizerNextButton";
             this.OrganizerNextButton.Size = new System.Drawing.Size(97, 34);
@@ -97,6 +98,7 @@
             // 
             // OrganizerPreviousButton
             // 
+            this.OrganizerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizerPreviousButton.Location = new System.Drawing.Point(24, 333);
             this.OrganizerPreviousButton.Name = "OrganizerPreviousButton";
             this.OrganizerPreviousButton.Size = new System.Drawing.Size(102, 33);
@@ -106,6 +108,9 @@
             // 
             // OrganizerGrid
             // 
+            this.OrganizerGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrganizerGrid.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
             this.OrganizerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -175,6 +180,7 @@
             // 
             // OrganizerEndDatePicker
             // 
+            this.OrganizerEndDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerEndDatePicker.Location = new System.Drawing.Point(467, 56);
             this.OrganizerEndDatePicker.Name = "OrganizerEndDatePicker";
             this.OrganizerEndDatePicker.Size = new System.Drawing.Size(200, 23);
@@ -182,6 +188,7 @@
             // 
             // OrganizerStartDatePicker
             // 
+            this.OrganizerStartDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerStartDatePicker.Location = new System.Drawing.Point(467, 27);
             this.OrganizerStartDatePicker.Name = "OrganizerStartDatePicker";
             this.OrganizerStartDatePicker.Size = new System.Drawing.Size(200, 23);
@@ -189,6 +196,7 @@
             // 
             // OrganizerFilterButton
             // 
+            this.OrganizerFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerFilterButton.Location = new System.Drawing.Point(673, 38);
             this.OrganizerFilterButton.Name = "OrganizerFilterButton";
             this.OrganizerFilterButton.Size = new System.Drawing.Size(62, 31);
@@ -314,9 +322,10 @@
             // 
             // NextButtonParticipant
             // 
+            this.NextButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NextButtonParticipant.BackColor = System.Drawing.Color.DarkSalmon;
             this.NextButtonParticipant.ForeColor = System.Drawing.Color.Navy;
-            this.NextButtonParticipant.Location = new System.Drawing.Point(428, 340);
+            this.NextButtonParticipant.Location = new System.Drawing.Point(653, 341);
             this.NextButtonParticipant.Name = "NextButtonParticipant";
             this.NextButtonParticipant.Size = new System.Drawing.Size(75, 23);
             this.NextButtonParticipant.TabIndex = 2;
@@ -326,9 +335,10 @@
             // 
             // BackButtonParticipant
             // 
+            this.BackButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButtonParticipant.BackColor = System.Drawing.Color.DarkSalmon;
             this.BackButtonParticipant.ForeColor = System.Drawing.Color.Navy;
-            this.BackButtonParticipant.Location = new System.Drawing.Point(293, 341);
+            this.BackButtonParticipant.Location = new System.Drawing.Point(542, 341);
             this.BackButtonParticipant.Name = "BackButtonParticipant";
             this.BackButtonParticipant.Size = new System.Drawing.Size(75, 23);
             this.BackButtonParticipant.TabIndex = 1;
@@ -338,6 +348,9 @@
             // 
             // TabControrConferences
             // 
+            this.TabControrConferences.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControrConferences.Controls.Add(this.TabParticipant);
             this.TabControrConferences.Controls.Add(this.TabOrganizer);
             this.TabControrConferences.Cursor = System.Windows.Forms.Cursors.Arrow;
