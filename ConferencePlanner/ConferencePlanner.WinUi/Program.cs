@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ConferencePlanner.WinUi
 {
     static class Program
@@ -18,30 +19,31 @@ namespace ConferencePlanner.WinUi
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            ConfigureServices();
+            //Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //ConfigureServices();
 
-            Application.Run(ServiceProvider.GetService<MainForm>());
+            // Application.Run(ServiceProvider.GetService<MainForm>());
+            Application.Run(new StartScreen());
         }
 
 
-        public static IServiceProvider ServiceProvider { get; set; }
+        //public static IServiceProvider ServiceProvider { get; set; }
 
-        static void ConfigureServices()
-        {
-            // Ich bin very poliglotten
-            var services = new ServiceCollection();
-            services.AddScoped<MainForm>();
-            services.AddScoped<IGetDemoRepository, GetDemoRepository>();
-            services.AddSingleton<SqlConnection>(a =>
-            {
-                SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
-                sqlConnection.Open();
-                return sqlConnection;
-            });
-            ServiceProvider = services.BuildServiceProvider();
-        }
+        //static void ConfigureServices()
+        //{
+        //    // Ich bin very poliglotten
+        //    var services = new ServiceCollection();
+        //    services.AddScoped<MainForm>();
+        //    services.AddScoped<IGetDemoRepository, GetDemoRepository>();
+        //    services.AddSingleton<SqlConnection>(a =>
+        //    {
+        //        SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
+        //        sqlConnection.Open();
+        //        return sqlConnection;
+        //    });
+        //    ServiceProvider = services.BuildServiceProvider();
+        //}
     }
 }
