@@ -20,7 +20,7 @@ namespace ConferencePlanner.WinUi
             MainScreen ms = new MainScreen();
             ms.Show();
             Visible = false;
-
+          
         }
 
         private void txtButton_Validating(object sender, CancelEventArgs e)
@@ -36,6 +36,13 @@ namespace ConferencePlanner.WinUi
                     txtButton.SelectAll();
                     e.Cancel = true;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Insert an email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtButton.SelectAll();
+                e.Cancel = true;
+
             }
         }
 
