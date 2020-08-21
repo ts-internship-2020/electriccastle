@@ -30,7 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.TabOrganizer = new System.Windows.Forms.TabPage();
+            this.OrganizerNextButton = new System.Windows.Forms.Button();
+            this.OrganizerPreviousButton = new System.Windows.Forms.Button();
             this.OrganizerGrid = new System.Windows.Forms.DataGridView();
+            this.OrganizerTabNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrganizerTabStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrganizerTabEndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrganizerTabConferenceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrganizerTabConferenceCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrganizerTabAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrganizerTabMainSpeaker = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrganizerTabEditButton = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddConferenceButton = new System.Windows.Forms.Button();
             this.OrganizerEndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.OrganizerStartDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -51,18 +61,8 @@
             this.NextButtonParticipant = new System.Windows.Forms.Button();
             this.BackButtonParticipant = new System.Windows.Forms.Button();
             this.TabControrConferences = new System.Windows.Forms.TabControl();
-            this.OrganizerPreviousButton = new System.Windows.Forms.Button();
-            this.OrganizerNextButton = new System.Windows.Forms.Button();
-            this.OrganizerTabNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrganizerTabStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrganizerTabEndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrganizerTabConferenceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrganizerTabConferenceCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrganizerTabAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrganizerTabMainSpeaker = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrganizerTabEditButton = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
             this.TabOrganizer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
             this.TabParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConferencesParticipant)).BeginInit();
             this.TabControrConferences.SuspendLayout();
@@ -71,24 +71,6 @@
             // TabOrganizer
             // 
             this.TabOrganizer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabOrganizer.BackgroundImage")));
-            // 
-            // OrganizerGrid
-            // 
-            this.OrganizerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrganizerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.OrganizerTabNameColumn,
-            this.OrganizerTabStartDate,
-            this.OrganizerTabEndDate,
-            this.OrganizerTabConferenceType,
-            this.OrganizerTabConferenceCategory,
-            this.OrganizerTabAddress,
-            this.OrganizerTabMainSpeaker,
-            this.OrganizerTabEditButton});
-            this.OrganizerGrid.Location = new System.Drawing.Point(52, 85);
-            this.OrganizerGrid.Name = "OrganizerGrid";
-            this.OrganizerGrid.Size = new System.Drawing.Size(725, 242);
-            this.OrganizerGrid.TabIndex = 4;
-            this.OrganizerGrid.Text = "dataGridView1";
             this.TabOrganizer.Controls.Add(this.OrganizerNextButton);
             this.TabOrganizer.Controls.Add(this.OrganizerPreviousButton);
             this.TabOrganizer.Controls.Add(this.OrganizerGrid);
@@ -99,14 +81,91 @@
             this.TabOrganizer.Location = new System.Drawing.Point(4, 24);
             this.TabOrganizer.Name = "TabOrganizer";
             this.TabOrganizer.Padding = new System.Windows.Forms.Padding(3);
-            this.TabOrganizer.Size = new System.Drawing.Size(792, 370);
+            this.TabOrganizer.Size = new System.Drawing.Size(871, 370);
             this.TabOrganizer.TabIndex = 1;
             this.TabOrganizer.Text = "Organizers";
             this.TabOrganizer.UseVisualStyleBackColor = true;
             // 
+            // OrganizerNextButton
+            // 
+            this.OrganizerNextButton.Location = new System.Drawing.Point(144, 333);
+            this.OrganizerNextButton.Name = "OrganizerNextButton";
+            this.OrganizerNextButton.Size = new System.Drawing.Size(97, 34);
+            this.OrganizerNextButton.TabIndex = 6;
+            this.OrganizerNextButton.Text = "Next Page";
+            this.OrganizerNextButton.UseVisualStyleBackColor = true;
+            // 
+            // OrganizerPreviousButton
+            // 
+            this.OrganizerPreviousButton.Location = new System.Drawing.Point(24, 333);
+            this.OrganizerPreviousButton.Name = "OrganizerPreviousButton";
+            this.OrganizerPreviousButton.Size = new System.Drawing.Size(102, 33);
+            this.OrganizerPreviousButton.TabIndex = 5;
+            this.OrganizerPreviousButton.Text = "Previous Page";
+            this.OrganizerPreviousButton.UseVisualStyleBackColor = true;
+            // 
+            // OrganizerGrid
+            // 
+            this.OrganizerGrid.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
+            this.OrganizerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrganizerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OrganizerTabNameColumn,
+            this.OrganizerTabStartDate,
+            this.OrganizerTabEndDate,
+            this.OrganizerTabConferenceType,
+            this.OrganizerTabConferenceCategory,
+            this.OrganizerTabAddress,
+            this.OrganizerTabMainSpeaker,
+            this.OrganizerTabEditButton});
+            this.OrganizerGrid.Location = new System.Drawing.Point(24, 85);
+            this.OrganizerGrid.Name = "OrganizerGrid";
+            this.OrganizerGrid.Size = new System.Drawing.Size(844, 242);
+            this.OrganizerGrid.TabIndex = 4;
+            this.OrganizerGrid.Text = "dataGridView1";
+            // 
+            // OrganizerTabNameColumn
+            // 
+            this.OrganizerTabNameColumn.HeaderText = "Name";
+            this.OrganizerTabNameColumn.Name = "OrganizerTabNameColumn";
+            // 
+            // OrganizerTabStartDate
+            // 
+            this.OrganizerTabStartDate.HeaderText = "Start Date";
+            this.OrganizerTabStartDate.Name = "OrganizerTabStartDate";
+            // 
+            // OrganizerTabEndDate
+            // 
+            this.OrganizerTabEndDate.HeaderText = "End Date";
+            this.OrganizerTabEndDate.Name = "OrganizerTabEndDate";
+            // 
+            // OrganizerTabConferenceType
+            // 
+            this.OrganizerTabConferenceType.HeaderText = "Type";
+            this.OrganizerTabConferenceType.Name = "OrganizerTabConferenceType";
+            // 
+            // OrganizerTabConferenceCategory
+            // 
+            this.OrganizerTabConferenceCategory.HeaderText = "Category";
+            this.OrganizerTabConferenceCategory.Name = "OrganizerTabConferenceCategory";
+            // 
+            // OrganizerTabAddress
+            // 
+            this.OrganizerTabAddress.HeaderText = "Address";
+            this.OrganizerTabAddress.Name = "OrganizerTabAddress";
+            // 
+            // OrganizerTabMainSpeaker
+            // 
+            this.OrganizerTabMainSpeaker.HeaderText = "Main Speaker";
+            this.OrganizerTabMainSpeaker.Name = "OrganizerTabMainSpeaker";
+            // 
+            // OrganizerTabEditButton
+            // 
+            this.OrganizerTabEditButton.HeaderText = "Edit Button";
+            this.OrganizerTabEditButton.Name = "OrganizerTabEditButton";
+            // 
             // AddConferenceButton
             // 
-            this.AddConferenceButton.Location = new System.Drawing.Point(52, 42);
+            this.AddConferenceButton.Location = new System.Drawing.Point(24, 42);
             this.AddConferenceButton.Name = "AddConferenceButton";
             this.AddConferenceButton.Size = new System.Drawing.Size(102, 37);
             this.AddConferenceButton.TabIndex = 3;
@@ -148,7 +207,7 @@
             this.TabParticipant.Location = new System.Drawing.Point(4, 24);
             this.TabParticipant.Name = "TabParticipant";
             this.TabParticipant.Padding = new System.Windows.Forms.Padding(3);
-            this.TabParticipant.Size = new System.Drawing.Size(792, 370);
+            this.TabParticipant.Size = new System.Drawing.Size(871, 370);
             this.TabParticipant.TabIndex = 0;
             this.TabParticipant.Text = "Participants";
             this.TabParticipant.UseVisualStyleBackColor = true;
@@ -199,7 +258,7 @@
             this.ConferencesParticipant.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ConferencesParticipant.Location = new System.Drawing.Point(10, 79);
             this.ConferencesParticipant.Name = "ConferencesParticipant";
-            this.ConferencesParticipant.Size = new System.Drawing.Size(767, 243);
+            this.ConferencesParticipant.Size = new System.Drawing.Size(846, 243);
             this.ConferencesParticipant.TabIndex = 3;
             this.ConferencesParticipant.Text = "dataGridView1";
             // 
@@ -283,66 +342,8 @@
             this.TabControrConferences.Location = new System.Drawing.Point(-2, 2);
             this.TabControrConferences.Name = "TabControrConferences";
             this.TabControrConferences.SelectedIndex = 2;
-            this.TabControrConferences.Size = new System.Drawing.Size(800, 398);
+            this.TabControrConferences.Size = new System.Drawing.Size(879, 398);
             this.TabControrConferences.TabIndex = 0;
-            // 
-            // OrganizerPreviousButton
-            // 
-            this.OrganizerPreviousButton.Location = new System.Drawing.Point(52, 333);
-            this.OrganizerPreviousButton.Name = "OrganizerPreviousButton";
-            this.OrganizerPreviousButton.Size = new System.Drawing.Size(102, 33);
-            this.OrganizerPreviousButton.TabIndex = 5;
-            this.OrganizerPreviousButton.Text = "Previous Page";
-            this.OrganizerPreviousButton.UseVisualStyleBackColor = true;
-            // 
-            // OrganizerNextButton
-            // 
-            this.OrganizerNextButton.Location = new System.Drawing.Point(180, 333);
-            this.OrganizerNextButton.Name = "OrganizerNextButton";
-            this.OrganizerNextButton.Size = new System.Drawing.Size(97, 34);
-            this.OrganizerNextButton.TabIndex = 6;
-            this.OrganizerNextButton.Text = "Next Page";
-            this.OrganizerNextButton.UseVisualStyleBackColor = true;
-            // 
-            // OrganizerTabNameColumn
-            // 
-            this.OrganizerTabNameColumn.HeaderText = "Name";
-            this.OrganizerTabNameColumn.Name = "OrganizerTabNameColumn";
-            // 
-            // OrganizerTabStartDate
-            // 
-            this.OrganizerTabStartDate.HeaderText = "Start Date";
-            this.OrganizerTabStartDate.Name = "OrganizerTabStartDate";
-            // 
-            // OrganizerTabEndDate
-            // 
-            this.OrganizerTabEndDate.HeaderText = "End Date";
-            this.OrganizerTabEndDate.Name = "OrganizerTabEndDate";
-            // 
-            // OrganizerTabConferenceType
-            // 
-            this.OrganizerTabConferenceType.HeaderText = "Type";
-            this.OrganizerTabConferenceType.Name = "OrganizerTabConferenceType";
-            // 
-            // OrganizerTabConferenceCategory
-            // 
-            this.OrganizerTabConferenceCategory.HeaderText = "Category";
-            this.OrganizerTabConferenceCategory.Name = "OrganizerTabConferenceCategory";
-            // 
-            // OrganizerTabAddress
-            // 
-            this.OrganizerTabAddress.HeaderText = "Address";
-            this.OrganizerTabAddress.Name = "OrganizerTabAddress";
-            // 
-            // OrganizerTabMainSpeaker
-            // 
-            this.OrganizerTabMainSpeaker.HeaderText = "Main Speaker";
-            this.OrganizerTabMainSpeaker.Name = "OrganizerTabMainSpeaker";
-            // 
-            // OrganizerTabEditButton
-            // 
-            this.OrganizerTabEditButton.HeaderText = "Edit Button";
-            this.OrganizerTabEditButton.Name = "OrganizerTabEditButton";
             // 
             // MainScreen
             // 
@@ -352,8 +353,8 @@
             this.Controls.Add(this.TabControrConferences);
             this.Name = "MainScreen";
             this.Text = "MainScreen";
-            ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).EndInit();
             this.TabOrganizer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).EndInit();
             this.TabParticipant.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ConferencesParticipant)).EndInit();
             this.TabControrConferences.ResumeLayout(false);
