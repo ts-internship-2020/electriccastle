@@ -23,7 +23,36 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         public List<ParticipantStateDemo> GetDictionaryParticipantStates(string state)
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            sqlCommand.CommandText = "select state from ParticipantStateDemo";
+            SqlTransaction transaction;
+            transaction = _sqlConnection.BeginTransaction("SampleTransaction");
+            sqlCommand.Connection = _sqlConnection;
+            sqlCommand.Transaction = transaction;
+
+            try
+            {
+                sqlCommand.CommandText = "select state from ParticipantStateDemo";
+                sqlCommand.ExecuteNonQuery();
+                transaction.Commit();
+                Console.WriteLine("Records are written to database.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                Console.WriteLine("  Message: {0}", ex.Message);
+
+
+                try
+                {
+                    transaction.Rollback();
+                }
+                catch (Exception ex2)
+                {
+                    
+                    Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                    Console.WriteLine("  Message: {0}", ex2.Message);
+                }
+            }
+
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
             List<ParticipantStateDemo> demos = new List<ParticipantStateDemo>();
