@@ -81,7 +81,7 @@
             this.TabOrganizer.Location = new System.Drawing.Point(4, 24);
             this.TabOrganizer.Name = "TabOrganizer";
             this.TabOrganizer.Padding = new System.Windows.Forms.Padding(3);
-            this.TabOrganizer.Size = new System.Drawing.Size(871, 370);
+            this.TabOrganizer.Size = new System.Drawing.Size(800, 370);
             this.TabOrganizer.TabIndex = 1;
             this.TabOrganizer.Text = "Organizers";
             this.TabOrganizer.UseVisualStyleBackColor = true;
@@ -106,6 +106,7 @@
             // 
             // OrganizerGrid
             // 
+            this.OrganizerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrganizerGrid.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
             this.OrganizerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrganizerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -119,7 +120,7 @@
             this.OrganizerTabEditButton});
             this.OrganizerGrid.Location = new System.Drawing.Point(24, 85);
             this.OrganizerGrid.Name = "OrganizerGrid";
-            this.OrganizerGrid.Size = new System.Drawing.Size(844, 242);
+            this.OrganizerGrid.Size = new System.Drawing.Size(755, 242);
             this.OrganizerGrid.TabIndex = 4;
             this.OrganizerGrid.Text = "dataGridView1";
             // 
@@ -207,7 +208,7 @@
             this.TabParticipant.Location = new System.Drawing.Point(4, 24);
             this.TabParticipant.Name = "TabParticipant";
             this.TabParticipant.Padding = new System.Windows.Forms.Padding(3);
-            this.TabParticipant.Size = new System.Drawing.Size(871, 370);
+            this.TabParticipant.Size = new System.Drawing.Size(800, 370);
             this.TabParticipant.TabIndex = 0;
             this.TabParticipant.Text = "Participants";
             this.TabParticipant.UseVisualStyleBackColor = true;
@@ -244,6 +245,7 @@
             this.ConferencesParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConferencesParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ConferencesParticipant.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
             this.ConferencesParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ConferencesParticipant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -258,7 +260,7 @@
             this.ConferencesParticipant.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ConferencesParticipant.Location = new System.Drawing.Point(10, 79);
             this.ConferencesParticipant.Name = "ConferencesParticipant";
-            this.ConferencesParticipant.Size = new System.Drawing.Size(846, 243);
+            this.ConferencesParticipant.Size = new System.Drawing.Size(759, 243);
             this.ConferencesParticipant.TabIndex = 3;
             this.ConferencesParticipant.Text = "dataGridView1";
             // 
@@ -342,14 +344,14 @@
             this.TabControrConferences.Location = new System.Drawing.Point(-2, 2);
             this.TabControrConferences.Name = "TabControrConferences";
             this.TabControrConferences.SelectedIndex = 2;
-            this.TabControrConferences.Size = new System.Drawing.Size(879, 398);
+            this.TabControrConferences.Size = new System.Drawing.Size(808, 398);
             this.TabControrConferences.TabIndex = 0;
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 404);
+            this.ClientSize = new System.Drawing.Size(805, 404);
             this.Controls.Add(this.TabControrConferences);
             this.Name = "MainScreen";
             this.Text = "MainScreen";
