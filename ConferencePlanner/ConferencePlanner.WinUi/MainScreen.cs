@@ -47,5 +47,10 @@ namespace ConferencePlanner.WinUi
         {
 
         }
+
+        private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
