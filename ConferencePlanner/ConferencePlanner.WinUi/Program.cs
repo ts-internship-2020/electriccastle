@@ -1,6 +1,6 @@
-using ConferencePlanner.Abstraction.ParticipantRepository;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Repository;
-using ConferencePlanner.Repository.Ado.ParticipantsConferencesRepository;
+using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
 using ConferencePlanner.Repository.Ado.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using System;

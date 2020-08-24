@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConferencePlanner.Abstraction.ParticipantsModel
+namespace ConferencePlanner.Abstraction.ElectricCastleModel
 {
     public class ParticipantsConferencesModel
     {

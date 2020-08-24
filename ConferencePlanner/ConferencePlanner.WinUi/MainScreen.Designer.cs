@@ -387,6 +387,7 @@
             this.Controls.Add(this.TabControrConferences);
             this.Name = "MainScreen";
             this.Text = "MainScreen";
+            this.Load += new System.EventHandler(this.MainScreen_Load);
             this.TabOrganizer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).EndInit();
             this.TabParticipant.ResumeLayout(false);

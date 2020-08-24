@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ConferencePlanner.Abstraction.ParticipantsModel;
-using ConferencePlanner.Abstraction.ParticipantRepository;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+//using ConferencePlanner.Abstraction.ParticipantRepository;
 
-namespace ConferencePlanner.Repository.Ado.ParticipantsConferencesRepository
+namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 {
     public class ParticipantsConferencesRepository : IParticipantsConferencesRepository
     {
