@@ -31,27 +31,28 @@ namespace ConferencePlanner.WinUi
 
 
         //public static IServiceProvider ServiceProvider { get; set; }
-        public static class MyParticipants
-        {
-            public static List<String> EmailParticipants;
-        }
+        //public static class MyParticipants
+        //{
+        //    public static String EmailParticipants;
+        //}
 
-         
+        public static String EmailParticipants;
 
 
-    //static void ConfigureServices()
-    //{
-    //    // Ich bin very poliglotten
-    //    var services = new ServiceCollection();
-    //    services.AddScoped<MainForm>();
-    //    services.AddScoped<IGetDemoRepository, GetDemoRepository>();
-    //    services.AddSingleton<SqlConnection>(a =>
-    //    {
-    //        SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
-    //        sqlConnection.Open();
-    //        return sqlConnection;
-    //    });
-    //    ServiceProvider = services.BuildServiceProvider();
-    //}
-}
+
+        //static void ConfigureServices()
+        //{
+        //    // Ich bin very poliglotten
+        //    var services = new ServiceCollection();
+        //    services.AddScoped<MainForm>();
+        //    services.AddScoped<IGetDemoRepository, GetDemoRepository>();
+        //    services.AddSingleton<SqlConnection>(a =>
+        //    {
+        //        SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
+        //        sqlConnection.Open();
+        //        return sqlConnection;
+        //    });
+        //    ServiceProvider = services.BuildServiceProvider();
+        //}
+    }
 }

@@ -22,20 +22,13 @@ namespace ConferencePlanner.WinUi
     
         private void submitButton_Click(object sender, EventArgs e)
         {
+
+            EmailParticipants = txtButton.Text.ToString();
+            Console.WriteLine(EmailParticipants);
             MainScreen ms = new MainScreen();
             ms.ShowDialog();
 
             Visible = false;
-
-            if(MyParticipants.EmailParticipants==null)
-            {
-                MyParticipants.EmailParticipants = new List<String>();
-
-            }
-            MyParticipants.EmailParticipants.Add(txtButton.Text.ToString());
-          
-          
-
 
         }
 
@@ -69,6 +62,7 @@ namespace ConferencePlanner.WinUi
                 submitButton.PerformClick();
             }
         }
+    
 
          
 }
