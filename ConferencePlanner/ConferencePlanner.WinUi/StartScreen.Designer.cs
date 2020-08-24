@@ -55,6 +55,7 @@
             this.txtButton.PlaceholderText = "                Insert your email";
             this.txtButton.Size = new System.Drawing.Size(193, 23);
             this.txtButton.TabIndex = 3;
+            this.txtButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtButton_KeyDown);
             this.txtButton.Validating += new System.ComponentModel.CancelEventHandler(this.txtButton_Validating);
             // 
             // StartScreen
