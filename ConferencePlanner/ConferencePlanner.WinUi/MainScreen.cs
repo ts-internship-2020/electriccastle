@@ -6,17 +6,21 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ConferencePlanner.Abstraction.ParticipantRepository;
 
 namespace ConferencePlanner.WinUi
 {
     public partial class MainScreen : Form
     {
+        private readonly IParticipantsConferencesRepository _getParticipantRepository;
+
         public MainScreen()
         {
+
             InitializeComponent();
+
         }
 
-      
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -50,6 +54,9 @@ namespace ConferencePlanner.WinUi
 
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            var conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            ConferencesParticipant.DataSource = conferenceParticipants;
+            //ColumnNameConferenceParticipant.DisplayMember = ;
 
         }
     }

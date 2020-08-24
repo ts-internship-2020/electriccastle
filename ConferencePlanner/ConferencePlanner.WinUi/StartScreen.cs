@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static ConferencePlanner.WinUi.Program;
 
 namespace ConferencePlanner.WinUi
 {
@@ -17,13 +18,25 @@ namespace ConferencePlanner.WinUi
             txtButton.Focus();
         }
 
+
+    
         private void submitButton_Click(object sender, EventArgs e)
         {
             MainScreen ms = new MainScreen();
             ms.ShowDialog();
 
             Visible = false;
+
+            if(MyParticipants.EmailParticipants==null)
+            {
+                MyParticipants.EmailParticipants = new List<String>();
+
+            }
+            MyParticipants.EmailParticipants.Add(txtButton.Text.ToString());
           
+          
+
+
         }
 
         private void txtButton_Validating(object sender, CancelEventArgs e)
@@ -56,5 +69,7 @@ namespace ConferencePlanner.WinUi
                 submitButton.PerformClick();
             }
         }
-    }
+
+         
+}
 }
