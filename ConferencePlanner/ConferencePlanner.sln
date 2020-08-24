@@ -13,7 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.Repositor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.WinUi", "ConferencePlanner.WinUi\ConferencePlanner.WinUi.csproj", "{E5D10966-3971-4CFD-89E7-D03AD291BC43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferencePlanner.Api", "ConferencePlanner.Api\ConferencePlanner.Api.csproj", "{AB64CD52-9F04-4EC3-8209-F13F399E9B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.Api", "ConferencePlanner.Api\ConferencePlanner.Api.csproj", "{AB64CD52-9F04-4EC3-8209-F13F399E9B34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Scripts", "SQL Scripts", "{679DF560-AD9E-4DDB-8559-998CCE9DA874}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\CreareTabeleEC.sql = ..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\CreareTabeleEC.sql
+		..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\DropTabele.sql = ..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\DropTabele.sql
+		..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\PopulareTabeleInitial.sql = ..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\PopulareTabeleInitial.sql
+		..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\ScriptMentenantaSelectDelete.sql = ..\..\Users\dragos.severin\Documents\SQL Server Management Studio\EC\ScriptMentenantaSelectDelete.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
