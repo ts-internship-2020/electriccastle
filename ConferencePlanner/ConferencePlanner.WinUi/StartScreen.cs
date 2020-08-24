@@ -1,26 +1,37 @@
-﻿using System;
+﻿using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
+using static ConferencePlanner.WinUi.Program;
 
 namespace ConferencePlanner.WinUi
 {
     public partial class StartScreen : Form
     {
+
         public StartScreen()
         {
             InitializeComponent();
+            this.ActiveControl = txtButton;
+            txtButton.Focus();
         }
-
+    
         private void submitButton_Click(object sender, EventArgs e)
         {
-            MainScreen ms = new MainScreen();
-            ms.Show();
-            Visible = false;
+
+            EmailParticipants = txtButton.Text.ToString();
           
+            MainScreen ms = Program.ServiceProvider.GetService<MainScreen>();
+            
+            ms.ShowDialog();
+
+            Visible = false;
+
         }
 
         private void txtButton_Validating(object sender, CancelEventArgs e)
@@ -46,6 +57,15 @@ namespace ConferencePlanner.WinUi
             }
         }
 
+        private void txtButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ( e.KeyCode == Keys.Enter)
+            {
+                submitButton.PerformClick();
+            }
+        }
+    
 
-    }
+         
+}
 }

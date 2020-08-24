@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ConferencePlanner.Abstraction.ElectricCastleModel
 {
-    public class ConferenceModel
+    public class OrganizerConferencesModel
     {
-        public string Name { get; set; }
+        public string ConferenceName { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -16,9 +16,7 @@ namespace ConferencePlanner.Abstraction.ElectricCastleModel
 
         public string ConferenceCategory { get; set; }
 
-        public string CityName { get; set; }
-
-        public string CountryCode { get; set; }
+        public string Adress { get; set; }
 
         public string MainSpeaker { get; set; }
     }
