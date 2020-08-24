@@ -21,35 +21,24 @@ namespace ConferencePlanner.WinUi
             InitializeComponent();
         }
 
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void BackButtonParticipant_Click(object sender, EventArgs e)
         {
             List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
 
             ConferencesParticipant.Rows[0].Cells[0].Value = conferenceParticipants.FirstOrDefault().Name.ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void NextButtonParticipant_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void FilterParticipants_Click(object sender, EventArgs e)
         {
 
         }
