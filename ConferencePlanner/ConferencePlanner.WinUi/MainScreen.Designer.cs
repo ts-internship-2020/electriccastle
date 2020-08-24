@@ -179,6 +179,7 @@
             this.AddConferenceButton.TabIndex = 3;
             this.AddConferenceButton.Text = "Add Conference";
             this.AddConferenceButton.UseVisualStyleBackColor = true;
+            this.AddConferenceButton.Click += new System.EventHandler(this.AddConferenceButton_Click);
             // 
             // OrganizerEndDatePicker
             // 

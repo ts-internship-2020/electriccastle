@@ -7,6 +7,8 @@ namespace ConferencePlanner.Abstraction.ParticipantRepository
 {
     public interface IParticipantsConferencesRepository
     {
+
+        void test();
         public List<ParticipantsConferencesModel> GetParticipantsConferences();
     }
 }
