@@ -1,0 +1,11 @@
+DROP TABLE Conference;
+DROP TABLE Location;
+DROP TABLE DictionaryCity;
+DROP TABLE DictionaryDistrict;
+DROP TABLE DictionaryCountry;
+DROP TABLE DictionaryConferenceCategory;
+DROP TABLE DictionaryConferenceType;
+DROP TABLE DictionarySpeaker;
+DROP TABLE DictionaryParticipantState;
+DROP TABLE ConferenceXDictionarySpeaker;
+DROP TABLE ConferenceParticipant;
