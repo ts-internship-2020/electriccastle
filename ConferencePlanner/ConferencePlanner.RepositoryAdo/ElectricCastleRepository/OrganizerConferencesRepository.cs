@@ -6,14 +6,14 @@ using ConferencePlanner.Abstraction.ElectricCastleRepository;
 
 namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 {
-    public class ConferenceRepository : IConferenceRepository
+    public class OrganizerConferencesRepository : IOrganizerConferencesRepository
     {
-        public List<ConferenceModel> GetAllConferences()
+        public List<OrganizerConferencesModel> GetAllConferences()
         {
             throw new NotImplementedException();
         }
 
-        public List<ConferenceModel> GetConferencesForOrganizer(string email)
+        public List<OrganizerConferencesModel> GetConferencesForOrganizer(string email)
         {
             throw new NotImplementedException();
         }
