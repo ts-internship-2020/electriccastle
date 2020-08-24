@@ -11,7 +11,8 @@ SELECT * FROM DictionaryConferenceType;
 SELECT * FROM DictionarySpeaker;
 SELECT * FROM DictionaryParticipantState;
 SELECT * FROM ConferenceXDictionarySpeaker ORDER BY ConferenceId;
-SELECT * FROM ConferenceParticipant;
+SELECT * FROM ConferenceParticipant CP
+JOIN DictionaryParticipantState D ON D.DictionaryParticipantStateId = CP.DictionaryParticipantStateId;
 
 
 -- generic populare griduri
@@ -28,6 +29,8 @@ join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId
 join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId 
 where cds.IsMainSpeaker = 1
 and c.OrganizerEmail = ;
+
+
 
 DELETE  FROM Conference;
 DELETE  FROM Location;

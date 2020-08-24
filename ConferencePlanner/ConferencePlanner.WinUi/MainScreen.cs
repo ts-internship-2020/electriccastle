@@ -49,9 +49,7 @@ namespace ConferencePlanner.WinUi
             }
 
             List<OrganizerConferencesModel> organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.Add(organizerConferences);
-            OrganizerGrid.DataSource = bindingSource;
+            OrganizerGrid.DataSource = organizerConferences;
             OrganizerGrid.AutoGenerateColumns = true;
         }
 
