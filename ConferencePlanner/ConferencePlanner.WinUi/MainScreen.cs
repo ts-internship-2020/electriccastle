@@ -8,8 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
-using ConferencePlanner.Abstraction.ParticipantsModel;
-using ConferencePlanner.Abstraction.ParticipantRepository;
+
 
 namespace ConferencePlanner.WinUi
 {
