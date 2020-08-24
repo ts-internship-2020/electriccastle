@@ -23,51 +23,53 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         public List<ParticipantStateDemo> GetDictionaryParticipantStates(string state)
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            SqlTransaction transaction;
-            transaction = _sqlConnection.BeginTransaction("SampleTransaction");
-            sqlCommand.Connection = _sqlConnection;
-            sqlCommand.Transaction = transaction;
 
-            try
-            {
-                sqlCommand.CommandText = "select state from ParticipantStateDemo";
-                sqlCommand.ExecuteNonQuery();
-                transaction.Commit();
-                Console.WriteLine("Records are written to database.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
-                Console.WriteLine("  Message: {0}", ex.Message);
-
-
-                try
-                {
-                    transaction.Rollback();
-                }
-                catch (Exception ex2)
-                {
-                    
-                    Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
-                    Console.WriteLine("  Message: {0}", ex2.Message);
-                }
-            }
+            sqlCommand.CommandText = "select DictionaryParticipantStateName from DictionaryParticipantState";
 
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
-            List<ParticipantStateDemo> demos = new List<ParticipantStateDemo>();
+            //SqlTransaction transaction;
+            //transaction = _sqlConnection.BeginTransaction("SampleTransaction");
+            //sqlCommand.Connection = _sqlConnection;
+            //sqlCommand.Transaction = transaction;
+
+            //try
+            //{
+               
+            //    sqlCommand.ExecuteNonQuery();
+            //    transaction.Commit();
+            //    Console.WriteLine("Records are written to database.");
+
+            //    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+               
+            //}
+            
+            List<ParticipantStateDemo> demosState = new List<ParticipantStateDemo>();
 
             if (sqlDataReader.HasRows)
             {
                 while (sqlDataReader.Read())
                 {
-                    demos.Add(new ParticipantStateDemo() {state = sqlDataReader.GetString("state") });
+                    demosState.Add(new ParticipantStateDemo() { State = sqlDataReader.GetString("DictionaryParticipantStateName") });
                 }
             }
 
+            //sqlCommand.CommandText = "update DictionaryParticipantState set DictionaryParticipantStateName=demosState.State";
+
             sqlDataReader.Close();
 
-            return demos;
+            return demosState;
+
+        }
+
+        public void updateState(string email)
+        {
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+
+            sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId=1 where ParticipantEmail ='email'";
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
         }
     }
 }
