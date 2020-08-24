@@ -13,12 +13,15 @@ namespace ConferencePlanner.WinUi
         public StartScreen()
         {
             InitializeComponent();
+            this.ActiveControl = txtButton;
+            txtButton.Focus();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
             MainScreen ms = new MainScreen();
-            ms.Show();
+            ms.ShowDialog();
+
             Visible = false;
           
         }
@@ -46,6 +49,12 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-
+        private void txtButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ( e.KeyCode == Keys.Enter)
+            {
+                submitButton.PerformClick();
+            }
+        }
     }
 }

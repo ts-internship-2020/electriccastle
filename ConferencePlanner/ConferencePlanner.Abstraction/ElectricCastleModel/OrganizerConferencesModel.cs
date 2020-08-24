@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConferencePlanner.Abstraction.ElectricCastleModel
 {
-    public class ConferenceModel
+    public class OrganizerConferencesModel
     {
         public string Name { get; set; }
 

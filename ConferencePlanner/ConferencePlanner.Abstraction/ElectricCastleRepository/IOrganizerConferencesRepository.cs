@@ -5,10 +5,10 @@ using System.Text;
 
 namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
-    public interface IConferenceRepository
+    public interface IOrganizerConferencesRepository
     {
-        public List<ConferenceModel> GetAllConferences();
+        public List<OrganizerConferencesModel> GetAllConferences();
 
-        public List<ConferenceModel> GetConferencesForOrganizer(string email);
+        public List<OrganizerConferencesModel> GetConferencesForOrganizer(string email);
     }
 }
