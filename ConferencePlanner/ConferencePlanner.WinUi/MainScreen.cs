@@ -41,6 +41,9 @@ namespace ConferencePlanner.WinUi
                 ConferencesParticipant.Rows[n].Cells[4].Value = conferenceParticipants.FirstOrDefault().ConferenceCategory.ToString();
                 ConferencesParticipant.Rows[n].Cells[5].Value = conferenceParticipants.FirstOrDefault().Address.ToString();
                 ConferencesParticipant.Rows[n].Cells[6].Value = conferenceParticipants.FirstOrDefault().Speaker.ToString();
+                ConferencesParticipant.Rows[n].Cells[7].Value = "Attend";
+                ConferencesParticipant.Rows[n].Cells[8].Value = "Join";
+                ConferencesParticipant.Rows[n].Cells[9].Value = "Withdraw";
                 conferenceParticipants.RemoveAt(0);
             }
 
@@ -67,12 +70,24 @@ namespace ConferencePlanner.WinUi
 
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if(e.ColumnIndex == 7 )
+            {
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+            }
+            else if(e.ColumnIndex == 8)
+            {
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
+            }
+            else if (e.ColumnIndex == 9)
+            {
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Withdraw";
+            }
         }
 
         private void AddConferenceButton_Click(object sender, EventArgs e)
         {
             //_getParticipantRepository.test();
+
         }
     }
 }
