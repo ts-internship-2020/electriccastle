@@ -14,9 +14,9 @@ namespace ConferencePlanner.WinUi
     {
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
-        public MainScreen(IParticipantsConferencesRepository getParticipantRepository)
+        public MainScreen()
         {
-            _getParticipantRepository = getParticipantRepository;
+
             InitializeComponent();
 
         }
@@ -54,7 +54,9 @@ namespace ConferencePlanner.WinUi
 
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            var conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            ConferencesParticipant.DataSource = conferenceParticipants;
+            //ColumnNameConferenceParticipant.DisplayMember = ;
 
         }
     }
