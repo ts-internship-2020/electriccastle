@@ -77,6 +77,9 @@ namespace ConferencePlanner.WinUi
             else if(e.ColumnIndex == 8)
             {
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
+                Form f = new WebViewConnection();
+                f.Show();
+
             }
             else if (e.ColumnIndex == 9)
             {
