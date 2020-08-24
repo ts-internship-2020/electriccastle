@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ConferencePlanner.Abstraction.ParticipantsModel;
-using ConferencePlanner.Abstraction.ParticipantRepository;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+//using ConferencePlanner.Abstraction.ParticipantRepository;
 
-namespace ConferencePlanner.Repository.Ado.ParticipantsConferencesRepository
+namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 {
     public class ParticipantsConferencesRepository : IParticipantsConferencesRepository
     {
@@ -19,21 +20,26 @@ namespace ConferencePlanner.Repository.Ado.ParticipantsConferencesRepository
             _sqlConnection = sqlConnection;
         }
 
+        public void test()
+        {
+            Console.Write("salut\n");
+        }
+
         public List<ParticipantsConferencesModel> GetParticipantsConferences()
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.CommandText = "select c.ConferenceName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName," +
                 " dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName" +
                 " from Conference c " +
-                "join Location l on l.LocationId = c.LocationId" +
-                "join DictionaryCity dc on dc.DictionaryCityId = l.DictionaryCityId" +
-                "join DictionaryDistrict dd on dd.DictionaryDistrictId = dc.DictionaryDistrictId" +
-                "join DictionaryCountry dcn on dcn.DictionaryCountryId = dd.DictionaryCountryId" +
-                "join DictionaryConferenceType dct on dct.DictionaryConferenceTypeId = c.DictionaryConferenceTypeId" +
-                "join DictionaryConferenceCategory dcc on dcc.DictionaryConferenceCategoryId = c.DictionaryConferenceCategoryId" +
-                "join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId" +
-                "join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId" +
-                "where cds.IsMainSpeaker = 1";
+                " join Location l on l.LocationId = c.LocationId" +
+                " join DictionaryCity dc on dc.DictionaryCityId = l.DictionaryCityId" +
+                " join DictionaryDistrict dd on dd.DictionaryDistrictId = dc.DictionaryDistrictId" +
+                " join DictionaryCountry dcn on dcn.DictionaryCountryId = dd.DictionaryCountryId" +
+                " join DictionaryConferenceType dct on dct.DictionaryConferenceTypeId = c.DictionaryConferenceTypeId" +
+                " join DictionaryConferenceCategory dcc on dcc.DictionaryConferenceCategoryId = c.DictionaryConferenceCategoryId" +
+                " join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId" +
+                " join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId" +
+                " where cds.IsMainSpeaker = 1";
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
             List<ParticipantsConferencesModel> participants = new List<ParticipantsConferencesModel>();
