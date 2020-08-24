@@ -23,17 +23,6 @@ namespace ConferencePlanner.WinUi
         [STAThread]
         static void Main()
         {
-
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            ConfigureServices();
-
-            Application.Run(ServiceProvider.GetService<TestareFctButoane>());
-            //Application.Run(new StartScreen());
-           // Application.Run(new TestareFctButoane());
-            //Application.Run(new FormTestDataBase());
-
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
@@ -67,7 +56,7 @@ namespace ConferencePlanner.WinUi
 
             services.AddScoped<IGetDemoRepository, GetDemoRepository>();
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
-
+            services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
             services.AddSingleton<SqlConnection>(a =>
             {
                 SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);

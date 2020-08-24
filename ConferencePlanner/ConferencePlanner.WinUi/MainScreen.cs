@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
+using static ConferencePlanner.WinUi.Program;
 
 
 namespace ConferencePlanner.WinUi
@@ -16,9 +17,12 @@ namespace ConferencePlanner.WinUi
     {
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository)
+        private readonly IOrganizerConferencesRepository organizerConferencesRepository;
+
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository)
         {
             this._getParticipantRepository = _getParticipantRepository;
+            this.organizerConferencesRepository = organizerConferencesRepository;
             InitializeComponent();
         }
 
@@ -47,8 +51,9 @@ namespace ConferencePlanner.WinUi
                 conferenceParticipants.RemoveAt(0);
             }
 
-
-
+            List<OrganizerConferencesModel> organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
+            OrganizerGrid.DataSource = organizerConferences;
+            OrganizerGrid.AutoGenerateColumns = true;
         }
 
         
