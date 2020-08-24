@@ -8,6 +8,6 @@ namespace ConferencePlanner.Abstraction.Repository
 {
     public interface IGetDemoRepository
     {
-        List<DemoModel> GetDemo(string name);
+        public List<DemoModel> GetDemo(string name);
     }
 }

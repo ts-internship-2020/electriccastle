@@ -1,7 +1,9 @@
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Repository;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
+
 using ConferencePlanner.Repository.Ado.Repository;
+
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -29,11 +31,14 @@ namespace ConferencePlanner.WinUi
             Application.Run(ServiceProvider.GetService<StartScreen>());
                //Application.Run(new StartScreen());
            // Application.Run(new FormTestDataBase());
+
         }
 
 
         public static IServiceProvider ServiceProvider { get; set; }
-        public static String EmailParticipants;
+
+       public static String EmailParticipants;
+
 
 
 
@@ -41,6 +46,10 @@ namespace ConferencePlanner.WinUi
         {
             // Ich bin very poliglotten
             var services = new ServiceCollection();
+
+            services.AddScoped<TestareFctButoane>();
+            services.AddScoped<IDictionaryParticipantState, GetDemoStateRepository>();
+
             services.AddScoped<MainForm>();
             services.AddScoped<MainScreen>();
             services.AddScoped<StartScreen>();
