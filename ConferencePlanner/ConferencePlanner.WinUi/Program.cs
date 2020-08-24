@@ -33,8 +33,9 @@ namespace ConferencePlanner.WinUi
 
 
         public static IServiceProvider ServiceProvider { get; set; }
+        public static String EmailParticipants;
 
-        
+
 
         static void ConfigureServices()
         {
@@ -55,10 +56,10 @@ namespace ConferencePlanner.WinUi
             ServiceProvider = services.BuildServiceProvider();
         }
     }
-        public static String EmailParticipants;
+        
 
 
 
       
     }
-}
+
