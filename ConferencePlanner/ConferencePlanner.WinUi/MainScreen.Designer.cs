@@ -234,7 +234,7 @@
             this.FilterParticipants.TabIndex = 6;
             this.FilterParticipants.Text = "Filter";
             this.FilterParticipants.UseVisualStyleBackColor = false;
-            this.FilterParticipants.Click += new System.EventHandler(this.button3_Click);
+            this.FilterParticipants.Click += new System.EventHandler(this.FilterParticipants_Click);
             // 
             // DatePickerParticipantEnd
             // 
@@ -249,7 +249,7 @@
             this.DatePickerParticipantStart.Name = "DatePickerParticipantStart";
             this.DatePickerParticipantStart.Size = new System.Drawing.Size(200, 23);
             this.DatePickerParticipantStart.TabIndex = 4;
-            this.DatePickerParticipantStart.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.DatePickerParticipantStart.ValueChanged += new System.EventHandler(this.DatePickerParticipantStart_ValueChanged);
             // 
             // ConferencesParticipant
             // 
@@ -350,7 +350,7 @@
             this.NextButtonParticipant.TabIndex = 2;
             this.NextButtonParticipant.Text = "Next";
             this.NextButtonParticipant.UseVisualStyleBackColor = false;
-            this.NextButtonParticipant.Click += new System.EventHandler(this.button2_Click);
+            this.NextButtonParticipant.Click += new System.EventHandler(this.NextButtonParticipant_Click);
             // 
             // BackButtonParticipant
             // 
@@ -363,7 +363,7 @@
             this.BackButtonParticipant.TabIndex = 1;
             this.BackButtonParticipant.Text = "Back";
             this.BackButtonParticipant.UseVisualStyleBackColor = false;
-            this.BackButtonParticipant.Click += new System.EventHandler(this.button1_Click);
+            this.BackButtonParticipant.Click += new System.EventHandler(this.BackButtonParticipant_Click);
             // 
             // TabControrConferences
             // 
