@@ -1,6 +1,9 @@
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Repository;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
+
+using ConferencePlanner.Repository.Ado.Repository;
+
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +23,7 @@ namespace ConferencePlanner.WinUi
         [STAThread]
         static void Main()
         {
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -29,17 +33,41 @@ namespace ConferencePlanner.WinUi
             //Application.Run(new StartScreen());
            // Application.Run(new TestareFctButoane());
             //Application.Run(new FormTestDataBase());
+
+            //Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            ConfigureServices();
+
+            Application.Run(ServiceProvider.GetService<StartScreen>());
+               //Application.Run(new StartScreen());
+           // Application.Run(new FormTestDataBase());
+
         }
 
 
         public static IServiceProvider ServiceProvider { get; set; }
 
+       public static String EmailParticipants;
+
+
+
+
         static void ConfigureServices()
         {
             // Ich bin very poliglotten
             var services = new ServiceCollection();
+
             services.AddScoped<TestareFctButoane>();
             services.AddScoped<IDictionaryParticipantState, GetDemoStateRepository>();
+
+            services.AddScoped<MainForm>();
+            services.AddScoped<MainScreen>();
+            services.AddScoped<StartScreen>();
+
+            services.AddScoped<IGetDemoRepository, GetDemoRepository>();
+            services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
+
             services.AddSingleton<SqlConnection>(a =>
             {
                 SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
@@ -49,4 +77,10 @@ namespace ConferencePlanner.WinUi
             ServiceProvider = services.BuildServiceProvider();
         }
     }
-}
+        
+
+
+
+      
+    }
+
