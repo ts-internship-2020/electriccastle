@@ -27,7 +27,6 @@ namespace ConferencePlanner.WinUi
             ConfigureServices();
 
             Application.Run(ServiceProvider.GetService<StartScreen>());
-               //Application.Run(new StartScreen());
            // Application.Run(new FormTestDataBase());
         }
 
