@@ -88,6 +88,7 @@ namespace ConferencePlanner.WinUi
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes == 5)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
+            
                 Form f = new WebViewConnection();
                 f.Show();
 
