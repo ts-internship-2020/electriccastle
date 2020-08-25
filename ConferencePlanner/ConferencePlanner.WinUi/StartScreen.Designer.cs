@@ -29,21 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartScreen));
-            this.submitButton = new System.Windows.Forms.Button();
             this.txtButton = new System.Windows.Forms.TextBox();
+            this.submitButton = new ConferencePlanner.WinUi.ButonCircular();
             this.SuspendLayout();
-            // 
-            // submitButton
-            // 
-            this.submitButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.submitButton.Image = ((System.Drawing.Image)(resources.GetObject("submitButton.Image")));
-            this.submitButton.Location = new System.Drawing.Point(144, 95);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(75, 26);
-            this.submitButton.TabIndex = 2;
-            this.submitButton.Text = "Submit";
-            this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // txtButton
             // 
@@ -58,14 +46,27 @@
             this.txtButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtButton_KeyDown);
             this.txtButton.Validating += new System.ComponentModel.CancelEventHandler(this.txtButton_Validating);
             // 
+            // submitButton
+            // 
+            this.submitButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("submitButton.BackgroundImage")));
+            this.submitButton.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.submitButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.submitButton.Location = new System.Drawing.Point(135, 95);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(88, 29);
+            this.submitButton.TabIndex = 4;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(349, 204);
-            this.Controls.Add(this.txtButton);
             this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.txtButton);
             this.Name = "StartScreen";
             this.Text = "StartScreen";
             this.ResumeLayout(false);
@@ -74,9 +75,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.TextBox t;
         private System.Windows.Forms.TextBox txtButton;
+        private ButonCircular submitButton1;
+        private ButonCircular submitButton;
     }
 }

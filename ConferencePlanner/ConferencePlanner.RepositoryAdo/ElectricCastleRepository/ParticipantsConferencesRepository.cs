@@ -29,7 +29,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.CommandText = "select c.ConferenceName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName," +
-                " dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName" +
+                " dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName, dps.DictionaryParticipantStateName" +
                 " from Conference c " +
                 " join Location l on l.LocationId = c.LocationId" +
                 " join DictionaryCity dc on dc.DictionaryCityId = l.DictionaryCityId" +
@@ -39,6 +39,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                 " join DictionaryConferenceCategory dcc on dcc.DictionaryConferenceCategoryId = c.DictionaryConferenceCategoryId" +
                 " join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId" +
                 " join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId" +
+                " join DictionaryParticipantState dps on dps.ParticipantStateCode = 'WDN'" +
                 " where cds.IsMainSpeaker = 1";
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
@@ -55,8 +56,9 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                           ConferenceType = sqlDataReader.GetString("DictionaryConferenceTypeName"),
                           ConferenceCategory = sqlDataReader.GetString("DictionaryConferenceCategoryName"),
                           Address = sqlDataReader.GetString("Address"),
-                          Speaker = sqlDataReader.GetString("DictionarySpeakerName")
-                        }
+                          Speaker = sqlDataReader.GetString("DictionarySpeakerName"),
+                          StateName = sqlDataReader.GetString("DictionaryParticipantStateName")
+                    }
                     );
                 }
             }
