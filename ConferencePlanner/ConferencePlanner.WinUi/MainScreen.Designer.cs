@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.TabOrganizer = new System.Windows.Forms.TabPage();
+            this.OrganizerTabEndDateLabel = new System.Windows.Forms.Label();
+            this.OrganizerTabStartDateLabel = new System.Windows.Forms.Label();
             this.OrganizerNextButton = new System.Windows.Forms.Button();
             this.OrganizerPreviousButton = new System.Windows.Forms.Button();
             this.OrganizerGrid = new System.Windows.Forms.DataGridView();
@@ -56,8 +58,6 @@
             this.NextButtonParticipant = new System.Windows.Forms.Button();
             this.BackButtonParticipant = new System.Windows.Forms.Button();
             this.TabControrConferences = new System.Windows.Forms.TabControl();
-            this.OrganizerTabStartDateLabel = new System.Windows.Forms.Label();
-            this.OrganizerTabEndDateLabel = new System.Windows.Forms.Label();
             this.TabOrganizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
             this.TabParticipant.SuspendLayout();
@@ -84,6 +84,24 @@
             this.TabOrganizer.TabIndex = 1;
             this.TabOrganizer.Text = "Organizers";
             this.TabOrganizer.UseVisualStyleBackColor = true;
+            // 
+            // OrganizerTabEndDateLabel
+            // 
+            this.OrganizerTabEndDateLabel.AutoSize = true;
+            this.OrganizerTabEndDateLabel.Location = new System.Drawing.Point(402, 62);
+            this.OrganizerTabEndDateLabel.Name = "OrganizerTabEndDateLabel";
+            this.OrganizerTabEndDateLabel.Size = new System.Drawing.Size(57, 15);
+            this.OrganizerTabEndDateLabel.TabIndex = 8;
+            this.OrganizerTabEndDateLabel.Text = "End Date:";
+            // 
+            // OrganizerTabStartDateLabel
+            // 
+            this.OrganizerTabStartDateLabel.AutoSize = true;
+            this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(402, 33);
+            this.OrganizerTabStartDateLabel.Name = "OrganizerTabStartDateLabel";
+            this.OrganizerTabStartDateLabel.Size = new System.Drawing.Size(61, 15);
+            this.OrganizerTabStartDateLabel.TabIndex = 7;
+            this.OrganizerTabStartDateLabel.Text = "Start Date:";
             // 
             // OrganizerNextButton
             // 
@@ -335,24 +353,6 @@
             this.TabControrConferences.SelectedIndex = 2;
             this.TabControrConferences.Size = new System.Drawing.Size(808, 398);
             this.TabControrConferences.TabIndex = 0;
-            // 
-            // OrganizerTabStartDateLabel
-            // 
-            this.OrganizerTabStartDateLabel.AutoSize = true;
-            this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(402, 33);
-            this.OrganizerTabStartDateLabel.Name = "OrganizerTabStartDateLabel";
-            this.OrganizerTabStartDateLabel.Size = new System.Drawing.Size(61, 15);
-            this.OrganizerTabStartDateLabel.TabIndex = 7;
-            this.OrganizerTabStartDateLabel.Text = "Start Date:";
-            // 
-            // OrganizerTabEndDateLabel
-            // 
-            this.OrganizerTabEndDateLabel.AutoSize = true;
-            this.OrganizerTabEndDateLabel.Location = new System.Drawing.Point(402, 62);
-            this.OrganizerTabEndDateLabel.Name = "OrganizerTabEndDateLabel";
-            this.OrganizerTabEndDateLabel.Size = new System.Drawing.Size(57, 15);
-            this.OrganizerTabEndDateLabel.TabIndex = 8;
-            this.OrganizerTabEndDateLabel.Text = "End Date:";
             // 
             // MainScreen
             // 
