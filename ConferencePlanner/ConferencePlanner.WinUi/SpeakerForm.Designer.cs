@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpeakerForm));
             this.SpeakerName = new System.Windows.Forms.Label();
             this.SpeakerNationality = new System.Windows.Forms.Label();
             this.SpeakerRating = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureSpeaker = new System.Windows.Forms.PictureBox();
             this.SpeakerNameText = new System.Windows.Forms.TextBox();
             this.SpeakerNationalityText = new System.Windows.Forms.TextBox();
             this.SpeakerRatingText = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSpeaker)).BeginInit();
             this.SuspendLayout();
             // 
             // SpeakerName
@@ -70,14 +71,16 @@
             this.SpeakerRating.Text = "Rating :";
             this.SpeakerRating.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // pictureSpeaker
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(23, 84);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(181, 110);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureSpeaker.Image = ((System.Drawing.Image)(resources.GetObject("pictureSpeaker.Image")));
+            this.pictureSpeaker.Location = new System.Drawing.Point(23, 67);
+            this.pictureSpeaker.Name = "pictureSpeaker";
+            this.pictureSpeaker.Size = new System.Drawing.Size(181, 127);
+            this.pictureSpeaker.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureSpeaker.TabIndex = 3;
+            this.pictureSpeaker.TabStop = false;
+            this.pictureSpeaker.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // SpeakerNameText
             // 
@@ -109,14 +112,14 @@
             this.Controls.Add(this.SpeakerRatingText);
             this.Controls.Add(this.SpeakerNationalityText);
             this.Controls.Add(this.SpeakerNameText);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureSpeaker);
             this.Controls.Add(this.SpeakerRating);
             this.Controls.Add(this.SpeakerNationality);
             this.Controls.Add(this.SpeakerName);
             this.Name = "SpeakerForm";
             this.Text = "SpeakerForm";
             this.Load += new System.EventHandler(this.SpeakerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSpeaker)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +134,6 @@
         private System.Windows.Forms.TextBox SpeakerNameText;
         private System.Windows.Forms.TextBox SpeakerNationalityText;
         private System.Windows.Forms.TextBox SpeakerRatingText;
+        private System.Windows.Forms.PictureBox pictureSpeaker;
     }
 }

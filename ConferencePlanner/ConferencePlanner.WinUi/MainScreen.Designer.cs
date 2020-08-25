@@ -116,6 +116,7 @@
             this.OrganizerNextButton.TabIndex = 6;
             this.OrganizerNextButton.Text = "Next Page";
             this.OrganizerNextButton.UseVisualStyleBackColor = true;
+            this.OrganizerNextButton.Click += new System.EventHandler(this.OrganizerNextButton_Click);
             // 
             // OrganizerPreviousButton
             // 
@@ -126,6 +127,7 @@
             this.OrganizerPreviousButton.TabIndex = 5;
             this.OrganizerPreviousButton.Text = "Previous Page";
             this.OrganizerPreviousButton.UseVisualStyleBackColor = true;
+            this.OrganizerPreviousButton.Click += new System.EventHandler(this.OrganizerPreviousButton_Click);
             // 
             // OrganizerGrid
             // 
