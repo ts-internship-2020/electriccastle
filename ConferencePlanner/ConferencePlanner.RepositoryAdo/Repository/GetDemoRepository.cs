@@ -21,6 +21,7 @@ namespace ConferencePlanner.Repository.Ado.Repository
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.CommandText = "select * from Demo";
+
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
             List<DemoModel> demos = new List<DemoModel>();

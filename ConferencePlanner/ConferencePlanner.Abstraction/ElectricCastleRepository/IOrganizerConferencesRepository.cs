@@ -7,8 +7,6 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
     public interface IOrganizerConferencesRepository
     {
-        public List<OrganizerConferencesModel> GetAllConferences();
-
         public List<OrganizerConferencesModel> GetConferencesForOrganizer(string email);
     }
 }

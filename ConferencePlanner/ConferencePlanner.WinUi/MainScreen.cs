@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
+using static ConferencePlanner.WinUi.Program;
 
 
 namespace ConferencePlanner.WinUi
@@ -16,10 +17,16 @@ namespace ConferencePlanner.WinUi
     {
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository)
+        private readonly IOrganizerConferencesRepository organizerConferencesRepository;
+
+        public List<OrganizerConferencesModel> organizerConferences { get; set; }
+
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository)
         {
             this._getParticipantRepository = _getParticipantRepository;
+            this.organizerConferencesRepository = organizerConferencesRepository;
             InitializeComponent();
+            organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
         }
 
         private void BackButtonParticipant_Click(object sender, EventArgs e)
@@ -41,11 +48,14 @@ namespace ConferencePlanner.WinUi
                 ConferencesParticipant.Rows[n].Cells[4].Value = conferenceParticipants.FirstOrDefault().ConferenceCategory.ToString();
                 ConferencesParticipant.Rows[n].Cells[5].Value = conferenceParticipants.FirstOrDefault().Address.ToString();
                 ConferencesParticipant.Rows[n].Cells[6].Value = conferenceParticipants.FirstOrDefault().Speaker.ToString();
+                ConferencesParticipant.Rows[n].Cells[7].Value = "Attend";
+                ConferencesParticipant.Rows[n].Cells[8].Value = "Join";
+                ConferencesParticipant.Rows[n].Cells[9].Value = "Withdraw";
                 conferenceParticipants.RemoveAt(0);
             }
 
-
-
+            OrganizerGrid.DataSource = organizerConferences;
+            OrganizerGrid.AutoGenerateColumns = true;
         }
 
         
@@ -67,12 +77,56 @@ namespace ConferencePlanner.WinUi
 
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(e.ColumnIndex == 7 )
+            {
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+            }
+            else if(e.ColumnIndex == 8)
+            {
+                
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
+                DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
+                TimeSpan ts = oDate - DateTime.Now;
+                if (ts.TotalMinutes <= 5)
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
 
+                //if (ts.TotalMinutes > 5)
+                //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Visible = false;
+                Form f = new WebViewConnection();
+                f.Show();
+
+            }
+            else if (e.ColumnIndex == 9)
+            {
+                DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
+                TimeSpan ts = oDate - DateTime.Now;
+                if (ts.TotalMinutes >= 6)
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[9].Style.BackColor = System.Drawing.Color.Red;
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Withdraw";
+            }
         }
 
         private void AddConferenceButton_Click(object sender, EventArgs e)
         {
             //_getParticipantRepository.test();
+
+        }
+
+        private void OrganizerStartDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value).ToList();
+        }
+
+        private void OrganizerEndDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+        }
+
+        private void OrganizerFilterButton_Click(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value
+                                                                             && conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
         }
     }
 }
