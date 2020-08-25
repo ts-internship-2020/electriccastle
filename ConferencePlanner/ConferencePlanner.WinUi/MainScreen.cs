@@ -143,9 +143,9 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 6)
             {
-
-                //string text = "My text that I want to display";
-                //MessageBox.Show(text);
+                Form formSpeaker = new SpeakerForm();
+                formSpeaker.Show();
+ 
             }
         }
 
