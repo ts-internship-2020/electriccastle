@@ -19,6 +19,8 @@ namespace ConferencePlanner.WinUi
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
 
+        public List<OrganizerConferencesModel> organizerConferences { get; set; }
+
         int scrollVal;
 
         public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository)
@@ -27,6 +29,7 @@ namespace ConferencePlanner.WinUi
             this.organizerConferencesRepository = organizerConferencesRepository;
             scrollVal = 0;
             InitializeComponent();
+            organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
         }
 
         private void BackButtonParticipant_Click(object sender, EventArgs e)
@@ -45,17 +48,18 @@ namespace ConferencePlanner.WinUi
         void populateGridParticipants(List<ParticipantsConferencesModel> conferenceParticipants, int scrollVal)
         {
             ConferencesParticipant.Rows.Clear();
+            int nr = conferenceParticipants.Count;
             int i;
-            int numberRowsPage = 7;
-            int numberRowsRemain = scrollVal % numberRowsPage;
-            if(numberRowsRemain !=0)
+            int numberRowsPage = 5;
+            if(nr - scrollVal < numberRowsPage)
             {
-                numberRowsPage = numberRowsRemain;
+                numberRowsPage = nr - scrollVal;
             }
             for (i = 0; i < numberRowsPage; i++)
             {
-                var listElement = conferenceParticipants.ElementAt(scrollVal+i);
                 int n = ConferencesParticipant.Rows.Add();
+                ParticipantsConferencesModel listElement = conferenceParticipants.ElementAt(scrollVal+i);
+
                 ConferencesParticipant.Rows[n].Cells[0].Value = listElement.Name.ToString();
                 ConferencesParticipant.Rows[n].Cells[1].Value = listElement.StartDate.ToString();
                 ConferencesParticipant.Rows[n].Cells[2].Value = listElement.EndDate.ToString();
@@ -75,22 +79,21 @@ namespace ConferencePlanner.WinUi
         private void MainScreen_Load(object sender, EventArgs e)
         {
             List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+
             populateGridParticipants(conferenceParticipants,scrollVal);
-            
+ 
 
 
-            List<OrganizerConferencesModel> organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
             OrganizerGrid.DataSource = organizerConferences;
             OrganizerGrid.AutoGenerateColumns = true;
         }
 
-        
-
         private void NextButtonParticipant_Click(object sender, EventArgs e)
         {
             List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            int nr = conferenceParticipants.Count;
             scrollVal = scrollVal + 5;
-            if(scrollVal > 5)
+            if(scrollVal >= nr)
             {
                 scrollVal = scrollVal - 5;
             }
@@ -111,17 +114,30 @@ namespace ConferencePlanner.WinUi
         {
             if(e.ColumnIndex == 7 )
             {
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
             }
             else if(e.ColumnIndex == 8)
             {
+                
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
+                DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
+                TimeSpan ts = oDate - DateTime.Now;
+                if (ts.TotalMinutes <= 5)
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
+
+                //if (ts.TotalMinutes > 5)
+                //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Visible = false;
                 Form f = new WebViewConnection();
                 f.Show();
 
             }
             else if (e.ColumnIndex == 9)
             {
+                DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
+                TimeSpan ts = oDate - DateTime.Now;
+                if (ts.TotalMinutes >= 6)
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[9].Style.BackColor = System.Drawing.Color.Red;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Withdraw";
             }
 
@@ -137,6 +153,22 @@ namespace ConferencePlanner.WinUi
         {
             //_getParticipantRepository.test();
 
+        }
+
+        private void OrganizerStartDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value).ToList();
+        }
+
+        private void OrganizerEndDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+        }
+
+        private void OrganizerFilterButton_Click(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value
+                                                                             && conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
         }
     }
 }

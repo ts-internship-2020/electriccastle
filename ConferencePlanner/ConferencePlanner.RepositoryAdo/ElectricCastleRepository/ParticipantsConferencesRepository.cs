@@ -39,8 +39,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                 " join DictionaryConferenceCategory dcc on dcc.DictionaryConferenceCategoryId = c.DictionaryConferenceCategoryId" +
                 " join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId" +
                 " join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId" +
-                " join ConferenceParticipant cp on cp.ConferenceId  = c.ConferenceId" +
-                " join DictionaryParticipantState dps on dps.DictionaryParticipantStateId = cp.DictionaryParticipantStateId" +
+                " join DictionaryParticipantState dps on dps.ParticipantStateCode = 'WDN'" +
                 " where cds.IsMainSpeaker = 1";
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 

@@ -51,17 +51,20 @@ VALUES (1),
 	   (6),
 	   (7)
 
-INSERT INTO Conference 
-VALUES ('totalevents@yahoo.com', 'TotalMed', 'Paul Petrache', '2020-09-12 09:00:00','2020-09-12 12:00:00',1,1,4 ),
-	   ('globalevents@yahoo.com', 'An introduction to hardware', 'Vlad Ursache', '2020-10-12 16:00:00','2020-10-12 18:30:00',2,2,3 ),
-	   ('goldmoments@gmail.com', 'The power of BI', 'Ionut Mitrache', '2020-08-22 10:00:00','2020-08-22 12:00:00',3,1,2 ),
-	   ('unforghetable@gmail.com', 'Today''s businessman', 'Ilinca Vandici', '2020-11-03 14:30:00','2020-11-03 16:00:00',4,2,1 ),
-	   ('bestmoments@yahoo.com', 'The underevaluation of a good education', 'Teodor Paladi', '2021-01-12 09:00:00','2021-01-12 12:00:00',5,1,4 ),
-	   ('megamoments@yahoo.com', 'The current state of real estate', 'Maria Ghencea', '2020-12-19 09:00:00','2020-12-19 12:00:00',6,1,5 ),
-	   ('joyevents@gmail.com', 'Shapeaton', 'Nicolae Cicu', '2021-01-22 09:00:00','2021-01-22 12:00:00',7,2,3 ),
-	   ('megamagic@yahoo.com', 'Why do all the sports imply balls', 'Mihai Andone', '2020-10-23 08:30:00','2020-10-23 12:00:00',8,1,2 ),
-	   ('marveiouse@yahoo.com', 'The ugly face of makeup', 'Brighite Bardouth', '2020-09-12 09:00:00','2020-09-12 12:00:00',9,1,4 ),
-	   ('eventskill@gmail.com', 'The world''s retrospective', 'Mircea Dumitru', '2020-09-12 12:00:00','2020-09-12 14:00:00',10,1,4 );
+INSERT INTO Conference (ConferenceName, OrganizerEmail, OrganizerName, StartDate, EndDate, DictionaryConferenceCategoryId, DictionaryConferenceTypeId, LocationId)
+VALUES ('TotalMed', 'totalevents@yahoo.com', 'Paul Petrache', '2020-09-12 09:00:00', '2020-09-12 12:00:00', 1, 1, 4),
+	   ('An introduction to hardware', 'globalevents@yahoo.com', 'Vlad Ursache', '2020-10-12 16:00:00', '2020-10-12 18:30:00', 2, 2, 3),
+	   ('The power of BI', 'goldmoments@gmail.com', 'Ionut Mitrache', '2020-08-22 10:00:00', '2020-08-22 12:00:00', 3, 1, 2),
+	   ('Today''s businessman', 'unforghetable@gmail.com', 'Ilinca Vandici', '2020-11-03 14:30:00', '2020-11-03 16:00:00', 4, 2, 1),
+	   ('The underevaluation of a good education', 'bestmoments@yahoo.com', 'Teodor Paladi', '2021-01-12 09:00:00', '2021-01-12 12:00:00', 5, 1, 4),
+	   ('The current state of real estate', 'megamoments@yahoo.com', 'Maria Ghencea', '2020-12-19 09:00:00', '2020-12-19 12:00:00', 6, 1, 5),
+	   ('Shapeaton', 'Nicolae Cicu', 'joyevents@gmail.com', '2021-01-22 09:00:00', '2021-01-22 12:00:00', 7, 2, 3),
+	   ('Why do all the sports imply balls', 'megamagic@yahoo.com', 'Mihai Andone', '2020-10-23 08:30:00', '2020-10-23 12:00:00', 8, 1, 2),
+	   ('The ugly face of makeup', 'marveiouse@yahoo.com', 'Brighite Bardouth', '2020-09-12 09:00:00', '2020-09-12 12:00:00', 9, 1, 4),
+	   ('The world''s retrospective', 'eventskill@gmail.com', 'Mircea Dumitru', '2020-09-12 12:00:00', '2020-09-12 14:00:00', 10, 1, 4),
+	   ('To win a war', 'eventskill@gmail.com', 'Mircea Dumitru', '2020-08-25 13:00:00', '2020-08-27 17:00:00', 10, 2, 4),
+	   ('The decline of politics', 'eventskill@gmail.com', 'Mircea Dumitru', '2021-03-08 9:00:00', '2021-03-10 15:00:00', 10, 1, 7);
+
 
 INSERT INTO DictionaryParticipantState 
 VALUES(1, 'Joined', 'JOD'),
@@ -127,10 +130,16 @@ VALUES  (1, 1, 0),
 		(10, 9, 1),
 		(6, 9, 0),
 		(7, 10, 1),
-		(5, 10, 0);
+		(5, 10, 0),
+		(2, 13, 1),
+		(3, 13, 0),
+		(5, 13, 0),
+		(3, 14, 1),
+		(7, 14, 0); 
 		
 --BEGIN TRAN
 
 --ROLLBACK
 
 --COMMIT
+

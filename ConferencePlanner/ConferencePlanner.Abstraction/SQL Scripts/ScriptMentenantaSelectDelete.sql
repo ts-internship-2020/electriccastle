@@ -15,8 +15,9 @@ SELECT * FROM ConferenceParticipant CP
 JOIN DictionaryParticipantState D ON D.DictionaryParticipantStateId = CP.DictionaryParticipantStateId;
 
 
--- generic populare griduri
-select c.ConferenceName, c.OrganizerName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName, 
+-- populare grid organizator
+
+select DISTINCT c.ConferenceId, c.ConferenceName, c.OrganizerName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName, 
 dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName 
 from Conference c  
 join Location l on l.LocationId = c.LocationId 
@@ -28,9 +29,7 @@ join DictionaryConferenceCategory dcc on dcc.DictionaryConferenceCategoryId = c.
 join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId 
 join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId 
 where cds.IsMainSpeaker = 1
-and c.OrganizerEmail = ;
-
-
+and c.OrganizerEmail = 'eventskill@gmail.com';
 
 DELETE  FROM Conference;
 DELETE  FROM Location;

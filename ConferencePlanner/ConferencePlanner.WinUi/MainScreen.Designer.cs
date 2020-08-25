@@ -38,13 +38,13 @@
             this.OrganizerStartDatePicker = new System.Windows.Forms.DateTimePicker();
             this.OrganizerFilterButton = new System.Windows.Forms.Button();
             this.TabParticipant = new System.Windows.Forms.TabPage();
-            this.ConferencesParticipant = new System.Windows.Forms.DataGridView();
             this.FilterParticipants = new System.Windows.Forms.Button();
             this.DatePickerParticipantEnd = new System.Windows.Forms.DateTimePicker();
             this.DatePickerParticipantStart = new System.Windows.Forms.DateTimePicker();
             this.nextButtonParticipant = new System.Windows.Forms.Button();
             this.backButtonParticipant = new System.Windows.Forms.Button();
             this.TabControrConferences = new System.Windows.Forms.TabControl();
+            this.ConferencesParticipant = new System.Windows.Forms.DataGridView();
             this.ColumnNameConferenceParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStartDateParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEndDateParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,16 +56,24 @@
             this.ColumnJoinButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnWithdrawButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.NextButtonParticipant = new System.Windows.Forms.Button();
+            //this.BackButtonParticipant = new System.Windows.Forms.Button();
+            this.TabControrConferences = new System.Windows.Forms.TabControl();
+            this.OrganizerTabStartDateLabel = new System.Windows.Forms.Label();
+            this.OrganizerTabEndDateLabel = new System.Windows.Forms.Label();
             this.TabOrganizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConferencesParticipant)).BeginInit();
             this.TabParticipant.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConferencesParticipant)).BeginInit();
             this.TabControrConferences.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabOrganizer
             // 
             this.TabOrganizer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabOrganizer.BackgroundImage")));
+            this.TabOrganizer.Controls.Add(this.OrganizerTabEndDateLabel);
+            this.TabOrganizer.Controls.Add(this.OrganizerTabStartDateLabel);
             this.TabOrganizer.Controls.Add(this.OrganizerNextButton);
             this.TabOrganizer.Controls.Add(this.OrganizerPreviousButton);
             this.TabOrganizer.Controls.Add(this.OrganizerGrid);
@@ -132,6 +140,7 @@
             this.OrganizerEndDatePicker.Name = "OrganizerEndDatePicker";
             this.OrganizerEndDatePicker.Size = new System.Drawing.Size(200, 23);
             this.OrganizerEndDatePicker.TabIndex = 2;
+            this.OrganizerEndDatePicker.ValueChanged += new System.EventHandler(this.OrganizerEndDatePicker_ValueChanged);
             // 
             // OrganizerStartDatePicker
             // 
@@ -140,6 +149,7 @@
             this.OrganizerStartDatePicker.Name = "OrganizerStartDatePicker";
             this.OrganizerStartDatePicker.Size = new System.Drawing.Size(200, 23);
             this.OrganizerStartDatePicker.TabIndex = 1;
+            this.OrganizerStartDatePicker.ValueChanged += new System.EventHandler(this.OrganizerStartDatePicker_ValueChanged);
             // 
             // OrganizerFilterButton
             // 
@@ -150,39 +160,11 @@
             this.OrganizerFilterButton.TabIndex = 0;
             this.OrganizerFilterButton.Text = "Filter";
             this.OrganizerFilterButton.UseVisualStyleBackColor = true;
+            this.OrganizerFilterButton.Click += new System.EventHandler(this.OrganizerFilterButton_Click);
             // 
             // TabParticipant
             // 
             this.TabParticipant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabParticipant.BackgroundImage")));
-            // 
-            // ConferencesParticipant
-            // 
-            this.ConferencesParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConferencesParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ConferencesParticipant.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ConferencesParticipant.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.ConferencesParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ConferencesParticipant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnNameConferenceParticipant,
-            this.ColumnStartDateParticipant,
-            this.ColumnEndDateParticipant,
-            this.ColumnTypeParticipant,
-            this.ColumnCategoryParticipant,
-            this.ColumnAddressParticipant,
-            this.ColumnSpeakerParticipant,
-            this.ColumnAttend,
-            this.ColumnJoinButton,
-            this.ColumnWithdrawButton,
-            this.ColumnState});
-            this.ConferencesParticipant.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ConferencesParticipant.Location = new System.Drawing.Point(10, 80);
-            this.ConferencesParticipant.Name = "ConferencesParticipant";
-            this.ConferencesParticipant.Size = new System.Drawing.Size(781, 255);
-            this.ConferencesParticipant.TabIndex = 3;
-            this.ConferencesParticipant.Text = "dataGridView1";
-            this.ConferencesParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConferencesParticipant_CellContentClick);
             this.TabParticipant.Controls.Add(this.FilterParticipants);
             this.TabParticipant.Controls.Add(this.DatePickerParticipantEnd);
             this.TabParticipant.Controls.Add(this.DatePickerParticipantStart);
@@ -252,6 +234,7 @@
             // 
             // TabControrConferences
             // 
+
             this.TabControrConferences.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -263,6 +246,36 @@
             this.TabControrConferences.SelectedIndex = 2;
             this.TabControrConferences.Size = new System.Drawing.Size(808, 398);
             this.TabControrConferences.TabIndex = 0;
+
+            // 
+            // ConferencesParticipant
+            // 
+            this.ConferencesParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConferencesParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ConferencesParticipant.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ConferencesParticipant.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.ConferencesParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ConferencesParticipant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnNameConferenceParticipant,
+            this.ColumnStartDateParticipant,
+            this.ColumnEndDateParticipant,
+            this.ColumnTypeParticipant,
+            this.ColumnCategoryParticipant,
+            this.ColumnAddressParticipant,
+            this.ColumnSpeakerParticipant,
+            this.ColumnAttend,
+            this.ColumnJoinButton,
+            this.ColumnWithdrawButton,
+            this.ColumnState});
+            this.ConferencesParticipant.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ConferencesParticipant.Location = new System.Drawing.Point(10, 80);
+            this.ConferencesParticipant.Name = "ConferencesParticipant";
+            this.ConferencesParticipant.Size = new System.Drawing.Size(781, 255);
+            this.ConferencesParticipant.TabIndex = 3;
+            this.ConferencesParticipant.Text = "dataGridView1";
+            this.ConferencesParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConferencesParticipant_CellContentClick);
             // 
             // ColumnNameConferenceParticipant
             // 
@@ -329,6 +342,70 @@
             // 
             this.ColumnState.HeaderText = "State";
             this.ColumnState.Name = "ColumnState";
+            // 
+            // NextButtonParticipant
+            // 
+            /*
+            this.NextButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NextButtonParticipant.BackColor = System.Drawing.Color.DarkSalmon;
+            this.NextButtonParticipant.ForeColor = System.Drawing.Color.Navy;
+            this.NextButtonParticipant.Location = new System.Drawing.Point(653, 341);
+            this.NextButtonParticipant.Name = "NextButtonParticipant";
+            this.NextButtonParticipant.Size = new System.Drawing.Size(75, 23);
+            this.NextButtonParticipant.TabIndex = 2;
+            this.NextButtonParticipant.Text = "Next";
+            this.NextButtonParticipant.UseVisualStyleBackColor = false;
+            this.NextButtonParticipant.Click += new System.EventHandler(this.NextButtonParticipant_Click);
+            // 
+            // BackButtonParticipant
+            // 
+            this.BackButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackButtonParticipant.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BackButtonParticipant.ForeColor = System.Drawing.Color.Navy;
+            this.BackButtonParticipant.Location = new System.Drawing.Point(542, 341);
+            this.BackButtonParticipant.Name = "BackButtonParticipant";
+            this.BackButtonParticipant.Size = new System.Drawing.Size(75, 23);
+            this.BackButtonParticipant.TabIndex = 1;
+            this.BackButtonParticipant.Text = "Back";
+            this.BackButtonParticipant.UseVisualStyleBackColor = false;
+            this.BackButtonParticipant.Click += new System.EventHandler(this.BackButtonParticipant_Click);
+            */
+            // 
+            // TabControrConferences
+            // 
+            /*
+            this.TabControrConferences.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TabControrConferences.Controls.Add(this.TabParticipant);
+            this.TabControrConferences.Controls.Add(this.TabOrganizer);
+            this.TabControrConferences.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TabControrConferences.Location = new System.Drawing.Point(-2, 2);
+            this.TabControrConferences.Name = "TabControrConferences";
+            this.TabControrConferences.SelectedIndex = 2;
+            this.TabControrConferences.Size = new System.Drawing.Size(808, 398);
+            this.TabControrConferences.TabIndex = 0;
+            */
+            // 
+            // OrganizerTabStartDateLabel
+            // 
+            this.OrganizerTabStartDateLabel.AutoSize = true;
+            this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(402, 33);
+            this.OrganizerTabStartDateLabel.Name = "OrganizerTabStartDateLabel";
+            this.OrganizerTabStartDateLabel.Size = new System.Drawing.Size(61, 15);
+            this.OrganizerTabStartDateLabel.TabIndex = 7;
+            this.OrganizerTabStartDateLabel.Text = "Start Date:";
+            // 
+            // OrganizerTabEndDateLabel
+            // 
+            this.OrganizerTabEndDateLabel.AutoSize = true;
+            this.OrganizerTabEndDateLabel.Location = new System.Drawing.Point(402, 62);
+            this.OrganizerTabEndDateLabel.Name = "OrganizerTabEndDateLabel";
+            this.OrganizerTabEndDateLabel.Size = new System.Drawing.Size(57, 15);
+            this.OrganizerTabEndDateLabel.TabIndex = 8;
+            this.OrganizerTabEndDateLabel.Text = "End Date:";
+            this.ColumnState.HeaderText = "State";
+            this.ColumnState.Name = "ColumnState";
             this.ColumnState.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // MainScreen
@@ -341,9 +418,10 @@
             this.Text = "MainScreen";
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.TabOrganizer.ResumeLayout(false);
+            this.TabOrganizer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConferencesParticipant)).EndInit();
             this.TabParticipant.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ConferencesParticipant)).EndInit();
             this.TabControrConferences.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -379,5 +457,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn ColumnJoinButton;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnWithdrawButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnState;
+        private System.Windows.Forms.Label OrganizerTabEndDateLabel;
+        private System.Windows.Forms.Label OrganizerTabStartDateLabel;
     }
 }
