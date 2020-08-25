@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 
 
@@ -19,7 +20,11 @@ namespace ConferencePlanner.WinUi
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
 
-        public List<OrganizerConferencesModel> organizerConferences { get; set; }
+        private List<OrganizerConferencesModel> organizerConferences;
+
+        private PaginationHelper<OrganizerConferencesModel> paginationHelper;
+
+        private int pageSize = 2;
 
         int scrollVal;
 
@@ -29,7 +34,8 @@ namespace ConferencePlanner.WinUi
             this.organizerConferencesRepository = organizerConferencesRepository;
             scrollVal = 0;
             InitializeComponent();
-            organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
+            organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
+            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
         }
 
         private void BackButtonParticipant_Click(object sender, EventArgs e)
@@ -84,8 +90,9 @@ namespace ConferencePlanner.WinUi
  
 
 
-            OrganizerGrid.DataSource = organizerConferences;
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
             OrganizerGrid.AutoGenerateColumns = true;
+            ManageOrganizerPaginationButtonsState();
         }
 
         private void NextButtonParticipant_Click(object sender, EventArgs e)
@@ -157,18 +164,47 @@ namespace ConferencePlanner.WinUi
 
         private void OrganizerStartDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value).ToList();
+            List<OrganizerConferencesModel> filteredData = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value).ToList();
+            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(filteredData, pageSize);
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
         }
 
         private void OrganizerEndDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+            List<OrganizerConferencesModel> filteredData = organizerConferences.Where(conference => conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(filteredData, pageSize);
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
         }
 
         private void OrganizerFilterButton_Click(object sender, EventArgs e)
         {
-            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value
-                                                                             && conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+            List<OrganizerConferencesModel> filteredData = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value
+                                                                                                 && conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(filteredData, pageSize);
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
+        }
+
+        private void OrganizerNextButton_Click(object sender, EventArgs e)
+        {
+            paginationHelper.NextPage();
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
+        }
+
+        private void OrganizerPreviousButton_Click(object sender, EventArgs e)
+        {
+            paginationHelper.PreviousPage();
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
+        }
+
+        private void ManageOrganizerPaginationButtonsState()
+        {
+            OrganizerPreviousButton.Enabled = paginationHelper.HasPreviousPage();
+            OrganizerNextButton.Enabled = paginationHelper.HasNextPage();
         }
     }
 }
