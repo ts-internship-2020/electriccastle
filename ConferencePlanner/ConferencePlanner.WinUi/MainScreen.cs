@@ -19,11 +19,14 @@ namespace ConferencePlanner.WinUi
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
 
+        public List<OrganizerConferencesModel> organizerConferences { get; set; }
+
         public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository)
         {
             this._getParticipantRepository = _getParticipantRepository;
             this.organizerConferencesRepository = organizerConferencesRepository;
             InitializeComponent();
+            organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
         }
 
         private void BackButtonParticipant_Click(object sender, EventArgs e)
@@ -51,7 +54,6 @@ namespace ConferencePlanner.WinUi
                 conferenceParticipants.RemoveAt(0);
             }
 
-            List<OrganizerConferencesModel> organizerConferences = organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
             OrganizerGrid.DataSource = organizerConferences;
             OrganizerGrid.AutoGenerateColumns = true;
         }
@@ -96,6 +98,22 @@ namespace ConferencePlanner.WinUi
         {
             //_getParticipantRepository.test();
 
+        }
+
+        private void OrganizerStartDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value).ToList();
+        }
+
+        private void OrganizerEndDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+        }
+
+        private void OrganizerFilterButton_Click(object sender, EventArgs e)
+        {
+            OrganizerGrid.DataSource = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value
+                                                                             && conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
         }
     }
 }
