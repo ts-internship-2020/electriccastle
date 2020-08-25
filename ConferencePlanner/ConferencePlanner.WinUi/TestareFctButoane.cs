@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
-using ConferencePlanner.Repository.Ado.Repository;
+
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
 using System.Linq;
 
@@ -30,7 +30,7 @@ namespace ConferencePlanner.WinUi
 
         private void join_Click(object sender, EventArgs e)
         {
-            
+           
             var x = _getdictionaryParticipantState.GetDictionaryParticipantStates("Joined");
             withdraw.Hide();
             label1.Text = x.FirstOrDefault().State;

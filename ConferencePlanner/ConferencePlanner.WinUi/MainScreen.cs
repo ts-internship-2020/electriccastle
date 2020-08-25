@@ -79,17 +79,30 @@ namespace ConferencePlanner.WinUi
         {
             if(e.ColumnIndex == 7 )
             {
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
             }
             else if(e.ColumnIndex == 8)
             {
+                
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
+                DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
+                TimeSpan ts = oDate - DateTime.Now;
+                if (ts.TotalMinutes <= 5)
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
+
+                //if (ts.TotalMinutes > 5)
+                //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Visible = false;
                 Form f = new WebViewConnection();
                 f.Show();
 
             }
             else if (e.ColumnIndex == 9)
             {
+                DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
+                TimeSpan ts = oDate - DateTime.Now;
+                if (ts.TotalMinutes >= 6)
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[9].Style.BackColor = System.Drawing.Color.Red;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Withdraw";
             }
         }
