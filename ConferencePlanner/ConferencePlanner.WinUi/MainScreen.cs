@@ -81,7 +81,13 @@ namespace ConferencePlanner.WinUi
             }
             else if(e.ColumnIndex == 8)
             {
+                
+                
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
+                DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
+                TimeSpan ts = oDate - DateTime.Now;
+                if (ts.TotalMinutes == 5)
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
                 Form f = new WebViewConnection();
                 f.Show();
 
