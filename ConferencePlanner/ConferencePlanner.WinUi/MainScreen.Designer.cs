@@ -396,6 +396,15 @@
             this.OrganizerTabStartDateLabel.TabIndex = 7;
             this.OrganizerTabStartDateLabel.Text = "Start Date:";
             // 
+            // OrganizerTabStartDateLabel
+            // 
+            this.OrganizerTabStartDateLabel.AutoSize = true;
+            this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(402, 33);
+            this.OrganizerTabStartDateLabel.Name = "OrganizerTabStartDateLabel";
+            this.OrganizerTabStartDateLabel.Size = new System.Drawing.Size(61, 15);
+            this.OrganizerTabStartDateLabel.TabIndex = 7;
+            this.OrganizerTabStartDateLabel.Text = "Start Date:";
+            // 
             // OrganizerTabEndDateLabel
             // 
             this.OrganizerTabEndDateLabel.AutoSize = true;
