@@ -98,7 +98,7 @@ namespace ConferencePlanner.WinUi
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ////Check to ensure that the row CheckBox is clicked.
+            //dataGridView1_CellClick////Check to ensure that the row CheckBox is clicked.
             //if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             //{
             //    //Loop and uncheck all other CheckBoxes.
@@ -173,6 +173,31 @@ namespace ConferencePlanner.WinUi
         }
 
         private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerNextButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerAddButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerPreviousButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

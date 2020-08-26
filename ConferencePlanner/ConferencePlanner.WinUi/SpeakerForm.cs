@@ -59,7 +59,8 @@ namespace ConferencePlanner.WinUi
                 {
                     speakerNameText.Text = listElement.Name.ToString();
                     speakerRatingText.Text = listElement.Rating.ToString();
-                    speakerNationalityText.Text = listElement.Nationality.ToString(); pictureSpeaker.LoadAsync("https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80");
+                    speakerNationalityText.Text = listElement.Nationality.ToString(); 
+                    pictureSpeaker.LoadAsync(listElement.Picture.ToString());
 
                 }
             }
