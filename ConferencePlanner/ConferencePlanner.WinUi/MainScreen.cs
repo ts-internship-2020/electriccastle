@@ -257,6 +257,9 @@ namespace ConferencePlanner.WinUi
             addConferance.ShowDialog();
         }
 
+        private void OrganizerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }
