@@ -28,7 +28,9 @@ namespace ConferencePlanner.WinUi
             //Application.SetCompatibleTextRenderingDefault(false);
             ConfigureServices();
 
-           Application.Run(ServiceProvider.GetService<StartScreen>());
+            Application.Run(ServiceProvider.GetService<StartScreen>());
+          // Application.Run(ServiceProvider.GetService<AddConferance>());
+
           // Application.Run(new AddConferance());
 
         }
@@ -52,11 +54,13 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<MainForm>();
             services.AddScoped<MainScreen>();
             services.AddScoped<StartScreen>();
+            services.AddScoped<AddConferance>();
             services.AddScoped<SpeakerForm>();
 
             services.AddScoped<IGetDemoRepository, GetSpeakerDetail>();
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
             services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
+            services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();
             services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
             services.AddSingleton<SqlConnection>(a =>
             {
