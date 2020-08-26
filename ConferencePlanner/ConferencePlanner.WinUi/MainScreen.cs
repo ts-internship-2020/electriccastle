@@ -38,19 +38,7 @@ namespace ConferencePlanner.WinUi
             paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
         }
 
-        private void BackButtonParticipant_Click(object sender, EventArgs e)
-        {
-            List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
-            scrollVal = scrollVal - 5;
-            if(scrollVal < 0)
-            {
-                scrollVal = 0;
-            }
-            populateGridParticipants(conferenceParticipants, scrollVal);
-
-
-        }
-
+       
         void populateGridParticipants(List<ParticipantsConferencesModel> conferenceParticipants, int scrollVal)
         {
             ConferencesParticipant.Rows.Clear();
@@ -95,18 +83,7 @@ namespace ConferencePlanner.WinUi
             ManageOrganizerPaginationButtonsState();
         }
 
-        private void NextButtonParticipant_Click(object sender, EventArgs e)
-        {
-            List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
-            int nr = conferenceParticipants.Count;
-            scrollVal = scrollVal + 5;
-            if(scrollVal >= nr)
-            {
-                scrollVal = scrollVal - 5;
-            }
-            populateGridParticipants(conferenceParticipants, scrollVal);
-        }
-
+      
         private void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
         {
 
@@ -117,6 +94,53 @@ namespace ConferencePlanner.WinUi
 
         }
 
+
+        private void BackButtonParticipant_Click(object sender, EventArgs e)
+        {
+
+            List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            scrollVal = scrollVal - 5;
+            if (scrollVal < 0)
+            {
+                scrollVal = 0;
+            }
+            populateGridParticipants(conferenceParticipants, scrollVal);
+        }
+
+        private void NextButtonParticipant_Click(object sender, EventArgs e)
+        {
+            List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            int nr = conferenceParticipants.Count;
+            scrollVal = scrollVal + 5;
+            if (scrollVal >= nr)
+            {
+                scrollVal = scrollVal - 5;
+            }
+            populateGridParticipants(conferenceParticipants, scrollVal);
+        }
+
+        private void OrganizerPreviousButton_Click(object sender, EventArgs e)
+        {
+            paginationHelper.PreviousPage();
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
+        }
+
+        private void OrganizerNextButton_Click(object sender, EventArgs e)
+        {
+            paginationHelper.NextPage();
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
+        }
+
+        private void OrganizerFilterButton_Click(object sender, EventArgs e)
+        {
+            List<OrganizerConferencesModel> filteredData = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value
+                                                                                                 && conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
+            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(filteredData, pageSize);
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            ManageOrganizerPaginationButtonsState();
+        }
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.ColumnIndex == 7 )
@@ -156,11 +180,6 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-        private void AddConferenceButton_Click(object sender, EventArgs e)
-        {
-            //_getParticipantRepository.test();
-
-        }
 
         private void OrganizerStartDatePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -178,33 +197,20 @@ namespace ConferencePlanner.WinUi
             ManageOrganizerPaginationButtonsState();
         }
 
-        private void OrganizerFilterButton_Click(object sender, EventArgs e)
-        {
-            List<OrganizerConferencesModel> filteredData = organizerConferences.Where(conference => conference.StartDate >= OrganizerStartDatePicker.Value
-                                                                                                 && conference.EndDate <= OrganizerEndDatePicker.Value).ToList();
-            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(filteredData, pageSize);
-            OrganizerGrid.DataSource = paginationHelper.GetPage();
-            ManageOrganizerPaginationButtonsState();
-        }
+    
 
-        private void OrganizerNextButton_Click(object sender, EventArgs e)
-        {
-            paginationHelper.NextPage();
-            OrganizerGrid.DataSource = paginationHelper.GetPage();
-            ManageOrganizerPaginationButtonsState();
-        }
-
-        private void OrganizerPreviousButton_Click(object sender, EventArgs e)
-        {
-            paginationHelper.PreviousPage();
-            OrganizerGrid.DataSource = paginationHelper.GetPage();
-            ManageOrganizerPaginationButtonsState();
-        }
+       
 
         private void ManageOrganizerPaginationButtonsState()
         {
             OrganizerPreviousButton.Enabled = paginationHelper.HasPreviousPage();
             OrganizerNextButton.Enabled = paginationHelper.HasNextPage();
+        }
+
+
+        private void AddConferenceButton_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
