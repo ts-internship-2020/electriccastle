@@ -95,6 +95,7 @@ CREATE TABLE DictionarySpeaker(
 	DictionarySpeakerName NVARCHAR(255) NOT NULL,
 	Rating NUMERIC(30,2),
 	Nationality NVARCHAR(255),
+	Picture NVARCHAR(255),
 	PRIMARY KEY(DictionarySpeakerId)
 
 );
