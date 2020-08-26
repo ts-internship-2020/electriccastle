@@ -85,8 +85,14 @@ namespace ConferencePlanner.WinUi
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             OrganizerGrid.AutoGenerateColumns = true;
             ManageOrganizerPaginationButtonsState();
+            DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
+            OrganizerGrid.Columns.Add(buttonEdit);
+            buttonEdit.HeaderText = "Edit";
+            buttonEdit.Name = "Edit";
+            buttonEdit.Text = "Edit";
+            buttonEdit.UseColumnTextForButtonValue = true;
         }
-
+        
       
         private void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
         {
@@ -201,20 +207,34 @@ namespace ConferencePlanner.WinUi
             ManageOrganizerPaginationButtonsState();
         }
 
-    
-
-       
-
         private void ManageOrganizerPaginationButtonsState()
         {
             OrganizerPreviousButton.Enabled = paginationHelper.HasPreviousPage();
             OrganizerNextButton.Enabled = paginationHelper.HasNextPage();
         }
 
-
         private void AddConferenceButton_Click_1(object sender, EventArgs e)
         {
+            AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+            addConferance.ConferenceId = null;
+            addConferance.ShowDialog();
+        }
 
+        private void OrganizerGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            this.OrganizerGrid.Columns["ConferenceId"].Visible = false;
+        }
+
+        private void OrganizerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex !=
+            OrganizerGrid.Columns["Edit"].Index) return;
+
+            Int32 conferenceId = (Int32)OrganizerGrid[OrganizerGrid.Columns["ConferenceId"].Index, e.RowIndex].Value;
+
+            AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+            addConferance.ConferenceId = conferenceId;
+            addConferance.ShowDialog();
         }
     }
 }
