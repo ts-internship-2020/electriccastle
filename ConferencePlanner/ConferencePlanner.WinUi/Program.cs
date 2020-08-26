@@ -51,13 +51,13 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<TestareFctButoane>();
             services.AddScoped<IDictionaryParticipantState, GetDemoStateRepository>();
 
-            services.AddScoped<MainForm>();
+            //services.AddScoped<MainForm>();
             services.AddScoped<MainScreen>();
             services.AddScoped<StartScreen>();
             services.AddScoped<AddConferance>();
             services.AddScoped<SpeakerForm>();
 
-            services.AddScoped<IGetDemoRepository, GetSpeakerDetail>();
+            //services.AddScoped<IGetDemoRepository, GetSpeakerDetail>();
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
             services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
             services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();
