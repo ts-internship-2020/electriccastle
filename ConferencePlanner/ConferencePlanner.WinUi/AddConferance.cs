@@ -1,19 +1,27 @@
-﻿using System;
+﻿using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Windows.ApplicationModel.Activation;
 
 namespace ConferencePlanner.WinUi
 {
     public partial class AddConferance : Form
     {
-        public AddConferance()
+        private readonly IConferanceCategory _getConferanceCategory;
+
+        public AddConferance(IConferanceCategory getConferanceCategory)
         {
             InitializeComponent();
+            _getConferanceCategory=getConferanceCategory;
         }
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -28,7 +36,7 @@ namespace ConferencePlanner.WinUi
             tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
                              tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
 
-            if (tabConferance.SelectedTab == tabConferance.TabPages["tabState"])
+            if (tabConferance.SelectedTab == tabConferance.TabPages["tabType"])
             {
                 button1.Text = "Save";
                 btSaveAndNew.Visible = true;
@@ -82,6 +90,38 @@ namespace ConferencePlanner.WinUi
             //    tabConferance.SelectTab(currentSelectedTab);
             //}
            
+
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ////Check to ensure that the row CheckBox is clicked.
+            //if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            //{
+            //    //Loop and uncheck all other CheckBoxes.
+            //    foreach (DataGridViewRow row in dataGridView1.Rows)
+            //    {
+            //        if (row.Index == e.RowIndex)
+            //        {
+            //            row.Cells["Main"].Value = !Convert.ToBoolean(row.Cells["Main"].EditedFormattedValue);
+            //        }
+            //        else
+            //        {
+            //            row.Cells["Main"].Value = false;
+            //        }
+            //    }
+            //}
+        }
+
+        private void AddConferance_Load(object sender, EventArgs e)
+        {
+           // List<ConferanceCategory> conferenceCategory = _getConferanceCategory.GetConferencesCategory();
+
+            //foreach (List<ConferanceCategory> conferance in conferenceCategory)
+            //{
+            //    CategoryName.Items.Add(conferance);
+            //}
 
 
         }
