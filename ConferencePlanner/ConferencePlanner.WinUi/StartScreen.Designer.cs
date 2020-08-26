@@ -51,9 +51,9 @@
             this.submitButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("submitButton.BackgroundImage")));
             this.submitButton.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.submitButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.submitButton.Location = new System.Drawing.Point(135, 95);
+            this.submitButton.Location = new System.Drawing.Point(127, 95);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(88, 29);
+            this.submitButton.Size = new System.Drawing.Size(104, 29);
             this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;

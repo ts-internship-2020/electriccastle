@@ -20,11 +20,6 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             _sqlConnection = sqlConnection;
         }
 
-        public void test()
-        {
-            Console.Write("salut\n");
-        }
-
         public List<ParticipantsConferencesModel> GetParticipantsConferences()
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
@@ -62,6 +57,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                     );
                 }
             }
+
             sqlDataReader.Close();
 
             return participants;
