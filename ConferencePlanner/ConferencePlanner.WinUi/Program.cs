@@ -28,8 +28,8 @@ namespace ConferencePlanner.WinUi
             //Application.SetCompatibleTextRenderingDefault(false);
             ConfigureServices();
 
-            // Application.Run(ServiceProvider.GetService<StartScreen>());
-           Application.Run(ServiceProvider.GetService<AddConferance>());
+            Application.Run(ServiceProvider.GetService<StartScreen>());
+          // Application.Run(ServiceProvider.GetService<AddConferance>());
 
           // Application.Run(new AddConferance());
 
