@@ -8,32 +8,33 @@ using ConferencePlanner.Abstraction.ElectricCastleRepository;
 
 namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 {
-    public class SpeakerDetailRepository : ISpeakerDetailRepository
+    public class SpeakerRepository : ISpeakerRepository
     {
         private readonly SqlConnection _sqlConnection;
 
-        public SpeakerDetailRepository(SqlConnection sqlConnection)
+        public SpeakerRepository(SqlConnection sqlConnection)
         {
             _sqlConnection = sqlConnection;
         }
 
-        public List<SpeakerDetailModel> GetSpeakerDetail()
+        public List<SpeakerModel> GetSpeaker()
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            sqlCommand.CommandText = "select ds.DictionarySpeakerId, ds.DictionarySpeakerName, ds.Rating, ds.Nationality, ds.Picture" +
+            sqlCommand.CommandText = "select ds.DictionarySpeakerId, ds.SpeakerCode, ds.DictionarySpeakerName, ds.Rating, ds.Nationality, ds.Picture" +
                 " from DictionarySpeaker ds";
 
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
-            List<SpeakerDetailModel> details = new List<SpeakerDetailModel>();
+            List<SpeakerModel> speakers = new List<SpeakerModel>();
 
             if (sqlDataReader.HasRows)
             {
                 while (sqlDataReader.Read())
                 {
-                    details.Add(new SpeakerDetailModel()
+                    speakers.Add(new SpeakerModel()
                     {
                         Id = sqlDataReader.GetInt32("DictionarySpeakerId"),
+                        Code = sqlDataReader.GetString("SpeakerCode"),
                         Name = sqlDataReader.GetString("DictionarySpeakerName"),
                         Rating = sqlDataReader.GetDecimal("Rating"),
                         Nationality = sqlDataReader.GetString("Nationality"),
@@ -45,7 +46,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 
             sqlDataReader.Close();
 
-            return details;
+            return speakers;
         }
     }
 }
