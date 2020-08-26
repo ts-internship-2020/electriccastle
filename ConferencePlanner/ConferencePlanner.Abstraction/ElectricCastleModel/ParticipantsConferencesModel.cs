@@ -20,6 +20,8 @@ namespace ConferencePlanner.Abstraction.ElectricCastleModel
 
         public string Speaker { get; set; }
 
+        public int Id { get; set; }
+
         public string StateName { get; set; }
     }
 }

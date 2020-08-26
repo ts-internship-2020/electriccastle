@@ -30,7 +30,9 @@ namespace ConferencePlanner.WinUi
 
         private int pageSize = 2;
 
-        int scrollVal;
+        private int scrollVal;
+
+        public static int SetValueIdSpeker = 0;
 
         public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository)
         {
@@ -196,9 +198,9 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 6)
             {
-
+                SetValueIdSpeker = conferences.ElementAt(e.RowIndex).Id;
                 SpeakerForm sf = Program.ServiceProvider.GetService<SpeakerForm>();
-                sf.Show();
+                sf.ShowDialog();
             }
         }
 

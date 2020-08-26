@@ -45,9 +45,25 @@ namespace ConferencePlanner.WinUi
 
         private void SpeakerForm_Load(object sender, EventArgs e)
         {
+            int i;
+            int nrElements;
+            SpeakerDetailModel listElement;
+
             List<SpeakerDetailModel> speakerDetail = _getSpeakerDetailRepository.GetSpeakerDetail();
-            pictureSpeaker.LoadAsync("https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80");
-            //speakerNameText.Text = speakerDetail.ElementAt(0).Name.ToString();
+            nrElements = speakerDetail.Count;
+            
+            for (i = 0; i < nrElements; i++)
+            {
+                listElement = speakerDetail.ElementAt(i);
+                if (MainScreen.SetValueIdSpeker.ToString() == listElement.Id.ToString())
+                {
+                    speakerNameText.Text = listElement.Name.ToString();
+                    speakerRatingText.Text = listElement.Rating.ToString();
+                    speakerNationalityText.Text = listElement.Nationality.ToString(); pictureSpeaker.LoadAsync("https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80");
+
+                }
+            }
+
         }
 
         private void SpeakerRating_Click(object sender, EventArgs e)
