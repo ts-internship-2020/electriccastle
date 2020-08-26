@@ -10,6 +10,8 @@ using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
+using Microsoft.Extensions.DependencyInjection;
+using static ConferencePlanner.WinUi.Program;
 
 
 namespace ConferencePlanner.WinUi
@@ -23,6 +25,8 @@ namespace ConferencePlanner.WinUi
         private List<OrganizerConferencesModel> organizerConferences;
 
         private PaginationHelper<OrganizerConferencesModel> paginationHelper;
+
+        private readonly ISpeakerDetailRepository _getSpeakerDetailRepository;
 
         private int pageSize = 2;
 
@@ -174,9 +178,9 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 6)
             {
-                Form formSpeaker = new SpeakerForm();
-                formSpeaker.Show();
- 
+
+                SpeakerForm sf = Program.ServiceProvider.GetService<SpeakerForm>();
+                sf.Show();
             }
         }
 

@@ -8,10 +8,10 @@ namespace ConferencePlanner.Abstraction.ElectricCastleModel
     {
         public string Name { get; set; }
 
-        public double Rating { get; set; }
+        public decimal Rating { get; set; }
 
         public string  Nationality { get; set; }
 
-        public string Picture { get; set; }
+        //public string Picture { get; set; }
     }
 }

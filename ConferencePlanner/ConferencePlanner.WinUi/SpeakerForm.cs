@@ -5,15 +5,28 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
+using System.Net;
+using System.Drawing.Imaging;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace ConferencePlanner.WinUi
 {
     public partial class SpeakerForm : Form
     {
-        public SpeakerForm()
+
+        private readonly ISpeakerDetailRepository _getSpeakerDetailRepository;
+
+        //private List<SpeakerDetailModel> speakerDetail;
+
+        public SpeakerForm(ISpeakerDetailRepository _getSpeakerDetailRepository)
         {
+            this._getSpeakerDetailRepository = _getSpeakerDetailRepository;
             InitializeComponent();
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -31,6 +44,13 @@ namespace ConferencePlanner.WinUi
         }
 
         private void SpeakerForm_Load(object sender, EventArgs e)
+        {
+            List<SpeakerDetailModel> speakerDetail = _getSpeakerDetailRepository.GetSpeakerDetail();
+            pictureSpeaker.LoadAsync("https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80");
+            //speakerNameText.Text = speakerDetail.ElementAt(0).Name.ToString();
+        }
+
+        private void SpeakerRating_Click(object sender, EventArgs e)
         {
 
         }
