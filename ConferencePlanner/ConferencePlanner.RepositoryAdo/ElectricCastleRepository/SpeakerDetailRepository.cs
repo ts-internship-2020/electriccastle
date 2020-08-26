@@ -20,11 +20,9 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         public List<SpeakerDetailModel> GetSpeakerDetail()
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            sqlCommand.CommandText = "select ds.DictionarySpeakerName, ds.Rating, ds.Nationality, ds.Picture" +
-                " from Conference c" +
-                " join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId" +
-                " join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId" +
-                " where cds.IsMainSpeaker = 1 ";
+            sqlCommand.CommandText = "select ds.DictionarySpeakerId, ds.DictionarySpeakerName, ds.Rating, ds.Nationality" +
+                " from DictionarySpeaker ds";
+
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
             List<SpeakerDetailModel> details = new List<SpeakerDetailModel>();
@@ -35,12 +33,13 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                 {
                     details.Add(new SpeakerDetailModel()
                     {
+                        Id = sqlDataReader.GetInt32("DictionarySpeakerId"),
                         Name = sqlDataReader.GetString("DictionarySpeakerName"),
-                        Rating = sqlDataReader.GetDouble("Rating"),
-                        Nationality = sqlDataReader.GetString("Nationality"),
-                        Picture = sqlDataReader.GetString("Picture")
+                        Rating = sqlDataReader.GetDecimal("Rating"),
+                        Nationality = sqlDataReader.GetString("Nationality")
+                        //Picture = sqlDataReader.GetString("Picture")
                     }
-                    ); ;
+                    );
                 }
             }
 

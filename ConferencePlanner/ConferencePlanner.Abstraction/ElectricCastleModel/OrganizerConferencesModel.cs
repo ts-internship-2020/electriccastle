@@ -7,6 +7,9 @@ namespace ConferencePlanner.Abstraction.ElectricCastleModel
 {
     public class OrganizerConferencesModel
     {
+
+        public int ConferenceId { get; set; }
+
         [DisplayName("Name")]
         public string ConferenceName { get; set; }
 

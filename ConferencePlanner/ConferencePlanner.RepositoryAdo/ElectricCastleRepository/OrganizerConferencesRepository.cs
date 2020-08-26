@@ -23,7 +23,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.Connection = _sqlConnection;
             sqlCommand.Parameters.AddWithValue("@email", email);
-            sqlCommand.CommandText = "select c.ConferenceName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName," +
+            sqlCommand.CommandText = "select c.ConferenceId, c.ConferenceName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName," +
                 " dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Adress, ds.DictionarySpeakerName" +
                 " from Conference c " +
                 " join Location l on l.LocationId = c.LocationId" +
@@ -47,6 +47,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                 {
                     conferences.Add(new OrganizerConferencesModel()
                     {
+                        ConferenceId = sqlDataReader.GetInt32("ConferenceId"),
                         ConferenceName = sqlDataReader.GetString("ConferenceName"),
                         StartDate = sqlDataReader.GetDateTime("StartDate"),
                         EndDate = sqlDataReader.GetDateTime("EndDate"),

@@ -8,11 +8,11 @@ using System.Text;
 
 namespace ConferencePlanner.Repository.Ado.Repository
 {
-    public class GetDemoRepository : IGetDemoRepository
+    public class GetSpeakerDetail : IGetDemoRepository
     {
         private readonly SqlConnection _sqlConnection;
 
-        public GetDemoRepository(SqlConnection sqlConnection)
+        public GetSpeakerDetail(SqlConnection sqlConnection)
         {
             _sqlConnection = sqlConnection;
         }

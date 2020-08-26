@@ -15,6 +15,8 @@ namespace ConferencePlanner.WinUi
     {
         private readonly IConferanceCategory _getConferanceCategory;
 
+        public int? ConferenceId { get; set; }
+
         public AddConferance(IConferanceCategory getConferanceCategory)
         {
             InitializeComponent();
@@ -116,6 +118,7 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Load(object sender, EventArgs e)
         {
+            label1.Text = ConferenceId.ToString();
            // List<ConferanceCategory> conferenceCategory = _getConferanceCategory.GetConferencesCategory();
 
             //foreach (List<ConferanceCategory> conferance in conferenceCategory)

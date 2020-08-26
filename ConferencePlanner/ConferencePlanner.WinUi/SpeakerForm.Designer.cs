@@ -29,51 +29,60 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpeakerForm));
-            this.SpeakerName = new System.Windows.Forms.Label();
-            this.SpeakerNationality = new System.Windows.Forms.Label();
-            this.SpeakerRating = new System.Windows.Forms.Label();
+            this.speakerNameLabel = new System.Windows.Forms.Label();
+            this.speakerRatingLabel = new System.Windows.Forms.Label();
+            this.speakerNationalityLabel = new System.Windows.Forms.Label();
             this.pictureSpeaker = new System.Windows.Forms.PictureBox();
-            this.SpeakerNameText = new System.Windows.Forms.TextBox();
-            this.SpeakerNationalityText = new System.Windows.Forms.TextBox();
-            this.SpeakerRatingText = new System.Windows.Forms.TextBox();
+            this.speakerNameText = new System.Windows.Forms.Label();
+            this.speakerRatingText = new System.Windows.Forms.Label();
+            this.speakerNationalityText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSpeaker)).BeginInit();
             this.SuspendLayout();
             // 
-            // SpeakerName
+            // speakerNameLabel
             // 
-            this.SpeakerName.AutoSize = true;
-            this.SpeakerName.Location = new System.Drawing.Point(266, 99);
-            this.SpeakerName.Name = "SpeakerName";
-            this.SpeakerName.Size = new System.Drawing.Size(45, 15);
-            this.SpeakerName.TabIndex = 0;
-            this.SpeakerName.Text = "Name :";
-            this.SpeakerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SpeakerName.Click += new System.EventHandler(this.label1_Click);
+            this.speakerNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerNameLabel.AutoSize = true;
+            this.speakerNameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speakerNameLabel.Location = new System.Drawing.Point(266, 99);
+            this.speakerNameLabel.Name = "speakerNameLabel";
+            this.speakerNameLabel.Size = new System.Drawing.Size(45, 15);
+            this.speakerNameLabel.TabIndex = 0;
+            this.speakerNameLabel.Text = "Name :";
+            this.speakerNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.speakerNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // SpeakerNationality
+            // speakerRatingLabel
             // 
-            this.SpeakerNationality.AutoSize = true;
-            this.SpeakerNationality.Location = new System.Drawing.Point(266, 135);
-            this.SpeakerNationality.Name = "SpeakerNationality";
-            this.SpeakerNationality.Size = new System.Drawing.Size(71, 15);
-            this.SpeakerNationality.TabIndex = 1;
-            this.SpeakerNationality.Text = "Nationality :";
-            this.SpeakerNationality.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SpeakerNationality.Click += new System.EventHandler(this.label2_Click);
+            this.speakerRatingLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerRatingLabel.AutoSize = true;
+            this.speakerRatingLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speakerRatingLabel.Location = new System.Drawing.Point(266, 135);
+            this.speakerRatingLabel.Name = "speakerRatingLabel";
+            this.speakerRatingLabel.Size = new System.Drawing.Size(47, 15);
+            this.speakerRatingLabel.TabIndex = 1;
+            this.speakerRatingLabel.Text = "Rating :";
+            this.speakerRatingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.speakerRatingLabel.Click += new System.EventHandler(this.label2_Click);
             // 
-            // SpeakerRating
+            // speakerNationalityLabel
             // 
-            this.SpeakerRating.AutoSize = true;
-            this.SpeakerRating.Location = new System.Drawing.Point(266, 170);
-            this.SpeakerRating.Name = "SpeakerRating";
-            this.SpeakerRating.Size = new System.Drawing.Size(47, 15);
-            this.SpeakerRating.TabIndex = 2;
-            this.SpeakerRating.Text = "Rating :";
-            this.SpeakerRating.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.speakerNationalityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerNationalityLabel.AutoSize = true;
+            this.speakerNationalityLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speakerNationalityLabel.Location = new System.Drawing.Point(266, 170);
+            this.speakerNationalityLabel.Name = "speakerNationalityLabel";
+            this.speakerNationalityLabel.Size = new System.Drawing.Size(71, 15);
+            this.speakerNationalityLabel.TabIndex = 2;
+            this.speakerNationalityLabel.Text = "Nationality :";
+            this.speakerNationalityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.speakerNationalityLabel.Click += new System.EventHandler(this.SpeakerRating_Click);
             // 
             // pictureSpeaker
             // 
-            this.pictureSpeaker.Image = ((System.Drawing.Image)(resources.GetObject("pictureSpeaker.Image")));
+            this.pictureSpeaker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureSpeaker.Location = new System.Drawing.Point(23, 67);
             this.pictureSpeaker.Name = "pictureSpeaker";
             this.pictureSpeaker.Size = new System.Drawing.Size(181, 127);
@@ -82,40 +91,53 @@
             this.pictureSpeaker.TabStop = false;
             this.pictureSpeaker.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // SpeakerNameText
+            // speakerNameText
             // 
-            this.SpeakerNameText.Location = new System.Drawing.Point(351, 96);
-            this.SpeakerNameText.Name = "SpeakerNameText";
-            this.SpeakerNameText.Size = new System.Drawing.Size(100, 23);
-            this.SpeakerNameText.TabIndex = 4;
-            this.SpeakerNameText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.speakerNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerNameText.AutoSize = true;
+            this.speakerNameText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speakerNameText.Location = new System.Drawing.Point(384, 99);
+            this.speakerNameText.Name = "speakerNameText";
+            this.speakerNameText.Size = new System.Drawing.Size(38, 15);
+            this.speakerNameText.TabIndex = 4;
+            this.speakerNameText.Text = "label1";
             // 
-            // SpeakerNationalityText
+            // speakerRatingText
             // 
-            this.SpeakerNationalityText.Location = new System.Drawing.Point(351, 135);
-            this.SpeakerNationalityText.Name = "SpeakerNationalityText";
-            this.SpeakerNationalityText.Size = new System.Drawing.Size(100, 23);
-            this.SpeakerNationalityText.TabIndex = 5;
+            this.speakerRatingText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerRatingText.AutoSize = true;
+            this.speakerRatingText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speakerRatingText.Location = new System.Drawing.Point(384, 135);
+            this.speakerRatingText.Name = "speakerRatingText";
+            this.speakerRatingText.Size = new System.Drawing.Size(38, 15);
+            this.speakerRatingText.TabIndex = 5;
+            this.speakerRatingText.Text = "label2";
             // 
-            // SpeakerRatingText
+            // speakerNationalityText
             // 
-            this.SpeakerRatingText.Location = new System.Drawing.Point(351, 170);
-            this.SpeakerRatingText.Name = "SpeakerRatingText";
-            this.SpeakerRatingText.Size = new System.Drawing.Size(100, 23);
-            this.SpeakerRatingText.TabIndex = 6;
+            this.speakerNationalityText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerNationalityText.AutoSize = true;
+            this.speakerNationalityText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speakerNationalityText.Location = new System.Drawing.Point(384, 170);
+            this.speakerNationalityText.Name = "speakerNationalityText";
+            this.speakerNationalityText.Size = new System.Drawing.Size(38, 15);
+            this.speakerNationalityText.TabIndex = 6;
+            this.speakerNationalityText.Text = "label3";
             // 
             // SpeakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(593, 305);
-            this.Controls.Add(this.SpeakerRatingText);
-            this.Controls.Add(this.SpeakerNationalityText);
-            this.Controls.Add(this.SpeakerNameText);
+            this.Controls.Add(this.speakerNationalityText);
+            this.Controls.Add(this.speakerRatingText);
+            this.Controls.Add(this.speakerNameText);
             this.Controls.Add(this.pictureSpeaker);
-            this.Controls.Add(this.SpeakerRating);
-            this.Controls.Add(this.SpeakerNationality);
-            this.Controls.Add(this.SpeakerName);
+            this.Controls.Add(this.speakerNationalityLabel);
+            this.Controls.Add(this.speakerRatingLabel);
+            this.Controls.Add(this.speakerNameLabel);
             this.Name = "SpeakerForm";
             this.Text = "SpeakerForm";
             this.Load += new System.EventHandler(this.SpeakerForm_Load);
@@ -127,13 +149,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label SpeakerName;
-        private System.Windows.Forms.Label SpeakerNationality;
-        private System.Windows.Forms.Label SpeakerRating;
+        private System.Windows.Forms.Label speakerNameLabel;
+        private System.Windows.Forms.Label speakerRatingLabel;
+        private System.Windows.Forms.Label speakerNationalityLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox SpeakerNameText;
-        private System.Windows.Forms.TextBox SpeakerNationalityText;
-        private System.Windows.Forms.TextBox SpeakerRatingText;
         private System.Windows.Forms.PictureBox pictureSpeaker;
+        private System.Windows.Forms.Label speakerNameText;
+        private System.Windows.Forms.Label speakerRatingText;
+        private System.Windows.Forms.Label speakerNationalityText;
     }
 }
