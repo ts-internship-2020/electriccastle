@@ -87,6 +87,7 @@
             // 
             // OrganizerFilterButton
             // 
+            this.OrganizerFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerFilterButton.BackColor = System.Drawing.Color.Firebrick;
             this.OrganizerFilterButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.OrganizerFilterButton.Location = new System.Drawing.Point(681, 33);
@@ -99,6 +100,7 @@
             // 
             // OrganizerNextButton
             // 
+            this.OrganizerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerNextButton.BackColor = System.Drawing.Color.Crimson;
             this.OrganizerNextButton.Location = new System.Drawing.Point(630, 334);
             this.OrganizerNextButton.Name = "OrganizerNextButton";
@@ -110,6 +112,7 @@
             // 
             // OrganizerPreviousButton
             // 
+            this.OrganizerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerPreviousButton.BackColor = System.Drawing.Color.Crimson;
             this.OrganizerPreviousButton.Location = new System.Drawing.Point(467, 334);
             this.OrganizerPreviousButton.Name = "OrganizerPreviousButton";
@@ -134,6 +137,7 @@
             // 
             // OrganizerTabEndDateLabel
             // 
+            this.OrganizerTabEndDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerTabEndDateLabel.AutoSize = true;
             this.OrganizerTabEndDateLabel.Location = new System.Drawing.Point(402, 62);
             this.OrganizerTabEndDateLabel.Name = "OrganizerTabEndDateLabel";
@@ -143,6 +147,7 @@
             // 
             // OrganizerTabStartDateLabel
             // 
+            this.OrganizerTabStartDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerTabStartDateLabel.AutoSize = true;
             this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(402, 33);
             this.OrganizerTabStartDateLabel.Name = "OrganizerTabStartDateLabel";
@@ -201,6 +206,7 @@
             // 
             // BackButtonParticipant
             // 
+            this.BackButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButtonParticipant.BackColor = System.Drawing.Color.LightCoral;
             this.BackButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.BackButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -214,9 +220,7 @@
             // 
             // NextButtonParticipant
             // 
-            this.NextButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NextButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NextButtonParticipant.BackColor = System.Drawing.Color.LightCoral;
             this.NextButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.NextButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -230,9 +234,6 @@
             // 
             // FilterParticipants
             // 
-            this.FilterParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.FilterParticipants.BackColor = System.Drawing.Color.LightCoral;
             this.FilterParticipants.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.FilterParticipants.ForeColor = System.Drawing.Color.DarkSlateGray;
