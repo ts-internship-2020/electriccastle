@@ -50,6 +50,9 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.TypeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.Organ = new System.Windows.Forms.Label();
             this.txtOrganizer = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -60,9 +63,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btBack = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.IsSpeakerConference = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabConferance.SuspendLayout();
-            this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabSpeakers.SuspendLayout();
             this.tabCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabType.SuspendLayout();
@@ -132,42 +136,48 @@
             this.tabConferance.Controls.Add(this.tabSpeakers);
             this.tabConferance.Controls.Add(this.tabCategory);
             this.tabConferance.Controls.Add(this.tabType);
+            this.tabConferance.Controls.Add(this.tabPage1);
+            this.tabConferance.Controls.Add(this.tabPage2);
+            this.tabConferance.Controls.Add(this.tabPage3);
             this.tabConferance.Location = new System.Drawing.Point(25, 140);
             this.tabConferance.Name = "tabConferance";
-            this.tabConferance.SelectedIndex = 3;
-            this.tabConferance.Size = new System.Drawing.Size(460, 185);
+            this.tabConferance.SelectedIndex = 5;
+            this.tabConferance.Size = new System.Drawing.Size(761, 185);
             this.tabConferance.TabIndex = 9;
+            this.tabConferance.Tag = "Country";
             this.tabConferance.SelectedIndexChanged += new System.EventHandler(this.tabConferance_SelectedIndexChanged);
             this.tabConferance.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabConferance_Selecting);
             this.tabConferance.Validating += new System.ComponentModel.CancelEventHandler(this.tabConferance_Validating);
             // 
             // tabSpeakers
             // 
-            this.tabSpeakers.Controls.Add(this.dataGridView1);
-            this.tabSpeakers.Location = new System.Drawing.Point(4, 24);
-            this.tabSpeakers.Name = "tabSpeakers";
-            this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabSpeakers.Size = new System.Drawing.Size(452, 157);
-            this.tabSpeakers.TabIndex = 1;
-            this.tabSpeakers.Text = "Speakers";
-            this.tabSpeakers.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Rating,
             this.Column2,
-            this.Main});
+            this.Main,
+            this.IsSpeakerConference});
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(443, 107);
+            this.dataGridView1.Size = new System.Drawing.Size(643, 107);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Text = "dataGridView1";
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.tabSpeakers.Controls.Add(this.dataGridView1);
+            this.tabSpeakers.Location = new System.Drawing.Point(4, 24);
+            this.tabSpeakers.Name = "tabSpeakers";
+            this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabSpeakers.Size = new System.Drawing.Size(753, 157);
+            this.tabSpeakers.TabIndex = 1;
+            this.tabSpeakers.Text = "Speakers";
+            this.tabSpeakers.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -201,7 +211,7 @@
             this.tabCategory.Name = "tabCategory";
             this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
             this.tabCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabCategory.Size = new System.Drawing.Size(452, 157);
+            this.tabCategory.Size = new System.Drawing.Size(753, 157);
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
@@ -214,7 +224,7 @@
             this.CategoryCode});
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(753, 151);
+            this.dataGridView2.Size = new System.Drawing.Size(682, 117);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.Text = "dataGridView2";
             // 
@@ -236,7 +246,7 @@
             this.tabType.Controls.Add(this.dataGridView3);
             this.tabType.Location = new System.Drawing.Point(4, 24);
             this.tabType.Name = "tabType";
-            this.tabType.Size = new System.Drawing.Size(452, 157);
+            this.tabType.Size = new System.Drawing.Size(753, 157);
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
             // 
@@ -264,6 +274,36 @@
             this.TypeCode.HeaderText = "Type Code";
             this.TypeCode.Name = "TypeCode";
             this.TypeCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(753, 157);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "Country";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(753, 157);
+            this.tabPage2.TabIndex = 5;
+            this.tabPage2.Text = "District";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(753, 157);
+            this.tabPage3.TabIndex = 6;
+            this.tabPage3.Text = "City";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Organ
             // 
@@ -361,6 +401,11 @@
             this.dataGridView4.TabIndex = 19;
             this.dataGridView4.Text = "dataGridView4";
             // 
+            // IsSpeakerConference
+            // 
+            this.IsSpeakerConference.HeaderText = "In Conference";
+            this.IsSpeakerConference.Name = "IsSpeakerConference";
+            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -388,8 +433,8 @@
             this.Text = "Start Date";
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
-            this.tabSpeakers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabSpeakers.ResumeLayout(false);
             this.tabCategory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabType.ResumeLayout(false);
@@ -432,5 +477,9 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn CategoryCode;
         private System.Windows.Forms.DataGridViewComboBoxColumn TypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsSpeakerConference;
     }
 }
