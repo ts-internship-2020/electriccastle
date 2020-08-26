@@ -95,7 +95,7 @@ CREATE TABLE DictionarySpeaker(
 	DictionarySpeakerName NVARCHAR(255) NOT NULL,
 	Rating NUMERIC(30,2),
 	Nationality NVARCHAR(255),
-	Picture NVARCHAR(255),
+	Picture NVARCHAR(255) DEFAULT 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80',
 	PRIMARY KEY(DictionarySpeakerId)
 
 );

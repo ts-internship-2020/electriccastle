@@ -97,17 +97,17 @@ VALUES (1,'ileanazina@yahoo.com', 1),
 	   (10,'ciuca@yahoo.com', 1);
 
 
-INSERT INTO DictionarySpeaker(DictionarySpeakerId, SpeakerCode, DictionarySpeakerName, Rating, Nationality) 
-VALUES (1, 'HRM', 'Harper-Rose Mcconnell', 4, 'Italian'),
-	   (2, 'AGA', 'Ava-Grace Ayersl', 5, 'German'),
-	   (3, 'SV', 'Saffa Vazquez', 3, 'German'),
-	   (4, 'EG', 'Ellouise Galvan', 2, 'Dominican'),
-	   (5, 'SK', 'Sky Michael', 5, 'Dominican'),
-	   (6, 'EA', 'Eira Anderson', 4, 'Italian'),
-	   (7, 'HF', 'Hira Franco', 4, 'Bulgarian'),
-	   (8, 'VS', 'Viktor Sampson', 3, 'Ukrainian'),
-	   (9, 'LL', 'Lemar Leblanc', 5, 'Irishman'),
-	   (10, 'EM', 'Emily Garcia', 2, 'Norwegian');
+INSERT INTO DictionarySpeaker(DictionarySpeakerId, SpeakerCode, DictionarySpeakerName, Rating, Nationality, Picture) 
+VALUES (1, 'HRM', 'Harper-Rose Mcconnell', 4, 'Italian', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (2, 'AGA', 'Ava-Grace Ayersl', 5, 'German', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (3, 'SV', 'Saffa Vazquez', 3, 'German', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (4, 'EG', 'Ellouise Galvan', 2, 'Dominican', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (5, 'SK', 'Sky Michael', 5, 'Dominican', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (6, 'EA', 'Eira Anderson', 4, 'Italian', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (7, 'HF', 'Hira Franco', 4, 'Bulgarian', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (8, 'VS', 'Viktor Sampson', 3, 'Ukrainian', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (9, 'LL', 'Lemar Leblanc', 5, 'Irishman', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80'),
+	   (10, 'EM', 'Emily Garcia', 2, 'Norwegian', 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80');
 
 INSERT INTO  ConferenceXDictionarySpeaker(DictionarySpeakerId, ConferenceId, IsMainSpeaker) 
 VALUES  (1, 1, 0),
@@ -142,4 +142,3 @@ VALUES  (1, 1, 0),
 --ROLLBACK
 
 --COMMIT
-
