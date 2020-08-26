@@ -44,8 +44,12 @@
             this.Main = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.CategoryName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CategoryCode = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabType = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.TypeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Organ = new System.Windows.Forms.Label();
             this.txtOrganizer = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -56,17 +60,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btBack = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.CategoryName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CategoryCode = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.TypeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabCategory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,7 +97,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(28, 104);
+            this.label4.Location = new System.Drawing.Point(25, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 15);
             this.label4.TabIndex = 4;
@@ -135,7 +135,7 @@
             this.tabConferance.Location = new System.Drawing.Point(25, 140);
             this.tabConferance.Name = "tabConferance";
             this.tabConferance.SelectedIndex = 3;
-            this.tabConferance.Size = new System.Drawing.Size(767, 185);
+            this.tabConferance.Size = new System.Drawing.Size(460, 185);
             this.tabConferance.TabIndex = 9;
             this.tabConferance.SelectedIndexChanged += new System.EventHandler(this.tabConferance_SelectedIndexChanged);
             this.tabConferance.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabConferance_Selecting);
@@ -148,7 +148,7 @@
             this.tabSpeakers.Name = "tabSpeakers";
             this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
             this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabSpeakers.Size = new System.Drawing.Size(759, 157);
+            this.tabSpeakers.Size = new System.Drawing.Size(452, 157);
             this.tabSpeakers.TabIndex = 1;
             this.tabSpeakers.Text = "Speakers";
             this.tabSpeakers.UseVisualStyleBackColor = true;
@@ -196,6 +196,15 @@
             // 
             // tabCategory
             // 
+            this.tabCategory.Controls.Add(this.dataGridView2);
+            this.tabCategory.Location = new System.Drawing.Point(4, 24);
+            this.tabCategory.Name = "tabCategory";
+            this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabCategory.Size = new System.Drawing.Size(452, 157);
+            this.tabCategory.TabIndex = 2;
+            this.tabCategory.Text = "Category";
+            this.tabCategory.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
@@ -208,18 +217,28 @@
             this.dataGridView2.Size = new System.Drawing.Size(753, 151);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.Text = "dataGridView2";
-            this.tabCategory.Controls.Add(this.dataGridView2);
-            this.tabCategory.Location = new System.Drawing.Point(4, 24);
-            this.tabCategory.Name = "tabCategory";
-            this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabCategory.Size = new System.Drawing.Size(759, 157);
-            this.tabCategory.TabIndex = 2;
-            this.tabCategory.Text = "Category";
-            this.tabCategory.UseVisualStyleBackColor = true;
+            // 
+            // CategoryName
+            // 
+            this.CategoryName.HeaderText = "Category Name";
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CategoryCode
+            // 
+            this.CategoryCode.HeaderText = "Category code";
+            this.CategoryCode.Name = "CategoryCode";
+            this.CategoryCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabType
             // 
+            this.tabType.Controls.Add(this.dataGridView3);
+            this.tabType.Location = new System.Drawing.Point(4, 24);
+            this.tabType.Name = "tabType";
+            this.tabType.Size = new System.Drawing.Size(452, 157);
+            this.tabType.TabIndex = 3;
+            this.tabType.Text = "Type";
             // 
             // dataGridView3
             // 
@@ -232,12 +251,19 @@
             this.dataGridView3.Size = new System.Drawing.Size(753, 151);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.Text = "dataGridView3";
-            this.tabType.Controls.Add(this.dataGridView3);
-            this.tabType.Location = new System.Drawing.Point(4, 24);
-            this.tabType.Name = "tabType";
-            this.tabType.Size = new System.Drawing.Size(759, 157);
-            this.tabType.TabIndex = 3;
-            this.tabType.Text = "Type";
+            // 
+            // TypeName
+            // 
+            this.TypeName.HeaderText = "Type name";
+            this.TypeName.Name = "TypeName";
+            this.TypeName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TypeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // TypeCode
+            // 
+            this.TypeCode.HeaderText = "Type Code";
+            this.TypeCode.Name = "TypeCode";
+            this.TypeCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Organ
             // 
@@ -245,7 +271,7 @@
             this.Organ.BackColor = System.Drawing.Color.Transparent;
             this.Organ.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Organ.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Organ.Location = new System.Drawing.Point(29, 64);
+            this.Organ.Location = new System.Drawing.Point(25, 64);
             this.Organ.Name = "Organ";
             this.Organ.Size = new System.Drawing.Size(114, 15);
             this.Organ.TabIndex = 10;
@@ -310,7 +336,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(406, 89);
+            this.label5.Location = new System.Drawing.Point(401, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 15);
             this.label5.TabIndex = 17;
@@ -335,38 +361,12 @@
             this.dataGridView4.TabIndex = 19;
             this.dataGridView4.Text = "dataGridView4";
             // 
-            // CategoryName
-            // 
-            this.CategoryName.HeaderText = "Category Name";
-            this.CategoryName.Name = "CategoryName";
-            this.CategoryName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CategoryCode
-            // 
-            this.CategoryCode.HeaderText = "Category code";
-            this.CategoryCode.Name = "CategoryCode";
-            this.CategoryCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // TypeName
-            // 
-            this.TypeName.HeaderText = "Type name";
-            this.TypeName.Name = "TypeName";
-            this.TypeName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TypeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // TypeCode
-            // 
-            this.TypeCode.HeaderText = "Type Code";
-            this.TypeCode.Name = "TypeCode";
-            this.TypeCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(804, 370);
+            this.ClientSize = new System.Drawing.Size(798, 370);
             this.Controls.Add(this.dataGridView4);
             this.Controls.Add(this.btBack);
             this.Controls.Add(this.label5);
@@ -390,10 +390,10 @@
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabCategory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabType.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
