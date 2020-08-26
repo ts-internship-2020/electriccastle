@@ -24,7 +24,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.CommandText = "select c.ConferenceName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName," +
-                " dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName, dps.DictionaryParticipantStateName" +
+                " dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName, ds.DictionarySpeakerId, dps.DictionaryParticipantStateName" +
                 " from Conference c " +
                 " join Location l on l.LocationId = c.LocationId" +
                 " join DictionaryCity dc on dc.DictionaryCityId = l.DictionaryCityId" +
@@ -52,7 +52,8 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                           ConferenceCategory = sqlDataReader.GetString("DictionaryConferenceCategoryName"),
                           Address = sqlDataReader.GetString("Address"),
                           Speaker = sqlDataReader.GetString("DictionarySpeakerName"),
-                          StateName = sqlDataReader.GetString("DictionaryParticipantStateName")
+                          Id = sqlDataReader.GetInt32("DictionarySpeakerId"),
+                        StateName = sqlDataReader.GetString("DictionaryParticipantStateName")
                     }
                     );
                 }

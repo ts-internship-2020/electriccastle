@@ -245,6 +245,7 @@
             this.FilterParticipants.TabIndex = 7;
             this.FilterParticipants.Text = "Filter";
             this.FilterParticipants.UseVisualStyleBackColor = false;
+            this.FilterParticipants.Click += new System.EventHandler(this.FilterParticipants_Click);
             // 
             // DatePickerParticipantEnd
             // 
@@ -252,6 +253,7 @@
             this.DatePickerParticipantEnd.Name = "DatePickerParticipantEnd";
             this.DatePickerParticipantEnd.Size = new System.Drawing.Size(200, 23);
             this.DatePickerParticipantEnd.TabIndex = 5;
+            this.DatePickerParticipantEnd.ValueChanged += new System.EventHandler(this.DatePickerParticipantEnd_ValueChanged);
             // 
             // DatePickerParticipantStart
             // 
