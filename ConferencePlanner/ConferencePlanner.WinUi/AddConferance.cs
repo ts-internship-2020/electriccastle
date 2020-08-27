@@ -111,7 +111,7 @@ namespace ConferencePlanner.WinUi
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ////Check to ensure that the row CheckBox is clicked.
+            //dataGridView1_CellClick////Check to ensure that the row CheckBox is clicked.
             //if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             //{
             //    //Loop and uncheck all other CheckBoxes.
@@ -152,6 +152,79 @@ namespace ConferencePlanner.WinUi
             buttonEdit.Text = "Edit";
             buttonEdit.UseColumnTextForButtonValue = true;
 
+            DataGridViewButtonColumn buttonEditCountry = new DataGridViewButtonColumn();
+            DGVCountry.Columns.Add(buttonEditCountry);
+            buttonEditCountry.HeaderText = "Edit";
+            buttonEditCountry.Name = "Edit";
+            buttonEditCountry.Text = "Edit";
+            buttonEditCountry.UseColumnTextForButtonValue = true;
+
+            DataGridViewButtonColumn buttonEditDistrict = new DataGridViewButtonColumn();
+            DGVDistrict.Columns.Add(buttonEditDistrict);
+            buttonEditDistrict.HeaderText = "Edit";
+            buttonEditDistrict.Name = "Edit";
+            buttonEditDistrict.Text = "Edit";
+            buttonEditDistrict.UseColumnTextForButtonValue = true;
+
+            DataGridViewButtonColumn buttonEditCity = new DataGridViewButtonColumn();
+            DGVCity.Columns.Add(buttonEditCity);
+            buttonEditCity.HeaderText = "Edit";
+            buttonEditCity.Name = "Edit";
+            buttonEditCity.Text = "Edit";
+            buttonEditCity.UseColumnTextForButtonValue = true;
+
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewCountry_Click(object sender, EventArgs e)
+        {
+            NewCountryForm fc = new NewCountryForm();
+            fc.Show();
+        }
+
+        private void NewDistrict_Click(object sender, EventArgs e)
+        {
+            NewDistrictForm fd = new NewDistrictForm();
+            fd.Show();
+        }
+
+        private void NewCity_Click(object sender, EventArgs e)
+        {
+            NewCityForm fcity = new NewCityForm();
+            fcity.Show();
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerNextButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerAddButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerPreviousButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabSpeakerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
             DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
             CategoryTabGrid.Columns.Add(buttonDelete);
             buttonDelete.HeaderText = "Delete";
