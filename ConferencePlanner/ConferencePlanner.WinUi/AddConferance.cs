@@ -9,12 +9,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Windows.ApplicationModel.Activation;
+using System.Linq;
 
 namespace ConferencePlanner.WinUi
 {
     public partial class AddConferance : Form
     {
         private readonly IConferanceCategory _getConferanceCategory;
+
+        // Category Tab
 
         private readonly IConferenceCategoryRepository conferenceCategoryRepository;
 
@@ -23,6 +26,8 @@ namespace ConferencePlanner.WinUi
         private PaginationHelper<ConferenceCategoryModel> categoryTabPaginationHelper;
 
         private int categoryTabPageSize = 3;
+
+        //
 
         public int? ConferenceId { get; set; }
 
@@ -158,28 +163,6 @@ namespace ConferencePlanner.WinUi
             buttonDelete.Name = "Delete";
             buttonDelete.Text = "Delete";
             buttonDelete.UseColumnTextForButtonValue = true;
-
-            DataGridViewButtonColumn buttonEditCountry = new DataGridViewButtonColumn();
-            DGVCountry.Columns.Add(buttonEditCountry);
-            buttonEditCountry.HeaderText = "Edit";
-            buttonEditCountry.Name = "Edit";
-            buttonEditCountry.Text = "Edit";
-            buttonEditCountry.UseColumnTextForButtonValue = true;
-
-            DataGridViewButtonColumn buttonEditDistrict = new DataGridViewButtonColumn();
-            DGVDistrict.Columns.Add(buttonEditDistrict);
-            buttonEditDistrict.HeaderText = "Edit";
-            buttonEditDistrict.Name = "Edit";
-            buttonEditDistrict.Text = "Edit";
-            buttonEditDistrict.UseColumnTextForButtonValue = true;
-
-            DataGridViewButtonColumn buttonEditCity = new DataGridViewButtonColumn();
-            DGVCity.Columns.Add(buttonEditCity);
-            buttonEditCity.HeaderText = "Edit";
-            buttonEditCity.Name = "Edit";
-            buttonEditCity.Text = "Edit";
-            buttonEditCity.UseColumnTextForButtonValue = true;
-
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
@@ -280,6 +263,16 @@ namespace ConferencePlanner.WinUi
         {
             CategoryTabPreviousButton.Enabled = categoryTabPaginationHelper.HasPreviousPage();
             CategoryTabNextButton.Enabled = categoryTabPaginationHelper.HasNextPage();
+        }
+
+        private void CategoryTabSearchButton_Click(object sender, EventArgs e)
+        {
+            string searchString = CategoryTabSearchTextBox.Text;
+            List<ConferenceCategoryModel> filteredData = conferenceCategories.Where(category => category.ConferenceCategoryName.ToLower().Contains(searchString.ToLower())
+                                                                                                 || category.ConferenceCategoryCode.ToLower().Contains(searchString.ToLower())).ToList();
+            categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(filteredData, categoryTabPageSize);
+            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+            ManageCategoryTabPaginationButtonsState();
         }
     }
 }
