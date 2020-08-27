@@ -82,9 +82,6 @@
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            //this.tabCategory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -600,11 +597,7 @@
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
-
             this.tabSpeakers.ResumeLayout(false);
-           // ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-           // this.tabCategory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).EndInit();
             this.tabType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage1.ResumeLayout(false);
