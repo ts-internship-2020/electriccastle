@@ -27,8 +27,12 @@ namespace ConferencePlanner.WinUi
         private List<ConferanceTypeModel> conferanceTypeModels;
 
         private PaginationHelper<ConferenceCategoryModel> categoryTabPaginationHelper;
+        private PaginationHelper<ConferanceTypeModel> conferanceTypePaginationHelper;
+       
 
         private int categoryTabPageSize = 3;
+        private int typeTabPageSize = 1;
+     
 
         //
 
@@ -44,21 +48,24 @@ namespace ConferencePlanner.WinUi
             conferanceTypeModels = conferanceTypeRepository.getAllTypes();
             conferenceCategories = conferenceCategoryRepository.getAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
+            conferanceTypePaginationHelper = new PaginationHelper<ConferanceTypeModel>(conferanceTypeModels, typeTabPageSize);
         }
 
 
         void addConferanceType(List<ConferanceTypeModel> type)
         {
-            dataGridViewType.Rows.Clear();
-            int countNumber = conferanceTypeModels.Count();
+            //dataGridViewType.Rows.Clear();
+            //int countNumber = conferanceTypeModels.Count();
            
-            ConferanceTypeModel listElement = conferanceTypeModels.ElementAt(0);
-            for (int i=0; i<countNumber;i++)
-            {
-                int n = dataGridViewType.Rows.Add();
-                dataGridViewType.Rows[n].Cells[0].Value = listElement.ConferenceTypeCode.ToString();
-                dataGridViewType.Rows[n].Cells[1].Value = listElement.ConferenceTypeName.ToString();
-            }
+            //ConferanceTypeModel listElement = conferanceTypeModels.ElementAt(0);
+            //for (int i=0; i<countNumber;i++)
+            //{
+            //    int n = dataGridViewType.Rows.Add();
+            //    dataGridViewType.Rows[n].Cells[0].Value = listElement.ConferenceTypeCode.ToString();
+            //    dataGridViewType.Rows[n].Cells[1].Value = listElement.ConferenceTypeName.ToString();
+            //}
+
+
 
         }
 
@@ -165,8 +172,13 @@ namespace ConferencePlanner.WinUi
             //{
             //    CategoryName.Items.Add(conferance);
             //}
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            dataGridViewType.AutoGenerateColumns = true;
+
+            ManageTypeTabPaginationButtonsState();
             GenerateTypeTabEditAndDeleteButtons();
-            addConferanceType(conferanceTypeModels);
+           
+          //  addConferanceType(conferanceTypeModels);
 
         }
 
@@ -315,10 +327,56 @@ namespace ConferencePlanner.WinUi
             ManageCategoryTabPaginationButtonsState();
         }
 
+
+        private void ManageTypeTabPaginationButtonsState()
+        {
+            btPreviousType.Enabled = conferanceTypePaginationHelper.HasPreviousPage();
+            btNextType.Enabled = conferanceTypePaginationHelper.HasNextPage();
+            
+        }
         private void btNewType_Click(object sender, EventArgs e)
         {
             NewConferanceType newConferance = new NewConferanceType();
             newConferance.ShowDialog();
+        }
+
+        private void btNextType_Click(object sender, EventArgs e)
+        {
+            conferanceTypePaginationHelper.NextPage();
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            ManageTypeTabPaginationButtonsState();
+
+        }
+
+        private void btPreviousType_Click(object sender, EventArgs e)
+        {
+            conferanceTypePaginationHelper.PreviousPage();
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            ManageTypeTabPaginationButtonsState();
+        }
+
+        private void btSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+            dataGridViewType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dataGridViewType.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+
+            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+            ManageCategoryTabPaginationButtonsState();
         }
     }
 }
