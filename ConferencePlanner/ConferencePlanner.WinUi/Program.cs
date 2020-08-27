@@ -48,7 +48,7 @@ namespace ConferencePlanner.WinUi
             // Ich bin very poliglotten
             var services = new ServiceCollection();
 
-            services.AddScoped<TestareFctButoane>();
+          
             services.AddScoped<IDictionaryParticipantState, GetDemoStateRepository>();
 
             services.AddScoped<MainScreen>();
