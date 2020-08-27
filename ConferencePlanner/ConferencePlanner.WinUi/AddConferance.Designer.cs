@@ -84,8 +84,7 @@
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
             this.tabCategory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage1.SuspendLayout();
