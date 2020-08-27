@@ -50,21 +50,20 @@
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
             this.tabType = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.TypeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btPreviousType = new ConferencePlanner.WinUi.ButonCircular();
+            this.dataGridViewType = new System.Windows.Forms.DataGridView();
+            this.TypeName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btNextType = new ConferencePlanner.WinUi.ButonCircular();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.NewCountry = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVCountry = new System.Windows.Forms.DataGridView();
             this.CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.NewDistrict = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVDistrict = new System.Windows.Forms.DataGridView();
             this.DictrictName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DistrictCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.NewCity = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVCity = new System.Windows.Forms.DataGridView();
             this.CityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CityCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,17 +79,12 @@
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btNewType = new ConferencePlanner.WinUi.ButonCircular();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
-
-            //((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            //this.tabCategory.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
-
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
-
             this.tabType.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -292,41 +286,60 @@
             // 
             // tabType
             // 
-            this.tabType.Controls.Add(this.dataGridView3);
+            this.tabType.Controls.Add(this.btNewType);
+            this.tabType.Controls.Add(this.btPreviousType);
+            this.tabType.Controls.Add(this.dataGridViewType);
+            this.tabType.Controls.Add(this.btNextType);
             this.tabType.Location = new System.Drawing.Point(4, 24);
             this.tabType.Name = "tabType";
             this.tabType.Size = new System.Drawing.Size(753, 157);
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
             // 
-            // dataGridView3
+            // btPreviousType
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TypeName,
-            this.TypeCode});
-            this.dataGridView3.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(753, 151);
-            this.dataGridView3.TabIndex = 0;
-            this.dataGridView3.Text = "dataGridView3";
+            this.btPreviousType.Location = new System.Drawing.Point(358, 111);
+            this.btPreviousType.Name = "btPreviousType";
+            this.btPreviousType.Size = new System.Drawing.Size(100, 33);
+            this.btPreviousType.TabIndex = 2;
+            this.btPreviousType.Text = "Previous ";
+            this.btPreviousType.UseVisualStyleBackColor = true;
             // 
-            // TypeName
+            // dataGridViewType
             // 
-            this.TypeName.HeaderText = "Type name";
-            this.TypeName.Name = "TypeName";
-            this.TypeName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TypeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TypeName1,
+            this.typeCode1});
+            this.dataGridViewType.Location = new System.Drawing.Point(-2, 2);
+            this.dataGridViewType.Name = "dataGridViewType";
+            this.dataGridViewType.Size = new System.Drawing.Size(460, 88);
+            this.dataGridViewType.TabIndex = 0;
+            this.dataGridViewType.Text = "dataGridView3";
             // 
-            // TypeCode
+            // TypeName1
             // 
-            this.TypeCode.HeaderText = "Type Code";
-            this.TypeCode.Name = "TypeCode";
-            this.TypeCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TypeName1.HeaderText = "Type name";
+            this.TypeName1.Name = "TypeName1";
+            this.TypeName1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // typeCode1
+            // 
+            this.typeCode1.HeaderText = "Type code";
+            this.typeCode1.Name = "typeCode1";
+            this.typeCode1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // btNextType
+            // 
+            this.btNextType.Location = new System.Drawing.Point(190, 111);
+            this.btNextType.Name = "btNextType";
+            this.btNextType.Size = new System.Drawing.Size(97, 34);
+            this.btNextType.TabIndex = 1;
+            this.btNextType.Text = "Next";
+            this.btNextType.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.NewCountry);
             this.tabPage1.Controls.Add(this.DGVCountry);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
@@ -335,16 +348,6 @@
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Country";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // NewCountry
-            // 
-            this.NewCountry.Location = new System.Drawing.Point(566, 47);
-            this.NewCountry.Name = "NewCountry";
-            this.NewCountry.Size = new System.Drawing.Size(123, 37);
-            this.NewCountry.TabIndex = 1;
-            this.NewCountry.Text = "New Country";
-            this.NewCountry.UseVisualStyleBackColor = true;
-            this.NewCountry.Click += new System.EventHandler(this.NewCountry_Click);
             // 
             // DGVCountry
             // 
@@ -371,7 +374,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.NewDistrict);
             this.tabPage2.Controls.Add(this.DGVDistrict);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -380,16 +382,6 @@
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "District";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // NewDistrict
-            // 
-            this.NewDistrict.Location = new System.Drawing.Point(530, 47);
-            this.NewDistrict.Name = "NewDistrict";
-            this.NewDistrict.Size = new System.Drawing.Size(105, 36);
-            this.NewDistrict.TabIndex = 1;
-            this.NewDistrict.Text = "New District";
-            this.NewDistrict.UseVisualStyleBackColor = true;
-            this.NewDistrict.Click += new System.EventHandler(this.NewDistrict_Click);
             // 
             // DGVDistrict
             // 
@@ -415,7 +407,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.NewCity);
             this.tabPage3.Controls.Add(this.DGVCity);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
@@ -425,16 +416,6 @@
             this.tabPage3.Text = "City";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
-            // 
-            // NewCity
-            // 
-            this.NewCity.Location = new System.Drawing.Point(490, 20);
-            this.NewCity.Name = "NewCity";
-            this.NewCity.Size = new System.Drawing.Size(75, 36);
-            this.NewCity.TabIndex = 1;
-            this.NewCity.Text = "New City";
-            this.NewCity.UseVisualStyleBackColor = true;
-            this.NewCity.Click += new System.EventHandler(this.NewCity_Click);
             // 
             // DGVCity
             // 
@@ -575,6 +556,16 @@
             this.tabSpeakerColumnRating.Name = "tabSpeakerColumnRating";
             this.tabSpeakerColumnRating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // btNewType
+            // 
+            this.btNewType.Location = new System.Drawing.Point(570, 24);
+            this.btNewType.Name = "btNewType";
+            this.btNewType.Size = new System.Drawing.Size(106, 42);
+            this.btNewType.TabIndex = 3;
+            this.btNewType.Text = "New Type";
+            this.btNewType.UseVisualStyleBackColor = true;
+            this.btNewType.Click += new System.EventHandler(this.btNewType_Click);
+            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -602,15 +593,10 @@
             this.Text = "Start Date";
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
-
-            ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
-
             this.tabSpeakers.ResumeLayout(false);
-           // ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-           // this.tabCategory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
             this.tabType.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -643,11 +629,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView tabSpeakerGrid;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridViewType;
         private System.Windows.Forms.Button btBack;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridViewComboBoxColumn TypeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -679,6 +663,10 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeName1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeCode1;
+        private ButonCircular btPreviousType;
+        private ButonCircular btNextType;
+        private ButonCircular btNewType;
     }
 }

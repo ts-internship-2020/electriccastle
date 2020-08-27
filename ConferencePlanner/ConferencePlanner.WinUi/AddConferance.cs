@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Windows.ApplicationModel.Activation;
@@ -17,8 +18,10 @@ namespace ConferencePlanner.WinUi
         private readonly IConferanceCategory _getConferanceCategory;
 
         private readonly IConferenceCategoryRepository conferenceCategoryRepository;
+        private readonly IConferanceTypeRepository conferanceTypeRepository;
 
         private List<ConferenceCategoryModel> conferenceCategories;
+        private List<ConferanceTypeModel> conferanceTypeModels;
 
         private PaginationHelper<ConferenceCategoryModel> categoryTabPaginationHelper;
 
@@ -27,16 +30,32 @@ namespace ConferencePlanner.WinUi
         public int? ConferenceId { get; set; }
 
         public AddConferance(IConferanceCategory getConferanceCategory,
-                             IConferenceCategoryRepository conferenceCategoryRepository)
+                             IConferenceCategoryRepository conferenceCategoryRepository, IConferanceTypeRepository conferanceTypeRepository)
         {
             InitializeComponent();
             _getConferanceCategory=getConferanceCategory;
             this.conferenceCategoryRepository = conferenceCategoryRepository;
+            this.conferanceTypeRepository = conferanceTypeRepository;
+            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
             conferenceCategories = conferenceCategoryRepository.getAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
         }
 
 
+        void addConferanceType(List<ConferanceTypeModel> type)
+        {
+            dataGridViewType.Rows.Clear();
+            int countNumber = conferanceTypeModels.Count();
+           
+            ConferanceTypeModel listElement = conferanceTypeModels.ElementAt(0);
+            for (int i=0; i<countNumber;i++)
+            {
+                int n = dataGridViewType.Rows.Add();
+                dataGridViewType.Rows[n].Cells[0].Value = listElement.ConferenceTypeCode.ToString();
+                dataGridViewType.Rows[n].Cells[1].Value = listElement.ConferenceTypeName.ToString();
+            }
+
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -51,7 +70,7 @@ namespace ConferencePlanner.WinUi
             tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
                              tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
 
-            if (tabConferance.SelectedTab == tabConferance.TabPages["tabType"])
+            if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage3"])
             {
                 button1.Text = "Save";
                 btSaveAndNew.Visible = true;
@@ -68,7 +87,7 @@ namespace ConferencePlanner.WinUi
                                  tabConferance.SelectedIndex - 1 : tabConferance.SelectedIndex;
             }
             
-            if (tabConferance.SelectedTab == tabConferance.TabPages["tabCategory"])
+            if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage2"])
             {
                 button1.Text = "Next";
                 btSaveAndNew.Visible = false;
@@ -141,8 +160,29 @@ namespace ConferencePlanner.WinUi
             //{
             //    CategoryName.Items.Add(conferance);
             //}
+            GenerateTypeTabEditAndDeleteButtons();
+            addConferanceType(conferanceTypeModels);
+
         }
 
+        private void GenerateTypeTabEditAndDeleteButtons()
+        {
+            DataGridViewButtonColumn buttonEditType = new DataGridViewButtonColumn();
+            dataGridViewType.Columns.Add(buttonEditType);
+            buttonEditType.HeaderText = "Edit";
+            buttonEditType.Name = "Edit";
+            buttonEditType.Text = "Edit";
+            buttonEditType.UseColumnTextForButtonValue = true;
+
+            DataGridViewButtonColumn buttonDeleteType = new DataGridViewButtonColumn();
+            dataGridViewType.Columns.Add(buttonDeleteType);
+            buttonDeleteType.HeaderText = "Delete";
+            buttonDeleteType.Name = "Delete";
+            buttonDeleteType.Text = "Delete";
+            buttonDeleteType.UseColumnTextForButtonValue = true;
+
+
+        }
         private void GenerateCategoryTabEditDeleteButtons()
         {
             //DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
@@ -257,6 +297,12 @@ namespace ConferencePlanner.WinUi
             //{
             //    //conferenceCategoryRepository.deleteCategory(categoryId);
             //}
+        }
+
+        private void btNewType_Click(object sender, EventArgs e)
+        {
+            NewConferanceType newConferance = new NewConferanceType();
+            newConferance.ShowDialog();
         }
     }
 }
