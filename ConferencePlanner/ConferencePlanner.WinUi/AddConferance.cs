@@ -131,11 +131,11 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Load(object sender, EventArgs e)
         {
-            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
-            CategoryTabGrid.AutoGenerateColumns = true;
-            // mai trebuie ManageOrganizerPaginationButtonsState()
-            GenerateCategoryTabEditDeleteButtons();
-            // List<ConferanceCategory> conferenceCategory = _getConferanceCategory.GetConferencesCategory();
+            //CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+            //CategoryTabGrid.AutoGenerateColumns = true;
+            //// mai trebuie ManageOrganizerPaginationButtonsState()
+            //GenerateCategoryTabEditDeleteButtons();
+            //// List<ConferanceCategory> conferenceCategory = _getConferanceCategory.GetConferencesCategory();
 
             //foreach (List<ConferanceCategory> conferance in conferenceCategory)
             //{
@@ -145,12 +145,12 @@ namespace ConferencePlanner.WinUi
 
         private void GenerateCategoryTabEditDeleteButtons()
         {
-            DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
-            CategoryTabGrid.Columns.Add(buttonEdit);
-            buttonEdit.HeaderText = "Edit";
-            buttonEdit.Name = "Edit";
-            buttonEdit.Text = "Edit";
-            buttonEdit.UseColumnTextForButtonValue = true;
+            //DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
+            //CategoryTabGrid.Columns.Add(buttonEdit);
+            //buttonEdit.HeaderText = "Edit";
+            //buttonEdit.Name = "Edit";
+            //buttonEdit.Text = "Edit";
+            //buttonEdit.UseColumnTextForButtonValue = true;
 
             DataGridViewButtonColumn buttonEditCountry = new DataGridViewButtonColumn();
             DGVCountry.Columns.Add(buttonEditCountry);
@@ -210,7 +210,8 @@ namespace ConferencePlanner.WinUi
 
         private void tabSpeakerAddButton_Click(object sender, EventArgs e)
         {
-
+            AddSpeakerForm fAddSpeaker = new AddSpeakerForm();
+            fAddSpeaker.ShowDialog();
         }
 
         private void tabSpeakerPreviousButton_Click(object sender, EventArgs e)
@@ -225,37 +226,37 @@ namespace ConferencePlanner.WinUi
 
         private void tabSpeakerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
-            CategoryTabGrid.Columns.Add(buttonDelete);
-            buttonDelete.HeaderText = "Delete";
-            buttonDelete.Name = "Delete";
-            buttonDelete.Text = "Delete";
-            buttonDelete.UseColumnTextForButtonValue = true;
+            //DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
+            //CategoryTabGrid.Columns.Add(buttonDelete);
+            //buttonDelete.HeaderText = "Delete";
+            //buttonDelete.Name = "Delete";
+            //buttonDelete.Text = "Delete";
+            //buttonDelete.UseColumnTextForButtonValue = true;
         }
 
         private void CategoryTabGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            this.CategoryTabGrid.Columns["ConferenceCategoryId"].Visible = false;
+            //this.CategoryTabGrid.Columns["ConferenceCategoryId"].Visible = false;
         }
 
         private void CategoryTabGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != CategoryTabGrid.Columns["Edit"].Index 
-                               || e.ColumnIndex != CategoryTabGrid.Columns["Delete"].Index) return;
+            //if (e.RowIndex < 0 || e.ColumnIndex != CategoryTabGrid.Columns["Edit"].Index 
+            //                   || e.ColumnIndex != CategoryTabGrid.Columns["Delete"].Index) return;
 
-            Int32 categoryId = (Int32)CategoryTabGrid[CategoryTabGrid.Columns["ConferenceCategoryId"].Index, e.RowIndex].Value;
+            //Int32 categoryId = (Int32)CategoryTabGrid[CategoryTabGrid.Columns["ConferenceCategoryId"].Index, e.RowIndex].Value;
 
-            if (e.ColumnIndex == CategoryTabGrid.Columns["Edit"].Index)
-            {
-                //AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
-                //addConferance.ConferenceId = categoryId;
-                //addConferance.ShowDialog();
-            }
+            //if (e.ColumnIndex == CategoryTabGrid.Columns["Edit"].Index)
+            //{
+            //    //AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+            //    //addConferance.ConferenceId = categoryId;
+            //    //addConferance.ShowDialog();
+            //}
 
-            if (e.ColumnIndex == CategoryTabGrid.Columns["Delete"].Index)
-            {
-                //conferenceCategoryRepository.deleteCategory(categoryId);
-            }
+            //if (e.ColumnIndex == CategoryTabGrid.Columns["Delete"].Index)
+            //{
+            //    //conferenceCategoryRepository.deleteCategory(categoryId);
+            //}
         }
     }
 }

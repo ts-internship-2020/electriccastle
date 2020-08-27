@@ -602,14 +602,13 @@
             this.Text = "Start Date";
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
-            this.tabSpeakers.ResumeLayout(false);
-
-           // ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-           // this.tabCategory.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).EndInit();
 
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
 
+            this.tabSpeakers.ResumeLayout(false);
+           // ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+           // this.tabCategory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage1.ResumeLayout(false);
