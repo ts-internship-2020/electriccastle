@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSpeakerForm));
             this.newSpeakerCode = new System.Windows.Forms.Label();
             this.newSpeakerName = new System.Windows.Forms.Label();
             this.newSpeakerRating = new System.Windows.Forms.Label();
@@ -106,9 +107,12 @@
             this.newSpeakerPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.newSpeakerPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("newSpeakerPictureBox.Image")));
+            this.newSpeakerPictureBox.InitialImage = null;
             this.newSpeakerPictureBox.Location = new System.Drawing.Point(60, 78);
             this.newSpeakerPictureBox.Name = "newSpeakerPictureBox";
             this.newSpeakerPictureBox.Size = new System.Drawing.Size(251, 174);
+            this.newSpeakerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.newSpeakerPictureBox.TabIndex = 5;
             this.newSpeakerPictureBox.TabStop = false;
             // 
@@ -132,6 +136,7 @@
             this.newSpeakerNameTextBox.Name = "newSpeakerNameTextBox";
             this.newSpeakerNameTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerNameTextBox.TabIndex = 7;
+            this.newSpeakerNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // newSpeakerRatingTextBox
             // 
@@ -142,6 +147,7 @@
             this.newSpeakerRatingTextBox.Name = "newSpeakerRatingTextBox";
             this.newSpeakerRatingTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerRatingTextBox.TabIndex = 8;
+            this.newSpeakerRatingTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // newSpeakerNationalityTextBox
             // 
@@ -152,6 +158,7 @@
             this.newSpeakerNationalityTextBox.Name = "newSpeakerNationalityTextBox";
             this.newSpeakerNationalityTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerNationalityTextBox.TabIndex = 9;
+            this.newSpeakerNationalityTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // newSpeakerPictureTextBox
             // 
@@ -162,8 +169,9 @@
             this.newSpeakerPictureTextBox.Name = "newSpeakerPictureTextBox";
             this.newSpeakerPictureTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerPictureTextBox.TabIndex = 10;
+            this.newSpeakerPictureTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // NewSpeaker
+            // AddSpeakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -180,7 +188,7 @@
             this.Controls.Add(this.newSpeakerRating);
             this.Controls.Add(this.newSpeakerName);
             this.Controls.Add(this.newSpeakerCode);
-            this.Name = "NewSpeaker";
+            this.Name = "AddSpeakerForm";
             this.Text = "NewSpeaker";
             this.Load += new System.EventHandler(this.NewSpeaker_Load);
             ((System.ComponentModel.ISupportInitialize)(this.newSpeakerPictureBox)).EndInit();
