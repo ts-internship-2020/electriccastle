@@ -184,7 +184,8 @@ namespace ConferencePlanner.WinUi
 
         private void tabSpeakerAddButton_Click(object sender, EventArgs e)
         {
-
+            AddSpeakerForm fAddSpeaker = new AddSpeakerForm();
+            fAddSpeaker.ShowDialog();
         }
 
         private void tabSpeakerPreviousButton_Click(object sender, EventArgs e)
