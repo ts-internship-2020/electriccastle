@@ -49,6 +49,9 @@
             this.tabSpeakerEditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
+            this.CategoryTabNextButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
             this.tabType = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.TypeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -82,8 +85,8 @@
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            //this.tabCategory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
+            this.tabCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -277,6 +280,9 @@
             // 
             // tabCategory
             // 
+            this.tabCategory.Controls.Add(this.CategoryTabNextButton);
+            this.tabCategory.Controls.Add(this.CategoryTabPreviousButton);
+            this.tabCategory.Controls.Add(this.CategoryTabGrid);
             this.tabCategory.Location = new System.Drawing.Point(4, 24);
             this.tabCategory.Name = "tabCategory";
             this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
@@ -285,6 +291,37 @@
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
+            // 
+            // CategoryTabNextButton
+            // 
+            this.CategoryTabNextButton.Location = new System.Drawing.Point(84, 124);
+            this.CategoryTabNextButton.Name = "CategoryTabNextButton";
+            this.CategoryTabNextButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabNextButton.TabIndex = 2;
+            this.CategoryTabNextButton.Text = "Next";
+            this.CategoryTabNextButton.UseVisualStyleBackColor = true;
+            this.CategoryTabNextButton.Click += new System.EventHandler(this.CategoryTabNextButton_Click);
+            // 
+            // CategoryTabPreviousButton
+            // 
+            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(3, 124);
+            this.CategoryTabPreviousButton.Name = "CategoryTabPreviousButton";
+            this.CategoryTabPreviousButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabPreviousButton.TabIndex = 1;
+            this.CategoryTabPreviousButton.Text = "Previous";
+            this.CategoryTabPreviousButton.UseVisualStyleBackColor = true;
+            this.CategoryTabPreviousButton.Click += new System.EventHandler(this.CategoryTabPreviousButton_Click);
+            // 
+            // CategoryTabGrid
+            // 
+            this.CategoryTabGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CategoryTabGrid.Location = new System.Drawing.Point(3, 3);
+            this.CategoryTabGrid.Name = "CategoryTabGrid";
+            this.CategoryTabGrid.Size = new System.Drawing.Size(637, 115);
+            this.CategoryTabGrid.TabIndex = 0;
+            this.CategoryTabGrid.Text = "dataGridView1";
+            this.CategoryTabGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryTabGrid_CellClick);
+            this.CategoryTabGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.CategoryTabGrid_DataBindingComplete);
             // 
             // tabType
             // 
@@ -600,10 +637,7 @@
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
-
-            this.tabSpeakers.ResumeLayout(false);
-           // ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-           // this.tabCategory.ResumeLayout(false);
+            this.tabCategory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).EndInit();
             this.tabType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -675,6 +709,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
-
+        private System.Windows.Forms.DataGridView CategoryTabGrid;
+        private ButonCircular CategoryTabNextButton;
+        private ButonCircular CategoryTabPreviousButton;
     }
 }
