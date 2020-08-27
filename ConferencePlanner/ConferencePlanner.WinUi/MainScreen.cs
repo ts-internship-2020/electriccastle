@@ -76,6 +76,7 @@ namespace ConferencePlanner.WinUi
             }
 
         }
+
         private void MainScreen_Load(object sender, EventArgs e)
         {
 
@@ -88,6 +89,11 @@ namespace ConferencePlanner.WinUi
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             OrganizerGrid.AutoGenerateColumns = true;
             ManageOrganizerPaginationButtonsState();
+            GenerateOrganizerEditButtons();
+        }
+        
+        private void GenerateOrganizerEditButtons()
+        {
             DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
             OrganizerGrid.Columns.Add(buttonEdit);
             buttonEdit.HeaderText = "Edit";
@@ -95,7 +101,6 @@ namespace ConferencePlanner.WinUi
             buttonEdit.Text = "Edit";
             buttonEdit.UseColumnTextForButtonValue = true;
         }
-        
       
         private void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
         {

@@ -42,8 +42,9 @@
             this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Main = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IsSpeakerConference = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
             this.CategoryName = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CategoryCode = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabType = new System.Windows.Forms.TabPage();
@@ -63,12 +64,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btBack = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.IsSpeakerConference = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabConferance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabSpeakers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabCategory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -151,6 +151,15 @@
             // 
             // tabSpeakers
             // 
+            this.tabSpeakers.Controls.Add(this.dataGridView1);
+            this.tabSpeakers.Location = new System.Drawing.Point(4, 24);
+            this.tabSpeakers.Name = "tabSpeakers";
+            this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabSpeakers.Size = new System.Drawing.Size(753, 157);
+            this.tabSpeakers.TabIndex = 1;
+            this.tabSpeakers.Text = "Speakers";
+            this.tabSpeakers.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -169,15 +178,6 @@
             this.dataGridView1.Text = "dataGridView1";
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.tabSpeakers.Controls.Add(this.dataGridView1);
-            this.tabSpeakers.Location = new System.Drawing.Point(4, 24);
-            this.tabSpeakers.Name = "tabSpeakers";
-            this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabSpeakers.Size = new System.Drawing.Size(753, 157);
-            this.tabSpeakers.TabIndex = 1;
-            this.tabSpeakers.Text = "Speakers";
-            this.tabSpeakers.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -204,9 +204,14 @@
             this.Main.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Main.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // IsSpeakerConference
+            // 
+            this.IsSpeakerConference.HeaderText = "In Conference";
+            this.IsSpeakerConference.Name = "IsSpeakerConference";
+            // 
             // tabCategory
             // 
-            this.tabCategory.Controls.Add(this.dataGridView2);
+            this.tabCategory.Controls.Add(this.CategoryTabGrid);
             this.tabCategory.Location = new System.Drawing.Point(4, 24);
             this.tabCategory.Name = "tabCategory";
             this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
@@ -216,17 +221,19 @@
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // CategoryTabGrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CategoryTabGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CategoryTabGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CategoryName,
             this.CategoryCode});
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(682, 117);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.Text = "dataGridView2";
+            this.CategoryTabGrid.Location = new System.Drawing.Point(3, 3);
+            this.CategoryTabGrid.Name = "CategoryTabGrid";
+            this.CategoryTabGrid.Size = new System.Drawing.Size(682, 117);
+            this.CategoryTabGrid.TabIndex = 0;
+            this.CategoryTabGrid.Text = "dataGridView2";
+            this.CategoryTabGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryTabGrid_CellClick);
+            this.CategoryTabGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.CategoryTabGrid_DataBindingComplete);
             // 
             // CategoryName
             // 
@@ -401,11 +408,6 @@
             this.dataGridView4.TabIndex = 19;
             this.dataGridView4.Text = "dataGridView4";
             // 
-            // IsSpeakerConference
-            // 
-            this.IsSpeakerConference.HeaderText = "In Conference";
-            this.IsSpeakerConference.Name = "IsSpeakerConference";
-            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -433,10 +435,10 @@
             this.Text = "Start Date";
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabSpeakers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabCategory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).EndInit();
             this.tabType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -465,7 +467,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView CategoryTabGrid;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Button btBack;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
