@@ -49,9 +49,6 @@
             this.tabSpeakerEditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.CategoryName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CategoryCode = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabType = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.TypeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -88,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
             this.tabCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -280,7 +278,6 @@
             // 
             // tabCategory
             // 
-            this.tabCategory.Controls.Add(this.dataGridView2);
             this.tabCategory.Location = new System.Drawing.Point(4, 24);
             this.tabCategory.Name = "tabCategory";
             this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
@@ -289,31 +286,6 @@
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CategoryName,
-            this.CategoryCode});
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(682, 117);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.Text = "dataGridView2";
-            // 
-            // CategoryName
-            // 
-            this.CategoryName.HeaderText = "Category Name";
-            this.CategoryName.Name = "CategoryName";
-            this.CategoryName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CategoryCode
-            // 
-            this.CategoryCode.HeaderText = "Category code";
-            this.CategoryCode.Name = "CategoryCode";
-            this.CategoryCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabType
             // 
@@ -629,8 +601,6 @@
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
-            this.tabCategory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -665,12 +635,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView tabSpeakerGrid;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Button btBack;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridViewComboBoxColumn CategoryName;
-        private System.Windows.Forms.DataGridViewComboBoxColumn CategoryCode;
         private System.Windows.Forms.DataGridViewComboBoxColumn TypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
         private System.Windows.Forms.TabPage tabPage1;

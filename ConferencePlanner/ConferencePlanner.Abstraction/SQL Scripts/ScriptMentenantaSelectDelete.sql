@@ -31,6 +31,8 @@ join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId
 where cds.IsMainSpeaker = 1
 and c.OrganizerEmail = 'eventskill@gmail.com';
 
+SELECT DictionaryConferenceCategoryId, DictionaryConferenceCategoryName, ConferenceCategoryCode FROM DictionaryConferenceCategory;
+
 DELETE  FROM Conference;
 DELETE  FROM Location;
 DELETE  FROM DictionaryCity;
