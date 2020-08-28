@@ -38,7 +38,7 @@ namespace ConferencePlanner.WinUi
 
         public static IServiceProvider ServiceProvider { get; set; }
 
-       public static String EmailParticipants;
+       public static  String EmailParticipants;
 
 
 
@@ -58,6 +58,8 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<NewCountryForm>();
             services.AddScoped<NewDistrictForm>();
             services.AddScoped<NewCityForm>();
+            services.AddScoped<NewConferanceType>();
+            services.AddScoped<AddEditConferenceCategoryScreen>();
 
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
             services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
@@ -67,6 +69,9 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<IAddConferenceCityRepository, AddConferenceCityRepository>();
             services.AddScoped<IAddConferenceCountyRepository, AddConferenceContryRepository>();
             services.AddScoped<IAddConferenceDistrictRepository, AddConferenceDistrictRepository>();
+            services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
+           
+
             services.AddSingleton<SqlConnection>(a =>
             {
                 SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);

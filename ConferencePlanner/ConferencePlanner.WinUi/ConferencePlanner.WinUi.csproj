@@ -18,33 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AddConferenceForms\AddEditConferenceCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddConferenceForms\AddSpeakerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddConferenceForms\EditSpeakerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddConferenceForms\NewCityForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddConferenceForms\NewCountryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddConferenceForms\NewDistrictForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="ButtonDesigner\ButonCircular.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ButtonDesigner\Button_WOC.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ButtonDesigner\ColorButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="AddConferenceForms\AddEditConferenceCategory.cs" />
+    <Compile Update="AddConferenceForms\AddSpeakerForm.cs" />
+    <Compile Update="AddConferenceForms\EditSpeakerForm.cs" />
+    <Compile Update="AddConferenceForms\NewCityForm.cs" />
+    <Compile Update="AddConferenceForms\NewCountryForm.cs" />
+    <Compile Update="AddConferenceForms\NewDistrictForm.cs" />
+    <Compile Update="ButtonDesigner\ButonCircular.cs" />
+    <Compile Update="ButtonDesigner\Button_WOC.cs" />
+    <Compile Update="ButtonDesigner\ColorButton.cs" />
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
