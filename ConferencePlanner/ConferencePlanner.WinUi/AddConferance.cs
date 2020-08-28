@@ -241,8 +241,13 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == CategoryTabGrid.Columns["Delete"].Index)
             {
-                conferenceCategoryRepository.deleteCategory(categoryId);
-                // ??? Cum sa refreshez dupa ce dau delete
+                string categoryName = CategoryTabGrid[CategoryTabGrid.Columns["ConferenceCategoryName"].Index, e.RowIndex].Value.ToString();
+                DialogResult dialogResult =  DisplayDeleteConfirmation("Are you sure you want to delete " + categoryName + "?", "Delete Category");
+                if (dialogResult == DialogResult.Yes)
+                {
+                    conferenceCategoryRepository.deleteCategory(categoryId);
+                    ReloadData();
+                }
             }
         }
 
@@ -286,12 +291,23 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Activated(object sender, EventArgs e)
         {
+            ReloadData();
+        }
+
+        private void ReloadData()
+        {
             conferenceCategories = conferenceCategoryRepository.getAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
             CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
             CategoryTabGrid.AutoGenerateColumns = true;
             GenerateCategoryTabEditDeleteButtons();
             ManageCategoryTabPaginationButtonsState();
+        }
+
+        private DialogResult DisplayDeleteConfirmation(string messageBoxText, string messageBoxTitle)
+        {
+            MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
+            return MessageBox.Show(messageBoxText, messageBoxTitle, messageBoxButtons, MessageBoxIcon.Question);
         }
     }
 }
