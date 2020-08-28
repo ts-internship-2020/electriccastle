@@ -78,20 +78,24 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 
 
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-           
-
-            sqlCommand.CommandText = $"update DictionaryCountry set CountryCode=@Cod ,DictionaryCountryName=@Name where index=DictionaryCountryId)";
-           
             sqlCommand.Parameters.Add(parameters[0]);
             sqlCommand.Parameters.Add(parameters[1]);
 
+            sqlCommand.CommandText = $"update DictionaryCountry set CountryCode=@Cod ,DictionaryCountryName=@Name where DictionaryCountryId= index";
+          
+        }
+
+        public void DeleteConferenceCoutry(string index)
+        {
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@index", index);
+            sqlCommand.Parameters.Add(parameters[0]);
+            sqlCommand.CommandText = $"delete from DictionaryCountry where CountryCode like '@index'";
+           
             sqlCommand.ExecuteNonQuery();
         }
 
-        public void DeleteConferenceCoutry()
-        {
-            throw new NotImplementedException();
-        }
 
       
     }

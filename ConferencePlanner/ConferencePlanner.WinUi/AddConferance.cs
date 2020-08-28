@@ -414,7 +414,19 @@ namespace ConferencePlanner.WinUi
 
         private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int n = countryModel.Count;
 
+            if (e.ColumnIndex == 2)
+                for (int i = 0; i < n; i++)
+                {
+                    _getCountry.UpdateConferenceCountry(DGVCountry.Rows[i].Cells[0].Value.ToString(), DGVCountry.Rows[i].Cells[1].Value.ToString(), i);
+                    NewCountryForm fc = Program.ServiceProvider.GetService<NewCountryForm>();
+                    fc.ShowDialog();
+                }
+
+            if (e.ColumnIndex == 3)
+                for (int i = 0; i < n; i++)
+                    _getCountry.DeleteConferenceCoutry(DGVCountry.Rows[i].Cells[1].Value.ToString());
         }
 
         private void tabSpeakerNextButton_Click(object sender, EventArgs e)
