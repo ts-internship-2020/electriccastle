@@ -55,6 +55,8 @@
             this.CategoryTabPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
             this.tabType = new System.Windows.Forms.TabPage();
+            this.btSearch = new ConferencePlanner.WinUi.ButonCircular();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btNewType = new ConferencePlanner.WinUi.ButonCircular();
             this.btPreviousType = new ConferencePlanner.WinUi.ButonCircular();
             this.dataGridViewType = new System.Windows.Forms.DataGridView();
@@ -83,8 +85,6 @@
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btSearch = new ConferencePlanner.WinUi.ButonCircular();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
@@ -359,6 +359,23 @@
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
             // 
+            // btSearch
+            // 
+            this.btSearch.Location = new System.Drawing.Point(623, 51);
+            this.btSearch.Name = "btSearch";
+            this.btSearch.Size = new System.Drawing.Size(75, 23);
+            this.btSearch.TabIndex = 5;
+            this.btSearch.Text = "Search";
+            this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(614, 4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 23);
+            this.txtSearch.TabIndex = 4;
+            // 
             // btNewType
             // 
             this.btNewType.Location = new System.Drawing.Point(442, 103);
@@ -387,6 +404,8 @@
             this.dataGridViewType.Size = new System.Drawing.Size(566, 88);
             this.dataGridViewType.TabIndex = 0;
             this.dataGridViewType.Text = "dataGridView3";
+            this.dataGridViewType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewType_CellClick);
+            this.dataGridViewType.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewType_DataBindingComplete);
             // 
             // btNextType
             // 
@@ -616,23 +635,6 @@
             this.tabSpeakerColumnRating.Name = "tabSpeakerColumnRating";
             this.tabSpeakerColumnRating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(614, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(100, 23);
-            this.txtSearch.TabIndex = 4;
-            // 
-            // btSearch
-            // 
-            this.btSearch.Location = new System.Drawing.Point(623, 51);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(75, 23);
-            this.btSearch.TabIndex = 5;
-            this.btSearch.Text = "Search";
-            this.btSearch.UseVisualStyleBackColor = true;
-            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
-            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -658,6 +660,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddConferance";
             this.Text = "Start Date";
+            this.Activated += new System.EventHandler(this.AddConferance_Activated);
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConferencePlanner.Abstraction.ElectricCastleModel
 {
-     public class ConferanceTypeModel
+     public class ConferenceTypeModel
     {
         public int ConferenceTypeId { get; set; }
 

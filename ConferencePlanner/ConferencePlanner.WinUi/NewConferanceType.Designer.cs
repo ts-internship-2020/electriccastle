@@ -109,6 +109,7 @@
             this.Controls.Add(this.label1);
             this.Name = "NewConferanceType";
             this.Text = "NewConferanceType";
+            this.Load += new System.EventHandler(this.NewConferanceType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
             this.ResumeLayout(false);

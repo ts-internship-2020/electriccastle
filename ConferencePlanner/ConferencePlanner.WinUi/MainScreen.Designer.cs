@@ -169,6 +169,7 @@
             this.OrganizerGrid.TabIndex = 4;
             this.OrganizerGrid.Text = "dataGridView1";
             this.OrganizerGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrganizerGrid_CellClick);
+            this.OrganizerGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrganizerGrid_CellContentClick);
             this.OrganizerGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.OrganizerGrid_DataBindingComplete);
             // 
             // OrganizerEndDatePicker
