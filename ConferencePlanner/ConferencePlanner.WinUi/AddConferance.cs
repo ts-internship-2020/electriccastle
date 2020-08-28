@@ -450,6 +450,7 @@ namespace ConferencePlanner.WinUi
                 NewConferanceType newConferanceType = Program.ServiceProvider.GetService<NewConferanceType>();
                 newConferanceType.ConferanceTypeId = typeId;
                 newConferanceType.ShowDialog();
+               
             }
             else
             {
