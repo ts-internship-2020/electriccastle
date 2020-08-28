@@ -92,7 +92,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             parameters[5] = new SqlParameter("@Picture", speakerPicture);
 
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            sqlCommand.CommandText = $"insert into DictionarySpeaker ds values(@Id,@Code,@Name,@Rating,@Nationality,@Picture)";
+            sqlCommand.CommandText = $"insert into DictionarySpeaker values(@Id,@Code,@Name,@Rating,@Nationality,@Picture)";
             sqlCommand.Parameters.Add(parameters[0]);
             sqlCommand.Parameters.Add(parameters[1]);
             sqlCommand.Parameters.Add(parameters[2]);

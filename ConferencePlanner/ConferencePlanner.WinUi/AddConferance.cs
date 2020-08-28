@@ -81,8 +81,7 @@ namespace ConferencePlanner.WinUi
                              IAddConferenceCityRepository getCity,
                              IAddConferenceCountyRepository getCountry,
                              IAddConferenceDistrictRepository getDistrict,
-                             IConferenceTypeRepository conferanceTypeRepository)
-                             IConferenceCategoryRepository conferenceCategoryRepository,
+                             IConferenceTypeRepository conferanceTypeRepository,
                              ISpeakerRepository getSpeakerRepository
                              )
         {
@@ -304,14 +303,15 @@ namespace ConferencePlanner.WinUi
             {
                 int n = DGVCity.Rows.Add();
                 AddConferenceCityModel listCity = city.ElementAt(scrollVal + i);
-        }
+
 
                 DGVCity.Rows[n].Cells[0].Value = listCity.DictionaryCityName.ToString();
                 DGVCity.Rows[n].Cells[1].Value = listCity.CityCode.ToString();
-
             }
 
         }
+
+        
 
 
         private void GenerateTypeTabEditAndDeleteButtons()
@@ -683,6 +683,11 @@ namespace ConferencePlanner.WinUi
             GenerateTypeTabEditAndDeleteButtons();
 
             CategoryTabReloadData();
+
+            scrollValSpeaker = 0;
+            getSpeakerList = getSpeakerRepository.GetSpeaker();
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+            getMaxId(getSpeakerList);
         }
 
         private void CategoryTabReloadData()
@@ -884,15 +889,9 @@ namespace ConferencePlanner.WinUi
             (districtModel.DistrictCode.Contains(DistrictFilter.Text))).ToList();
             populateGridDistrict(districtModel, scrollVal);
         }
-        }
+        
 
-        private void AddConferance_Activated(object sender, EventArgs e)
-        {
-            scrollValSpeaker = 0;
-            getSpeakerList = getSpeakerRepository.GetSpeaker();
-            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
-            getMaxId(getSpeakerList);
-        }
+
         private void filterCity_TextChanged(object sender, EventArgs e)
         {
             scrollVal = 0;
@@ -901,6 +900,7 @@ namespace ConferencePlanner.WinUi
             cityModel = cityModelTxt.Where(cityModel => (cityModel.DictionaryCityName.Contains(filterCity.Text)) ||
             (cityModel.CityCode.Contains(filterCity.Text))).ToList();
             populateGridCity(cityModel, scrollVal);
+        }
         private void tabSpeakerFilterButton_Click(object sender, EventArgs e)
         {
             scrollValSpeaker = 0;
