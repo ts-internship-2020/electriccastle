@@ -49,6 +49,7 @@
             this.tabSpeakerEditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
+            this.CategoryTabAddButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabSearchButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabSearchTextBox = new System.Windows.Forms.TextBox();
             this.CategoryTabNextButton = new ConferencePlanner.WinUi.ButonCircular();
@@ -282,6 +283,7 @@
             // 
             // tabCategory
             // 
+            this.tabCategory.Controls.Add(this.CategoryTabAddButton);
             this.tabCategory.Controls.Add(this.CategoryTabSearchButton);
             this.tabCategory.Controls.Add(this.CategoryTabSearchTextBox);
             this.tabCategory.Controls.Add(this.CategoryTabNextButton);
@@ -295,6 +297,16 @@
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
+            // 
+            // CategoryTabAddButton
+            // 
+            this.CategoryTabAddButton.Location = new System.Drawing.Point(419, 83);
+            this.CategoryTabAddButton.Name = "CategoryTabAddButton";
+            this.CategoryTabAddButton.Size = new System.Drawing.Size(95, 35);
+            this.CategoryTabAddButton.TabIndex = 5;
+            this.CategoryTabAddButton.Text = "Add Category";
+            this.CategoryTabAddButton.UseVisualStyleBackColor = true;
+            this.CategoryTabAddButton.Click += new System.EventHandler(this.CategoryTabAddButton_Click);
             // 
             // CategoryTabSearchButton
             // 
@@ -313,6 +325,7 @@
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;
             this.CategoryTabSearchTextBox.Text = "Search...";
+            this.CategoryTabSearchTextBox.TextChanged += new System.EventHandler(this.CategoryTabSearchTextBox_TextChanged);
             // 
             // CategoryTabNextButton
             // 
@@ -742,6 +755,7 @@
         private ButonCircular CategoryTabPreviousButton;
         private ButonCircular CategoryTabSearchButton;
         private System.Windows.Forms.TextBox CategoryTabSearchTextBox;
+        private ButonCircular CategoryTabAddButton;
         private ButonCircular btPreviousType;
         private ButonCircular btNextType;
         private ButonCircular btNewType;

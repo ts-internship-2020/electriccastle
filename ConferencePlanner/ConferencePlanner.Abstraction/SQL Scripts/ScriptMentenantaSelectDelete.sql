@@ -1,5 +1,5 @@
-DBCC CHECKIDENT ('Location', RESEED, 0);
-DBCC CHECKIDENT ('Conference', RESEED, 0);
+DBCC CHECKIDENT ('Location', RESEED, 7);
+DBCC CHECKIDENT ('Conference', RESEED, 14);
 
 SELECT * FROM Conference;
 SELECT * FROM Location;
@@ -11,7 +11,7 @@ SELECT * FROM DictionaryConferenceType;
 SELECT * FROM DictionarySpeaker;
 SELECT * FROM DictionaryParticipantState;
 SELECT * FROM ConferenceXDictionarySpeaker ORDER BY ConferenceId;
-SELECT * FROM ConferenceParticipant CP
+SELECT * FROM ConferenceParticipant WHERE ConferenceId = 8  CP
 JOIN DictionaryParticipantState D ON D.DictionaryParticipantStateId = CP.DictionaryParticipantStateId;
 
 
@@ -33,7 +33,29 @@ and c.OrganizerEmail = 'eventskill@gmail.com';
 
 SELECT DictionaryConferenceCategoryId, DictionaryConferenceCategoryName, ConferenceCategoryCode FROM DictionaryConferenceCategory;
 
-DELETE  FROM Conference;
+SELECT MAX(DictionaryConferenceCategoryId) AS maxId FROM DictionaryConferenceCategory;
+
+SELECT DictionaryConferenceCategoryId, DictionaryConferenceCategoryName, ConferenceCategoryCode 
+FROM DictionaryConferenceCategory
+WHERE DictionaryConferenceCategoryId = 3;
+
+BEGIN TRAN
+
+INSERT INTO DictionaryConferenceCategory (DictionaryConferenceCategoryId, 
+DictionaryConferenceCategoryName, ConferenceCategoryCode)
+VALUES (11, 'Ciorba', 'CRB');
+
+UPDATE DictionaryConferenceCategory
+SET DictionaryConferenceCategoryName = 'Ciorbix',
+	ConferenceCategoryCode = 'CiB'
+WHERE DictionaryConferenceCategoryId = 11
+
+DELETE FROM DictionaryConferenceCategory
+WHERE DictionaryConferenceCategoryId = 11;
+
+ROLLBACK
+
+DELETE  FROM Conference;	
 DELETE  FROM Location;
 DELETE  FROM DictionaryCity;
 DELETE  FROM DictionaryDistrict;
