@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,26 +22,53 @@ namespace ConferencePlanner.WinUi
         // Category Tab
 
         private readonly IConferenceCategoryRepository conferenceCategoryRepository;
+        private readonly IConferanceTypeRepository conferanceTypeRepository;
 
         private List<ConferenceCategoryModel> conferenceCategories;
+        private List<ConferanceTypeModel> conferanceTypeModels;
 
         private PaginationHelper<ConferenceCategoryModel> categoryTabPaginationHelper;
+        private PaginationHelper<ConferanceTypeModel> conferanceTypePaginationHelper;
+       
 
         private int categoryTabPageSize = 3;
+        private int typeTabPageSize = 1;
+     
 
         //
 
         public int? ConferenceId { get; set; }
 
         public AddConferance(IConferanceCategory getConferanceCategory,
-                             IConferenceCategoryRepository conferenceCategoryRepository)
+                             IConferenceCategoryRepository conferenceCategoryRepository, IConferanceTypeRepository conferanceTypeRepository)
         {
             InitializeComponent();
             _getConferanceCategory=getConferanceCategory;
             this.conferenceCategoryRepository = conferenceCategoryRepository;
+            this.conferanceTypeRepository = conferanceTypeRepository;
+            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
+            conferenceCategories = conferenceCategoryRepository.getAllCategories();
+            categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
+            conferanceTypePaginationHelper = new PaginationHelper<ConferanceTypeModel>(conferanceTypeModels, typeTabPageSize);
         }
 
 
+        void addConferanceType(List<ConferanceTypeModel> type)
+        {
+            //dataGridViewType.Rows.Clear();
+            //int countNumber = conferanceTypeModels.Count();
+           
+            //ConferanceTypeModel listElement = conferanceTypeModels.ElementAt(0);
+            //for (int i=0; i<countNumber;i++)
+            //{
+            //    int n = dataGridViewType.Rows.Add();
+            //    dataGridViewType.Rows[n].Cells[0].Value = listElement.ConferenceTypeCode.ToString();
+            //    dataGridViewType.Rows[n].Cells[1].Value = listElement.ConferenceTypeName.ToString();
+            //}
+
+
+
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -55,7 +83,7 @@ namespace ConferencePlanner.WinUi
             tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
                              tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
 
-            if (tabConferance.SelectedTab == tabConferance.TabPages["tabType"])
+            if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage3"])
             {
                 button1.Text = "Save";
                 btSaveAndNew.Visible = true;
@@ -72,7 +100,7 @@ namespace ConferencePlanner.WinUi
                                  tabConferance.SelectedIndex - 1 : tabConferance.SelectedIndex;
             }
             
-            if (tabConferance.SelectedTab == tabConferance.TabPages["tabCategory"])
+            if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage2"])
             {
                 button1.Text = "Next";
                 btSaveAndNew.Visible = false;
@@ -141,8 +169,34 @@ namespace ConferencePlanner.WinUi
             //{
             //    CategoryName.Items.Add(conferance);
             //}
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            dataGridViewType.AutoGenerateColumns = true;
+
+            ManageTypeTabPaginationButtonsState();
+            GenerateTypeTabEditAndDeleteButtons();
+           
+          //  addConferanceType(conferanceTypeModels);
+
         }
 
+        private void GenerateTypeTabEditAndDeleteButtons()
+        {
+            DataGridViewButtonColumn buttonEditType = new DataGridViewButtonColumn();
+            dataGridViewType.Columns.Add(buttonEditType);
+            buttonEditType.HeaderText = "Edit";
+            buttonEditType.Name = "Edit";
+            buttonEditType.Text = "Edit";
+            buttonEditType.UseColumnTextForButtonValue = true;
+
+            DataGridViewButtonColumn buttonDeleteType = new DataGridViewButtonColumn();
+            dataGridViewType.Columns.Add(buttonDeleteType);
+            buttonDeleteType.HeaderText = "Delete";
+            buttonDeleteType.Name = "Delete";
+            buttonDeleteType.Text = "Delete";
+            buttonDeleteType.UseColumnTextForButtonValue = true;
+
+
+        }
         private void GenerateCategoryTabEditDeleteButtons()
         {
             if (!CategoryTabGrid.Columns.Contains("Edit"))
@@ -316,6 +370,58 @@ namespace ConferencePlanner.WinUi
             List<ConferenceCategoryModel> filteredData = conferenceCategories.Where(category => category.ConferenceCategoryName.ToLower().Contains(searchString.ToLower())
                                                                                                  || category.ConferenceCategoryCode.ToLower().Contains(searchString.ToLower())).ToList();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(filteredData, categoryTabPageSize);
+            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+            ManageCategoryTabPaginationButtonsState();
+        }
+
+
+        private void ManageTypeTabPaginationButtonsState()
+        {
+            btPreviousType.Enabled = conferanceTypePaginationHelper.HasPreviousPage();
+            btNextType.Enabled = conferanceTypePaginationHelper.HasNextPage();
+            
+        }
+        private void btNewType_Click(object sender, EventArgs e)
+        {
+            NewConferanceType newConferance = new NewConferanceType();
+            newConferance.ShowDialog();
+        }
+
+        private void btNextType_Click(object sender, EventArgs e)
+        {
+            conferanceTypePaginationHelper.NextPage();
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            ManageTypeTabPaginationButtonsState();
+
+        }
+
+        private void btPreviousType_Click(object sender, EventArgs e)
+        {
+            conferanceTypePaginationHelper.PreviousPage();
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            ManageTypeTabPaginationButtonsState();
+        }
+
+        private void btSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+            dataGridViewType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dataGridViewType.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+
             CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
             ManageCategoryTabPaginationButtonsState();
         }

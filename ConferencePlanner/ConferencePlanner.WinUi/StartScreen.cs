@@ -19,18 +19,20 @@ namespace ConferencePlanner.WinUi
             InitializeComponent();
             this.ActiveControl = txtButton;
             txtButton.Focus();
+          
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
             EmailParticipants = txtButton.Text.ToString();
+          
 
             MainScreen ms = Program.ServiceProvider.GetService<MainScreen>();
 
             ms.ShowDialog();
 
             Visible = false;
-
+            
         }
 
         private void txtButton_Validating(object sender, CancelEventArgs e)

@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using static ConferencePlanner.WinUi.Program;
 
 
+
 namespace ConferencePlanner.WinUi
 {
     public partial class MainScreen : Form
