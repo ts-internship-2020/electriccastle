@@ -149,6 +149,8 @@ namespace ConferencePlanner.WinUi
             {
                 tabConferance.SelectedIndex = (tabConferance.SelectedIndex - 1 < tabConferance.TabCount) ?
                                  tabConferance.SelectedIndex - 1 : tabConferance.SelectedIndex;
+        
+
             }
 
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage2"])
