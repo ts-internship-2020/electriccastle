@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditConferenceCategoryScreen));
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.CategoryNameLabel = new System.Windows.Forms.Label();
@@ -35,7 +36,11 @@
             this.CategoryNameTextBox = new System.Windows.Forms.TextBox();
             this.CategoryCodeTextBox = new System.Windows.Forms.TextBox();
             this.SaveButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryNameTextBoxErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CategoryCodeTextBoxErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryNameTextBoxErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryCodeTextBoxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -72,6 +77,7 @@
             this.CategoryNameTextBox.Name = "CategoryNameTextBox";
             this.CategoryNameTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryNameTextBox.TabIndex = 3;
+            this.CategoryNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.CategoryNameTextBox_Validating);
             // 
             // CategoryCodeTextBox
             // 
@@ -79,6 +85,7 @@
             this.CategoryCodeTextBox.Name = "CategoryCodeTextBox";
             this.CategoryCodeTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryCodeTextBox.TabIndex = 4;
+            this.CategoryCodeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.CategoryCodeTextBox_Validating);
             // 
             // SaveButton
             // 
@@ -89,7 +96,15 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
             // 
-            // AddEditConferenceCategory
+            // CategoryNameTextBoxErrorProvider
+            // 
+            this.CategoryNameTextBoxErrorProvider.ContainerControl = this;
+            // 
+            // CategoryCodeTextBoxErrorProvider
+            // 
+            this.CategoryCodeTextBoxErrorProvider.ContainerControl = this;
+            // 
+            // AddEditConferenceCategoryScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,10 +115,13 @@
             this.Controls.Add(this.CategoryCodeLabel);
             this.Controls.Add(this.CategoryNameLabel);
             this.Controls.Add(this.pictureBox);
-            this.Name = "AddEditConferenceCategory";
+            this.Name = "AddEditConferenceCategoryScreen";
             this.Text = "Add/Modify Category";
+            this.Activated += new System.EventHandler(this.AddEditConferenceCategoryScreen_Activated);
             this.Load += new System.EventHandler(this.AddEditConferenceCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryNameTextBoxErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryCodeTextBoxErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,8 +133,9 @@
         private System.Windows.Forms.Label CategoryNameLabel;
         private System.Windows.Forms.Label CategoryCodeLabel;
         private System.Windows.Forms.TextBox CategoryNameTextBox;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox CategoryCodeTextBox;
         private ButonCircular SaveButton;
+        private System.Windows.Forms.ErrorProvider CategoryNameTextBoxErrorProvider;
+        private System.Windows.Forms.ErrorProvider CategoryCodeTextBoxErrorProvider;
     }
 }

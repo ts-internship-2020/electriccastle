@@ -246,7 +246,7 @@ namespace ConferencePlanner.WinUi
                 if (dialogResult == DialogResult.Yes)
                 {
                     conferenceCategoryRepository.deleteCategory(categoryId);
-                    ReloadData();
+                    CategoryTabReloadData();
                 }
             }
         }
@@ -274,12 +274,7 @@ namespace ConferencePlanner.WinUi
 
         private void CategoryTabSearchButton_Click(object sender, EventArgs e)
         {
-            string searchString = CategoryTabSearchTextBox.Text;
-            List<ConferenceCategoryModel> filteredData = conferenceCategories.Where(category => category.ConferenceCategoryName.ToLower().Contains(searchString.ToLower())
-                                                                                                 || category.ConferenceCategoryCode.ToLower().Contains(searchString.ToLower())).ToList();
-            categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(filteredData, categoryTabPageSize);
-            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
-            ManageCategoryTabPaginationButtonsState();
+            CategoryTabFilter();
         }
 
         private void CategoryTabAddButton_Click(object sender, EventArgs e)
@@ -291,10 +286,10 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Activated(object sender, EventArgs e)
         {
-            ReloadData();
+            CategoryTabReloadData();
         }
 
-        private void ReloadData()
+        private void CategoryTabReloadData()
         {
             conferenceCategories = conferenceCategoryRepository.getAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
@@ -308,6 +303,21 @@ namespace ConferencePlanner.WinUi
         {
             MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo;
             return MessageBox.Show(messageBoxText, messageBoxTitle, messageBoxButtons, MessageBoxIcon.Question);
+        }
+
+        private void CategoryTabSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CategoryTabFilter();
+        }
+
+        private void CategoryTabFilter()
+        {
+            string searchString = CategoryTabSearchTextBox.Text;
+            List<ConferenceCategoryModel> filteredData = conferenceCategories.Where(category => category.ConferenceCategoryName.ToLower().Contains(searchString.ToLower())
+                                                                                                 || category.ConferenceCategoryCode.ToLower().Contains(searchString.ToLower())).ToList();
+            categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(filteredData, categoryTabPageSize);
+            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+            ManageCategoryTabPaginationButtonsState();
         }
     }
 }

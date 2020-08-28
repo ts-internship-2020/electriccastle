@@ -325,6 +325,7 @@
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;
             this.CategoryTabSearchTextBox.Text = "Search...";
+            this.CategoryTabSearchTextBox.TextChanged += new System.EventHandler(this.CategoryTabSearchTextBox_TextChanged);
             // 
             // CategoryTabNextButton
             // 
