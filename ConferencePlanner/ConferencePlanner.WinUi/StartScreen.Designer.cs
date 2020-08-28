@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartScreen));
             this.txtButton = new System.Windows.Forms.TextBox();
             this.submitButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.errorProviderEmailText = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmailText)).BeginInit();
             this.SuspendLayout();
             // 
             // txtButton
@@ -60,6 +63,10 @@
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
+            // errorProviderEmailText
+            // 
+            this.errorProviderEmailText.ContainerControl = this;
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -70,6 +77,7 @@
             this.Controls.Add(this.txtButton);
             this.Name = "StartScreen";
             this.Text = "StartScreen";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmailText)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,5 +88,6 @@
         private System.Windows.Forms.TextBox txtButton;
         private ButonCircular submitButton1;
         private ButonCircular submitButton;
+        private System.Windows.Forms.ErrorProvider errorProviderEmailText;
     }
 }

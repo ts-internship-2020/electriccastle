@@ -38,9 +38,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabConferance = new System.Windows.Forms.TabControl();
             this.tabSpeakers = new System.Windows.Forms.TabPage();
-            this.tabSpeakersNextButton = new System.Windows.Forms.Button();
-            this.tabSpeakerPreviousButton = new System.Windows.Forms.Button();
-            this.tabSpeakerAddButton = new System.Windows.Forms.Button();
+            this.tabSpeakerFilterText = new System.Windows.Forms.TextBox();
+            this.tabSpeakerFilterButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.tabSpeakerNextButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.tabSpeakerPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.tabSpeakerAdd = new ConferencePlanner.WinUi.ButonCircular();
             this.tabSpeakerGrid = new System.Windows.Forms.DataGridView();
             this.tabSpeakerNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerRatingColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -198,51 +200,91 @@
             // 
             // tabSpeakers
             // 
-            this.tabSpeakers.Controls.Add(this.tabSpeakersNextButton);
+            this.tabSpeakers.Controls.Add(this.tabSpeakerFilterText);
+            this.tabSpeakers.Controls.Add(this.tabSpeakerFilterButton);
+            this.tabSpeakers.Controls.Add(this.tabSpeakerNextButton);
             this.tabSpeakers.Controls.Add(this.tabSpeakerPreviousButton);
-            this.tabSpeakers.Controls.Add(this.tabSpeakerAddButton);
+            this.tabSpeakers.Controls.Add(this.tabSpeakerAdd);
             this.tabSpeakers.Controls.Add(this.tabSpeakerGrid);
             this.tabSpeakers.Location = new System.Drawing.Point(4, 24);
             this.tabSpeakers.Name = "tabSpeakers";
             this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
             this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabSpeakers.Size = new System.Drawing.Size(899, 347);
+            this.tabSpeakers.Size = new System.Drawing.Size(845, 161);
             this.tabSpeakers.TabIndex = 1;
             this.tabSpeakers.Text = "Speakers";
             this.tabSpeakers.UseVisualStyleBackColor = true;
             // 
-            // tabSpeakersNextButton
+            // tabSpeakerFilterText
             // 
-            this.tabSpeakersNextButton.Location = new System.Drawing.Point(665, 131);
-            this.tabSpeakersNextButton.Name = "tabSpeakersNextButton";
-            this.tabSpeakersNextButton.Size = new System.Drawing.Size(75, 23);
-            this.tabSpeakersNextButton.TabIndex = 22;
-            this.tabSpeakersNextButton.Text = "Next";
-            this.tabSpeakersNextButton.UseVisualStyleBackColor = true;
-            this.tabSpeakersNextButton.Click += new System.EventHandler(this.tabSpeakerNextButton_Click);
+            this.tabSpeakerFilterText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSpeakerFilterText.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tabSpeakerFilterText.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabSpeakerFilterText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerFilterText.Location = new System.Drawing.Point(729, 55);
+            this.tabSpeakerFilterText.Name = "tabSpeakerFilterText";
+            this.tabSpeakerFilterText.Size = new System.Drawing.Size(99, 25);
+            this.tabSpeakerFilterText.TabIndex = 26;
+            // 
+            // tabSpeakerFilterButton
+            // 
+            this.tabSpeakerFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSpeakerFilterButton.BackColor = System.Drawing.Color.Tomato;
+            this.tabSpeakerFilterButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerFilterButton.Location = new System.Drawing.Point(746, 15);
+            this.tabSpeakerFilterButton.Name = "tabSpeakerFilterButton";
+            this.tabSpeakerFilterButton.Size = new System.Drawing.Size(76, 34);
+            this.tabSpeakerFilterButton.TabIndex = 19;
+            this.tabSpeakerFilterButton.TabStop = false;
+            this.tabSpeakerFilterButton.Text = "Filter";
+            this.tabSpeakerFilterButton.UseVisualStyleBackColor = false;
+            this.tabSpeakerFilterButton.Click += new System.EventHandler(this.tabSpeakerFilterButton_Click);
+            // 
+            // tabSpeakerNextButton
+            // 
+            this.tabSpeakerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSpeakerNextButton.BackColor = System.Drawing.Color.Tomato;
+            this.tabSpeakerNextButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerNextButton.Location = new System.Drawing.Point(631, 130);
+            this.tabSpeakerNextButton.Name = "tabSpeakerNextButton";
+            this.tabSpeakerNextButton.Size = new System.Drawing.Size(80, 34);
+            this.tabSpeakerNextButton.TabIndex = 25;
+            this.tabSpeakerNextButton.Text = "Next";
+            this.tabSpeakerNextButton.UseVisualStyleBackColor = false;
+            this.tabSpeakerNextButton.Click += new System.EventHandler(this.tabSpeakerNextButton_Click);
             // 
             // tabSpeakerPreviousButton
             // 
-            this.tabSpeakerPreviousButton.Location = new System.Drawing.Point(584, 131);
+            this.tabSpeakerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSpeakerPreviousButton.BackColor = System.Drawing.Color.Tomato;
+            this.tabSpeakerPreviousButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerPreviousButton.Location = new System.Drawing.Point(539, 131);
             this.tabSpeakerPreviousButton.Name = "tabSpeakerPreviousButton";
-            this.tabSpeakerPreviousButton.Size = new System.Drawing.Size(75, 23);
-            this.tabSpeakerPreviousButton.TabIndex = 21;
+            this.tabSpeakerPreviousButton.Size = new System.Drawing.Size(86, 32);
+            this.tabSpeakerPreviousButton.TabIndex = 24;
             this.tabSpeakerPreviousButton.Text = "Previous";
-            this.tabSpeakerPreviousButton.UseVisualStyleBackColor = true;
+            this.tabSpeakerPreviousButton.UseVisualStyleBackColor = false;
             this.tabSpeakerPreviousButton.Click += new System.EventHandler(this.tabSpeakerPreviousButton_Click);
             // 
-            // tabSpeakerAddButton
+            // tabSpeakerAdd
             // 
-            this.tabSpeakerAddButton.Location = new System.Drawing.Point(14, 131);
-            this.tabSpeakerAddButton.Name = "tabSpeakerAddButton";
-            this.tabSpeakerAddButton.Size = new System.Drawing.Size(75, 23);
-            this.tabSpeakerAddButton.TabIndex = 20;
-            this.tabSpeakerAddButton.Text = "Add";
-            this.tabSpeakerAddButton.UseVisualStyleBackColor = true;
-            this.tabSpeakerAddButton.Click += new System.EventHandler(this.tabSpeakerAddButton_Click);
+            this.tabSpeakerAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabSpeakerAdd.BackColor = System.Drawing.Color.Tomato;
+            this.tabSpeakerAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerAdd.Location = new System.Drawing.Point(3, 130);
+            this.tabSpeakerAdd.Name = "tabSpeakerAdd";
+            this.tabSpeakerAdd.Size = new System.Drawing.Size(86, 33);
+            this.tabSpeakerAdd.TabIndex = 23;
+            this.tabSpeakerAdd.Text = "Add";
+            this.tabSpeakerAdd.UseVisualStyleBackColor = false;
+            this.tabSpeakerAdd.Click += new System.EventHandler(this.tabSpeakerAdd_Click);
             // 
             // tabSpeakerGrid
             // 
+            this.tabSpeakerGrid.AllowUserToAddRows = false;
+            this.tabSpeakerGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSpeakerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tabSpeakerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabSpeakerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -255,7 +297,7 @@
             this.tabSpeakerDeleteColumn});
             this.tabSpeakerGrid.Location = new System.Drawing.Point(3, 3);
             this.tabSpeakerGrid.Name = "tabSpeakerGrid";
-            this.tabSpeakerGrid.Size = new System.Drawing.Size(747, 122);
+            this.tabSpeakerGrid.Size = new System.Drawing.Size(720, 126);
             this.tabSpeakerGrid.TabIndex = 0;
             this.tabSpeakerGrid.Text = "dataGridView1";
             this.tabSpeakerGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabSpeakerGrid_CellClick);
@@ -829,6 +871,7 @@
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);
+            this.tabSpeakers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
             this.tabCategory.ResumeLayout(false);
             this.tabCategory.PerformLayout();
@@ -891,10 +934,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CityName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityCod;
         private System.Windows.Forms.DataGridView DGVDistrict;
-
-        private System.Windows.Forms.Button tabSpeakerAddButton;
-        private System.Windows.Forms.Button tabSpeakersNextButton;
-        private System.Windows.Forms.Button tabSpeakerPreviousButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerColumnRating;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNameColumn;
@@ -928,5 +967,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox filterCity;
+        private ButonCircular tabSpeakerAdd;
+        private ButonCircular tabSpeakerNextButton;
+        private ButonCircular tabSpeakerPreviousButton;
+        private ButonCircular tabSpeakerFilterButton;
+        private System.Windows.Forms.TextBox tabSpeakerFilterText;
     }
 }

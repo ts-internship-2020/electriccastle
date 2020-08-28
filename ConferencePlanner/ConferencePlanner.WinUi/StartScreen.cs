@@ -46,16 +46,18 @@ namespace ConferencePlanner.WinUi
             {
                 if (!rEmail.IsMatch(txtButton.Text))
                 {
-                    MessageBox.Show("Invalid email address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // MessageBox.Show("Invalid email address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProviderEmailText.SetError(txtButton, "Invalid email address");
                     txtButton.SelectAll();
                     e.Cancel = true;
                 }
             }
             else
             {
-                MessageBox.Show("Insert an email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Insert an email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //e.Cancel = true;
+                errorProviderEmailText.SetError(txtButton, "");
                 txtButton.SelectAll();
-                e.Cancel = true;
 
             }
         }

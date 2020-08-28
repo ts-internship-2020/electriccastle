@@ -47,19 +47,22 @@ namespace ConferencePlanner.WinUi
                 for(int i=0;i<countType;i++)
                 {
                     type = listConferanceType.ElementAt(i);
+                   
                     
                     if (ConferanceTypeId != null && ConferanceTypeId == i + 1)
                     {
                         type.ConferenceTypeName = txtNameType.Text;
                         type.ConferenceTypeCode = txtCodeType.Text;
-                        conferanceTypeRepository.getType(type) ;
+                        conferanceTypeRepository.getType(type);
                     }
                     else
                     {
-                        ConferenceTypeModel typeNew = new ConferenceTypeModel();
-                        if (ConferanceTypeId==null && typeNew==null)
+                       ConferenceTypeModel typeNew = new ConferenceTypeModel(); 
+                        if (ConferanceTypeId==null)
                         {
-                           
+                            typeNew.ConferenceTypeCode = " ";
+                            typeNew.ConferenceTypeName = " ";
+                            ConferanceTypeId = 0;
                             typeNew.ConferenceTypeName = txtNameType.Text;
                             typeNew.ConferenceTypeCode = txtCodeType.Text;
 

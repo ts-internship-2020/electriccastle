@@ -109,5 +109,7 @@ namespace ConferencePlanner.WinUi
             CategoryNameTextBoxErrorProvider.SetError(CategoryNameTextBox, "");
             CategoryCodeTextBoxErrorProvider.SetError(CategoryCodeTextBox, "");
         }
+
+      
     }
 }
