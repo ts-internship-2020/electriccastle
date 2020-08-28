@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddConferance));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,29 +64,43 @@
             this.dataGridViewType = new System.Windows.Forms.DataGridView();
             this.btNextType = new ConferencePlanner.WinUi.ButonCircular();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textNameCountry = new System.Windows.Forms.TextBox();
+            this.PreviousBtn = new ConferencePlanner.WinUi.ButonCircular();
+            this.NextBtn = new ConferencePlanner.WinUi.ButonCircular();
+            this.NewCountry = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVCountry = new System.Windows.Forms.DataGridView();
             this.CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DistrictFilter = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NextDistrict = new ConferencePlanner.WinUi.ButonCircular();
+            this.PreviousPageDistrict = new ConferencePlanner.WinUi.ButonCircular();
+            this.NewDistrict = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVDistrict = new System.Windows.Forms.DataGridView();
             this.DictrictName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DistrictCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.filterCity = new System.Windows.Forms.TextBox();
+            this.PrevoiusCity = new ConferencePlanner.WinUi.ButonCircular();
+            this.NextCity = new ConferencePlanner.WinUi.ButonCircular();
+            this.NewCity = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVCity = new System.Windows.Forms.DataGridView();
             this.CityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CityCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Organ = new System.Windows.Forms.Label();
             this.txtOrganizer = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.btSaveAndNew = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btBack = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
@@ -99,7 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -152,7 +167,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(290, 331);
+            this.button1.Location = new System.Drawing.Point(290, 521);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 27);
             this.button1.TabIndex = 8;
@@ -174,7 +189,7 @@
             this.tabConferance.Location = new System.Drawing.Point(25, 140);
             this.tabConferance.Name = "tabConferance";
             this.tabConferance.SelectedIndex = 5;
-            this.tabConferance.Size = new System.Drawing.Size(761, 185);
+            this.tabConferance.Size = new System.Drawing.Size(907, 375);
             this.tabConferance.TabIndex = 9;
             this.tabConferance.Tag = "Country";
             this.tabConferance.SelectedIndexChanged += new System.EventHandler(this.tabConferance_SelectedIndexChanged);
@@ -191,7 +206,7 @@
             this.tabSpeakers.Name = "tabSpeakers";
             this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
             this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabSpeakers.Size = new System.Drawing.Size(753, 157);
+            this.tabSpeakers.Size = new System.Drawing.Size(899, 347);
             this.tabSpeakers.TabIndex = 1;
             this.tabSpeakers.Text = "Speakers";
             this.tabSpeakers.UseVisualStyleBackColor = true;
@@ -293,7 +308,7 @@
             this.tabCategory.Name = "tabCategory";
             this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
             this.tabCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabCategory.Size = new System.Drawing.Size(753, 157);
+            this.tabCategory.Size = new System.Drawing.Size(899, 347);
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
@@ -368,7 +383,7 @@
             this.tabType.Controls.Add(this.btNextType);
             this.tabType.Location = new System.Drawing.Point(4, 24);
             this.tabType.Name = "tabType";
-            this.tabType.Size = new System.Drawing.Size(753, 157);
+            this.tabType.Size = new System.Drawing.Size(899, 347);
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
             // 
@@ -432,14 +447,67 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.textNameCountry);
+            this.tabPage1.Controls.Add(this.PreviousBtn);
+            this.tabPage1.Controls.Add(this.NextBtn);
+            this.tabPage1.Controls.Add(this.NewCountry);
             this.tabPage1.Controls.Add(this.DGVCountry);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(753, 157);
+            this.tabPage1.Size = new System.Drawing.Size(899, 347);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Country";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(720, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 15);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Insert filter criteria";
+            // 
+            // textNameCountry
+            // 
+            this.textNameCountry.Location = new System.Drawing.Point(722, 36);
+            this.textNameCountry.Name = "textNameCountry";
+            this.textNameCountry.Size = new System.Drawing.Size(100, 23);
+            this.textNameCountry.TabIndex = 5;
+            this.textNameCountry.TextChanged += new System.EventHandler(this.textNameCountry_TextChanged);
+            // 
+            // PreviousBtn
+            // 
+            this.PreviousBtn.Location = new System.Drawing.Point(476, 100);
+            this.PreviousBtn.Name = "PreviousBtn";
+            this.PreviousBtn.Size = new System.Drawing.Size(108, 42);
+            this.PreviousBtn.TabIndex = 3;
+            this.PreviousBtn.Text = "Previous page";
+            this.PreviousBtn.UseVisualStyleBackColor = true;
+            this.PreviousBtn.Click += new System.EventHandler(this.PreviousBtn_Click);
+            // 
+            // NextBtn
+            // 
+            this.NextBtn.Location = new System.Drawing.Point(476, 24);
+            this.NextBtn.Name = "NextBtn";
+            this.NextBtn.Size = new System.Drawing.Size(108, 36);
+            this.NextBtn.TabIndex = 2;
+            this.NextBtn.Text = "Next page";
+            this.NextBtn.UseVisualStyleBackColor = true;
+            this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
+            // 
+            // NewCountry
+            // 
+            this.NewCountry.Location = new System.Drawing.Point(566, 47);
+            this.NewCountry.Name = "NewCountry";
+            this.NewCountry.Size = new System.Drawing.Size(123, 37);
+            this.NewCountry.TabIndex = 1;
+            this.NewCountry.Text = "New Country";
+            this.NewCountry.UseVisualStyleBackColor = true;
+            this.NewCountry.Click += new System.EventHandler(this.NewCountry_Click);
             // 
             // DGVCountry
             // 
@@ -449,7 +517,7 @@
             this.CountryCod});
             this.DGVCountry.Location = new System.Drawing.Point(4, 4);
             this.DGVCountry.Name = "DGVCountry";
-            this.DGVCountry.Size = new System.Drawing.Size(377, 150);
+            this.DGVCountry.Size = new System.Drawing.Size(456, 150);
             this.DGVCountry.TabIndex = 0;
             this.DGVCountry.Text = "dataGridView5";
             this.DGVCountry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
@@ -466,14 +534,66 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.DistrictFilter);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.NextDistrict);
+            this.tabPage2.Controls.Add(this.PreviousPageDistrict);
+            this.tabPage2.Controls.Add(this.NewDistrict);
             this.tabPage2.Controls.Add(this.DGVDistrict);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(753, 157);
+            this.tabPage2.Size = new System.Drawing.Size(899, 347);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "District";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // DistrictFilter
+            // 
+            this.DistrictFilter.Location = new System.Drawing.Point(693, 47);
+            this.DistrictFilter.Name = "DistrictFilter";
+            this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
+            this.DistrictFilter.TabIndex = 5;
+            this.DistrictFilter.TextChanged += new System.EventHandler(this.DistrictFilter_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(693, 24);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 15);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Insert filter criteria";
+            // 
+            // NextDistrict
+            // 
+            this.NextDistrict.Location = new System.Drawing.Point(678, 91);
+            this.NextDistrict.Name = "NextDistrict";
+            this.NextDistrict.Size = new System.Drawing.Size(136, 32);
+            this.NextDistrict.TabIndex = 3;
+            this.NextDistrict.Text = "Next page";
+            this.NextDistrict.UseVisualStyleBackColor = true;
+            this.NextDistrict.Click += new System.EventHandler(this.NextDistrict_Click);
+            // 
+            // PreviousPageDistrict
+            // 
+            this.PreviousPageDistrict.Location = new System.Drawing.Point(494, 113);
+            this.PreviousPageDistrict.Name = "PreviousPageDistrict";
+            this.PreviousPageDistrict.Size = new System.Drawing.Size(115, 44);
+            this.PreviousPageDistrict.TabIndex = 2;
+            this.PreviousPageDistrict.Text = "Previous page";
+            this.PreviousPageDistrict.UseVisualStyleBackColor = true;
+            this.PreviousPageDistrict.Click += new System.EventHandler(this.PreviousPageDistrict_Click);
+            // 
+            // NewDistrict
+            // 
+            this.NewDistrict.Location = new System.Drawing.Point(530, 47);
+            this.NewDistrict.Name = "NewDistrict";
+            this.NewDistrict.Size = new System.Drawing.Size(105, 36);
+            this.NewDistrict.TabIndex = 1;
+            this.NewDistrict.Text = "New District";
+            this.NewDistrict.UseVisualStyleBackColor = true;
+            this.NewDistrict.Click += new System.EventHandler(this.NewDistrict_Click);
             // 
             // DGVDistrict
             // 
@@ -483,7 +603,7 @@
             this.DistrictCod});
             this.DGVDistrict.Location = new System.Drawing.Point(4, 4);
             this.DGVDistrict.Name = "DGVDistrict";
-            this.DGVDistrict.Size = new System.Drawing.Size(382, 150);
+            this.DGVDistrict.Size = new System.Drawing.Size(461, 150);
             this.DGVDistrict.TabIndex = 0;
             this.DGVDistrict.Text = "dataGridView7";
             // 
@@ -499,15 +619,67 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.filterCity);
+            this.tabPage3.Controls.Add(this.PrevoiusCity);
+            this.tabPage3.Controls.Add(this.NextCity);
+            this.tabPage3.Controls.Add(this.NewCity);
             this.tabPage3.Controls.Add(this.DGVCity);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(753, 157);
+            this.tabPage3.Size = new System.Drawing.Size(899, 347);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "City";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(692, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 15);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Insert the filter criteria";
+            // 
+            // filterCity
+            // 
+            this.filterCity.Location = new System.Drawing.Point(692, 113);
+            this.filterCity.Name = "filterCity";
+            this.filterCity.Size = new System.Drawing.Size(100, 23);
+            this.filterCity.TabIndex = 5;
+            this.filterCity.TextChanged += new System.EventHandler(this.filterCity_TextChanged);
+            // 
+            // PrevoiusCity
+            // 
+            this.PrevoiusCity.Location = new System.Drawing.Point(490, 76);
+            this.PrevoiusCity.Name = "PrevoiusCity";
+            this.PrevoiusCity.Size = new System.Drawing.Size(94, 36);
+            this.PrevoiusCity.TabIndex = 4;
+            this.PrevoiusCity.Text = "Previous page";
+            this.PrevoiusCity.UseVisualStyleBackColor = true;
+            this.PrevoiusCity.Click += new System.EventHandler(this.PrevoiusCity_Click);
+            // 
+            // NextCity
+            // 
+            this.NextCity.Location = new System.Drawing.Point(692, 27);
+            this.NextCity.Name = "NextCity";
+            this.NextCity.Size = new System.Drawing.Size(92, 40);
+            this.NextCity.TabIndex = 3;
+            this.NextCity.Text = "Next page";
+            this.NextCity.UseVisualStyleBackColor = true;
+            this.NextCity.Click += new System.EventHandler(this.NextCity_Click);
+            // 
+            // NewCity
+            // 
+            this.NewCity.Location = new System.Drawing.Point(490, 20);
+            this.NewCity.Name = "NewCity";
+            this.NewCity.Size = new System.Drawing.Size(75, 36);
+            this.NewCity.TabIndex = 1;
+            this.NewCity.Text = "New City";
+            this.NewCity.UseVisualStyleBackColor = true;
+            this.NewCity.Click += new System.EventHandler(this.NewCity_Click);
             // 
             // DGVCity
             // 
@@ -517,7 +689,7 @@
             this.CityCod});
             this.DGVCity.Location = new System.Drawing.Point(4, 4);
             this.DGVCity.Name = "DGVCity";
-            this.DGVCity.Size = new System.Drawing.Size(356, 150);
+            this.DGVCity.Size = new System.Drawing.Size(454, 150);
             this.DGVCity.TabIndex = 0;
             this.DGVCity.Text = "dataGridView6";
             // 
@@ -552,19 +724,10 @@
             this.txtOrganizer.Size = new System.Drawing.Size(163, 23);
             this.txtOrganizer.TabIndex = 11;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(842, 389);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // btSaveAndNew
             // 
             this.btSaveAndNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSaveAndNew.Location = new System.Drawing.Point(406, 331);
+            this.btSaveAndNew.Location = new System.Drawing.Point(406, 521);
             this.btSaveAndNew.Name = "btSaveAndNew";
             this.btSaveAndNew.Size = new System.Drawing.Size(101, 27);
             this.btSaveAndNew.TabIndex = 13;
@@ -576,7 +739,7 @@
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Location = new System.Drawing.Point(495, 37);
+            this.dateTimePicker1.Location = new System.Drawing.Point(641, 37);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 14;
@@ -584,7 +747,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(495, 81);
+            this.dateTimePicker2.Location = new System.Drawing.Point(641, 81);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 15;
@@ -596,7 +759,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(401, 43);
+            this.label2.Location = new System.Drawing.Point(547, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 16;
@@ -609,7 +772,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(401, 87);
+            this.label5.Location = new System.Drawing.Point(547, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 15);
             this.label5.TabIndex = 17;
@@ -618,22 +781,13 @@
             // btBack
             // 
             this.btBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btBack.Location = new System.Drawing.Point(159, 331);
+            this.btBack.Location = new System.Drawing.Point(159, 521);
             this.btBack.Name = "btBack";
             this.btBack.Size = new System.Drawing.Size(88, 27);
             this.btBack.TabIndex = 18;
             this.btBack.Text = "Back ";
             this.btBack.UseVisualStyleBackColor = true;
             this.btBack.Click += new System.EventHandler(this.btBack_Click);
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(805, 361);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView4.TabIndex = 19;
-            this.dataGridView4.Text = "dataGridView4";
             // 
             // tabSpeakerColumnName
             // 
@@ -653,15 +807,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(798, 370);
-            this.Controls.Add(this.dataGridView4);
+            this.ClientSize = new System.Drawing.Size(944, 560);
             this.Controls.Add(this.btBack);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btSaveAndNew);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.txtOrganizer);
             this.Controls.Add(this.Organ);
             this.Controls.Add(this.tabConferance);
@@ -685,12 +837,15 @@
             this.tabType.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -709,7 +864,6 @@
         private System.Windows.Forms.TabPage tabType;
         private System.Windows.Forms.Label Organ;
         private System.Windows.Forms.TextBox txtOrganizer;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btSaveAndNew;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
@@ -761,5 +915,18 @@
         private ButonCircular btNewType;
         private ButonCircular btSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private ButonCircular PreviousBtn;
+        private ButonCircular NextBtn;
+        private ButonCircular PreviousPageDistrict;
+        private ButonCircular PrevoiusCity;
+        private ButonCircular NextCity;
+        private ButonCircular NextDistrict;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.TextBox textNameCountry;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox DistrictFilter;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox filterCity;
     }
 }

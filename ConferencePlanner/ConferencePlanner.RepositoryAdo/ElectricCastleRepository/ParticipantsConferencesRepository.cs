@@ -59,9 +59,29 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                 }
             }
 
+
+
             sqlDataReader.Close();
 
             return participants;
+        }
+
+        public void UpdateParticipantsConferencesState(int index)
+        {
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+
+            if(index == 7)
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 2";
+
+            if (index == 8)
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 1";
+
+            if (index == 9)
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 3";
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+
         }
     }
 }

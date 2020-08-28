@@ -13,7 +13,7 @@ namespace ConferencePlanner.WinUi
 {
     public partial class StartScreen : Form
     {
-
+       
         public StartScreen()
         {
             InitializeComponent();
@@ -34,6 +34,8 @@ namespace ConferencePlanner.WinUi
             Visible = false;
             
         }
+
+    
 
         private void txtButton_Validating(object sender, CancelEventArgs e)
         {
@@ -66,6 +68,9 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-     
+        private void txtButton_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

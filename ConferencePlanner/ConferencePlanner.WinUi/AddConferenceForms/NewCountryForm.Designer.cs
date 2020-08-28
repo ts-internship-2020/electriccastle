@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewCountryForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CountryNameTv = new System.Windows.Forms.Label();
@@ -36,7 +37,11 @@
             this.CoutryNameTb = new System.Windows.Forms.TextBox();
             this.CountryCodTb = new System.Windows.Forms.TextBox();
             this.AddCountryFromButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.errorProviderCountryName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderCountryCod = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCountryName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCountryCod)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -48,6 +53,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(101, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(136, 67);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -122,6 +128,15 @@
             this.AddCountryFromButton.TabIndex = 6;
             this.AddCountryFromButton.Text = "Add country";
             this.AddCountryFromButton.UseVisualStyleBackColor = true;
+            this.AddCountryFromButton.Click += new System.EventHandler(this.AddCountryFromButton_Click);
+            // 
+            // errorProviderCountryName
+            // 
+            this.errorProviderCountryName.ContainerControl = this;
+            // 
+            // errorProviderCountryCod
+            // 
+            this.errorProviderCountryCod.ContainerControl = this;
             // 
             // NewCountryForm
             // 
@@ -139,6 +154,8 @@
             this.Text = "NewCountryForm";
             this.Load += new System.EventHandler(this.NewCountryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCountryName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCountryCod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +170,7 @@
         private System.Windows.Forms.TextBox CoutryNameTb;
         private System.Windows.Forms.TextBox CountryCodTb;
         private ButonCircular AddCountryFromButton;
+        private System.Windows.Forms.ErrorProvider errorProviderCountryName;
+        private System.Windows.Forms.ErrorProvider errorProviderCountryCod;
     }
 }

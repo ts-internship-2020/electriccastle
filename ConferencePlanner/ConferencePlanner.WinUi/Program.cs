@@ -55,6 +55,9 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<StartScreen>();
             services.AddScoped<AddConferance>();
             services.AddScoped<SpeakerForm>();
+            services.AddScoped<NewCountryForm>();
+            services.AddScoped<NewDistrictForm>();
+            services.AddScoped<NewCityForm>();
             services.AddScoped<NewConferanceType>();
             services.AddScoped<AddEditConferenceCategoryScreen>();
 
@@ -63,6 +66,9 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();
             services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
             services.AddScoped<IConferenceCategoryRepository, ConferenceCategoryRepository>();
+            services.AddScoped<IAddConferenceCityRepository, AddConferenceCityRepository>();
+            services.AddScoped<IAddConferenceCountyRepository, AddConferenceContryRepository>();
+            services.AddScoped<IAddConferenceDistrictRepository, AddConferenceDistrictRepository>();
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
            
 
