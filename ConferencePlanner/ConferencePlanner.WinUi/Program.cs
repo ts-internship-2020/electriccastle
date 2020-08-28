@@ -55,12 +55,15 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<StartScreen>();
             services.AddScoped<AddConferance>();
             services.AddScoped<SpeakerForm>();
+            services.AddScoped<EditSpeakerForm>();
+            services.AddScoped<AddSpeakerForm>();
 
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
             services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
             services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();
             services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
             services.AddScoped<IConferenceCategoryRepository, ConferenceCategoryRepository>();
+            services.AddScoped<ISpeakerRepository, SpeakerRepository>();
             services.AddSingleton<SqlConnection>(a =>
             {
                 SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSpeakerForm));
             this.newSpeakerCode = new System.Windows.Forms.Label();
             this.newSpeakerName = new System.Windows.Forms.Label();
@@ -40,7 +41,18 @@
             this.newSpeakerRatingTextBox = new System.Windows.Forms.TextBox();
             this.newSpeakerNationalityTextBox = new System.Windows.Forms.TextBox();
             this.newSpeakerPictureTextBox = new System.Windows.Forms.TextBox();
+            this.errorProviderAddSpeakerCode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAddSpeakerName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAddSpeakerRating = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAddSpeakerNationality = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAddSpeakerPicture = new System.Windows.Forms.ErrorProvider(this.components);
+            this.saveAddSpeaker = new ConferencePlanner.WinUi.ButonCircular();
             ((System.ComponentModel.ISupportInitialize)(this.newSpeakerPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerRating)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerNationality)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // newSpeakerCode
@@ -126,6 +138,7 @@
             this.newSpeakerCodeTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerCodeTextBox.TabIndex = 6;
             this.newSpeakerCodeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.newSpeakerCodeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.newSpeakerCodeTextBox_Validating);
             // 
             // newSpeakerNameTextBox
             // 
@@ -137,6 +150,7 @@
             this.newSpeakerNameTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerNameTextBox.TabIndex = 7;
             this.newSpeakerNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.newSpeakerNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.newSpeakerNameTextBox_Validating);
             // 
             // newSpeakerRatingTextBox
             // 
@@ -148,6 +162,7 @@
             this.newSpeakerRatingTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerRatingTextBox.TabIndex = 8;
             this.newSpeakerRatingTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.newSpeakerRatingTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.newSpeakerRatingTextBox_Validating);
             // 
             // newSpeakerNationalityTextBox
             // 
@@ -159,6 +174,7 @@
             this.newSpeakerNationalityTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerNationalityTextBox.TabIndex = 9;
             this.newSpeakerNationalityTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.newSpeakerNationalityTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.newSpeakerNationalityTextBox_Validating);
             // 
             // newSpeakerPictureTextBox
             // 
@@ -170,6 +186,39 @@
             this.newSpeakerPictureTextBox.Size = new System.Drawing.Size(152, 25);
             this.newSpeakerPictureTextBox.TabIndex = 10;
             this.newSpeakerPictureTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.newSpeakerPictureTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.newSpeakerPictureTextBox_Validating);
+            // 
+            // errorProviderAddSpeakerCode
+            // 
+            this.errorProviderAddSpeakerCode.ContainerControl = this;
+            // 
+            // errorProviderAddSpeakerName
+            // 
+            this.errorProviderAddSpeakerName.ContainerControl = this;
+            // 
+            // errorProviderAddSpeakerRating
+            // 
+            this.errorProviderAddSpeakerRating.ContainerControl = this;
+            // 
+            // errorProviderAddSpeakerNationality
+            // 
+            this.errorProviderAddSpeakerNationality.ContainerControl = this;
+            // 
+            // errorProviderAddSpeakerPicture
+            // 
+            this.errorProviderAddSpeakerPicture.ContainerControl = this;
+            // 
+            // saveAddSpeaker
+            // 
+            this.saveAddSpeaker.BackColor = System.Drawing.Color.BlueViolet;
+            this.saveAddSpeaker.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.saveAddSpeaker.Location = new System.Drawing.Point(550, 302);
+            this.saveAddSpeaker.Name = "saveAddSpeaker";
+            this.saveAddSpeaker.Size = new System.Drawing.Size(91, 45);
+            this.saveAddSpeaker.TabIndex = 11;
+            this.saveAddSpeaker.Text = "SAVE";
+            this.saveAddSpeaker.UseVisualStyleBackColor = false;
+            this.saveAddSpeaker.Click += new System.EventHandler(this.saveAddSpeaker_Click);
             // 
             // AddSpeakerForm
             // 
@@ -177,6 +226,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.saveAddSpeaker);
             this.Controls.Add(this.newSpeakerPictureTextBox);
             this.Controls.Add(this.newSpeakerNationalityTextBox);
             this.Controls.Add(this.newSpeakerRatingTextBox);
@@ -192,6 +242,11 @@
             this.Text = "NewSpeaker";
             this.Load += new System.EventHandler(this.NewSpeaker_Load);
             ((System.ComponentModel.ISupportInitialize)(this.newSpeakerPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerRating)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerNationality)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +265,11 @@
         private System.Windows.Forms.TextBox newSpeakerRatingTextBox;
         private System.Windows.Forms.TextBox newSpeakerNationalityTextBox;
         private System.Windows.Forms.TextBox newSpeakerPictureTextBox;
+        private System.Windows.Forms.ErrorProvider errorProviderAddSpeakerCode;
+        private System.Windows.Forms.ErrorProvider errorProviderAddSpeakerName;
+        private System.Windows.Forms.ErrorProvider errorProviderAddSpeakerRating;
+        private System.Windows.Forms.ErrorProvider errorProviderAddSpeakerNationality;
+        private System.Windows.Forms.ErrorProvider errorProviderAddSpeakerPicture;
+        private ButonCircular saveAddSpeaker;
     }
 }
