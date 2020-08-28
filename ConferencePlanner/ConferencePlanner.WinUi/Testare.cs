@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace ConferencePlanner.WinUi
 {
-    public partial class AddEditConferenceCategory : Form
+    public partial class Testare : Form
     {
-        public AddEditConferenceCategory()
+        public Testare()
         {
             InitializeComponent();
         }

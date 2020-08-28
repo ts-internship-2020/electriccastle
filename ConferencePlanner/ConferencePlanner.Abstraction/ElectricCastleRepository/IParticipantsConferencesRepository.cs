@@ -7,8 +7,8 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
     public interface IParticipantsConferencesRepository
     {
-
-        
         public List<ParticipantsConferencesModel> GetParticipantsConferences();
+
+        public void UpdateParticipantsConferencesState(int index);
     }
 }

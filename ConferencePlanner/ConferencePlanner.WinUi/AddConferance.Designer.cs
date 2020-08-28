@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddConferance));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,21 +52,42 @@
             this.tabSpeakerEditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
+            this.CategoryTabAddButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabSearchButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabSearchTextBox = new System.Windows.Forms.TextBox();
+            this.CategoryTabNextButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
             this.tabType = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.TypeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btSearch = new ConferencePlanner.WinUi.ButonCircular();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btNewType = new ConferencePlanner.WinUi.ButonCircular();
+            this.btPreviousType = new ConferencePlanner.WinUi.ButonCircular();
+            this.dataGridViewType = new System.Windows.Forms.DataGridView();
+            this.btNextType = new ConferencePlanner.WinUi.ButonCircular();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textNameCountry = new System.Windows.Forms.TextBox();
+            this.PreviousBtn = new ConferencePlanner.WinUi.ButonCircular();
+            this.NextBtn = new ConferencePlanner.WinUi.ButonCircular();
             this.NewCountry = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVCountry = new System.Windows.Forms.DataGridView();
             this.CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DistrictFilter = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NextDistrict = new ConferencePlanner.WinUi.ButonCircular();
+            this.PreviousPageDistrict = new ConferencePlanner.WinUi.ButonCircular();
             this.NewDistrict = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVDistrict = new System.Windows.Forms.DataGridView();
             this.DictrictName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DistrictCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.filterCity = new System.Windows.Forms.TextBox();
+            this.PrevoiusCity = new ConferencePlanner.WinUi.ButonCircular();
+            this.NextCity = new ConferencePlanner.WinUi.ButonCircular();
             this.NewCity = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVCity = new System.Windows.Forms.DataGridView();
             this.CityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,17 +102,21 @@
             this.btBack = new System.Windows.Forms.Button();
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
+            this.tabCategory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -143,7 +169,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(290, 335);
+            this.button1.Location = new System.Drawing.Point(290, 521);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 27);
             this.button1.TabIndex = 8;
@@ -165,7 +191,7 @@
             this.tabConferance.Location = new System.Drawing.Point(25, 140);
             this.tabConferance.Name = "tabConferance";
             this.tabConferance.SelectedIndex = 5;
-            this.tabConferance.Size = new System.Drawing.Size(853, 189);
+            this.tabConferance.Size = new System.Drawing.Size(907, 375);
             this.tabConferance.TabIndex = 9;
             this.tabConferance.Tag = "Country";
             this.tabConferance.SelectedIndexChanged += new System.EventHandler(this.tabConferance_SelectedIndexChanged);
@@ -314,60 +340,206 @@
             // 
             // tabCategory
             // 
+            this.tabCategory.Controls.Add(this.CategoryTabAddButton);
+            this.tabCategory.Controls.Add(this.CategoryTabSearchButton);
+            this.tabCategory.Controls.Add(this.CategoryTabSearchTextBox);
+            this.tabCategory.Controls.Add(this.CategoryTabNextButton);
+            this.tabCategory.Controls.Add(this.CategoryTabPreviousButton);
+            this.tabCategory.Controls.Add(this.CategoryTabGrid);
             this.tabCategory.Location = new System.Drawing.Point(4, 24);
             this.tabCategory.Name = "tabCategory";
             this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
             this.tabCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabCategory.Size = new System.Drawing.Size(845, 161);
+            this.tabCategory.Size = new System.Drawing.Size(899, 347);
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
             // 
+            // CategoryTabAddButton
+            // 
+            this.CategoryTabAddButton.Location = new System.Drawing.Point(419, 83);
+            this.CategoryTabAddButton.Name = "CategoryTabAddButton";
+            this.CategoryTabAddButton.Size = new System.Drawing.Size(95, 35);
+            this.CategoryTabAddButton.TabIndex = 5;
+            this.CategoryTabAddButton.Text = "Add Category";
+            this.CategoryTabAddButton.UseVisualStyleBackColor = true;
+            this.CategoryTabAddButton.Click += new System.EventHandler(this.CategoryTabAddButton_Click);
+            // 
+            // CategoryTabSearchButton
+            // 
+            this.CategoryTabSearchButton.Location = new System.Drawing.Point(525, 17);
+            this.CategoryTabSearchButton.Name = "CategoryTabSearchButton";
+            this.CategoryTabSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabSearchButton.TabIndex = 4;
+            this.CategoryTabSearchButton.Text = "Search";
+            this.CategoryTabSearchButton.UseVisualStyleBackColor = true;
+            this.CategoryTabSearchButton.Click += new System.EventHandler(this.CategoryTabSearchButton_Click);
+            // 
+            // CategoryTabSearchTextBox
+            // 
+            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(419, 17);
+            this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
+            this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
+            this.CategoryTabSearchTextBox.TabIndex = 3;
+            this.CategoryTabSearchTextBox.Text = "Search...";
+            this.CategoryTabSearchTextBox.TextChanged += new System.EventHandler(this.CategoryTabSearchTextBox_TextChanged);
+            // 
+            // CategoryTabNextButton
+            // 
+            this.CategoryTabNextButton.Location = new System.Drawing.Point(84, 124);
+            this.CategoryTabNextButton.Name = "CategoryTabNextButton";
+            this.CategoryTabNextButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabNextButton.TabIndex = 2;
+            this.CategoryTabNextButton.Text = "Next";
+            this.CategoryTabNextButton.UseVisualStyleBackColor = true;
+            this.CategoryTabNextButton.Click += new System.EventHandler(this.CategoryTabNextButton_Click);
+            // 
+            // CategoryTabPreviousButton
+            // 
+            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(3, 124);
+            this.CategoryTabPreviousButton.Name = "CategoryTabPreviousButton";
+            this.CategoryTabPreviousButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabPreviousButton.TabIndex = 1;
+            this.CategoryTabPreviousButton.Text = "Previous";
+            this.CategoryTabPreviousButton.UseVisualStyleBackColor = true;
+            this.CategoryTabPreviousButton.Click += new System.EventHandler(this.CategoryTabPreviousButton_Click);
+            // 
+            // CategoryTabGrid
+            // 
+            this.CategoryTabGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CategoryTabGrid.Location = new System.Drawing.Point(3, 3);
+            this.CategoryTabGrid.Name = "CategoryTabGrid";
+            this.CategoryTabGrid.Size = new System.Drawing.Size(409, 115);
+            this.CategoryTabGrid.TabIndex = 0;
+            this.CategoryTabGrid.Text = "dataGridView1";
+            this.CategoryTabGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryTabGrid_CellClick);
+            this.CategoryTabGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.CategoryTabGrid_DataBindingComplete);
+            // 
             // tabType
             // 
-            this.tabType.Controls.Add(this.dataGridView3);
+            this.tabType.Controls.Add(this.btSearch);
+            this.tabType.Controls.Add(this.txtSearch);
+            this.tabType.Controls.Add(this.btNewType);
+            this.tabType.Controls.Add(this.btPreviousType);
+            this.tabType.Controls.Add(this.dataGridViewType);
+            this.tabType.Controls.Add(this.btNextType);
             this.tabType.Location = new System.Drawing.Point(4, 24);
             this.tabType.Name = "tabType";
-            this.tabType.Size = new System.Drawing.Size(845, 161);
+            this.tabType.Size = new System.Drawing.Size(899, 347);
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
             // 
-            // dataGridView3
+            // btSearch
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TypeName,
-            this.TypeCode});
-            this.dataGridView3.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(753, 151);
-            this.dataGridView3.TabIndex = 0;
-            this.dataGridView3.Text = "dataGridView3";
+            this.btSearch.Location = new System.Drawing.Point(623, 51);
+            this.btSearch.Name = "btSearch";
+            this.btSearch.Size = new System.Drawing.Size(75, 23);
+            this.btSearch.TabIndex = 5;
+            this.btSearch.Text = "Search";
+            this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
-            // TypeName
+            // txtSearch
             // 
-            this.TypeName.HeaderText = "Type name";
-            this.TypeName.Name = "TypeName";
-            this.TypeName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TypeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.txtSearch.Location = new System.Drawing.Point(614, 4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 23);
+            this.txtSearch.TabIndex = 4;
             // 
-            // TypeCode
+            // btNewType
             // 
-            this.TypeCode.HeaderText = "Type Code";
-            this.TypeCode.Name = "TypeCode";
-            this.TypeCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btNewType.Location = new System.Drawing.Point(442, 103);
+            this.btNewType.Name = "btNewType";
+            this.btNewType.Size = new System.Drawing.Size(106, 42);
+            this.btNewType.TabIndex = 3;
+            this.btNewType.Text = "New Type";
+            this.btNewType.UseVisualStyleBackColor = true;
+            this.btNewType.Click += new System.EventHandler(this.btNewType_Click);
+            // 
+            // btPreviousType
+            // 
+            this.btPreviousType.Location = new System.Drawing.Point(34, 111);
+            this.btPreviousType.Name = "btPreviousType";
+            this.btPreviousType.Size = new System.Drawing.Size(100, 33);
+            this.btPreviousType.TabIndex = 2;
+            this.btPreviousType.Text = "Previous ";
+            this.btPreviousType.UseVisualStyleBackColor = true;
+            this.btPreviousType.Click += new System.EventHandler(this.btPreviousType_Click);
+            // 
+            // dataGridViewType
+            // 
+            this.dataGridViewType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewType.Location = new System.Drawing.Point(-2, 2);
+            this.dataGridViewType.Name = "dataGridViewType";
+            this.dataGridViewType.Size = new System.Drawing.Size(566, 88);
+            this.dataGridViewType.TabIndex = 0;
+            this.dataGridViewType.Text = "dataGridView3";
+            this.dataGridViewType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewType_CellClick);
+            this.dataGridViewType.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewType_DataBindingComplete);
+            // 
+            // btNextType
+            // 
+            this.btNextType.Location = new System.Drawing.Point(191, 111);
+            this.btNextType.Name = "btNextType";
+            this.btNextType.Size = new System.Drawing.Size(97, 34);
+            this.btNextType.TabIndex = 1;
+            this.btNextType.Text = "Next";
+            this.btNextType.UseVisualStyleBackColor = true;
+            this.btNextType.Click += new System.EventHandler(this.btNextType_Click);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.textNameCountry);
+            this.tabPage1.Controls.Add(this.PreviousBtn);
+            this.tabPage1.Controls.Add(this.NextBtn);
             this.tabPage1.Controls.Add(this.NewCountry);
             this.tabPage1.Controls.Add(this.DGVCountry);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(845, 161);
+            this.tabPage1.Size = new System.Drawing.Size(899, 347);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Country";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(720, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 15);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Insert filter criteria";
+            // 
+            // textNameCountry
+            // 
+            this.textNameCountry.Location = new System.Drawing.Point(722, 36);
+            this.textNameCountry.Name = "textNameCountry";
+            this.textNameCountry.Size = new System.Drawing.Size(100, 23);
+            this.textNameCountry.TabIndex = 5;
+            this.textNameCountry.TextChanged += new System.EventHandler(this.textNameCountry_TextChanged);
+            // 
+            // PreviousBtn
+            // 
+            this.PreviousBtn.Location = new System.Drawing.Point(476, 100);
+            this.PreviousBtn.Name = "PreviousBtn";
+            this.PreviousBtn.Size = new System.Drawing.Size(108, 42);
+            this.PreviousBtn.TabIndex = 3;
+            this.PreviousBtn.Text = "Previous page";
+            this.PreviousBtn.UseVisualStyleBackColor = true;
+            this.PreviousBtn.Click += new System.EventHandler(this.PreviousBtn_Click);
+            // 
+            // NextBtn
+            // 
+            this.NextBtn.Location = new System.Drawing.Point(476, 24);
+            this.NextBtn.Name = "NextBtn";
+            this.NextBtn.Size = new System.Drawing.Size(108, 36);
+            this.NextBtn.TabIndex = 2;
+            this.NextBtn.Text = "Next page";
+            this.NextBtn.UseVisualStyleBackColor = true;
+            this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
             // 
             // NewCountry
             // 
@@ -387,7 +559,7 @@
             this.CountryCod});
             this.DGVCountry.Location = new System.Drawing.Point(4, 4);
             this.DGVCountry.Name = "DGVCountry";
-            this.DGVCountry.Size = new System.Drawing.Size(377, 150);
+            this.DGVCountry.Size = new System.Drawing.Size(456, 150);
             this.DGVCountry.TabIndex = 0;
             this.DGVCountry.Text = "dataGridView5";
             this.DGVCountry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
@@ -404,15 +576,56 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.DistrictFilter);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.NextDistrict);
+            this.tabPage2.Controls.Add(this.PreviousPageDistrict);
             this.tabPage2.Controls.Add(this.NewDistrict);
             this.tabPage2.Controls.Add(this.DGVDistrict);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(845, 161);
+            this.tabPage2.Size = new System.Drawing.Size(899, 347);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "District";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // DistrictFilter
+            // 
+            this.DistrictFilter.Location = new System.Drawing.Point(693, 47);
+            this.DistrictFilter.Name = "DistrictFilter";
+            this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
+            this.DistrictFilter.TabIndex = 5;
+            this.DistrictFilter.TextChanged += new System.EventHandler(this.DistrictFilter_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(693, 24);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 15);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Insert filter criteria";
+            // 
+            // NextDistrict
+            // 
+            this.NextDistrict.Location = new System.Drawing.Point(678, 91);
+            this.NextDistrict.Name = "NextDistrict";
+            this.NextDistrict.Size = new System.Drawing.Size(136, 32);
+            this.NextDistrict.TabIndex = 3;
+            this.NextDistrict.Text = "Next page";
+            this.NextDistrict.UseVisualStyleBackColor = true;
+            this.NextDistrict.Click += new System.EventHandler(this.NextDistrict_Click);
+            // 
+            // PreviousPageDistrict
+            // 
+            this.PreviousPageDistrict.Location = new System.Drawing.Point(494, 113);
+            this.PreviousPageDistrict.Name = "PreviousPageDistrict";
+            this.PreviousPageDistrict.Size = new System.Drawing.Size(115, 44);
+            this.PreviousPageDistrict.TabIndex = 2;
+            this.PreviousPageDistrict.Text = "Previous page";
+            this.PreviousPageDistrict.UseVisualStyleBackColor = true;
+            this.PreviousPageDistrict.Click += new System.EventHandler(this.PreviousPageDistrict_Click);
             // 
             // NewDistrict
             // 
@@ -432,7 +645,7 @@
             this.DistrictCod});
             this.DGVDistrict.Location = new System.Drawing.Point(4, 4);
             this.DGVDistrict.Name = "DGVDistrict";
-            this.DGVDistrict.Size = new System.Drawing.Size(382, 150);
+            this.DGVDistrict.Size = new System.Drawing.Size(461, 150);
             this.DGVDistrict.TabIndex = 0;
             this.DGVDistrict.Text = "dataGridView7";
             // 
@@ -448,16 +661,57 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.filterCity);
+            this.tabPage3.Controls.Add(this.PrevoiusCity);
+            this.tabPage3.Controls.Add(this.NextCity);
             this.tabPage3.Controls.Add(this.NewCity);
             this.tabPage3.Controls.Add(this.DGVCity);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(845, 161);
+            this.tabPage3.Size = new System.Drawing.Size(899, 347);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "City";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(692, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 15);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Insert the filter criteria";
+            // 
+            // filterCity
+            // 
+            this.filterCity.Location = new System.Drawing.Point(692, 113);
+            this.filterCity.Name = "filterCity";
+            this.filterCity.Size = new System.Drawing.Size(100, 23);
+            this.filterCity.TabIndex = 5;
+            this.filterCity.TextChanged += new System.EventHandler(this.filterCity_TextChanged);
+            // 
+            // PrevoiusCity
+            // 
+            this.PrevoiusCity.Location = new System.Drawing.Point(490, 76);
+            this.PrevoiusCity.Name = "PrevoiusCity";
+            this.PrevoiusCity.Size = new System.Drawing.Size(94, 36);
+            this.PrevoiusCity.TabIndex = 4;
+            this.PrevoiusCity.Text = "Previous page";
+            this.PrevoiusCity.UseVisualStyleBackColor = true;
+            this.PrevoiusCity.Click += new System.EventHandler(this.PrevoiusCity_Click);
+            // 
+            // NextCity
+            // 
+            this.NextCity.Location = new System.Drawing.Point(692, 27);
+            this.NextCity.Name = "NextCity";
+            this.NextCity.Size = new System.Drawing.Size(92, 40);
+            this.NextCity.TabIndex = 3;
+            this.NextCity.Text = "Next page";
+            this.NextCity.UseVisualStyleBackColor = true;
+            this.NextCity.Click += new System.EventHandler(this.NextCity_Click);
             // 
             // NewCity
             // 
@@ -477,7 +731,7 @@
             this.CityCod});
             this.DGVCity.Location = new System.Drawing.Point(4, 4);
             this.DGVCity.Name = "DGVCity";
-            this.DGVCity.Size = new System.Drawing.Size(356, 150);
+            this.DGVCity.Size = new System.Drawing.Size(454, 150);
             this.DGVCity.TabIndex = 0;
             this.DGVCity.Text = "dataGridView6";
             // 
@@ -515,7 +769,7 @@
             // btSaveAndNew
             // 
             this.btSaveAndNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSaveAndNew.Location = new System.Drawing.Point(406, 335);
+            this.btSaveAndNew.Location = new System.Drawing.Point(406, 521);
             this.btSaveAndNew.Name = "btSaveAndNew";
             this.btSaveAndNew.Size = new System.Drawing.Size(101, 27);
             this.btSaveAndNew.TabIndex = 13;
@@ -527,7 +781,7 @@
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Location = new System.Drawing.Point(587, 37);
+            this.dateTimePicker1.Location = new System.Drawing.Point(641, 37);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 14;
@@ -535,7 +789,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(587, 81);
+            this.dateTimePicker2.Location = new System.Drawing.Point(641, 81);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 15;
@@ -547,7 +801,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(493, 43);
+            this.label2.Location = new System.Drawing.Point(547, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 16;
@@ -560,7 +814,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(493, 87);
+            this.label5.Location = new System.Drawing.Point(547, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 15);
             this.label5.TabIndex = 17;
@@ -569,7 +823,7 @@
             // btBack
             // 
             this.btBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btBack.Location = new System.Drawing.Point(159, 335);
+            this.btBack.Location = new System.Drawing.Point(159, 521);
             this.btBack.Name = "btBack";
             this.btBack.Size = new System.Drawing.Size(88, 27);
             this.btBack.TabIndex = 18;
@@ -595,7 +849,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(890, 374);
+            this.ClientSize = new System.Drawing.Size(944, 560);
             this.Controls.Add(this.btBack);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -619,14 +873,22 @@
             this.tabSpeakers.ResumeLayout(false);
             this.tabSpeakers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
+            this.tabCategory.ResumeLayout(false);
+            this.tabCategory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).EndInit();
             this.tabType.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabType.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -651,10 +913,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView tabSpeakerGrid;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridViewType;
         private System.Windows.Forms.Button btBack;
-        private System.Windows.Forms.DataGridViewComboBoxColumn TypeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
+        private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -682,6 +943,30 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
+        private System.Windows.Forms.DataGridView CategoryTabGrid;
+        private ButonCircular CategoryTabNextButton;
+        private ButonCircular CategoryTabPreviousButton;
+        private ButonCircular CategoryTabSearchButton;
+        private System.Windows.Forms.TextBox CategoryTabSearchTextBox;
+        private ButonCircular CategoryTabAddButton;
+        private ButonCircular btPreviousType;
+        private ButonCircular btNextType;
+        private ButonCircular btNewType;
+        private ButonCircular btSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private ButonCircular PreviousBtn;
+        private ButonCircular NextBtn;
+        private ButonCircular PreviousPageDistrict;
+        private ButonCircular PrevoiusCity;
+        private ButonCircular NextCity;
+        private ButonCircular NextDistrict;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.TextBox textNameCountry;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox DistrictFilter;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox filterCity;
         private ButonCircular tabSpeakerAdd;
         private ButonCircular tabSpeakerNextButton;
         private ButonCircular tabSpeakerPreviousButton;

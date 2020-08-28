@@ -38,7 +38,7 @@ namespace ConferencePlanner.WinUi
 
         public static IServiceProvider ServiceProvider { get; set; }
 
-       public static String EmailParticipants;
+       public static  String EmailParticipants;
 
 
 
@@ -48,13 +48,18 @@ namespace ConferencePlanner.WinUi
             // Ich bin very poliglotten
             var services = new ServiceCollection();
 
-            services.AddScoped<TestareFctButoane>();
+          
             services.AddScoped<IDictionaryParticipantState, GetDemoStateRepository>();
 
             services.AddScoped<MainScreen>();
             services.AddScoped<StartScreen>();
             services.AddScoped<AddConferance>();
             services.AddScoped<SpeakerForm>();
+            services.AddScoped<NewCountryForm>();
+            services.AddScoped<NewDistrictForm>();
+            services.AddScoped<NewCityForm>();
+            services.AddScoped<NewConferanceType>();
+            services.AddScoped<AddEditConferenceCategoryScreen>();
             services.AddScoped<EditSpeakerForm>();
             services.AddScoped<AddSpeakerForm>();
 
@@ -63,6 +68,12 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();
             services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
             services.AddScoped<IConferenceCategoryRepository, ConferenceCategoryRepository>();
+            services.AddScoped<IAddConferenceCityRepository, AddConferenceCityRepository>();
+            services.AddScoped<IAddConferenceCountyRepository, AddConferenceContryRepository>();
+            services.AddScoped<IAddConferenceDistrictRepository, AddConferenceDistrictRepository>();
+            services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
+           
+
             services.AddScoped<ISpeakerRepository, SpeakerRepository>();
             services.AddSingleton<SqlConnection>(a =>
             {
