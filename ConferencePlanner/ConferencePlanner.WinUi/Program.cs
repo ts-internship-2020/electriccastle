@@ -60,6 +60,8 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<NewCityForm>();
             services.AddScoped<NewConferanceType>();
             services.AddScoped<AddEditConferenceCategoryScreen>();
+            services.AddScoped<EditSpeakerForm>();
+            services.AddScoped<AddSpeakerForm>();
 
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
             services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
@@ -72,6 +74,7 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
            
 
+            services.AddScoped<ISpeakerRepository, SpeakerRepository>();
             services.AddSingleton<SqlConnection>(a =>
             {
                 SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
