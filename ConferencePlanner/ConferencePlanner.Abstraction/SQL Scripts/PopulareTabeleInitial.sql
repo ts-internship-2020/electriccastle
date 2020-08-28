@@ -71,7 +71,6 @@ VALUES(1, 'Joined', 'JOD'),
 	  (2, 'Withdrawn', 'WDN'),
 	  (3, 'Attended', 'ATD');
 
-
 INSERT INTO ConferenceParticipant 
 VALUES (1,'ileanazina@yahoo.com', 1),
 	   (2,'zinaileana@gmail.com', 2),
@@ -137,6 +136,7 @@ VALUES  (1, 1, 0),
 		(3, 14, 1),
 		(7, 14, 0); 
 		
+
 --BEGIN TRAN
 
 --ROLLBACK

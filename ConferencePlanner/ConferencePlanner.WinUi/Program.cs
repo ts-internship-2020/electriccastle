@@ -55,6 +55,7 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<StartScreen>();
             services.AddScoped<AddConferance>();
             services.AddScoped<SpeakerForm>();
+            services.AddScoped<AddEditConferenceCategoryScreen>();
 
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
             services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();

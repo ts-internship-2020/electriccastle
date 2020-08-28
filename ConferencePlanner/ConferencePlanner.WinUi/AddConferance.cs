@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 using Windows.ApplicationModel.Activation;
 using System.Linq;
 
@@ -37,8 +38,6 @@ namespace ConferencePlanner.WinUi
             InitializeComponent();
             _getConferanceCategory=getConferanceCategory;
             this.conferenceCategoryRepository = conferenceCategoryRepository;
-            conferenceCategories = conferenceCategoryRepository.getAllCategories();
-            categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
         }
 
 
@@ -136,10 +135,6 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Load(object sender, EventArgs e)
         {
-            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
-            CategoryTabGrid.AutoGenerateColumns = true;
-            ManageCategoryTabPaginationButtonsState();
-            GenerateCategoryTabEditDeleteButtons();
             //// List<ConferanceCategory> conferenceCategory = _getConferanceCategory.GetConferencesCategory();
 
             //foreach (List<ConferanceCategory> conferance in conferenceCategory)
@@ -150,19 +145,25 @@ namespace ConferencePlanner.WinUi
 
         private void GenerateCategoryTabEditDeleteButtons()
         {
-            DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
-            CategoryTabGrid.Columns.Add(buttonEdit);
-            buttonEdit.HeaderText = "Edit";
-            buttonEdit.Name = "Edit";
-            buttonEdit.Text = "Edit";
-            buttonEdit.UseColumnTextForButtonValue = true;
+            if (!CategoryTabGrid.Columns.Contains("Edit"))
+            {
+                DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
+                CategoryTabGrid.Columns.Add(buttonEdit);
+                buttonEdit.HeaderText = "Edit";
+                buttonEdit.Name = "Edit";
+                buttonEdit.Text = "Edit";
+                buttonEdit.UseColumnTextForButtonValue = true;
+            }
 
-            DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
-            CategoryTabGrid.Columns.Add(buttonDelete);
-            buttonDelete.HeaderText = "Delete";
-            buttonDelete.Name = "Delete";
-            buttonDelete.Text = "Delete";
-            buttonDelete.UseColumnTextForButtonValue = true;
+            if (!CategoryTabGrid.Columns.Contains("Delete"))
+            {
+                DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
+                CategoryTabGrid.Columns.Add(buttonDelete);
+                buttonDelete.HeaderText = "Delete";
+                buttonDelete.Name = "Delete";
+                buttonDelete.Text = "Delete";
+                buttonDelete.UseColumnTextForButtonValue = true;
+            }
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
@@ -226,21 +227,22 @@ namespace ConferencePlanner.WinUi
 
         private void CategoryTabGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != CategoryTabGrid.Columns["Edit"].Index
-                               || e.ColumnIndex != CategoryTabGrid.Columns["Delete"].Index) return;
+            if (e.RowIndex < 0 || (e.ColumnIndex != CategoryTabGrid.Columns["Edit"].Index
+                               && e.ColumnIndex != CategoryTabGrid.Columns["Delete"].Index)) return;
 
             Int32 categoryId = (Int32)CategoryTabGrid[CategoryTabGrid.Columns["ConferenceCategoryId"].Index, e.RowIndex].Value;
 
             if (e.ColumnIndex == CategoryTabGrid.Columns["Edit"].Index)
             {
-                //AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
-                //addConferance.ConferenceId = categoryId;
-                //addConferance.ShowDialog();
+                AddEditConferenceCategoryScreen addEditCategory = Program.ServiceProvider.GetService<AddEditConferenceCategoryScreen>();
+                addEditCategory.CategoryId = categoryId;
+                addEditCategory.ShowDialog();
             }
 
             if (e.ColumnIndex == CategoryTabGrid.Columns["Delete"].Index)
             {
-                //conferenceCategoryRepository.deleteCategory(categoryId);
+                conferenceCategoryRepository.deleteCategory(categoryId);
+                // ??? Cum sa refreshez dupa ce dau delete
             }
         }
 
@@ -272,6 +274,23 @@ namespace ConferencePlanner.WinUi
                                                                                                  || category.ConferenceCategoryCode.ToLower().Contains(searchString.ToLower())).ToList();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(filteredData, categoryTabPageSize);
             CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+            ManageCategoryTabPaginationButtonsState();
+        }
+
+        private void CategoryTabAddButton_Click(object sender, EventArgs e)
+        {
+            AddEditConferenceCategoryScreen addEditCategory = Program.ServiceProvider.GetService<AddEditConferenceCategoryScreen>();
+            addEditCategory.CategoryId = null;
+            addEditCategory.ShowDialog();
+        }
+
+        private void AddConferance_Activated(object sender, EventArgs e)
+        {
+            conferenceCategories = conferenceCategoryRepository.getAllCategories();
+            categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
+            CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+            CategoryTabGrid.AutoGenerateColumns = true;
+            GenerateCategoryTabEditDeleteButtons();
             ManageCategoryTabPaginationButtonsState();
         }
     }

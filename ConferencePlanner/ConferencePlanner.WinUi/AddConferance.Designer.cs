@@ -49,6 +49,9 @@
             this.tabSpeakerEditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
+            this.CategoryTabAddButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabSearchButton = new ConferencePlanner.WinUi.ButonCircular();
+            this.CategoryTabSearchTextBox = new System.Windows.Forms.TextBox();
             this.CategoryTabNextButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
@@ -83,8 +86,6 @@
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryTabSearchTextBox = new System.Windows.Forms.TextBox();
-            this.CategoryTabSearchButton = new ConferencePlanner.WinUi.ButonCircular();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
@@ -282,6 +283,7 @@
             // 
             // tabCategory
             // 
+            this.tabCategory.Controls.Add(this.CategoryTabAddButton);
             this.tabCategory.Controls.Add(this.CategoryTabSearchButton);
             this.tabCategory.Controls.Add(this.CategoryTabSearchTextBox);
             this.tabCategory.Controls.Add(this.CategoryTabNextButton);
@@ -295,6 +297,34 @@
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
+            // 
+            // CategoryTabAddButton
+            // 
+            this.CategoryTabAddButton.Location = new System.Drawing.Point(419, 83);
+            this.CategoryTabAddButton.Name = "CategoryTabAddButton";
+            this.CategoryTabAddButton.Size = new System.Drawing.Size(95, 35);
+            this.CategoryTabAddButton.TabIndex = 5;
+            this.CategoryTabAddButton.Text = "Add Category";
+            this.CategoryTabAddButton.UseVisualStyleBackColor = true;
+            this.CategoryTabAddButton.Click += new System.EventHandler(this.CategoryTabAddButton_Click);
+            // 
+            // CategoryTabSearchButton
+            // 
+            this.CategoryTabSearchButton.Location = new System.Drawing.Point(525, 17);
+            this.CategoryTabSearchButton.Name = "CategoryTabSearchButton";
+            this.CategoryTabSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabSearchButton.TabIndex = 4;
+            this.CategoryTabSearchButton.Text = "Search";
+            this.CategoryTabSearchButton.UseVisualStyleBackColor = true;
+            this.CategoryTabSearchButton.Click += new System.EventHandler(this.CategoryTabSearchButton_Click);
+            // 
+            // CategoryTabSearchTextBox
+            // 
+            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(419, 17);
+            this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
+            this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
+            this.CategoryTabSearchTextBox.TabIndex = 3;
+            this.CategoryTabSearchTextBox.Text = "Search...";
             // 
             // CategoryTabNextButton
             // 
@@ -612,24 +642,6 @@
             this.tabSpeakerColumnRating.Name = "tabSpeakerColumnRating";
             this.tabSpeakerColumnRating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // CategoryTabSearchTextBox
-            // 
-            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(419, 17);
-            this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
-            this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
-            this.CategoryTabSearchTextBox.TabIndex = 3;
-            this.CategoryTabSearchTextBox.Text = "Search...";
-            // 
-            // CategoryTabSearchButton
-            // 
-            this.CategoryTabSearchButton.Location = new System.Drawing.Point(525, 17);
-            this.CategoryTabSearchButton.Name = "CategoryTabSearchButton";
-            this.CategoryTabSearchButton.Size = new System.Drawing.Size(75, 23);
-            this.CategoryTabSearchButton.TabIndex = 4;
-            this.CategoryTabSearchButton.Text = "Search";
-            this.CategoryTabSearchButton.UseVisualStyleBackColor = true;
-            this.CategoryTabSearchButton.Click += new System.EventHandler(this.CategoryTabSearchButton_Click);
-            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -655,6 +667,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddConferance";
             this.Text = "Start Date";
+            this.Activated += new System.EventHandler(this.AddConferance_Activated);
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);
@@ -737,5 +750,6 @@
         private ButonCircular CategoryTabPreviousButton;
         private ButonCircular CategoryTabSearchButton;
         private System.Windows.Forms.TextBox CategoryTabSearchTextBox;
+        private ButonCircular CategoryTabAddButton;
     }
 }

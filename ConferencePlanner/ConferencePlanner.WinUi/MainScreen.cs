@@ -40,8 +40,6 @@ namespace ConferencePlanner.WinUi
             this.organizerConferencesRepository = organizerConferencesRepository;
             scrollVal = 0;
             InitializeComponent();
-            organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
-            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
         }
 
        
@@ -79,17 +77,16 @@ namespace ConferencePlanner.WinUi
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
-
             conferences = _getParticipantRepository.GetParticipantsConferences();
 
             populateGridParticipants(conferences, scrollVal);
- 
 
-
+            organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
+            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             OrganizerGrid.AutoGenerateColumns = true;
-            ManageOrganizerPaginationButtonsState();
             GenerateOrganizerEditButtons();
+            ManageOrganizerPaginationButtonsState();
         }
         
         private void GenerateOrganizerEditButtons()
