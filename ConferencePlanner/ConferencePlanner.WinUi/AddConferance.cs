@@ -40,7 +40,7 @@ namespace ConferencePlanner.WinUi
 
         public static int maxIdSpeaker = 0;
 
-        private int scrollVal;
+        private int scrollValSpeaker;
 
         List<int> getSpeakerInConference;
 
@@ -57,7 +57,7 @@ namespace ConferencePlanner.WinUi
             _getConferanceCategory=getConferanceCategory;
             this.conferenceCategoryRepository = conferenceCategoryRepository;
             this.getSpeakerRepository = getSpeakerRepository;
-            scrollVal = 0;
+            scrollValSpeaker = 0;
             elementMainSpeakerId = 0;
             getSpeakerInConference = new List<int>();
             conferenceCategories = conferenceCategoryRepository.getAllCategories();
@@ -155,7 +155,7 @@ namespace ConferencePlanner.WinUi
         private void AddConferance_Load(object sender, EventArgs e)
         {
             getSpeakerList = getSpeakerRepository.GetSpeaker();
-            populateTabSpeakersGrid(getSpeakerList, scrollVal);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
             getMaxId(getSpeakerList);
             List<SpeakerModel> getSpeakerInConference = new List<SpeakerModel>();
 
@@ -253,7 +253,7 @@ namespace ConferencePlanner.WinUi
             for (i = 0; i < numberRowsPage; i++)
             {
                 rows = tabSpeakerGrid.Rows.Add();
-                SpeakerModel listElement = speakerList.ElementAt(i + scrollVal);
+                SpeakerModel listElement = speakerList.ElementAt(i + scrollValSpeaker);
                 speakers.Add(listElement);
 
                 tabSpeakerGrid.Rows[rows].Cells[0].Value = listElement.Name.ToString();
@@ -298,23 +298,23 @@ namespace ConferencePlanner.WinUi
         private void tabSpeakerNextButton_Click(object sender, EventArgs e)
         {
             int nr = getSpeakerList.Count;
-            scrollVal = scrollVal + 5;
-            if (scrollVal >= nr)
+            scrollValSpeaker = scrollValSpeaker + 5;
+            if (scrollValSpeaker >= nr)
             {
-                scrollVal = scrollVal - 5;
+                scrollValSpeaker = scrollValSpeaker - 5;
             }
-            populateTabSpeakersGrid(getSpeakerList, scrollVal);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
         }
 
 
         private void tabSpeakerPreviousButton_Click(object sender, EventArgs e)
         {
-            scrollVal = scrollVal - 5;
-            if (scrollVal < 0)
+            scrollValSpeaker = scrollValSpeaker - 5;
+            if (scrollValSpeaker < 0)
             {
-                scrollVal = 0;
+                scrollValSpeaker = 0;
             }
-            populateTabSpeakersGrid(getSpeakerList, scrollVal);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
         }
 
         private void tabSpeakerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -344,9 +344,9 @@ namespace ConferencePlanner.WinUi
             if (e.ColumnIndex == 6)//Delete
             {
                 getSpeakerRepository.deleteSpeaker(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
-                scrollVal = 0;
+                scrollValSpeaker = 0;
                 getSpeakerList = getSpeakerRepository.GetSpeaker();
-                populateTabSpeakersGrid(getSpeakerList, scrollVal);
+                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
 
             }
 
@@ -392,19 +392,19 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Activated(object sender, EventArgs e)
         {
-            scrollVal = 0;
+            scrollValSpeaker = 0;
             getSpeakerList = getSpeakerRepository.GetSpeaker();
-            populateTabSpeakersGrid(getSpeakerList, scrollVal);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
             getMaxId(getSpeakerList);
         }
 
         private void tabSpeakerFilterButton_Click(object sender, EventArgs e)
         {
-            scrollVal = 0;
+            scrollValSpeaker = 0;
             List<SpeakerModel> speakerModelTxt = getSpeakerRepository.GetSpeaker();
             getSpeakerList = speakerModelTxt.Where(getSpeakerList => (getSpeakerList.Name.Contains(tabSpeakerFilterText.Text)) ||
             (getSpeakerList.Code.Contains(tabSpeakerFilterText.Text))).ToList();
-            populateTabSpeakersGrid(getSpeakerList, scrollVal);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
         }
     }
 }
