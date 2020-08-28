@@ -27,16 +27,15 @@ namespace ConferencePlanner.WinUi
         // Category Tab
 
         private readonly IConferenceCategoryRepository conferenceCategoryRepository;
-        private readonly IConferenceTypeRepository conferanceTypeRepository;
-
         private List<ConferenceCategoryModel> conferenceCategories;
-        private List<ConferenceTypeModel> conferanceTypeModels;
-
         private PaginationHelper<ConferenceCategoryModel> categoryTabPaginationHelper;
-        private PaginationHelper<ConferenceTypeModel> conferanceTypePaginationHelper;
-       
-
         private int categoryTabPageSize = 3;
+
+
+        //Type Tab
+        private readonly IConferenceTypeRepository conferanceTypeRepository;
+        private List<ConferenceTypeModel> conferanceTypeModels;
+        private PaginationHelper<ConferenceTypeModel> conferanceTypePaginationHelper;
         private int typeTabPageSize = 1;
      
 
@@ -345,6 +344,13 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Activated(object sender, EventArgs e)
         {
+            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
+            conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            dataGridViewType.AutoGenerateColumns = true;
+            ManageTypeTabPaginationButtonsState();
+            GenerateTypeTabEditAndDeleteButtons();
+
             CategoryTabReloadData();
         }
 
@@ -456,18 +462,7 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void AddConferance_Activated(object sender, EventArgs e)
-        {
-            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
-            conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
-
-            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
-            dataGridViewType.AutoGenerateColumns = true;
-
-            ManageTypeTabPaginationButtonsState();
-            GenerateTypeTabEditAndDeleteButtons();
-
-        }
+      
     }
 }
 
