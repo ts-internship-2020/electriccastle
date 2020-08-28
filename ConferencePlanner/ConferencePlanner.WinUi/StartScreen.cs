@@ -13,7 +13,7 @@ namespace ConferencePlanner.WinUi
 {
     public partial class StartScreen : Form
     {
-
+       
         public StartScreen()
         {
             InitializeComponent();
@@ -24,6 +24,7 @@ namespace ConferencePlanner.WinUi
         private void submitButton_Click(object sender, EventArgs e)
         {
             EmailParticipants = txtButton.Text.ToString();
+            
 
             MainScreen ms = Program.ServiceProvider.GetService<MainScreen>();
 
@@ -31,7 +32,10 @@ namespace ConferencePlanner.WinUi
 
             Visible = false;
 
+            
         }
+
+    
 
         private void txtButton_Validating(object sender, CancelEventArgs e)
         {
@@ -64,6 +68,9 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-     
+        private void txtButton_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewDistrictForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,7 +37,11 @@
             this.DistrictNameTb = new System.Windows.Forms.TextBox();
             this.DistrictCodTb = new System.Windows.Forms.TextBox();
             this.butonCircular1 = new ConferencePlanner.WinUi.ButonCircular();
+            this.errorProviderDistrictName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderDistrictCod = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictCod)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -48,6 +53,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(106, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(103, 119);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -121,6 +127,15 @@
             this.butonCircular1.TabIndex = 6;
             this.butonCircular1.Text = "Add district";
             this.butonCircular1.UseVisualStyleBackColor = true;
+            this.butonCircular1.Click += new System.EventHandler(this.butonCircular1_Click);
+            // 
+            // errorProviderDistrictName
+            // 
+            this.errorProviderDistrictName.ContainerControl = this;
+            // 
+            // errorProviderDistrictCod
+            // 
+            this.errorProviderDistrictCod.ContainerControl = this;
             // 
             // NewDistrictForm
             // 
@@ -137,6 +152,8 @@
             this.Name = "NewDistrictForm";
             this.Text = "NewDistrictForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictCod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +168,8 @@
         private System.Windows.Forms.TextBox DistrictNameTb;
         private System.Windows.Forms.TextBox DistrictCodTb;
         private ButonCircular butonCircular1;
+        private System.Windows.Forms.ErrorProvider errorProviderDistrictName;
+        private System.Windows.Forms.ErrorProvider errorProviderCod;
+        private System.Windows.Forms.ErrorProvider errorProviderDistrictCod;
     }
 }

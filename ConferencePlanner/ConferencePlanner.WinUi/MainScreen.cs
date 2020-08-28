@@ -18,6 +18,8 @@ namespace ConferencePlanner.WinUi
 {
     public partial class MainScreen : Form
     {
+        //private string emailParticipantLogare;
+
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
@@ -25,6 +27,8 @@ namespace ConferencePlanner.WinUi
         private List<OrganizerConferencesModel> organizerConferences;
 
         private PaginationHelper<OrganizerConferencesModel> paginationHelper;
+
+        private readonly IEmailParticipant _email;
 
         private List<ParticipantsConferencesModel> conferences;
 
@@ -42,6 +46,8 @@ namespace ConferencePlanner.WinUi
             InitializeComponent();
             organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
             paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
+
+            
         }
 
        
@@ -72,7 +78,7 @@ namespace ConferencePlanner.WinUi
                 ConferencesParticipant.Rows[n].Cells[9].Value = "Withdraw";
                 ConferencesParticipant.Rows[n].Cells[10].Value = listElement.StateName.ToString();
 
-
+                
             }
 
         }
@@ -121,6 +127,7 @@ namespace ConferencePlanner.WinUi
 
         private void FilterParticipants_Click(object sender, EventArgs e)
         {
+          
             scrollVal = 0;
             List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
             conferences = conferenceParticipants.Where(conference => (conference.StartDate >= DatePickerParticipantStart.Value) && 
@@ -178,33 +185,39 @@ namespace ConferencePlanner.WinUi
         }
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 7 )
+           // _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
+
+            if (e.ColumnIndex == 7 )
             {
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
                     ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
-                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+                    ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+                
             }
             else if(e.ColumnIndex == 8)
             {
-                
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes <= 5)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
-
+                
                 //if (ts.TotalMinutes > 5)
-                //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].Visible = false;
+                //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].di = false;
                 Form f = new WebViewConnection();
                 f.Show();
 
             }
             else if (e.ColumnIndex == 9)
             {
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes >= 6)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[9].Style.BackColor = System.Drawing.Color.Red;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Withdraw";
+                
             }
 
             if (e.ColumnIndex == 6)
@@ -213,6 +226,9 @@ namespace ConferencePlanner.WinUi
                 SpeakerForm sf = Program.ServiceProvider.GetService<SpeakerForm>();
                 sf.ShowDialog();
             }
+
+           
+           
         }
 
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewCityForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,7 +37,11 @@
             this.CityNameTb = new System.Windows.Forms.TextBox();
             this.CityCodTb = new System.Windows.Forms.TextBox();
             this.butonCircular1 = new ConferencePlanner.WinUi.ButonCircular();
+            this.errorProviderCityName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderCityCod = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityCod)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -48,6 +53,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(103, 37);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(122, 73);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -122,6 +128,15 @@
             this.butonCircular1.TabIndex = 6;
             this.butonCircular1.Text = "Add city";
             this.butonCircular1.UseVisualStyleBackColor = true;
+            this.butonCircular1.Click += new System.EventHandler(this.butonCircular1_Click);
+            // 
+            // errorProviderCityName
+            // 
+            this.errorProviderCityName.ContainerControl = this;
+            // 
+            // errorProviderCityCod
+            // 
+            this.errorProviderCityCod.ContainerControl = this;
             // 
             // NewCityForm
             // 
@@ -138,6 +153,8 @@
             this.Name = "NewCityForm";
             this.Text = "NewCityForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityCod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +169,7 @@
         private System.Windows.Forms.TextBox CityNameTb;
         private System.Windows.Forms.TextBox CityCodTb;
         private ButonCircular butonCircular1;
+        private System.Windows.Forms.ErrorProvider errorProviderCityName;
+        private System.Windows.Forms.ErrorProvider errorProviderCityCod;
     }
 }
