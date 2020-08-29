@@ -52,6 +52,8 @@ namespace ConferencePlanner.WinUi
         //City Tab
         private List<AddConferenceCityModel> cityModel;
         private readonly IAddConferenceCityRepository _getCity;
+        public static AddConferenceCityModel editedCity;
+        private List<AddConferenceCityModel> currentCityGridPage;
 
         //tab Speaker
         private readonly ISpeakerRepository getSpeakerRepository;
@@ -293,6 +295,7 @@ namespace ConferencePlanner.WinUi
 
         void populateGridCity(List<AddConferenceCityModel> city, int scrollVal)
         {
+            List<AddConferenceCityModel> cities = new List<AddConferenceCityModel>();
             DGVCity.Rows.Clear();
             int nr = city.Count;
 
@@ -309,8 +312,9 @@ namespace ConferencePlanner.WinUi
 
                 DGVCity.Rows[n].Cells[0].Value = listCity.DictionaryCityName.ToString();
                 DGVCity.Rows[n].Cells[1].Value = listCity.CityCode.ToString();
+                cities.Add(listCity);
             }
-
+            currentCityGridPage = cities;
         }
 
         
@@ -414,9 +418,9 @@ namespace ConferencePlanner.WinUi
         {
             DataGridViewButtonColumn buttonDeleteCity = new DataGridViewButtonColumn();
             DGVCity.Columns.Add(buttonDeleteCity);
-            buttonDeleteCity.HeaderText = "Edit";
-            buttonDeleteCity.Name = "Edit";
-            buttonDeleteCity.Text = "Edit";
+            buttonDeleteCity.HeaderText = "Delete";
+            buttonDeleteCity.Name = "Delete";
+            buttonDeleteCity.Text = "Delete";
             buttonDeleteCity.UseColumnTextForButtonValue = true;
         }
 
@@ -443,8 +447,9 @@ namespace ConferencePlanner.WinUi
 
         private void NewCity_Click(object sender, EventArgs e)
         {
-            NewCityForm fcity = new NewCityForm();
-            fcity.Show();
+            editedCity = null;
+            NewCityForm fcity = Program.ServiceProvider.GetService<NewCityForm>();
+            fcity.ShowDialog();
         }
 
         private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -690,6 +695,11 @@ namespace ConferencePlanner.WinUi
             getSpeakerList = getSpeakerRepository.GetSpeaker();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
             getMaxId(getSpeakerList);
+
+            scrollVal = 0;
+            cityModel = _getCity.GetConferencesCity();
+            populateGridCity(cityModel, scrollVal);
+
         }
 
         private void CategoryTabReloadData()
@@ -841,7 +851,7 @@ namespace ConferencePlanner.WinUi
 
         private void NextDistrict_Click(object sender, EventArgs e)
         {
-            int nr = countryModel.Count;
+            int nr = districtModel.Count;
             scrollVal = scrollVal + 3;
             if (scrollVal >= nr)
             {
@@ -862,7 +872,7 @@ namespace ConferencePlanner.WinUi
 
         private void NextCity_Click(object sender, EventArgs e)
         {
-            int nr = countryModel.Count;
+            int nr = cityModel.Count;
             scrollVal = scrollVal + 3;
             if (scrollVal >= nr)
             {
@@ -910,6 +920,39 @@ namespace ConferencePlanner.WinUi
             getSpeakerList = speakerModelTxt.Where(getSpeakerList => (getSpeakerList.Name.Contains(tabSpeakerFilterText.Text)) ||
             (getSpeakerList.Code.Contains(tabSpeakerFilterText.Text))).ToList();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+        }
+
+        private void DGVCity_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            editedCity = null;
+            //check if only Delete or Edit button is pressed
+            if (e.RowIndex < 0 || (e.ColumnIndex != DGVCity.Columns["Edit"].Index && e.ColumnIndex != DGVCity.Columns["Delete"].Index))
+            {
+                return;
+            }
+            else
+            {
+                //button is valid
+            }
+            // check if Edit Button is pressed
+            if (e.ColumnIndex == DGVCity.Columns["Edit"].Index)
+            {
+                editedCity = currentCityGridPage.ElementAt(e.RowIndex);
+                NewCityForm fcity = Program.ServiceProvider.GetService<NewCityForm>();
+                fcity.ShowDialog();
+            }
+            // check if Delete Button is pressed
+            else if (e.ColumnIndex == DGVCity.Columns["Delete"].Index)
+            {
+                _getCity.deleteCity(currentCityGridPage.ElementAt(e.RowIndex).DictionaryCityId);
+                scrollVal = 0;
+                cityModel = _getCity.GetConferencesCity();
+                populateGridCity(cityModel, scrollVal);
+            }
+            else
+            {
+                // do nothing
+            }
         }
     }
 }

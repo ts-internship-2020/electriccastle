@@ -210,7 +210,7 @@
             this.tabSpeakers.Name = "tabSpeakers";
             this.tabSpeakers.Padding = new System.Windows.Forms.Padding(3);
             this.tabSpeakers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabSpeakers.Size = new System.Drawing.Size(845, 161);
+            this.tabSpeakers.Size = new System.Drawing.Size(899, 347);
             this.tabSpeakers.TabIndex = 1;
             this.tabSpeakers.Text = "Speakers";
             this.tabSpeakers.UseVisualStyleBackColor = true;
@@ -725,6 +725,7 @@
             // 
             // DGVCity
             // 
+            this.DGVCity.AllowUserToAddRows = false;
             this.DGVCity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCity.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CityName,
@@ -734,6 +735,7 @@
             this.DGVCity.Size = new System.Drawing.Size(454, 150);
             this.DGVCity.TabIndex = 0;
             this.DGVCity.Text = "dataGridView6";
+            this.DGVCity.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCity_CellContentClick);
             // 
             // CityName
             // 

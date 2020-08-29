@@ -63,19 +63,53 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             sqlCommand.Parameters.Add(parameters[1]);
         }
 
-        public void UpdateConferenceCity()
+        public void updateCity(int cityId, string cityCode, string cityName , int cityDistrictId )
         {
-            throw new NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@Id", cityId);
+            parameters[1] = new SqlParameter("@Code", cityCode);
+            parameters[2] = new SqlParameter("@Name", cityName);
+            parameters[3] = new SqlParameter("@DistrictId", cityDistrictId);
+
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            sqlCommand.CommandText = $"update DictionaryCity set CityCode = @Code, DictionaryCityName = @Name, DictionaryDistrictId = @DistrictId where DictionaryCityId = @Id;";
+            sqlCommand.Parameters.Add(parameters[0]);
+            sqlCommand.Parameters.Add(parameters[1]);
+            sqlCommand.Parameters.Add(parameters[2]);
+            sqlCommand.Parameters.Add(parameters[3]);
+
+
+            int nr = sqlCommand.ExecuteNonQuery();
         }
 
-        public void DeleteConferenceCitry()
+        public void deleteCity(int cityId)
         {
-            throw new NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Id", cityId);
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            sqlCommand.CommandText = $"delete from DictionaryCity where DictionaryCityId = @Id;";
+            sqlCommand.Parameters.Add(parameters[0]);
+            int nr = sqlCommand.ExecuteNonQuery();
         }
 
-        public void InsertConferenceCity()
+        public void insertCity(int cityId, string cityCode, string cityName, int cityDistrictId)
         {
-            throw new NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@Id", cityId);
+            parameters[1] = new SqlParameter("@Code", cityCode);
+            parameters[2] = new SqlParameter("@Name", cityName);
+            parameters[3] = new SqlParameter("@DistrictId", cityDistrictId);
+
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            sqlCommand.CommandText = $"insert into DictionaryCity values(@Id,@Code,@Name,@DistrictId)";
+            sqlCommand.Parameters.Add(parameters[0]);
+            sqlCommand.Parameters.Add(parameters[1]);
+            sqlCommand.Parameters.Add(parameters[2]);
+            sqlCommand.Parameters.Add(parameters[3]);
+
+
+            int nr = sqlCommand.ExecuteNonQuery();
+
         }
     }
 }
