@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 
 namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 {
-    public class AddConferenceContryRepository : IAddConferenceCountyRepository
+    public class AddConferenceCountryRepository : IAddConferenceCountryRepository
     {
         private readonly SqlConnection _sqlConnection;
 
-        public AddConferenceContryRepository(SqlConnection sqlConnection)
+        public AddConferenceCountryRepository(SqlConnection sqlConnection)
         {
             _sqlConnection = sqlConnection;
         }
