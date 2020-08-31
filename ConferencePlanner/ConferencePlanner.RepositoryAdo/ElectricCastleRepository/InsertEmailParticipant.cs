@@ -27,7 +27,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             parameters[1] = new SqlParameter("@Email", email);
 
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            sqlCommand.CommandText = $"insert into ConferenceParticipant values(@Id,'@Email',1)";
+            sqlCommand.CommandText = $"insert into ConferenceParticipant values(@Id+1,@Email,1)";
             sqlCommand.Parameters.Add(parameters[0]);
             sqlCommand.Parameters.Add(parameters[1]);
 

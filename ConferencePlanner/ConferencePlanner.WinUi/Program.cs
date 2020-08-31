@@ -5,6 +5,7 @@ using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
 using ConferencePlanner.Repository.Ado.Repository;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -71,7 +72,7 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<IAddConferenceCityRepository, AddConferenceCityRepository>();
             services.AddScoped<IAddConferenceCountryRepository, AddConferenceCountryRepository>();
             services.AddScoped<IAddConferenceDistrictRepository, AddConferenceDistrictRepository>();
-            services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
+            services.AddScoped<IEmailParticipant, InsertEmailParticipant>();
            
 
             services.AddScoped<ISpeakerRepository, SpeakerRepository>();
