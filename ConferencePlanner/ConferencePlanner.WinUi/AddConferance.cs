@@ -21,15 +21,13 @@ namespace ConferencePlanner.WinUi
     {
         private readonly IConferanceCategory _getConferanceCategory;
 
+        private readonly IConferenceRepository conferenceRepository;
+
         // Category Tab
         private readonly IConferenceCategoryRepository conferenceCategoryRepository;
-
         private List<ConferenceCategoryModel> conferenceCategories;
-
         private PaginationHelper<ConferenceCategoryModel> categoryTabPaginationHelper;
         private int categoryTabPageSize = 3;
-
-        
 
         //Type Tab
         private readonly IConferenceTypeRepository conferanceTypeRepository;
@@ -46,7 +44,7 @@ namespace ConferencePlanner.WinUi
         public int scrollValCountry;
 
         //District Tab
-        private readonly IAddConferenceDistrictRepository _getDistrict;
+        private readonly IAddConferenceDistrictRepository conferenceDistrictRepository;
         private List<AddConferenceDistrictModel> districtModel;
 
         //City Tab
@@ -84,25 +82,29 @@ namespace ConferencePlanner.WinUi
                              IAddConferenceCountryRepository getCountry,
                              IAddConferenceDistrictRepository getDistrict,
                              IConferenceTypeRepository conferanceTypeRepository,
-                             ISpeakerRepository getSpeakerRepository
+                             ISpeakerRepository getSpeakerRepository,
+                             IConferenceRepository conferenceRepository
                              )
         {
             this._getCity = getCity;
-            this._getDistrict = getDistrict;
+            this.conferenceDistrictRepository = getDistrict;
             this._getCountry = getCountry;
             scrollVal = 0;
             InitializeComponent();
             _getConferanceCategory = getConferanceCategory;
             this.conferenceCategoryRepository = conferenceCategoryRepository;
             this.conferanceTypeRepository = conferanceTypeRepository;
+            this.conferenceRepository = conferenceRepository;
 
 
             this.getSpeakerRepository = getSpeakerRepository;
             scrollValSpeaker = 0;
             elementMainSpeakerId = 0;
-            getSpeakerInConference = new List<int>();
+            getSpeakerInConference = new List<int>(); 
             conferenceCategories = conferenceCategoryRepository.GetAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
+            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
+            conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
         }
 
 
@@ -141,9 +143,30 @@ namespace ConferencePlanner.WinUi
             {
                 button1.Text = "Save";
                 btSaveAndNew.Visible = true;
+
+                if (ConferenceId == null)
+                {
+                    button1.Click += new EventHandler(AddConference);
+                }
+                else
+                {
+                    button1.Click += new EventHandler(EditConference);
+                }
             }
 
 
+        }
+
+        private void AddConference(object sender, EventArgs e)
+        {
+            ConferenceId = conferenceDistrictRepository.GetNextId();
+            conferenceRepository.AddConference(PopulateConferenceObject());
+        }
+
+        private void EditConference(object sender, EventArgs e)
+        {
+            //ConferenceId = //din interfata
+            conferenceRepository.EditConference(PopulateConferenceObject());
         }
 
         private void btBack_Click(object sender, EventArgs e)
@@ -162,6 +185,7 @@ namespace ConferencePlanner.WinUi
             {
                 button1.Text = "Next";
                 btSaveAndNew.Visible = false;
+                button1.Click += new EventHandler(button1_Click);
             }
 
         }
@@ -225,12 +249,11 @@ namespace ConferencePlanner.WinUi
             countryModel = _getCountry.GetConferencesCountry();
             populateGridCountry(countryModel, scrollVal);
 
-            districtModel = _getDistrict.GetConferencesDistrict();
+            districtModel = conferenceDistrictRepository.GetConferencesDistrict();
             populateGridDistrict(districtModel, scrollVal);
 
             cityModel = _getCity.GetConferencesCity();
             populateGridCity(cityModel, scrollVal);
-
 
             GenerateEditButtonCountry();
             GenerateEditButtonDistrict();
@@ -239,7 +262,51 @@ namespace ConferencePlanner.WinUi
             GenerateDeleteButtonDistrict();
             GenerateDeleteButtonCity();
 
+            InitializeUIData();
+        }
 
+        private void InitializeUIData()
+        {
+            if (ConferenceId == null)
+            {
+                txtName.Text = "";
+                txtOrganizer.Text = "";
+                txtAddress.Text = "";
+                dateTimePicker1.Value = DateTime.Now;
+                dateTimePicker2.Value = DateTime.Now;
+            }
+            else
+            {
+                ConferenceModel conference = conferenceRepository.GetConference((int)ConferenceId);
+                txtName.Text = conference.ConferenceName;
+                txtOrganizer.Text = conference.OrganizerName;
+                txtAddress.Text = conference.AdressDetails;
+                dateTimePicker1.Value = conference.StartDate;
+                dateTimePicker2.Value = conference.EndDate;
+
+                int categoryIndex = conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == conference.DictionaryConferenceCategoryId) + 1;
+                categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(categoryIndex);
+                CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+                CategoryTabGrid.AutoGenerateColumns = true;
+                GenerateCategoryTabEditDeleteButtons();
+                ManageCategoryTabPaginationButtonsState();
+                DataGridViewRow categoryTabRow = CategoryTabGrid.Rows.Cast<DataGridViewRow>()
+                                                                     .Where(row => (int)row.Cells["ConferenceCategoryId"].Value == conference.DictionaryConferenceCategoryId)
+                                                                     .First();
+                CategoryTabGrid.Rows[categoryTabRow.Index].Selected = true;
+
+                int typeIndex = conferanceTypeModels.FindIndex(type => type.ConferenceTypeId == conference.DictionaryConferenceTypeId) + 1;
+                conferanceTypePaginationHelper.pageNumber = conferanceTypePaginationHelper.GetPageForIndex(typeIndex);
+                dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+                dataGridViewType.AutoGenerateColumns = true;
+                GenerateTypeTabEditAndDeleteButtons();
+                ManageTypeTabPaginationButtonsState();
+                DataGridViewRow typeTabRow = dataGridViewType.Rows.Cast<DataGridViewRow>()
+                                                                     .Where(row => (int)row.Cells["ConferenceTypeId"].Value == conference.DictionaryConferenceTypeId)
+                                                                     .First();
+                dataGridViewType.Rows[typeTabRow.Index].Selected = true;
+
+            }
         }
 
         void populateGridCountry(List<AddConferenceCountryModel> country, int scrollVal)
@@ -500,7 +567,9 @@ namespace ConferencePlanner.WinUi
                 tabSpeakerGrid.Rows[rows].Cells[6].Value = "Delete";
             }
             currentSpeakerGridPage = speakers;
-
+            tabSpeakerGrid.Columns[0].ReadOnly = true;
+            tabSpeakerGrid.Columns[1].ReadOnly = true;
+            tabSpeakerGrid.Columns[2].ReadOnly = true;
         }
 
         List<SpeakerModel> getListSpeakerInConference()
@@ -682,8 +751,6 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Activated(object sender, EventArgs e)
         {
-            TypeReloadData();
-            CategoryTabReloadData();
 
             scrollValSpeaker = 0;
             getSpeakerList = getSpeakerRepository.GetSpeaker();
@@ -700,8 +767,6 @@ namespace ConferencePlanner.WinUi
             dataGridViewType.AutoGenerateColumns = true;
             ManageTypeTabPaginationButtonsState();
             GenerateTypeTabEditAndDeleteButtons();
-
-            CategoryTabReloadData();
 
             scrollValCountry = 0;
             countryModel = _getCountry.GetConferencesCountry();
@@ -915,7 +980,7 @@ namespace ConferencePlanner.WinUi
         {
             //filter district
             scrollVal = 0;
-            List<AddConferenceDistrictModel> districtModelTxt = _getDistrict.GetConferencesDistrict();
+            List<AddConferenceDistrictModel> districtModelTxt = conferenceDistrictRepository.GetConferencesDistrict();
 
             districtModel = districtModelTxt.Where(districtModel => (districtModel.DictionaryDistrictName.Contains(DistrictFilter.Text)) ||
             (districtModel.DistrictCode.Contains(DistrictFilter.Text))).ToList();
@@ -1020,7 +1085,7 @@ namespace ConferencePlanner.WinUi
                 DialogResult dialogResult = DisplayDeleteConfirmation("Are you sure you want to delete " + districtName + "?", "Delete District");
                 if (dialogResult == DialogResult.Yes)
                 {
-                    _getDistrict.DeleteConferenceDistrict(districtId);
+                    conferenceDistrictRepository.DeleteConferenceDistrict(districtId);
                 }
             }
 
@@ -1030,6 +1095,34 @@ namespace ConferencePlanner.WinUi
         {
           
 
+        }
+
+        private void btSaveAndNew_Click(object sender, EventArgs e)
+        {
+            if (ConferenceId == null)
+            {
+                conferenceRepository.AddConference(PopulateConferenceObject());
+
+                AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+                addConferance.ConferenceId = null;
+                addConferance.ShowDialog();
+            }
+            else
+            {
+                conferenceRepository.EditConference(PopulateConferenceObject());
+
+                AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+                addConferance.ConferenceId = null;
+                addConferance.ShowDialog();
+            }
+        }
+
+        private ConferenceModel PopulateConferenceObject()
+        {
+            return new ConferenceModel
+            {
+
+            };
         }
     }
 }
