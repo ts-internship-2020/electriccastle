@@ -39,10 +39,14 @@ namespace ConferencePlanner.WinUi
 
         public static int SetValueIdSpeker = 0;
 
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository)
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository,
+            IOrganizerConferencesRepository organizerConferencesRepository,
+            IEmailParticipant _emailPart
+            )
         {
             this._getParticipantRepository = _getParticipantRepository;
             this.organizerConferencesRepository = organizerConferencesRepository;
+            this._email = _emailPart;
             scrollVal = 0;
             InitializeComponent();
         }
@@ -181,7 +185,7 @@ namespace ConferencePlanner.WinUi
         }
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           // _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
+            _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
 
             if (e.ColumnIndex == 7 )
             {
