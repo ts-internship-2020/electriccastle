@@ -54,6 +54,7 @@ namespace ConferencePlanner.WinUi
         private readonly IAddConferenceCityRepository _getCity;
         public static AddConferenceCityModel editedCity;
         private List<AddConferenceCityModel> currentCityGridPage;
+        private AddConferenceCityModel selectedCity;
 
         //tab Speaker
         private readonly ISpeakerRepository getSpeakerRepository;
@@ -970,7 +971,7 @@ namespace ConferencePlanner.WinUi
         {
             editedCity = null;
             //check if only Delete or Edit button is pressed
-            if (e.RowIndex < 0 || (e.ColumnIndex != DGVCity.Columns["Edit"].Index && e.ColumnIndex != DGVCity.Columns["Delete"].Index))
+            if (e.RowIndex < 0 )
             {
                 return;
             }
@@ -992,6 +993,16 @@ namespace ConferencePlanner.WinUi
                 scrollVal = 0;
                 cityModel = _getCity.GetConferencesCity();
                 populateGridCity(cityModel, scrollVal);
+            }
+            else if (e.RowIndex > 0 && e.ColumnIndex != DGVCity.Columns["Edit"].Index && e.ColumnIndex != DGVCity.Columns["Delete"].Index)
+            {
+
+                selectedCity.CityCode = this.DGVCity.Rows[e.RowIndex].Cells["Cod"].Value.ToString();
+                selectedCity.DictionaryCityName = this.DGVCity.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                selectedCity.DictionaryCityId = currentCityGridPage.ElementAt(e.RowIndex).DictionaryCityId;
+                selectedCity.DictionaryDistrictId = currentCityGridPage.ElementAt(e.RowIndex).DictionaryDistrictId;
+
+
             }
             else
             {
