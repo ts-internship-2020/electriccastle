@@ -12,11 +12,7 @@ using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using static ConferencePlanner.WinUi.Program;
-using QRCoder;
-using System.IO;
-using System.Drawing;
-using System.Net.Mail;
-using System.Net.Mime;
+
 
 
 
