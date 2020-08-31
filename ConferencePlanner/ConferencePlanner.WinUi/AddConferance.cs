@@ -287,6 +287,7 @@ namespace ConferencePlanner.WinUi
                 DGVDistrict.Rows[n].Cells[2].Value = listDistrict.DictionaryDistrictId;
 
             }
+            DGVDistrict.Columns["DistrictId"].Visible = false;
         }
 
         void populateGridCity(List<AddConferenceCityModel> city, int scrollVal)
@@ -992,11 +993,6 @@ namespace ConferencePlanner.WinUi
                 }
             }
 
-        }
-
-        private void DGVDistrict_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            DGVDistrict.Columns["DistrictId"].Visible = false;
         }
 
         private void btSearch_KeyDown(object sender, KeyEventArgs e)
