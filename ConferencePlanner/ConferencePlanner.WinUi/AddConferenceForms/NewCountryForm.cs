@@ -23,7 +23,7 @@ namespace ConferencePlanner.WinUi
 
         List<AddConferenceCountryModel> countrys;
 
-        public NewCountryForm(IAddConferenceCountyRepository getCountry)
+        public NewCountryForm(IAddConferenceCountryRepository getCountry)
         {
             this._getCountry = getCountry;
             InitializeComponent();
