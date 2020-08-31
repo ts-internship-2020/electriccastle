@@ -11,6 +11,8 @@ using ConferencePlanner.Abstraction.Model;
 
 namespace ConferencePlanner.Api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -22,21 +24,27 @@ namespace ConferencePlanner.Api.Controllers
             _getDemoRepository = getDemoRepository;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        [Route("{DemoName}")]
+        public IActionResult GetDemo([FromRoute] string demoName)
         {
-            List<DemoModel> demoModels = _getDemoRepository.GetDemo("");
-            return View(demoModels);
+            List<DemoModel> demoModels = _getDemoRepository.GetDemo(demoName);
+            return Ok(demoModels);
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        [Route("{DemoName}")]
+        public IActionResult UpdateDemo()
         {
-            return View();
+            return Ok();
         }
 
+        [HttpDelete]
+        [Route("{DemoName}")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult DeleteDemo()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return Ok();
         }
     }
 }
