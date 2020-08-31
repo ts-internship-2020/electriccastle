@@ -16,10 +16,13 @@ namespace ConferencePlanner.WinUi
        
         public StartScreen()
         {
+            //StartScreen.CenterToScreen();
             InitializeComponent();
             this.ActiveControl = txtButton;
             txtButton.Focus();
-          
+            //StartScreen.CenterToScreen();
+
+
         }
 
         private void submitButton_Click(object sender, EventArgs e)

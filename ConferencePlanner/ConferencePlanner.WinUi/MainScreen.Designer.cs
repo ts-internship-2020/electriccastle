@@ -382,7 +382,8 @@
             this.ClientSize = new System.Drawing.Size(805, 404);
             this.Controls.Add(this.TabControrConferences);
             this.Name = "MainScreen";
-            this.Text = "MainScreen";
+            this.ShowIcon = false;
+            this.Text = "Main Page";
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.TabOrganizer.ResumeLayout(false);
             this.TabOrganizer.PerformLayout();
