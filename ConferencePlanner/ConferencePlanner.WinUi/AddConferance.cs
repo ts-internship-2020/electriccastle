@@ -52,6 +52,8 @@ namespace ConferencePlanner.WinUi
         private readonly IAddConferenceCityRepository _getCity;
         public static AddConferenceCityModel editedCity;
         private List<AddConferenceCityModel> currentCityGridPage;
+        private AddConferenceCityModel selectedCity;
+        private int entryNumberTabCity;
 
         //tab Speaker
         private readonly ISpeakerRepository getSpeakerRepository;
@@ -69,6 +71,8 @@ namespace ConferencePlanner.WinUi
         private int scrollValSpeaker;
 
         List<int> getSpeakerInConference;
+
+        private int entryNumberTabSpeaker;
 
         //
 
@@ -242,7 +246,8 @@ namespace ConferencePlanner.WinUi
         private void AddConferance_Load(object sender, EventArgs e)
         {
             getSpeakerList = getSpeakerRepository.GetSpeaker();
-            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+            entryNumberTabSpeaker = Convert.ToInt32(tabSpeakerEntryNumberText.Text);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
             getMaxId(getSpeakerList);
             List<SpeakerModel> getSpeakerInConference = new List<SpeakerModel>();
 
@@ -252,8 +257,11 @@ namespace ConferencePlanner.WinUi
             districtModel = conferenceDistrictRepository.GetConferencesDistrict();
             populateGridDistrict(districtModel, scrollVal);
 
+            entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
             cityModel = _getCity.GetConferencesCity();
-            populateGridCity(cityModel, scrollVal);
+            populateGridCity(cityModel, scrollVal, entryNumberTabCity);
+            
+
 
             GenerateEditButtonCountry();
             GenerateEditButtonDistrict();
@@ -362,13 +370,17 @@ namespace ConferencePlanner.WinUi
             DGVDistrict.Columns["DistrictId"].Visible = false;
         }
 
-        void populateGridCity(List<AddConferenceCityModel> city, int scrollVal)
+        void populateGridCity(List<AddConferenceCityModel> city, int scrollVal, int cityEntry)
         {
             List<AddConferenceCityModel> cities = new List<AddConferenceCityModel>();
             DGVCity.Rows.Clear();
             int nr = city.Count;
 
-            int numberRowsPage = 3;
+            int numberRowsPage = cityEntry;
+            if (numberRowsPage > nr)
+            {
+                numberRowsPage = nr;
+            }
             if (nr - scrollVal < numberRowsPage)
             {
                 numberRowsPage = nr - scrollVal;
@@ -539,7 +551,7 @@ namespace ConferencePlanner.WinUi
 
             }
         }
-        void populateTabSpeakersGrid(List<SpeakerModel> speakerList, int scrollValue)
+        void populateTabSpeakersGrid(List<SpeakerModel> speakerList, int scrollValue, int speakerEntry)
         {
             List<SpeakerModel> speakers = new List<SpeakerModel>();
            // currentSpeakerGridPage.Clear();
@@ -547,7 +559,11 @@ namespace ConferencePlanner.WinUi
             int numberElements = speakerList.Count;
             int i;
             int rows;
-            int numberRowsPage = 5;
+            int numberRowsPage = speakerEntry;
+            if (numberRowsPage > numberElements)
+            {
+                numberRowsPage = numberElements;
+            }
             if (numberElements - scrollValue < numberRowsPage)
             {
                 numberRowsPage = numberElements - scrollValue;
@@ -603,23 +619,23 @@ namespace ConferencePlanner.WinUi
         private void tabSpeakerNextButton_Click(object sender, EventArgs e)
         {
             int nr = getSpeakerList.Count;
-            scrollValSpeaker = scrollValSpeaker + 5;
+            scrollValSpeaker = scrollValSpeaker + entryNumberTabSpeaker;
             if (scrollValSpeaker >= nr)
             {
-                scrollValSpeaker = scrollValSpeaker - 5;
+                scrollValSpeaker = scrollValSpeaker - entryNumberTabSpeaker;
             }
-            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
         }
 
 
         private void tabSpeakerPreviousButton_Click(object sender, EventArgs e)
         {
-            scrollValSpeaker = scrollValSpeaker - 5;
+            scrollValSpeaker = scrollValSpeaker - entryNumberTabSpeaker;
             if (scrollValSpeaker < 0)
             {
                 scrollValSpeaker = 0;
             }
-            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
         }
 
         private void tabSpeakerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -651,7 +667,7 @@ namespace ConferencePlanner.WinUi
                 getSpeakerRepository.deleteSpeaker(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
                 scrollValSpeaker = 0;
                 getSpeakerList = getSpeakerRepository.GetSpeaker();
-                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
 
             }
 
@@ -754,7 +770,7 @@ namespace ConferencePlanner.WinUi
 
             scrollValSpeaker = 0;
             getSpeakerList = getSpeakerRepository.GetSpeaker();
-            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
             getMaxId(getSpeakerList);
         }
          
@@ -774,12 +790,12 @@ namespace ConferencePlanner.WinUi
 
             scrollValSpeaker = 0;
             getSpeakerList = getSpeakerRepository.GetSpeaker();
-            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
             getMaxId(getSpeakerList);
 
             scrollVal = 0;
             cityModel = _getCity.GetConferencesCity();
-            populateGridCity(cityModel, scrollVal);
+            populateGridCity(cityModel, scrollVal, entryNumberTabCity);
 
         }
         private void CategoryTabReloadData()
@@ -947,23 +963,23 @@ namespace ConferencePlanner.WinUi
 
         private void PrevoiusCity_Click(object sender, EventArgs e)
         {
-            scrollVal = scrollVal - 3;
+            scrollVal = scrollVal - entryNumberTabCity;
             if (scrollVal < 0)
             {
                 scrollVal = 0;
             }
-            populateGridCity(cityModel, scrollVal);
+            populateGridCity(cityModel, scrollVal, entryNumberTabCity);
         }
 
         private void NextCity_Click(object sender, EventArgs e)
         {
             int nr = cityModel.Count;
-            scrollVal = scrollVal + 3;
+            scrollVal = scrollVal + entryNumberTabCity;
             if (scrollVal >= nr)
             {
-                scrollVal = scrollVal - 3;
+                scrollVal = scrollVal - entryNumberTabCity;
             }
-            populateGridCity(cityModel, scrollVal);
+            populateGridCity(cityModel, scrollVal, entryNumberTabCity);
         }
 
         private void textNameCountry_TextChanged(object sender, EventArgs e)
@@ -996,16 +1012,9 @@ namespace ConferencePlanner.WinUi
 
             cityModel = cityModelTxt.Where(cityModel => (cityModel.DictionaryCityName.Contains(filterCity.Text)) ||
             (cityModel.CityCode.Contains(filterCity.Text))).ToList();
-            populateGridCity(cityModel, scrollVal);
+            populateGridCity(cityModel, scrollVal, entryNumberTabCity);
         }
-        private void tabSpeakerFilterButton_Click(object sender, EventArgs e)
-        {
-            scrollValSpeaker = 0;
-            List<SpeakerModel> speakerModelTxt = getSpeakerRepository.GetSpeaker();
-            getSpeakerList = speakerModelTxt.Where(getSpeakerList => (getSpeakerList.Name.Contains(tabSpeakerFilterText.Text)) ||
-            (getSpeakerList.Code.Contains(tabSpeakerFilterText.Text))).ToList();
-            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
-        }
+
 
         private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1036,7 +1045,7 @@ namespace ConferencePlanner.WinUi
         {
             editedCity = null;
             //check if only Delete or Edit button is pressed
-            if (e.RowIndex < 0 || (e.ColumnIndex != DGVCity.Columns["Edit"].Index && e.ColumnIndex != DGVCity.Columns["Delete"].Index))
+            if (e.RowIndex < 0 )
             {
                 return;
             }
@@ -1057,7 +1066,17 @@ namespace ConferencePlanner.WinUi
                 _getCity.deleteCity(currentCityGridPage.ElementAt(e.RowIndex).DictionaryCityId);
                 scrollVal = 0;
                 cityModel = _getCity.GetConferencesCity();
-                populateGridCity(cityModel, scrollVal);
+                populateGridCity(cityModel, scrollVal, entryNumberTabCity);
+            }
+            else if (e.RowIndex > 0 && e.ColumnIndex != DGVCity.Columns["Edit"].Index && e.ColumnIndex != DGVCity.Columns["Delete"].Index)
+            {
+
+                selectedCity.CityCode = this.DGVCity.Rows[e.RowIndex].Cells["Cod"].Value.ToString();
+                selectedCity.DictionaryCityName = this.DGVCity.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                selectedCity.DictionaryCityId = currentCityGridPage.ElementAt(e.RowIndex).DictionaryCityId;
+                selectedCity.DictionaryDistrictId = currentCityGridPage.ElementAt(e.RowIndex).DictionaryDistrictId;
+
+
             }
             else
             {
@@ -1097,6 +1116,46 @@ namespace ConferencePlanner.WinUi
 
         }
 
+        private void tabSpeakerFilterText_TextChanged(object sender, EventArgs e)
+        {
+            scrollValSpeaker = 0;
+            List<SpeakerModel> speakerModelTxt = getSpeakerRepository.GetSpeaker();
+            getSpeakerList = speakerModelTxt.Where(getSpeakerList => (getSpeakerList.Name.Contains(tabSpeakerFilterText.Text)) ||
+            (getSpeakerList.Code.Contains(tabSpeakerFilterText.Text))).ToList();
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+        }
+
+        private void tabSpeakerEntryNumberText_TextChanged(object sender, EventArgs e)
+        {
+            scrollValSpeaker = 0;
+            if (tabSpeakerEntryNumberText.Text == string.Empty)
+            {
+                entryNumberTabSpeaker = 0;
+            }
+            else
+            {
+                entryNumberTabSpeaker = Convert.ToInt32(tabSpeakerEntryNumberText.Text);
+            }
+
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+        }
+
+        private void tabCityEntryText_TextChanged(object sender, EventArgs e)
+        {
+            scrollVal = 0;
+            if (tabCityEntryText.Text == string.Empty)
+            {
+                entryNumberTabCity = 0;
+            }
+            else
+            {
+                entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
+            }
+
+            populateGridCity(cityModel, scrollVal, entryNumberTabCity);
+
+        }
+
         private void btSaveAndNew_Click(object sender, EventArgs e)
         {
             if (ConferenceId == null)
@@ -1124,6 +1183,7 @@ namespace ConferencePlanner.WinUi
 
             };
         }
+    
     }
 }
 

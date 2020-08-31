@@ -38,6 +38,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabConferance = new System.Windows.Forms.TabControl();
             this.tabSpeakers = new System.Windows.Forms.TabPage();
+            this.tabSpeakerEntryNumberText = new System.Windows.Forms.TextBox();
+            this.tabSpeakerEntryNumberLabel = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabSpeakerFilterText = new System.Windows.Forms.TextBox();
             this.tabSpeakerFilterButton = new ConferencePlanner.WinUi.ButonCircular();
             this.tabSpeakerNextButton = new ConferencePlanner.WinUi.ButonCircular();
@@ -85,6 +88,8 @@
             this.DistrictCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DistrictId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabCityEntryText = new System.Windows.Forms.TextBox();
+            this.tabCityEntryLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.filterCity = new System.Windows.Forms.TextBox();
             this.PrevoiusCity = new ConferencePlanner.WinUi.ButonCircular();
@@ -203,6 +208,9 @@
             // 
             // tabSpeakers
             // 
+            this.tabSpeakers.Controls.Add(this.tabSpeakerEntryNumberText);
+            this.tabSpeakers.Controls.Add(this.tabSpeakerEntryNumberLabel);
+            this.tabSpeakers.Controls.Add(this.label9);
             this.tabSpeakers.Controls.Add(this.tabSpeakerFilterText);
             this.tabSpeakers.Controls.Add(this.tabSpeakerFilterButton);
             this.tabSpeakers.Controls.Add(this.tabSpeakerNextButton);
@@ -218,41 +226,75 @@
             this.tabSpeakers.Text = "Speakers";
             this.tabSpeakers.UseVisualStyleBackColor = true;
             // 
+            // tabSpeakerEntryNumberText
+            // 
+            this.tabSpeakerEntryNumberText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabSpeakerEntryNumberText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerEntryNumberText.Location = new System.Drawing.Point(231, 140);
+            this.tabSpeakerEntryNumberText.Name = "tabSpeakerEntryNumberText";
+            this.tabSpeakerEntryNumberText.Size = new System.Drawing.Size(28, 23);
+            this.tabSpeakerEntryNumberText.TabIndex = 29;
+            this.tabSpeakerEntryNumberText.Text = "5";
+            this.tabSpeakerEntryNumberText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabSpeakerEntryNumberText.TextChanged += new System.EventHandler(this.tabSpeakerEntryNumberText_TextChanged);
+            // 
+            // tabSpeakerEntryNumberLabel
+            // 
+            this.tabSpeakerEntryNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabSpeakerEntryNumberLabel.AutoSize = true;
+            this.tabSpeakerEntryNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerEntryNumberLabel.ForeColor = System.Drawing.Color.Red;
+            this.tabSpeakerEntryNumberLabel.Location = new System.Drawing.Point(116, 140);
+            this.tabSpeakerEntryNumberLabel.Name = "tabSpeakerEntryNumberLabel";
+            this.tabSpeakerEntryNumberLabel.Size = new System.Drawing.Size(108, 17);
+            this.tabSpeakerEntryNumberLabel.TabIndex = 28;
+            this.tabSpeakerEntryNumberLabel.Text = "Entries per Page";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(743, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(102, 15);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Insert filter criteria";
+            // 
             // tabSpeakerFilterText
             // 
             this.tabSpeakerFilterText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSpeakerFilterText.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tabSpeakerFilterText.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabSpeakerFilterText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerFilterText.Location = new System.Drawing.Point(729, 55);
+            this.tabSpeakerFilterText.Location = new System.Drawing.Point(746, 82);
             this.tabSpeakerFilterText.Name = "tabSpeakerFilterText";
             this.tabSpeakerFilterText.Size = new System.Drawing.Size(99, 25);
             this.tabSpeakerFilterText.TabIndex = 26;
+            this.tabSpeakerFilterText.TextChanged += new System.EventHandler(this.tabSpeakerFilterText_TextChanged);
             // 
             // tabSpeakerFilterButton
             // 
             this.tabSpeakerFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSpeakerFilterButton.BackColor = System.Drawing.Color.Tomato;
             this.tabSpeakerFilterButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerFilterButton.Location = new System.Drawing.Point(746, 15);
+            this.tabSpeakerFilterButton.Location = new System.Drawing.Point(756, 18);
             this.tabSpeakerFilterButton.Name = "tabSpeakerFilterButton";
             this.tabSpeakerFilterButton.Size = new System.Drawing.Size(76, 34);
             this.tabSpeakerFilterButton.TabIndex = 19;
             this.tabSpeakerFilterButton.TabStop = false;
             this.tabSpeakerFilterButton.Text = "Filter";
             this.tabSpeakerFilterButton.UseVisualStyleBackColor = false;
-            this.tabSpeakerFilterButton.Click += new System.EventHandler(this.tabSpeakerFilterButton_Click);
             // 
             // tabSpeakerNextButton
             // 
             this.tabSpeakerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSpeakerNextButton.BackColor = System.Drawing.Color.Tomato;
-            this.tabSpeakerNextButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerNextButton.Location = new System.Drawing.Point(631, 130);
+            this.tabSpeakerNextButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerNextButton.Location = new System.Drawing.Point(661, 130);
             this.tabSpeakerNextButton.Name = "tabSpeakerNextButton";
-            this.tabSpeakerNextButton.Size = new System.Drawing.Size(80, 34);
+            this.tabSpeakerNextButton.Size = new System.Drawing.Size(62, 42);
             this.tabSpeakerNextButton.TabIndex = 25;
-            this.tabSpeakerNextButton.Text = "Next";
+            this.tabSpeakerNextButton.Text = ">";
+            this.tabSpeakerNextButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tabSpeakerNextButton.UseVisualStyleBackColor = false;
             this.tabSpeakerNextButton.Click += new System.EventHandler(this.tabSpeakerNextButton_Click);
             // 
@@ -260,12 +302,13 @@
             // 
             this.tabSpeakerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSpeakerPreviousButton.BackColor = System.Drawing.Color.Tomato;
-            this.tabSpeakerPreviousButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerPreviousButton.Location = new System.Drawing.Point(539, 131);
+            this.tabSpeakerPreviousButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabSpeakerPreviousButton.Location = new System.Drawing.Point(597, 130);
             this.tabSpeakerPreviousButton.Name = "tabSpeakerPreviousButton";
-            this.tabSpeakerPreviousButton.Size = new System.Drawing.Size(86, 32);
+            this.tabSpeakerPreviousButton.Size = new System.Drawing.Size(58, 41);
             this.tabSpeakerPreviousButton.TabIndex = 24;
-            this.tabSpeakerPreviousButton.Text = "Previous";
+            this.tabSpeakerPreviousButton.Text = "<";
+            this.tabSpeakerPreviousButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tabSpeakerPreviousButton.UseVisualStyleBackColor = false;
             this.tabSpeakerPreviousButton.Click += new System.EventHandler(this.tabSpeakerPreviousButton_Click);
             // 
@@ -369,7 +412,9 @@
             // 
             // CategoryTabAddButton
             // 
-            this.CategoryTabAddButton.Location = new System.Drawing.Point(471, 83);
+            this.CategoryTabAddButton.BackColor = System.Drawing.Color.Tomato;
+            this.CategoryTabAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabAddButton.Location = new System.Drawing.Point(293, 124);
             this.CategoryTabAddButton.Name = "CategoryTabAddButton";
             this.CategoryTabAddButton.Size = new System.Drawing.Size(119, 35);
             this.CategoryTabAddButton.TabIndex = 5;
@@ -596,6 +641,7 @@
             // 
             // DGVCountry
             // 
+            this.DGVCountry.AllowUserToAddRows = false;
             this.DGVCountry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCountry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CountryName,
@@ -694,6 +740,7 @@
             // 
             // DGVDistrict
             // 
+            this.DGVDistrict.AllowUserToAddRows = false;
             this.DGVDistrict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVDistrict.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DictrictName,
@@ -729,6 +776,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tabCityEntryText);
+            this.tabPage3.Controls.Add(this.tabCityEntryLabel);
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.filterCity);
             this.tabPage3.Controls.Add(this.PrevoiusCity);
@@ -744,6 +793,27 @@
             this.tabPage3.Text = "City";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // tabCityEntryText
+            // 
+            this.tabCityEntryText.Location = new System.Drawing.Point(596, 173);
+            this.tabCityEntryText.Name = "tabCityEntryText";
+            this.tabCityEntryText.Size = new System.Drawing.Size(28, 23);
+            this.tabCityEntryText.TabIndex = 8;
+            this.tabCityEntryText.Text = "5";
+            this.tabCityEntryText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabCityEntryText.TextChanged += new System.EventHandler(this.tabCityEntryText_TextChanged);
+            // 
+            // tabCityEntryLabel
+            // 
+            this.tabCityEntryLabel.AutoSize = true;
+            this.tabCityEntryLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabCityEntryLabel.ForeColor = System.Drawing.Color.Red;
+            this.tabCityEntryLabel.Location = new System.Drawing.Point(482, 174);
+            this.tabCityEntryLabel.Name = "tabCityEntryLabel";
+            this.tabCityEntryLabel.Size = new System.Drawing.Size(108, 17);
+            this.tabCityEntryLabel.TabIndex = 7;
+            this.tabCityEntryLabel.Text = "Entries per Page";
             // 
             // label8
             // 
@@ -766,7 +836,7 @@
             // 
             this.PrevoiusCity.BackColor = System.Drawing.Color.Tomato;
             this.PrevoiusCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PrevoiusCity.Location = new System.Drawing.Point(4, 160);
+            this.PrevoiusCity.Location = new System.Drawing.Point(4, 156);
             this.PrevoiusCity.Name = "PrevoiusCity";
             this.PrevoiusCity.Size = new System.Drawing.Size(115, 44);
             this.PrevoiusCity.TabIndex = 4;
@@ -790,7 +860,7 @@
             // 
             this.NewCity.BackColor = System.Drawing.Color.Tomato;
             this.NewCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NewCity.Location = new System.Drawing.Point(343, 156);
+            this.NewCity.Location = new System.Drawing.Point(343, 160);
             this.NewCity.Name = "NewCity";
             this.NewCity.Size = new System.Drawing.Size(115, 44);
             this.NewCity.TabIndex = 1;
@@ -1056,5 +1126,10 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
         private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label tabSpeakerEntryNumberLabel;
+        private System.Windows.Forms.TextBox tabSpeakerEntryNumberText;
+        private System.Windows.Forms.TextBox tabCityEntryText;
+        private System.Windows.Forms.Label tabCityEntryLabel;
     }
 }
