@@ -126,13 +126,14 @@ namespace ConferencePlanner.WinUi
 
         }
 
-
+     
         private void button1_Click(object sender, EventArgs e)
         {
 
-
+           checkCancel = false;
             tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
                              tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
+
 
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage3"])
             {
@@ -145,6 +146,8 @@ namespace ConferencePlanner.WinUi
 
         private void btBack_Click(object sender, EventArgs e)
         {
+
+            checkCancel = false;
             if (tabConferance.SelectedIndex != 0)
             {
                 tabConferance.SelectedIndex = (tabConferance.SelectedIndex - 1 < tabConferance.TabCount) ?
@@ -152,7 +155,7 @@ namespace ConferencePlanner.WinUi
         
 
             }
-
+         
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage2"])
             {
                 button1.Text = "Next";
@@ -180,18 +183,13 @@ namespace ConferencePlanner.WinUi
         }
 
 
-        //  public static int currentSelectedTab;
+        bool checkCancel = true;
         private void tabConferance_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            //int selectedTab = tabConferance.SelectedIndex;
-            //Disable the tab selection
-            //if (currentSelectedTab != selectedTab)
-            //{
-
-            //    tabConferance.SelectTab(currentSelectedTab);
-            //}
 
 
+            e.Cancel = checkCancel;
+            checkCancel = true;
 
         }
 
@@ -677,13 +675,7 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Activated(object sender, EventArgs e)
         {
-            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
-            conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
-            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
-            dataGridViewType.AutoGenerateColumns = true;
-            ManageTypeTabPaginationButtonsState();
-            GenerateTypeTabEditAndDeleteButtons();
-
+            TypeReloadData();
             CategoryTabReloadData();
 
             scrollValSpeaker = 0;
@@ -691,7 +683,18 @@ namespace ConferencePlanner.WinUi
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
             getMaxId(getSpeakerList);
         }
+         
 
+        private void TypeReloadData()
+        {
+            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
+            conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            dataGridViewType.AutoGenerateColumns = true;
+            ManageTypeTabPaginationButtonsState();
+            GenerateTypeTabEditAndDeleteButtons();
+
+        }
         private void CategoryTabReloadData()
         {
             conferenceCategories = conferenceCategoryRepository.getAllCategories();
@@ -764,9 +767,6 @@ namespace ConferencePlanner.WinUi
             dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
             ManageTypeTabPaginationButtonsState();
 
-
-
-
         }
 
         private void dataGridViewType_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -794,7 +794,15 @@ namespace ConferencePlanner.WinUi
             {
                 if (e.ColumnIndex == dataGridViewType.Columns["Delete"].Index)
                 {
-                    conferanceTypeRepository.deleteType(typeId);
+                    string typeName = dataGridViewType[dataGridViewType.Columns["ConferenceTypeName"].Index, e.RowIndex].Value.ToString();
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want delete " + typeName+ "?", "Delete", MessageBoxButtons.YesNo);
+                    if(dialogResult==DialogResult.Yes)
+                    {
+                        conferanceTypeRepository.deleteType(typeId);
+                        TypeReloadData();
+                    }
+                    
+
                 }
             }
 
@@ -910,6 +918,12 @@ namespace ConferencePlanner.WinUi
             getSpeakerList = speakerModelTxt.Where(getSpeakerList => (getSpeakerList.Name.Contains(tabSpeakerFilterText.Text)) ||
             (getSpeakerList.Code.Contains(tabSpeakerFilterText.Text))).ToList();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+        }
+
+        private void btSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+
         }
     }
 }

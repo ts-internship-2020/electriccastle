@@ -78,11 +78,6 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         int rows=  sqlCommand.ExecuteNonQuery();
            
 
-
-
-
-
-
         }
 
         public void insertType(ConferenceTypeModel conferenceType)
