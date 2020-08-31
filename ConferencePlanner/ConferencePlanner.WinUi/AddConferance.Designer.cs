@@ -300,6 +300,8 @@
             this.tabSpeakerDeleteColumn});
             this.tabSpeakerGrid.Location = new System.Drawing.Point(3, 3);
             this.tabSpeakerGrid.Name = "tabSpeakerGrid";
+            this.tabSpeakerGrid.ReadOnly = true;
+            this.tabSpeakerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tabSpeakerGrid.Size = new System.Drawing.Size(720, 126);
             this.tabSpeakerGrid.TabIndex = 0;
             this.tabSpeakerGrid.Text = "dataGridView1";
@@ -310,36 +312,43 @@
             // 
             this.tabSpeakerNameColumn.HeaderText = "Name";
             this.tabSpeakerNameColumn.Name = "tabSpeakerNameColumn";
+            this.tabSpeakerNameColumn.ReadOnly = true;
             // 
             // tabSpeakerRatingColumn
             // 
             this.tabSpeakerRatingColumn.HeaderText = "Rating";
             this.tabSpeakerRatingColumn.Name = "tabSpeakerRatingColumn";
+            this.tabSpeakerRatingColumn.ReadOnly = true;
             // 
             // tabSpeakerNationalityColumn
             // 
             this.tabSpeakerNationalityColumn.HeaderText = "Nationality";
             this.tabSpeakerNationalityColumn.Name = "tabSpeakerNationalityColumn";
+            this.tabSpeakerNationalityColumn.ReadOnly = true;
             // 
             // tabSpeakerMainColumn
             // 
             this.tabSpeakerMainColumn.HeaderText = "Main";
             this.tabSpeakerMainColumn.Name = "tabSpeakerMainColumn";
+            this.tabSpeakerMainColumn.ReadOnly = true;
             // 
             // tabSpeakerParticipantColumn
             // 
             this.tabSpeakerParticipantColumn.HeaderText = "Participant";
             this.tabSpeakerParticipantColumn.Name = "tabSpeakerParticipantColumn";
+            this.tabSpeakerParticipantColumn.ReadOnly = true;
             // 
             // tabSpeakerEditColumn
             // 
             this.tabSpeakerEditColumn.HeaderText = "Edit";
             this.tabSpeakerEditColumn.Name = "tabSpeakerEditColumn";
+            this.tabSpeakerEditColumn.ReadOnly = true;
             // 
             // tabSpeakerDeleteColumn
             // 
             this.tabSpeakerDeleteColumn.HeaderText = "Delete";
             this.tabSpeakerDeleteColumn.Name = "tabSpeakerDeleteColumn";
+            this.tabSpeakerDeleteColumn.ReadOnly = true;
             // 
             // tabCategory
             // 
@@ -360,27 +369,31 @@
             // 
             // CategoryTabAddButton
             // 
-            this.CategoryTabAddButton.Location = new System.Drawing.Point(419, 83);
+            this.CategoryTabAddButton.BackColor = System.Drawing.Color.Tomato;
+            this.CategoryTabAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabAddButton.Location = new System.Drawing.Point(471, 83);
             this.CategoryTabAddButton.Name = "CategoryTabAddButton";
-            this.CategoryTabAddButton.Size = new System.Drawing.Size(95, 35);
+            this.CategoryTabAddButton.Size = new System.Drawing.Size(119, 35);
             this.CategoryTabAddButton.TabIndex = 5;
             this.CategoryTabAddButton.Text = "Add Category";
-            this.CategoryTabAddButton.UseVisualStyleBackColor = true;
+            this.CategoryTabAddButton.UseVisualStyleBackColor = false;
             this.CategoryTabAddButton.Click += new System.EventHandler(this.CategoryTabAddButton_Click);
             // 
             // CategoryTabSearchButton
             // 
-            this.CategoryTabSearchButton.Location = new System.Drawing.Point(525, 17);
+            this.CategoryTabSearchButton.BackColor = System.Drawing.Color.Tomato;
+            this.CategoryTabSearchButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabSearchButton.Location = new System.Drawing.Point(577, 17);
             this.CategoryTabSearchButton.Name = "CategoryTabSearchButton";
-            this.CategoryTabSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabSearchButton.Size = new System.Drawing.Size(95, 35);
             this.CategoryTabSearchButton.TabIndex = 4;
             this.CategoryTabSearchButton.Text = "Search";
-            this.CategoryTabSearchButton.UseVisualStyleBackColor = true;
+            this.CategoryTabSearchButton.UseVisualStyleBackColor = false;
             this.CategoryTabSearchButton.Click += new System.EventHandler(this.CategoryTabSearchButton_Click);
             // 
             // CategoryTabSearchTextBox
             // 
-            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(419, 17);
+            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(471, 17);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;
@@ -389,30 +402,39 @@
             // 
             // CategoryTabNextButton
             // 
-            this.CategoryTabNextButton.Location = new System.Drawing.Point(84, 124);
+            this.CategoryTabNextButton.BackColor = System.Drawing.Color.Tomato;
+            this.CategoryTabNextButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabNextButton.Location = new System.Drawing.Point(162, 124);
             this.CategoryTabNextButton.Name = "CategoryTabNextButton";
-            this.CategoryTabNextButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabNextButton.Size = new System.Drawing.Size(104, 30);
             this.CategoryTabNextButton.TabIndex = 2;
             this.CategoryTabNextButton.Text = "Next";
-            this.CategoryTabNextButton.UseVisualStyleBackColor = true;
+            this.CategoryTabNextButton.UseVisualStyleBackColor = false;
             this.CategoryTabNextButton.Click += new System.EventHandler(this.CategoryTabNextButton_Click);
             // 
             // CategoryTabPreviousButton
             // 
-            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(3, 124);
+            this.CategoryTabPreviousButton.BackColor = System.Drawing.Color.Tomato;
+            this.CategoryTabPreviousButton.Enabled = false;
+            this.CategoryTabPreviousButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabPreviousButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(17, 124);
             this.CategoryTabPreviousButton.Name = "CategoryTabPreviousButton";
-            this.CategoryTabPreviousButton.Size = new System.Drawing.Size(75, 23);
+            this.CategoryTabPreviousButton.Size = new System.Drawing.Size(104, 30);
             this.CategoryTabPreviousButton.TabIndex = 1;
             this.CategoryTabPreviousButton.Text = "Previous";
-            this.CategoryTabPreviousButton.UseVisualStyleBackColor = true;
+            this.CategoryTabPreviousButton.UseVisualStyleBackColor = false;
             this.CategoryTabPreviousButton.Click += new System.EventHandler(this.CategoryTabPreviousButton_Click);
             // 
             // CategoryTabGrid
             // 
             this.CategoryTabGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoryTabGrid.Location = new System.Drawing.Point(3, 3);
+            this.CategoryTabGrid.MultiSelect = false;
             this.CategoryTabGrid.Name = "CategoryTabGrid";
-            this.CategoryTabGrid.Size = new System.Drawing.Size(409, 115);
+            this.CategoryTabGrid.ReadOnly = true;
+            this.CategoryTabGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CategoryTabGrid.Size = new System.Drawing.Size(462, 115);
             this.CategoryTabGrid.TabIndex = 0;
             this.CategoryTabGrid.Text = "dataGridView1";
             this.CategoryTabGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryTabGrid_CellClick);
@@ -435,12 +457,14 @@
             // 
             // btSearch
             // 
-            this.btSearch.Location = new System.Drawing.Point(623, 51);
+            this.btSearch.BackColor = System.Drawing.Color.Tomato;
+            this.btSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btSearch.Location = new System.Drawing.Point(623, 35);
             this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(75, 23);
+            this.btSearch.Size = new System.Drawing.Size(75, 39);
             this.btSearch.TabIndex = 5;
             this.btSearch.Text = "Search";
-            this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.UseVisualStyleBackColor = false;
             this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             this.btSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btSearch_KeyDown);
             // 
@@ -454,29 +478,37 @@
             // 
             // btNewType
             // 
+            this.btNewType.BackColor = System.Drawing.Color.Tomato;
+            this.btNewType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btNewType.Location = new System.Drawing.Point(442, 103);
             this.btNewType.Name = "btNewType";
             this.btNewType.Size = new System.Drawing.Size(106, 42);
             this.btNewType.TabIndex = 3;
             this.btNewType.Text = "New Type";
-            this.btNewType.UseVisualStyleBackColor = true;
+            this.btNewType.UseVisualStyleBackColor = false;
             this.btNewType.Click += new System.EventHandler(this.btNewType_Click);
             // 
             // btPreviousType
             // 
+            this.btPreviousType.BackColor = System.Drawing.Color.Tomato;
+            this.btPreviousType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btPreviousType.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btPreviousType.Location = new System.Drawing.Point(34, 111);
             this.btPreviousType.Name = "btPreviousType";
             this.btPreviousType.Size = new System.Drawing.Size(100, 33);
             this.btPreviousType.TabIndex = 2;
             this.btPreviousType.Text = "Previous ";
-            this.btPreviousType.UseVisualStyleBackColor = true;
+            this.btPreviousType.UseVisualStyleBackColor = false;
             this.btPreviousType.Click += new System.EventHandler(this.btPreviousType_Click);
             // 
             // dataGridViewType
             // 
             this.dataGridViewType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewType.Location = new System.Drawing.Point(-2, 2);
+            this.dataGridViewType.MultiSelect = false;
             this.dataGridViewType.Name = "dataGridViewType";
+            this.dataGridViewType.ReadOnly = true;
+            this.dataGridViewType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewType.Size = new System.Drawing.Size(566, 88);
             this.dataGridViewType.TabIndex = 0;
             this.dataGridViewType.Text = "dataGridView3";
@@ -485,12 +517,14 @@
             // 
             // btNextType
             // 
+            this.btNextType.BackColor = System.Drawing.Color.Tomato;
+            this.btNextType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btNextType.Location = new System.Drawing.Point(191, 111);
             this.btNextType.Name = "btNextType";
             this.btNextType.Size = new System.Drawing.Size(97, 34);
             this.btNextType.TabIndex = 1;
             this.btNextType.Text = "Next";
-            this.btNextType.UseVisualStyleBackColor = true;
+            this.btNextType.UseVisualStyleBackColor = false;
             this.btNextType.Click += new System.EventHandler(this.btNextType_Click);
             // 
             // tabPage1
@@ -514,7 +548,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(720, 18);
+            this.label6.Location = new System.Drawing.Point(490, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 15);
             this.label6.TabIndex = 6;
@@ -522,7 +556,7 @@
             // 
             // textNameCountry
             // 
-            this.textNameCountry.Location = new System.Drawing.Point(722, 36);
+            this.textNameCountry.Location = new System.Drawing.Point(492, 40);
             this.textNameCountry.Name = "textNameCountry";
             this.textNameCountry.Size = new System.Drawing.Size(100, 23);
             this.textNameCountry.TabIndex = 5;
@@ -530,32 +564,38 @@
             // 
             // PreviousBtn
             // 
-            this.PreviousBtn.Location = new System.Drawing.Point(476, 100);
+            this.PreviousBtn.BackColor = System.Drawing.Color.Tomato;
+            this.PreviousBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PreviousBtn.Location = new System.Drawing.Point(4, 158);
             this.PreviousBtn.Name = "PreviousBtn";
             this.PreviousBtn.Size = new System.Drawing.Size(108, 42);
             this.PreviousBtn.TabIndex = 3;
             this.PreviousBtn.Text = "Previous page";
-            this.PreviousBtn.UseVisualStyleBackColor = true;
+            this.PreviousBtn.UseVisualStyleBackColor = false;
             this.PreviousBtn.Click += new System.EventHandler(this.PreviousBtn_Click);
             // 
             // NextBtn
             // 
-            this.NextBtn.Location = new System.Drawing.Point(476, 24);
+            this.NextBtn.BackColor = System.Drawing.Color.Tomato;
+            this.NextBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextBtn.Location = new System.Drawing.Point(154, 163);
             this.NextBtn.Name = "NextBtn";
-            this.NextBtn.Size = new System.Drawing.Size(108, 36);
+            this.NextBtn.Size = new System.Drawing.Size(115, 44);
             this.NextBtn.TabIndex = 2;
             this.NextBtn.Text = "Next page";
-            this.NextBtn.UseVisualStyleBackColor = true;
+            this.NextBtn.UseVisualStyleBackColor = false;
             this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
             // 
             // NewCountry
             // 
-            this.NewCountry.Location = new System.Drawing.Point(566, 47);
+            this.NewCountry.BackColor = System.Drawing.Color.Tomato;
+            this.NewCountry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NewCountry.Location = new System.Drawing.Point(337, 163);
             this.NewCountry.Name = "NewCountry";
             this.NewCountry.Size = new System.Drawing.Size(123, 37);
             this.NewCountry.TabIndex = 1;
             this.NewCountry.Text = "New Country";
-            this.NewCountry.UseVisualStyleBackColor = true;
+            this.NewCountry.UseVisualStyleBackColor = false;
             this.NewCountry.Click += new System.EventHandler(this.NewCountry_Click);
             // 
             // DGVCountry
@@ -565,7 +605,10 @@
             this.CountryName,
             this.CountryCod});
             this.DGVCountry.Location = new System.Drawing.Point(4, 4);
+            this.DGVCountry.MultiSelect = false;
             this.DGVCountry.Name = "DGVCountry";
+            this.DGVCountry.ReadOnly = true;
+            this.DGVCountry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVCountry.Size = new System.Drawing.Size(456, 150);
             this.DGVCountry.TabIndex = 0;
             this.DGVCountry.Text = "dataGridView5";
@@ -575,11 +618,13 @@
             // 
             this.CountryName.HeaderText = "Name";
             this.CountryName.Name = "CountryName";
+            this.CountryName.ReadOnly = true;
             // 
             // CountryCod
             // 
             this.CountryCod.HeaderText = "Cod";
             this.CountryCod.Name = "CountryCod";
+            this.CountryCod.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -600,7 +645,7 @@
             // 
             // DistrictFilter
             // 
-            this.DistrictFilter.Location = new System.Drawing.Point(693, 47);
+            this.DistrictFilter.Location = new System.Drawing.Point(482, 42);
             this.DistrictFilter.Name = "DistrictFilter";
             this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
             this.DistrictFilter.TabIndex = 5;
@@ -609,7 +654,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(693, 24);
+            this.label7.Location = new System.Drawing.Point(482, 24);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 15);
             this.label7.TabIndex = 4;
@@ -617,32 +662,38 @@
             // 
             // NextDistrict
             // 
-            this.NextDistrict.Location = new System.Drawing.Point(678, 91);
+            this.NextDistrict.BackColor = System.Drawing.Color.Tomato;
+            this.NextDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextDistrict.Location = new System.Drawing.Point(155, 160);
             this.NextDistrict.Name = "NextDistrict";
-            this.NextDistrict.Size = new System.Drawing.Size(136, 32);
+            this.NextDistrict.Size = new System.Drawing.Size(115, 44);
             this.NextDistrict.TabIndex = 3;
             this.NextDistrict.Text = "Next page";
-            this.NextDistrict.UseVisualStyleBackColor = true;
+            this.NextDistrict.UseVisualStyleBackColor = false;
             this.NextDistrict.Click += new System.EventHandler(this.NextDistrict_Click);
             // 
             // PreviousPageDistrict
             // 
-            this.PreviousPageDistrict.Location = new System.Drawing.Point(494, 113);
+            this.PreviousPageDistrict.BackColor = System.Drawing.Color.Tomato;
+            this.PreviousPageDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PreviousPageDistrict.Location = new System.Drawing.Point(19, 160);
             this.PreviousPageDistrict.Name = "PreviousPageDistrict";
             this.PreviousPageDistrict.Size = new System.Drawing.Size(115, 44);
             this.PreviousPageDistrict.TabIndex = 2;
             this.PreviousPageDistrict.Text = "Previous page";
-            this.PreviousPageDistrict.UseVisualStyleBackColor = true;
+            this.PreviousPageDistrict.UseVisualStyleBackColor = false;
             this.PreviousPageDistrict.Click += new System.EventHandler(this.PreviousPageDistrict_Click);
             // 
             // NewDistrict
             // 
-            this.NewDistrict.Location = new System.Drawing.Point(530, 47);
+            this.NewDistrict.BackColor = System.Drawing.Color.Tomato;
+            this.NewDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NewDistrict.Location = new System.Drawing.Point(360, 160);
             this.NewDistrict.Name = "NewDistrict";
-            this.NewDistrict.Size = new System.Drawing.Size(105, 36);
+            this.NewDistrict.Size = new System.Drawing.Size(115, 44);
             this.NewDistrict.TabIndex = 1;
             this.NewDistrict.Text = "New District";
-            this.NewDistrict.UseVisualStyleBackColor = true;
+            this.NewDistrict.UseVisualStyleBackColor = false;
             this.NewDistrict.Click += new System.EventHandler(this.NewDistrict_Click);
             // 
             // DGVDistrict
@@ -653,27 +704,32 @@
             this.DistrictCod,
             this.DistrictId});
             this.DGVDistrict.Location = new System.Drawing.Point(4, 4);
+            this.DGVDistrict.MultiSelect = false;
             this.DGVDistrict.Name = "DGVDistrict";
+            this.DGVDistrict.ReadOnly = true;
+            this.DGVDistrict.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVDistrict.Size = new System.Drawing.Size(461, 150);
             this.DGVDistrict.TabIndex = 0;
             this.DGVDistrict.Text = "dataGridView7";
             this.DGVDistrict.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDistrict_CellClick);
-            this.DGVDistrict.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGVDistrict_DataBindingComplete);
             // 
             // DictrictName
             // 
             this.DictrictName.HeaderText = "Name";
             this.DictrictName.Name = "DictrictName";
+            this.DictrictName.ReadOnly = true;
             // 
             // DistrictCod
             // 
             this.DistrictCod.HeaderText = "Cod";
             this.DistrictCod.Name = "DistrictCod";
+            this.DistrictCod.ReadOnly = true;
             // 
             // DistrictId
             // 
             this.DistrictId.HeaderText = "Id";
             this.DistrictId.Name = "DistrictId";
+            this.DistrictId.ReadOnly = true;
             // 
             // tabPage3
             // 
@@ -696,7 +752,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(692, 84);
+            this.label8.Location = new System.Drawing.Point(482, 17);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(122, 15);
             this.label8.TabIndex = 6;
@@ -704,7 +760,7 @@
             // 
             // filterCity
             // 
-            this.filterCity.Location = new System.Drawing.Point(692, 113);
+            this.filterCity.Location = new System.Drawing.Point(482, 35);
             this.filterCity.Name = "filterCity";
             this.filterCity.Size = new System.Drawing.Size(100, 23);
             this.filterCity.TabIndex = 5;
@@ -712,32 +768,38 @@
             // 
             // PrevoiusCity
             // 
-            this.PrevoiusCity.Location = new System.Drawing.Point(490, 76);
+            this.PrevoiusCity.BackColor = System.Drawing.Color.Tomato;
+            this.PrevoiusCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PrevoiusCity.Location = new System.Drawing.Point(4, 160);
             this.PrevoiusCity.Name = "PrevoiusCity";
-            this.PrevoiusCity.Size = new System.Drawing.Size(94, 36);
+            this.PrevoiusCity.Size = new System.Drawing.Size(115, 44);
             this.PrevoiusCity.TabIndex = 4;
             this.PrevoiusCity.Text = "Previous page";
-            this.PrevoiusCity.UseVisualStyleBackColor = true;
+            this.PrevoiusCity.UseVisualStyleBackColor = false;
             this.PrevoiusCity.Click += new System.EventHandler(this.PrevoiusCity_Click);
             // 
             // NextCity
             // 
-            this.NextCity.Location = new System.Drawing.Point(692, 27);
+            this.NextCity.BackColor = System.Drawing.Color.Tomato;
+            this.NextCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextCity.Location = new System.Drawing.Point(143, 156);
             this.NextCity.Name = "NextCity";
-            this.NextCity.Size = new System.Drawing.Size(92, 40);
+            this.NextCity.Size = new System.Drawing.Size(115, 44);
             this.NextCity.TabIndex = 3;
             this.NextCity.Text = "Next page";
-            this.NextCity.UseVisualStyleBackColor = true;
+            this.NextCity.UseVisualStyleBackColor = false;
             this.NextCity.Click += new System.EventHandler(this.NextCity_Click);
             // 
             // NewCity
             // 
-            this.NewCity.Location = new System.Drawing.Point(490, 20);
+            this.NewCity.BackColor = System.Drawing.Color.Tomato;
+            this.NewCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NewCity.Location = new System.Drawing.Point(343, 156);
             this.NewCity.Name = "NewCity";
-            this.NewCity.Size = new System.Drawing.Size(75, 36);
+            this.NewCity.Size = new System.Drawing.Size(115, 44);
             this.NewCity.TabIndex = 1;
             this.NewCity.Text = "New City";
-            this.NewCity.UseVisualStyleBackColor = true;
+            this.NewCity.UseVisualStyleBackColor = false;
             this.NewCity.Click += new System.EventHandler(this.NewCity_Click);
             // 
             // DGVCity
@@ -748,7 +810,10 @@
             this.CityName,
             this.CityCod});
             this.DGVCity.Location = new System.Drawing.Point(4, 4);
+            this.DGVCity.MultiSelect = false;
             this.DGVCity.Name = "DGVCity";
+            this.DGVCity.ReadOnly = true;
+            this.DGVCity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVCity.Size = new System.Drawing.Size(454, 150);
             this.DGVCity.TabIndex = 0;
             this.DGVCity.Text = "dataGridView6";
@@ -758,12 +823,14 @@
             // 
             this.CityName.HeaderText = "Name";
             this.CityName.Name = "CityName";
+            this.CityName.ReadOnly = true;
             this.CityName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // CityCod
             // 
             this.CityCod.HeaderText = "Cod";
             this.CityCod.Name = "CityCod";
+            this.CityCod.ReadOnly = true;
             this.CityCod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Organ
