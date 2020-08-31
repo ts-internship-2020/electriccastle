@@ -56,8 +56,9 @@ namespace ConferencePlanner.WinUi
             {
                 //MessageBox.Show("Insert an email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //e.Cancel = true;
-                errorProviderEmailText.SetError(txtButton, "");
+                errorProviderEmailText.SetError(txtButton, "Insert an email");
                 txtButton.SelectAll();
+                e.Cancel = true;
 
             }
         }
