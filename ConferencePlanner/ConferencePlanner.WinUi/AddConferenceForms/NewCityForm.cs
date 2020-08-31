@@ -16,8 +16,11 @@ namespace ConferencePlanner.WinUi
     {
         private readonly IAddConferenceCityRepository getAddConferenceCityRepository;
         private readonly IAddConferenceDistrictRepository getAddConferenceDistrictRepository;
+
         private AddConferenceCityModel editCity;
+
         private int maxCityId = 0;
+
         List<AddConferenceDistrictModel> districts;
         List<AddConferenceCityModel> citiesCityForm;
         List<string> disctictName;

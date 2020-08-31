@@ -44,6 +44,9 @@ namespace ConferencePlanner.WinUi
         //Country Tab
         private readonly IAddConferenceCountyRepository _getCountry;
         private List<AddConferenceCountryModel> countryModel;
+        public static AddConferenceCountryModel editedCountry;
+        private List<AddConferenceCountryModel> currentCountryGridPage;
+        public int scrollValCountry;
 
         //District Tab
         private readonly IAddConferenceDistrictRepository _getDistrict;
@@ -223,6 +226,7 @@ namespace ConferencePlanner.WinUi
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
             getMaxId(getSpeakerList);
             List<SpeakerModel> getSpeakerInConference = new List<SpeakerModel>();
+
             countryModel = _getCountry.GetConferencesCountry();
             populateGridCountry(countryModel, scrollVal);
 
@@ -248,7 +252,7 @@ namespace ConferencePlanner.WinUi
             DGVCountry.Rows.Clear();
 
             int nr = country.Count;
-
+            List<AddConferenceCountryModel> countries = new List<AddConferenceCountryModel>();
             int numberRowsPage = 2;
             if (nr - scrollVal < numberRowsPage)
             {
@@ -264,8 +268,9 @@ namespace ConferencePlanner.WinUi
 
                 DGVCountry.Rows[n].Cells[0].Value = listCountry.DictionaryCountryName.ToString();
                 DGVCountry.Rows[n].Cells[1].Value = listCountry.CountryCode.ToString();
-
+                countries.Add(listCountry);
             }
+            currentCountryGridPage = countries;
         }
 
         void populateGridDistrict(List<AddConferenceDistrictModel> district, int scrollVal)
@@ -452,22 +457,7 @@ namespace ConferencePlanner.WinUi
             fcity.ShowDialog();
         }
 
-        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int n = countryModel.Count;
-
-            if (e.ColumnIndex == 2)
-                for (int i = 0; i < n; i++)
-                {
-                    _getCountry.UpdateConferenceCountry(DGVCountry.Rows[i].Cells[0].Value.ToString(), DGVCountry.Rows[i].Cells[1].Value.ToString(), i);
-                    NewCountryForm fc = Program.ServiceProvider.GetService<NewCountryForm>();
-                    fc.ShowDialog();
-                }
-
-            if (e.ColumnIndex == 3)
-                for (int i = 0; i < n; i++)
-                    _getCountry.DeleteConferenceCoutry(DGVCountry.Rows[i].Cells[1].Value.ToString());
-        }
+        
 
         // Start Tab Speaker functions
         void getMaxId(List<SpeakerModel> speakerList)
@@ -703,6 +693,10 @@ namespace ConferencePlanner.WinUi
 
             CategoryTabReloadData();
 
+            scrollValCountry = 0;
+            countryModel = _getCountry.GetConferencesCountry();
+            populateGridCountry(countryModel, scrollValCountry);
+
             scrollValSpeaker = 0;
             getSpeakerList = getSpeakerRepository.GetSpeaker();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
@@ -932,6 +926,31 @@ namespace ConferencePlanner.WinUi
             getSpeakerList = speakerModelTxt.Where(getSpeakerList => (getSpeakerList.Name.Contains(tabSpeakerFilterText.Text)) ||
             (getSpeakerList.Code.Contains(tabSpeakerFilterText.Text))).ToList();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            editedCountry = null;
+            int n = countryModel.Count;
+
+            if (e.RowIndex < 0 || (e.ColumnIndex != DGVCountry.Columns["Edit"].Index && e.ColumnIndex != DGVCountry.Columns["Delete"].Index))
+                return;
+            
+            if (e.ColumnIndex == DGVCountry.Columns["Edit"].Index)
+            { 
+                editedCountry = currentCountryGridPage.ElementAt(e.RowIndex);
+                NewCountryForm fc = Program.ServiceProvider.GetService<NewCountryForm>();
+                fc.ShowDialog();
+            }
+
+            else if (e.ColumnIndex == DGVCountry.Columns["Delete"].Index)
+            {
+                _getCity.deleteCity(currentCountryGridPage.ElementAt(e.RowIndex).DictionaryCountryId);
+                scrollValCountry = 0;
+                countryModel = _getCountry.GetConferencesCountry();
+                populateGridCountry(countryModel, scrollValCountry);
+            }
+            else return;
         }
 
         private void DGVCity_CellContentClick(object sender, DataGridViewCellEventArgs e)
