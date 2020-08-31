@@ -258,7 +258,7 @@ namespace ConferencePlanner.WinUi
             populateGridCountry(countryModel, scrollVal, entryNumberTabCountry);
 
             entryNumberTabDistrict = Convert.ToInt32(tabDistrictEntryText.Text);
-            districtModel = _getDistrict.GetConferencesDistrict();
+            districtModel = conferenceDistrictRepository.GetConferencesDistrict();
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
 
             entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
@@ -321,7 +321,7 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-        void populateGridCountry(List<AddConferenceCountryModel> country, int scrollVal)
+        void populateGridCountry(List<AddConferenceCountryModel> country, int scrollVal, int countryEntry)
         {
             DGVCountry.Rows.Clear();
 
