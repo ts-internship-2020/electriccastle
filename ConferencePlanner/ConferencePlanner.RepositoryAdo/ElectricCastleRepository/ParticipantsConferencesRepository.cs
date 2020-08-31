@@ -66,20 +66,28 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             return participants;
         }
 
-        public void UpdateParticipantsConferencesState(int index)
+        public void UpdateParticipantsConferencesState(int index, string email)
         {
+           
+
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
 
             if(index == 7)
-                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 2";
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 2 where ParticipantEmail = @Email ";
 
             if (index == 8)
-                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 1";
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 1 where ParticipantEmail = @Email";
 
             if (index == 9)
-                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 3";
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 3 where ParticipantEmail = @Email ";
+            SqlParameter[] parameters = new SqlParameter[1];
 
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            parameters[0] = new SqlParameter("@Email", email);
+
+            sqlCommand.Parameters.Add(parameters[0]);
+            sqlCommand.ExecuteNonQuery();
+            //SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            //sqlDataReader.Close();
 
 
         }
