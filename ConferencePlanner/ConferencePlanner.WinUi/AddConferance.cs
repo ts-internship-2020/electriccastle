@@ -12,11 +12,8 @@ using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
-using static ConferencePlanner.WinUi.Program;
 using Windows.UI.Xaml.Controls;
-using Microsoft.Extensions.DependencyInjection;
 using Windows.ApplicationModel.Activation;
-using System.Linq;
 
 namespace ConferencePlanner.WinUi
 {
@@ -42,7 +39,7 @@ namespace ConferencePlanner.WinUi
 
 
         //Country Tab
-        private readonly IAddConferenceCountyRepository _getCountry;
+        private readonly IAddConferenceCountryRepository _getCountry;
         private List<AddConferenceCountryModel> countryModel;
         public static AddConferenceCountryModel editedCountry;
         private List<AddConferenceCountryModel> currentCountryGridPage;
@@ -84,7 +81,7 @@ namespace ConferencePlanner.WinUi
         public AddConferance(IConferanceCategory getConferanceCategory,
                              IConferenceCategoryRepository conferenceCategoryRepository,
                              IAddConferenceCityRepository getCity,
-                             IAddConferenceCountyRepository getCountry,
+                             IAddConferenceCountryRepository getCountry,
                              IAddConferenceDistrictRepository getDistrict,
                              IConferenceTypeRepository conferanceTypeRepository,
                              ISpeakerRepository getSpeakerRepository
@@ -104,7 +101,7 @@ namespace ConferencePlanner.WinUi
             scrollValSpeaker = 0;
             elementMainSpeakerId = 0;
             getSpeakerInConference = new List<int>();
-            conferenceCategories = conferenceCategoryRepository.getAllCategories();
+            conferenceCategories = conferenceCategoryRepository.GetAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
         }
 
@@ -131,13 +128,14 @@ namespace ConferencePlanner.WinUi
 
         }
 
-
+     
         private void button1_Click(object sender, EventArgs e)
         {
 
-
+           checkCancel = false;
             tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
                              tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
+
 
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage3"])
             {
@@ -150,6 +148,8 @@ namespace ConferencePlanner.WinUi
 
         private void btBack_Click(object sender, EventArgs e)
         {
+
+            checkCancel = false;
             if (tabConferance.SelectedIndex != 0)
             {
                 tabConferance.SelectedIndex = (tabConferance.SelectedIndex - 1 < tabConferance.TabCount) ?
@@ -157,7 +157,7 @@ namespace ConferencePlanner.WinUi
         
 
             }
-
+         
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage2"])
             {
                 button1.Text = "Next";
@@ -185,18 +185,13 @@ namespace ConferencePlanner.WinUi
         }
 
 
-        //  public static int currentSelectedTab;
+        bool checkCancel = true;
         private void tabConferance_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            //int selectedTab = tabConferance.SelectedIndex;
-            //Disable the tab selection
-            //if (currentSelectedTab != selectedTab)
-            //{
-
-            //    tabConferance.SelectTab(currentSelectedTab);
-            //}
 
 
+            e.Cancel = checkCancel;
+            checkCancel = true;
 
         }
 
@@ -294,6 +289,7 @@ namespace ConferencePlanner.WinUi
 
                 DGVDistrict.Rows[n].Cells[0].Value = listDistrict.DictionaryDistrictName.ToString();
                 DGVDistrict.Rows[n].Cells[1].Value = listDistrict.DistrictCode.ToString();
+                DGVDistrict.Rows[n].Cells[2].Value = listDistrict.DictionaryDistrictId;
 
             }
         }
@@ -446,8 +442,9 @@ namespace ConferencePlanner.WinUi
 
         private void NewDistrict_Click(object sender, EventArgs e)
         {
-            NewDistrictForm fd = new NewDistrictForm();
-            fd.Show();
+            NewDistrictForm newDistrictForm = Program.ServiceProvider.GetService<NewDistrictForm>();
+            newDistrictForm.DistrictId = null;
+            newDistrictForm.ShowDialog();
         }
 
         private void NewCity_Click(object sender, EventArgs e)
@@ -643,7 +640,7 @@ namespace ConferencePlanner.WinUi
                 DialogResult dialogResult = DisplayDeleteConfirmation("Are you sure you want to delete " + categoryName + "?", "Delete Category");
                 if (dialogResult == DialogResult.Yes)
                 {
-                    conferenceCategoryRepository.deleteCategory(categoryId);
+                    conferenceCategoryRepository.DeleteCategory(categoryId);
                     CategoryTabReloadData();
                 }
             }
@@ -684,6 +681,18 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferance_Activated(object sender, EventArgs e)
         {
+            TypeReloadData();
+            CategoryTabReloadData();
+
+            scrollValSpeaker = 0;
+            getSpeakerList = getSpeakerRepository.GetSpeaker();
+            populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker);
+            getMaxId(getSpeakerList);
+        }
+         
+
+        private void TypeReloadData()
+        {
             conferanceTypeModels = conferanceTypeRepository.getAllTypes();
             conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
             dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
@@ -707,10 +716,9 @@ namespace ConferencePlanner.WinUi
             populateGridCity(cityModel, scrollVal);
 
         }
-
         private void CategoryTabReloadData()
         {
-            conferenceCategories = conferenceCategoryRepository.getAllCategories();
+            conferenceCategories = conferenceCategoryRepository.GetAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
             CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
             CategoryTabGrid.AutoGenerateColumns = true;
@@ -780,9 +788,6 @@ namespace ConferencePlanner.WinUi
             dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
             ManageTypeTabPaginationButtonsState();
 
-
-
-
         }
 
         private void dataGridViewType_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -810,7 +815,15 @@ namespace ConferencePlanner.WinUi
             {
                 if (e.ColumnIndex == dataGridViewType.Columns["Delete"].Index)
                 {
-                    conferanceTypeRepository.deleteType(typeId);
+                    string typeName = dataGridViewType[dataGridViewType.Columns["ConferenceTypeName"].Index, e.RowIndex].Value.ToString();
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want delete " + typeName+ "?", "Delete", MessageBoxButtons.YesNo);
+                    if(dialogResult==DialogResult.Yes)
+                    {
+                        conferanceTypeRepository.deleteType(typeId);
+                        TypeReloadData();
+                    }
+                    
+
                 }
             }
 
@@ -984,6 +997,43 @@ namespace ConferencePlanner.WinUi
             {
                 // do nothing
             }
+        }
+
+        private void DGVDistrict_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || (e.ColumnIndex != DGVDistrict.Columns["Edit"].Index
+                               && e.ColumnIndex != DGVDistrict.Columns["Delete"].Index)) return;
+
+            Int32 districtId = (Int32)DGVDistrict[DGVDistrict.Columns["DistrictId"].Index, e.RowIndex].Value;
+
+            if (e.ColumnIndex == DGVDistrict.Columns["Edit"].Index)
+            {
+                NewDistrictForm addEditCategory = Program.ServiceProvider.GetService<NewDistrictForm>();
+                addEditCategory.DistrictId = districtId;
+                addEditCategory.ShowDialog();
+            }
+
+            if (e.ColumnIndex == DGVDistrict.Columns["Delete"].Index)
+            {
+                string districtName = DGVDistrict[DGVDistrict.Columns["DictrictName"].Index, e.RowIndex].Value.ToString();
+                DialogResult dialogResult = DisplayDeleteConfirmation("Are you sure you want to delete " + districtName + "?", "Delete District");
+                if (dialogResult == DialogResult.Yes)
+                {
+                    _getDistrict.DeleteConferenceDistrict(districtId);
+                }
+            }
+
+        }
+
+        private void DGVDistrict_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DGVDistrict.Columns["DistrictId"].Visible = false;
+        }
+
+        private void btSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ConferencePlanner.WinUi
     public partial class NewCountryForm : Form
     {
 
-        private readonly IAddConferenceCountyRepository _getCountry;
+        private readonly IAddConferenceCountryRepository _getCountry;
 
         private AddConferenceCountryModel editCountry;
 

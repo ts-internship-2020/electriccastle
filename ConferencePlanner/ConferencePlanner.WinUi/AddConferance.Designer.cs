@@ -83,6 +83,7 @@
             this.DGVDistrict = new System.Windows.Forms.DataGridView();
             this.DictrictName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DistrictCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DistrictId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.filterCity = new System.Windows.Forms.TextBox();
@@ -189,8 +190,10 @@
             this.tabConferance.Controls.Add(this.tabPage2);
             this.tabConferance.Controls.Add(this.tabPage3);
             this.tabConferance.Location = new System.Drawing.Point(25, 140);
+            this.tabConferance.Multiline = true;
             this.tabConferance.Name = "tabConferance";
-            this.tabConferance.SelectedIndex = 5;
+            this.tabConferance.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabConferance.SelectedIndex = 0;
             this.tabConferance.Size = new System.Drawing.Size(907, 375);
             this.tabConferance.TabIndex = 9;
             this.tabConferance.Tag = "Country";
@@ -435,6 +438,7 @@
             this.tabType.Controls.Add(this.btNextType);
             this.tabType.Location = new System.Drawing.Point(4, 24);
             this.tabType.Name = "tabType";
+            this.tabType.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabType.Size = new System.Drawing.Size(899, 347);
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
@@ -450,11 +454,13 @@
             this.btSearch.Text = "Search";
             this.btSearch.UseVisualStyleBackColor = false;
             this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
+            this.btSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btSearch_KeyDown);
             // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(614, 4);
             this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Search...";
             this.txtSearch.Size = new System.Drawing.Size(100, 23);
             this.txtSearch.TabIndex = 4;
             // 
@@ -517,6 +523,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabPage1.Size = new System.Drawing.Size(899, 347);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Country";
@@ -610,6 +617,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabPage2.Size = new System.Drawing.Size(899, 347);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "District";
@@ -673,12 +681,15 @@
             this.DGVDistrict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVDistrict.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DictrictName,
-            this.DistrictCod});
+            this.DistrictCod,
+            this.DistrictId});
             this.DGVDistrict.Location = new System.Drawing.Point(4, 4);
             this.DGVDistrict.Name = "DGVDistrict";
             this.DGVDistrict.Size = new System.Drawing.Size(461, 150);
             this.DGVDistrict.TabIndex = 0;
             this.DGVDistrict.Text = "dataGridView7";
+            this.DGVDistrict.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDistrict_CellClick);
+            this.DGVDistrict.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGVDistrict_DataBindingComplete);
             // 
             // DictrictName
             // 
@@ -689,6 +700,11 @@
             // 
             this.DistrictCod.HeaderText = "Cod";
             this.DistrictCod.Name = "DistrictCod";
+            // 
+            // DistrictId
+            // 
+            this.DistrictId.HeaderText = "Id";
+            this.DistrictId.Name = "DistrictId";
             // 
             // tabPage3
             // 
@@ -701,6 +717,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabPage3.Size = new System.Drawing.Size(899, 347);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "City";
@@ -1011,5 +1028,6 @@
         private ButonCircular tabSpeakerPreviousButton;
         private ButonCircular tabSpeakerFilterButton;
         private System.Windows.Forms.TextBox tabSpeakerFilterText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DistrictId;
     }
 }

@@ -7,18 +7,18 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
     public interface IConferenceCategoryRepository
     {
-        public void addCategory(ConferenceCategoryModel conferenceCategory);
+        public void AddCategory(ConferenceCategoryModel conferenceCategory);
 
-        public void editCategory(ConferenceCategoryModel conferenceCategory);
+        public void EditCategory(ConferenceCategoryModel conferenceCategory);
 
-        public void deleteCategory(int categoryId);
+        public void DeleteCategory(int categoryId);
 
-        public List<ConferenceCategoryModel> getAllCategories();
+        public List<ConferenceCategoryModel> GetAllCategories();
 
-        public ConferenceCategoryModel getCategoryForConference(int conferenceId);
+        public ConferenceCategoryModel GetCategoryForConference(int conferenceId);
 
-        public int getNextId();
+        public int GetNextId();
 
-        public ConferenceCategoryModel getCategory(int categoryId);
+        public ConferenceCategoryModel GetCategory(int categoryId);
     }
 }

@@ -5,7 +5,7 @@ using ConferencePlanner.Abstraction.ElectricCastleModel;
 
 namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
-    public interface IAddConferenceCountyRepository
+    public interface IAddConferenceCountryRepository
     {
         public List<AddConferenceCountryModel> GetConferencesCountry();
 

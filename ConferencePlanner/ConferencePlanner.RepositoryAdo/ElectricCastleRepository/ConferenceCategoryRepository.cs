@@ -18,7 +18,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             _sqlConnection = sqlConnection;
         }
 
-        public void addCategory(ConferenceCategoryModel conferenceCategory)
+        public void AddCategory(ConferenceCategoryModel conferenceCategory)
         {
             try { 
                 SqlCommand sqlCommand = _sqlConnection.CreateCommand();
@@ -38,7 +38,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             }
         }
 
-        public void deleteCategory(int categoryId)
+        public void DeleteCategory(int categoryId)
         {
             try { 
                 SqlCommand sqlCommand = _sqlConnection.CreateCommand();
@@ -55,7 +55,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             }
         }
 
-        public void editCategory(ConferenceCategoryModel conferenceCategory)
+        public void EditCategory(ConferenceCategoryModel conferenceCategory)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             }
         }
 
-        public List<ConferenceCategoryModel> getAllCategories()
+        public List<ConferenceCategoryModel> GetAllCategories()
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.Connection = _sqlConnection;
@@ -106,7 +106,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             return categories;
         }
 
-        public ConferenceCategoryModel getCategory(int categoryId)
+        public ConferenceCategoryModel GetCategory(int categoryId)
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.Connection = _sqlConnection;
@@ -136,12 +136,12 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             return category;
         }
 
-        public ConferenceCategoryModel getCategoryForConference(int ConferenceId)
+        public ConferenceCategoryModel GetCategoryForConference(int ConferenceId)
         {
             throw new NotImplementedException();
         }
 
-        public int getNextId()
+        public int GetNextId()
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.Connection = _sqlConnection;

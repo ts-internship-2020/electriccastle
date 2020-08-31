@@ -1,39 +1,150 @@
-﻿using System;
+﻿using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using Windows.UI.Xaml.Controls;
 
 namespace ConferencePlanner.WinUi
 {
     public partial class NewDistrictForm : Form
     {
-        public NewDistrictForm()
+        private readonly IAddConferenceDistrictRepository conferenceDistrictRepository;
+
+        private readonly IAddConferenceCountryRepository conferenceCountryRepository;
+
+        private List<AddConferenceCountryModel> countries;
+
+        private Regex onlyLettersRegex = new Regex(@"^[a-zA-Z]+$");
+
+        public int? DistrictId { get; set; }
+
+        public NewDistrictForm(IAddConferenceDistrictRepository conferenceDistrictRepository,
+                               IAddConferenceCountryRepository conferenceCountryRepository)
         {
             InitializeComponent();
+            this.conferenceDistrictRepository = conferenceDistrictRepository;
+            this.conferenceCountryRepository = conferenceCountryRepository;
         }
 
-        private void butonCircular1_Click(object sender, EventArgs e)
+        private void NewDistrictForm_Load(object sender, EventArgs e)
         {
-            System.Text.RegularExpressions.Regex name = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z]+$");
-
-            if (!name.IsMatch(DistrictNameTb.Text))
+            countries = conferenceCountryRepository.GetConferencesCountry();
+            CountryComboBox.DataSource = countries;
+            CountryComboBox.DisplayMember = "DictionaryCountryName";
+            CountryComboBox.ValueMember = "DictionaryCountryId";
+            if (DistrictId == null)
             {
-                errorProviderDistrictName.SetError(DistrictNameTb, "The name should contain only letters");
+                DistrictId = conferenceDistrictRepository.GetNextId();
+                DistrictNameTextBox.Text = "";
+                DistrictCodeTextBox.Text = "";
+                SaveButton.Click += new EventHandler(AddDistrict);
+                CountryComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                AddConferenceDistrictModel district = conferenceDistrictRepository.GetDistrict((int)DistrictId);
+                DistrictNameTextBox.Text = district.DictionaryDistrictName;
+                DistrictCodeTextBox.Text = district.DistrictCode;
+                SaveButton.Click += new EventHandler(EditDistrict);
+                CountryComboBox.SelectedValue = district.DictionaryCountryId;
+            }
+        }
+
+        private void AddDistrict(object sender, EventArgs e)
+        {
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                conferenceDistrictRepository.InsertConferenceDistrict(new AddConferenceDistrictModel
+                {
+                    DictionaryDistrictId = (int)DistrictId,
+                    DictionaryDistrictName = DistrictNameTextBox.Text,
+                    DistrictCode = DistrictCodeTextBox.Text,
+                    DictionaryCountryId = (int)CountryComboBox.SelectedValue
+                });
+                Close();
+            }
+        }
+
+        private void EditDistrict(object sender, EventArgs e)
+        {
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                conferenceDistrictRepository.UpdateConferenceDistrict(new AddConferenceDistrictModel
+                {
+                    DictionaryDistrictId = (int)DistrictId,
+                    DictionaryDistrictName = DistrictNameTextBox.Text,
+                    DistrictCode = DistrictCodeTextBox.Text,
+                    DictionaryCountryId = (int)CountryComboBox.SelectedValue
+                });
+                Close();
+            }
+        }
+
+        private void DistrictNameTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!onlyLettersRegex.IsMatch(DistrictNameTextBox.Text))
+            {
+                e.Cancel = true;
+                DistrictNameTextBox.Focus();
+                errorProviderDistrictName.SetError(DistrictNameTextBox, "The name should only contain letters");
+            }
+            else if (DistrictNameTextBox.TextLength == 0)
+            {
+                e.Cancel = true;
+                DistrictNameTextBox.Focus();
+                errorProviderDistrictName.SetError(DistrictNameTextBox, "You have to introduce the name");
+            }
+            else if (DistrictNameTextBox.TextLength <= 3)
+            {
+                e.Cancel = true;
+                DistrictNameTextBox.Focus();
+                errorProviderDistrictName.SetError(DistrictNameTextBox, "Such country does not exist");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderDistrictName.SetError(DistrictNameTextBox, "");
             }
 
-            if (!name.IsMatch(DistrictCodTb.Text))
+        }
+
+        private void DistrictCodeTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!onlyLettersRegex.IsMatch(DistrictCodeTextBox.Text))
             {
-                errorProviderDistrictCod.SetError(DistrictCodTb, "The code should contain only letters");
+                e.Cancel = true;
+                DistrictCodeTextBox.Focus();
+                errorProviderDistrictCode.SetError(DistrictCodeTextBox, "The code should contain only letters");
             }
+            else if (DistrictCodeTextBox.TextLength == 0)
+            {
+                e.Cancel = true;
+                DistrictCodeTextBox.Focus();
+                errorProviderDistrictCode.SetError(DistrictCodeTextBox, "You have to introduce the code");
+            }
+            else if (DistrictCodeTextBox.TextLength == 1)
+            {
+                e.Cancel = true;
+                DistrictCodeTextBox.Focus();
+                errorProviderDistrictCode.SetError(DistrictCodeTextBox, "This code is not explicit");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderDistrictCode.SetError(DistrictCodeTextBox, "");
+            }
+        }
 
-            if (DistrictNameTb.TextLength == 0) errorProviderDistrictName.SetError(DistrictNameTb, "You have to introduce the name");
-            if (DistrictCodTb.TextLength == 0) errorProviderDistrictCod.SetError(DistrictCodTb, "You have to introduce the code");
-
-            if (DistrictNameTb.TextLength <= 3) errorProviderDistrictName.SetError(DistrictNameTb, "Such country does not exist");
-            if (DistrictCodTb.TextLength == 1) errorProviderDistrictCod.SetError(DistrictCodTb, "This code is not explicit");
+        private void NewDistrictForm_Activated(object sender, EventArgs e)
+        {
+            errorProviderDistrictName.SetError(DistrictNameTextBox, "");
+            errorProviderDistrictCode.SetError(DistrictCodeTextBox, "");
         }
     }
 }

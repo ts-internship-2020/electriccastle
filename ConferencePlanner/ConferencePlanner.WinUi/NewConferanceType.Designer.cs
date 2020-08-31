@@ -70,6 +70,7 @@
             this.txtCodeType.Name = "txtCodeType";
             this.txtCodeType.Size = new System.Drawing.Size(100, 23);
             this.txtCodeType.TabIndex = 2;
+            this.txtCodeType.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodeType_Validating);
             // 
             // txtNameType
             // 
@@ -77,6 +78,7 @@
             this.txtNameType.Name = "txtNameType";
             this.txtNameType.Size = new System.Drawing.Size(100, 23);
             this.txtNameType.TabIndex = 3;
+            this.txtNameType.Validating += new System.ComponentModel.CancelEventHandler(this.txtNameType_Validating);
             // 
             // btSaveType
             // 
@@ -109,6 +111,7 @@
             this.Controls.Add(this.label1);
             this.Name = "NewConferanceType";
             this.Text = "NewConferanceType";
+            this.Activated += new System.EventHandler(this.NewConferanceType_Activated);
             this.Load += new System.EventHandler(this.NewConferanceType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();

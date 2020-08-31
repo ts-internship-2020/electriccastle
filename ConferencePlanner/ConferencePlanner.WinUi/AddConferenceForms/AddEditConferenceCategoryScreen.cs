@@ -26,14 +26,14 @@ namespace ConferencePlanner.WinUi
         {
             if (CategoryId == null)
             {
-                CategoryId = conferenceCategoryRepository.getNextId();
+                CategoryId = conferenceCategoryRepository.GetNextId();
                 SaveButton.Click += new EventHandler(AddConferenceCategory);
                 CategoryNameTextBox.Text = "";
                 CategoryCodeTextBox.Text = "";
             }
             else
             {
-                ConferenceCategoryModel category = conferenceCategoryRepository.getCategory((int)CategoryId);
+                ConferenceCategoryModel category = conferenceCategoryRepository.GetCategory((int)CategoryId);
                 CategoryNameTextBox.Text = category.ConferenceCategoryName;
                 CategoryCodeTextBox.Text = category.ConferenceCategoryCode;
                 SaveButton.Click += new EventHandler(EditConferenceCategory);
@@ -44,7 +44,7 @@ namespace ConferencePlanner.WinUi
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                conferenceCategoryRepository.addCategory(new ConferenceCategoryModel
+                conferenceCategoryRepository.AddCategory(new ConferenceCategoryModel
                 {
                     ConferenceCategoryId = (int)CategoryId,
                     ConferenceCategoryName = CategoryNameTextBox.Text,
@@ -58,7 +58,7 @@ namespace ConferencePlanner.WinUi
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                conferenceCategoryRepository.editCategory(new ConferenceCategoryModel
+                conferenceCategoryRepository.EditCategory(new ConferenceCategoryModel
                 {
                     ConferenceCategoryId = (int)CategoryId,
                     ConferenceCategoryName = CategoryNameTextBox.Text,
@@ -109,7 +109,5 @@ namespace ConferencePlanner.WinUi
             CategoryNameTextBoxErrorProvider.SetError(CategoryNameTextBox, "");
             CategoryCodeTextBoxErrorProvider.SetError(CategoryCodeTextBox, "");
         }
-
-      
     }
 }
