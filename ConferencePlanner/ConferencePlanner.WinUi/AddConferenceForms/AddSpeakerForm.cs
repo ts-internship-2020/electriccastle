@@ -55,7 +55,7 @@ namespace ConferencePlanner.WinUi
                 //addedSpeaker.Nationality = newSpeakerNationalityTextBox.Text;
                 //addedSpeaker.Picture = newSpeakerPictureTextBox.Text;
 
-                _getSpeakerRepository.addSpeaker(AddConferance.maxIdSpeaker + 20, newSpeakerCodeTextBox.Text, newSpeakerNameTextBox.Text, number, newSpeakerNationalityTextBox.Text, newSpeakerPictureTextBox.Text);
+                _getSpeakerRepository.addSpeaker(AddConferance.maxIdSpeaker + 1, newSpeakerCodeTextBox.Text, newSpeakerNameTextBox.Text, number, newSpeakerNationalityTextBox.Text, newSpeakerPictureTextBox.Text);
                 this.Close();
             }
         }

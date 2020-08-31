@@ -10,11 +10,11 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
     {
         public List<AddConferenceCityModel> GetConferencesCity();
 
-        public void UpdateConferenceCity();
+        public void updateCity(int cityId, string cityCode, string cityName, int cityDistrictId);
 
-        public void InsertConferenceCity();
+        public void insertCity(int cityId, string cityCode, string cityName, int cityDistrictId);
 
 
-        public void DeleteConferenceCitry();
+        public void deleteCity( int cityId);
     }
 }

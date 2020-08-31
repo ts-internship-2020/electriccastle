@@ -39,6 +39,8 @@
             this.butonCircular1 = new ConferencePlanner.WinUi.ButonCircular();
             this.errorProviderCityName = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderCityCod = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CityDistrictNameTv = new System.Windows.Forms.Label();
+            this.DistrictNameTb = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityCod)).BeginInit();
@@ -78,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CityNameTv.AutoSize = true;
             this.CityNameTv.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.CityNameTv.Location = new System.Drawing.Point(32, 198);
+            this.CityNameTv.Location = new System.Drawing.Point(32, 172);
             this.CityNameTv.Name = "CityNameTv";
             this.CityNameTv.Size = new System.Drawing.Size(44, 17);
             this.CityNameTv.TabIndex = 2;
@@ -91,7 +93,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CityCodeTv.AutoSize = true;
             this.CityCodeTv.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.CityCodeTv.Location = new System.Drawing.Point(32, 254);
+            this.CityCodeTv.Location = new System.Drawing.Point(32, 225);
             this.CityCodeTv.Name = "CityCodeTv";
             this.CityCodeTv.Size = new System.Drawing.Size(32, 17);
             this.CityCodeTv.TabIndex = 3;
@@ -102,7 +104,7 @@
             this.CityNameTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CityNameTb.Location = new System.Drawing.Point(123, 198);
+            this.CityNameTb.Location = new System.Drawing.Point(123, 172);
             this.CityNameTb.Name = "CityNameTb";
             this.CityNameTb.Size = new System.Drawing.Size(150, 23);
             this.CityNameTb.TabIndex = 4;
@@ -112,7 +114,7 @@
             this.CityCodTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CityCodTb.Location = new System.Drawing.Point(123, 254);
+            this.CityCodTb.Location = new System.Drawing.Point(123, 225);
             this.CityCodTb.Name = "CityCodTb";
             this.CityCodTb.Size = new System.Drawing.Size(150, 23);
             this.CityCodTb.TabIndex = 5;
@@ -122,7 +124,7 @@
             this.butonCircular1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.butonCircular1.Location = new System.Drawing.Point(103, 314);
+            this.butonCircular1.Location = new System.Drawing.Point(103, 325);
             this.butonCircular1.Name = "butonCircular1";
             this.butonCircular1.Size = new System.Drawing.Size(100, 51);
             this.butonCircular1.TabIndex = 6;
@@ -138,11 +140,34 @@
             // 
             this.errorProviderCityCod.ContainerControl = this;
             // 
+            // CityDistrictNameTv
+            // 
+            this.CityDistrictNameTv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CityDistrictNameTv.AutoSize = true;
+            this.CityDistrictNameTv.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.CityDistrictNameTv.Location = new System.Drawing.Point(32, 280);
+            this.CityDistrictNameTv.Name = "CityDistrictNameTv";
+            this.CityDistrictNameTv.Size = new System.Drawing.Size(50, 17);
+            this.CityDistrictNameTv.TabIndex = 7;
+            this.CityDistrictNameTv.Text = "District";
+            // 
+            // DistrictNameTb
+            // 
+            this.DistrictNameTb.FormattingEnabled = true;
+            this.DistrictNameTb.Location = new System.Drawing.Point(123, 280);
+            this.DistrictNameTb.Name = "DistrictNameTb";
+            this.DistrictNameTb.Size = new System.Drawing.Size(150, 23);
+            this.DistrictNameTb.TabIndex = 8;
+            // 
             // NewCityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 388);
+            this.Controls.Add(this.DistrictNameTb);
+            this.Controls.Add(this.CityDistrictNameTv);
             this.Controls.Add(this.butonCircular1);
             this.Controls.Add(this.CityCodTb);
             this.Controls.Add(this.CityNameTb);
@@ -152,6 +177,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "NewCityForm";
             this.Text = "NewCityForm";
+            this.Load += new System.EventHandler(this.NewCityForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityCod)).EndInit();
@@ -171,5 +197,7 @@
         private ButonCircular butonCircular1;
         private System.Windows.Forms.ErrorProvider errorProviderCityName;
         private System.Windows.Forms.ErrorProvider errorProviderCityCod;
+        private System.Windows.Forms.ComboBox DistrictNameTb;
+        private System.Windows.Forms.Label CityDistrictNameTv;
     }
 }

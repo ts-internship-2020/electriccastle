@@ -83,6 +83,7 @@
             this.DGVDistrict = new System.Windows.Forms.DataGridView();
             this.DictrictName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DistrictCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DistrictId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.filterCity = new System.Windows.Forms.TextBox();
@@ -649,12 +650,15 @@
             this.DGVDistrict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVDistrict.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DictrictName,
-            this.DistrictCod});
+            this.DistrictCod,
+            this.DistrictId});
             this.DGVDistrict.Location = new System.Drawing.Point(4, 4);
             this.DGVDistrict.Name = "DGVDistrict";
             this.DGVDistrict.Size = new System.Drawing.Size(461, 150);
             this.DGVDistrict.TabIndex = 0;
             this.DGVDistrict.Text = "dataGridView7";
+            this.DGVDistrict.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDistrict_CellClick);
+            this.DGVDistrict.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGVDistrict_DataBindingComplete);
             // 
             // DictrictName
             // 
@@ -665,6 +669,11 @@
             // 
             this.DistrictCod.HeaderText = "Cod";
             this.DistrictCod.Name = "DistrictCod";
+            // 
+            // DistrictId
+            // 
+            this.DistrictId.HeaderText = "Id";
+            this.DistrictId.Name = "DistrictId";
             // 
             // tabPage3
             // 
@@ -733,6 +742,7 @@
             // 
             // DGVCity
             // 
+            this.DGVCity.AllowUserToAddRows = false;
             this.DGVCity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCity.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CityName,
@@ -742,6 +752,7 @@
             this.DGVCity.Size = new System.Drawing.Size(454, 150);
             this.DGVCity.TabIndex = 0;
             this.DGVCity.Text = "dataGridView6";
+            this.DGVCity.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCity_CellContentClick);
             // 
             // CityName
             // 
@@ -980,5 +991,6 @@
         private ButonCircular tabSpeakerPreviousButton;
         private ButonCircular tabSpeakerFilterButton;
         private System.Windows.Forms.TextBox tabSpeakerFilterText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DistrictId;
     }
 }

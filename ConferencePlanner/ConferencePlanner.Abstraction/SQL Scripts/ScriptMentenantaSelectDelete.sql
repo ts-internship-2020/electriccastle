@@ -33,14 +33,17 @@ and c.OrganizerEmail = 'eventskill@gmail.com';
 
 SELECT DictionaryConferenceCategoryId, DictionaryConferenceCategoryName, ConferenceCategoryCode FROM DictionaryConferenceCategory;
 
+-- next id pentru categorii
 SELECT MAX(DictionaryConferenceCategoryId) AS maxId FROM DictionaryConferenceCategory;
 
+-- select pentru GetCategory
 SELECT DictionaryConferenceCategoryId, DictionaryConferenceCategoryName, ConferenceCategoryCode 
 FROM DictionaryConferenceCategory
 WHERE DictionaryConferenceCategoryId = 3;
 
 BEGIN TRAN
 
+-- C.U.D pentru categorii
 INSERT INTO DictionaryConferenceCategory (DictionaryConferenceCategoryId, 
 DictionaryConferenceCategoryName, ConferenceCategoryCode)
 VALUES (11, 'Ciorba', 'CRB');
@@ -54,6 +57,37 @@ DELETE FROM DictionaryConferenceCategory
 WHERE DictionaryConferenceCategoryId = 11;
 
 ROLLBACK
+
+-- next id pentru districte
+SELECT MAX(DictionaryDistrictId) AS maxId FROM DictionaryDistrict
+
+
+-- select pentru GetDistrict
+SELECT DictionaryDistrictId, DictionaryDistrictName, DistrictCode, DictionaryCountryId 
+FROM DictionaryDistrict
+WHERE DictionaryDistrictId = 3;
+
+BEGIN TRAN
+
+-- C.U.D pentru districte
+INSERT INTO DictionaryDistrict (DictionaryDistrictId, 
+DictionaryDistrictName, DistrictCode, DictionaryCountryId)
+VALUES (9, 'Ciorba', 'CRB', 2);
+
+UPDATE DictionaryDistrict
+SET DictionaryDistrictName = 'Ciorbix',
+	DistrictCode = 'CiB',
+	DictionaryCountryId = 4
+WHERE DictionaryDistrictId = 9;
+
+DELETE FROM DictionaryDistrict
+WHERE DictionaryDistrictId = 9;
+
+ROLLBACK
+
+
+SELECT * FROM DictionaryDistrict;
+
 
 DELETE  FROM Conference;	
 DELETE  FROM Location;
