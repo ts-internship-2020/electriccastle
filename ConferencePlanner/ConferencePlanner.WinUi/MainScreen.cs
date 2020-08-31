@@ -57,11 +57,13 @@ namespace ConferencePlanner.WinUi
             this._email = _emailPart;
             scrollVal = 0;
             InitializeComponent();
+            
         }
 
        
         void populateGridParticipants(List<ParticipantsConferencesModel> conferenceParticipants, int scrollVal, int entries)
         {
+           
             ConferencesParticipant.Rows.Clear();
             int nr = conferenceParticipants.Count;
             int i;
@@ -80,19 +82,29 @@ namespace ConferencePlanner.WinUi
                 ParticipantsConferencesModel listElement = conferenceParticipants.ElementAt(scrollVal+i);
 
                 ConferencesParticipant.Rows[n].Cells[0].Value = listElement.Name.ToString();
+               
                 ConferencesParticipant.Rows[n].Cells[1].Value = listElement.StartDate.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[2].Value = listElement.EndDate.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[3].Value = listElement.ConferenceType.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[4].Value = listElement.ConferenceCategory.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[5].Value = listElement.Address.ToString();
+               
                 ConferencesParticipant.Rows[n].Cells[6].Value = listElement.Speaker.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[7].Value = "Attend";
+                
                 ConferencesParticipant.Rows[n].Cells[8].Value = "Join";
                 ConferencesParticipant.Rows[n].Cells[9].Value = "Withdraw";
                 ConferencesParticipant.Rows[n].Cells[10].Value = listElement.StateName.ToString();
 
                 
             }
+
+            
 
         }
 
@@ -314,6 +326,12 @@ namespace ConferencePlanner.WinUi
             }
 
             populateGridParticipants(conferences, scrollVal, numberEntry);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //label1.BackColor = Color.Transparent;
+            //label1.BackColor = System.Drawing.Color.Transparent;
         }
     }
 }

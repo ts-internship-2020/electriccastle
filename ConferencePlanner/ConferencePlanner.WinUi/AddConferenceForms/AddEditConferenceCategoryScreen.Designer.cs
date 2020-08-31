@@ -45,6 +45,7 @@
             // 
             // pictureBox
             // 
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
             this.pictureBox.Location = new System.Drawing.Point(105, 34);
             this.pictureBox.Name = "pictureBox";
@@ -56,24 +57,26 @@
             // CategoryNameLabel
             // 
             this.CategoryNameLabel.AutoSize = true;
-            this.CategoryNameLabel.Location = new System.Drawing.Point(206, 184);
+            this.CategoryNameLabel.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.CategoryNameLabel.Location = new System.Drawing.Point(122, 205);
             this.CategoryNameLabel.Name = "CategoryNameLabel";
-            this.CategoryNameLabel.Size = new System.Drawing.Size(39, 15);
+            this.CategoryNameLabel.Size = new System.Drawing.Size(44, 17);
             this.CategoryNameLabel.TabIndex = 1;
             this.CategoryNameLabel.Text = "Name";
             // 
             // CategoryCodeLabel
             // 
             this.CategoryCodeLabel.AutoSize = true;
-            this.CategoryCodeLabel.Location = new System.Drawing.Point(206, 240);
+            this.CategoryCodeLabel.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.CategoryCodeLabel.Location = new System.Drawing.Point(122, 258);
             this.CategoryCodeLabel.Name = "CategoryCodeLabel";
-            this.CategoryCodeLabel.Size = new System.Drawing.Size(35, 15);
+            this.CategoryCodeLabel.Size = new System.Drawing.Size(39, 17);
             this.CategoryCodeLabel.TabIndex = 2;
             this.CategoryCodeLabel.Text = "Code";
             // 
             // CategoryNameTextBox
             // 
-            this.CategoryNameTextBox.Location = new System.Drawing.Point(172, 202);
+            this.CategoryNameTextBox.Location = new System.Drawing.Point(239, 197);
             this.CategoryNameTextBox.Name = "CategoryNameTextBox";
             this.CategoryNameTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryNameTextBox.TabIndex = 3;
@@ -81,7 +84,7 @@
             // 
             // CategoryCodeTextBox
             // 
-            this.CategoryCodeTextBox.Location = new System.Drawing.Point(172, 258);
+            this.CategoryCodeTextBox.Location = new System.Drawing.Point(239, 258);
             this.CategoryCodeTextBox.Name = "CategoryCodeTextBox";
             this.CategoryCodeTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryCodeTextBox.TabIndex = 4;
@@ -89,12 +92,15 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(185, 308);
+            this.SaveButton.BackColor = System.Drawing.Color.Tomato;
+            this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.SaveButton.ForeColor = System.Drawing.Color.Black;
+            this.SaveButton.Location = new System.Drawing.Point(170, 322);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 49);
+            this.SaveButton.Size = new System.Drawing.Size(115, 49);
             this.SaveButton.TabIndex = 5;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Text = "Upload category";
+            this.SaveButton.UseVisualStyleBackColor = false;
             // 
             // CategoryNameTextBoxErrorProvider
             // 
@@ -116,7 +122,8 @@
             this.Controls.Add(this.CategoryNameLabel);
             this.Controls.Add(this.pictureBox);
             this.Name = "AddEditConferenceCategoryScreen";
-            this.Text = "Add/Modify Category";
+            this.ShowIcon = false;
+            this.Text = "Category";
             this.Activated += new System.EventHandler(this.AddEditConferenceCategoryScreen_Activated);
             this.Load += new System.EventHandler(this.AddEditConferenceCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

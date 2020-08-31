@@ -82,12 +82,14 @@
             // 
             // btSaveType
             // 
+            this.btSaveType.BackColor = System.Drawing.Color.Tomato;
+            this.btSaveType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.btSaveType.Location = new System.Drawing.Point(92, 206);
             this.btSaveType.Name = "btSaveType";
             this.btSaveType.Size = new System.Drawing.Size(119, 32);
             this.btSaveType.TabIndex = 4;
-            this.btSaveType.Text = "Save";
-            this.btSaveType.UseVisualStyleBackColor = true;
+            this.btSaveType.Text = "Upload type";
+            this.btSaveType.UseVisualStyleBackColor = false;
             this.btSaveType.Click += new System.EventHandler(this.btSaveType_Click);
             // 
             // errorProviderCode
@@ -110,7 +112,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "NewConferanceType";
-            this.Text = "NewConferanceType";
+            this.ShowIcon = false;
+            this.Text = "Type";
             this.Activated += new System.EventHandler(this.NewConferanceType_Activated);
             this.Load += new System.EventHandler(this.NewConferanceType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCode)).EndInit();

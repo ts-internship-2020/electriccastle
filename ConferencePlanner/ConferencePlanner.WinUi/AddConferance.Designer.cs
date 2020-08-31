@@ -42,7 +42,6 @@
             this.tabSpeakerEntryNumberLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabSpeakerFilterText = new System.Windows.Forms.TextBox();
-            this.tabSpeakerFilterButton = new ConferencePlanner.WinUi.ButonCircular();
             this.tabSpeakerNextButton = new ConferencePlanner.WinUi.ButonCircular();
             this.tabSpeakerPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
             this.tabSpeakerAdd = new ConferencePlanner.WinUi.ButonCircular();
@@ -56,13 +55,11 @@
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
             this.CategoryTabAddButton = new ConferencePlanner.WinUi.ButonCircular();
-            this.CategoryTabSearchButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabSearchTextBox = new System.Windows.Forms.TextBox();
             this.CategoryTabNextButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
             this.tabType = new System.Windows.Forms.TabPage();
-            this.btSearch = new ConferencePlanner.WinUi.ButonCircular();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btNewType = new ConferencePlanner.WinUi.ButonCircular();
             this.btPreviousType = new ConferencePlanner.WinUi.ButonCircular();
@@ -109,6 +106,8 @@
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
@@ -212,7 +211,6 @@
             this.tabSpeakers.Controls.Add(this.tabSpeakerEntryNumberLabel);
             this.tabSpeakers.Controls.Add(this.label9);
             this.tabSpeakers.Controls.Add(this.tabSpeakerFilterText);
-            this.tabSpeakers.Controls.Add(this.tabSpeakerFilterButton);
             this.tabSpeakers.Controls.Add(this.tabSpeakerNextButton);
             this.tabSpeakers.Controls.Add(this.tabSpeakerPreviousButton);
             this.tabSpeakers.Controls.Add(this.tabSpeakerAdd);
@@ -230,7 +228,7 @@
             // 
             this.tabSpeakerEntryNumberText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tabSpeakerEntryNumberText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerEntryNumberText.Location = new System.Drawing.Point(231, 140);
+            this.tabSpeakerEntryNumberText.Location = new System.Drawing.Point(231, 135);
             this.tabSpeakerEntryNumberText.Name = "tabSpeakerEntryNumberText";
             this.tabSpeakerEntryNumberText.Size = new System.Drawing.Size(28, 23);
             this.tabSpeakerEntryNumberText.TabIndex = 29;
@@ -244,7 +242,7 @@
             this.tabSpeakerEntryNumberLabel.AutoSize = true;
             this.tabSpeakerEntryNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabSpeakerEntryNumberLabel.ForeColor = System.Drawing.Color.Red;
-            this.tabSpeakerEntryNumberLabel.Location = new System.Drawing.Point(116, 140);
+            this.tabSpeakerEntryNumberLabel.Location = new System.Drawing.Point(117, 138);
             this.tabSpeakerEntryNumberLabel.Name = "tabSpeakerEntryNumberLabel";
             this.tabSpeakerEntryNumberLabel.Size = new System.Drawing.Size(108, 17);
             this.tabSpeakerEntryNumberLabel.TabIndex = 28;
@@ -270,19 +268,6 @@
             this.tabSpeakerFilterText.Size = new System.Drawing.Size(99, 25);
             this.tabSpeakerFilterText.TabIndex = 26;
             this.tabSpeakerFilterText.TextChanged += new System.EventHandler(this.tabSpeakerFilterText_TextChanged);
-            // 
-            // tabSpeakerFilterButton
-            // 
-            this.tabSpeakerFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabSpeakerFilterButton.BackColor = System.Drawing.Color.Tomato;
-            this.tabSpeakerFilterButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerFilterButton.Location = new System.Drawing.Point(756, 18);
-            this.tabSpeakerFilterButton.Name = "tabSpeakerFilterButton";
-            this.tabSpeakerFilterButton.Size = new System.Drawing.Size(76, 34);
-            this.tabSpeakerFilterButton.TabIndex = 19;
-            this.tabSpeakerFilterButton.TabStop = false;
-            this.tabSpeakerFilterButton.Text = "Filter";
-            this.tabSpeakerFilterButton.UseVisualStyleBackColor = false;
             // 
             // tabSpeakerNextButton
             // 
@@ -395,8 +380,8 @@
             // 
             // tabCategory
             // 
+            this.tabCategory.Controls.Add(this.label10);
             this.tabCategory.Controls.Add(this.CategoryTabAddButton);
-            this.tabCategory.Controls.Add(this.CategoryTabSearchButton);
             this.tabCategory.Controls.Add(this.CategoryTabSearchTextBox);
             this.tabCategory.Controls.Add(this.CategoryTabNextButton);
             this.tabCategory.Controls.Add(this.CategoryTabPreviousButton);
@@ -414,29 +399,17 @@
             // 
             this.CategoryTabAddButton.BackColor = System.Drawing.Color.Tomato;
             this.CategoryTabAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CategoryTabAddButton.Location = new System.Drawing.Point(293, 124);
+            this.CategoryTabAddButton.Location = new System.Drawing.Point(3, 124);
             this.CategoryTabAddButton.Name = "CategoryTabAddButton";
-            this.CategoryTabAddButton.Size = new System.Drawing.Size(119, 35);
+            this.CategoryTabAddButton.Size = new System.Drawing.Size(86, 33);
             this.CategoryTabAddButton.TabIndex = 5;
-            this.CategoryTabAddButton.Text = "Add Category";
+            this.CategoryTabAddButton.Text = "Add ";
             this.CategoryTabAddButton.UseVisualStyleBackColor = false;
             this.CategoryTabAddButton.Click += new System.EventHandler(this.CategoryTabAddButton_Click);
             // 
-            // CategoryTabSearchButton
-            // 
-            this.CategoryTabSearchButton.BackColor = System.Drawing.Color.Tomato;
-            this.CategoryTabSearchButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CategoryTabSearchButton.Location = new System.Drawing.Point(577, 17);
-            this.CategoryTabSearchButton.Name = "CategoryTabSearchButton";
-            this.CategoryTabSearchButton.Size = new System.Drawing.Size(95, 35);
-            this.CategoryTabSearchButton.TabIndex = 4;
-            this.CategoryTabSearchButton.Text = "Search";
-            this.CategoryTabSearchButton.UseVisualStyleBackColor = false;
-            this.CategoryTabSearchButton.Click += new System.EventHandler(this.CategoryTabSearchButton_Click);
-            // 
             // CategoryTabSearchTextBox
             // 
-            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(471, 17);
+            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(203, 131);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;
@@ -446,12 +419,12 @@
             // CategoryTabNextButton
             // 
             this.CategoryTabNextButton.BackColor = System.Drawing.Color.Tomato;
-            this.CategoryTabNextButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CategoryTabNextButton.Location = new System.Drawing.Point(162, 124);
+            this.CategoryTabNextButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabNextButton.Location = new System.Drawing.Point(403, 124);
             this.CategoryTabNextButton.Name = "CategoryTabNextButton";
-            this.CategoryTabNextButton.Size = new System.Drawing.Size(104, 30);
+            this.CategoryTabNextButton.Size = new System.Drawing.Size(62, 34);
             this.CategoryTabNextButton.TabIndex = 2;
-            this.CategoryTabNextButton.Text = "Next";
+            this.CategoryTabNextButton.Text = ">";
             this.CategoryTabNextButton.UseVisualStyleBackColor = false;
             this.CategoryTabNextButton.Click += new System.EventHandler(this.CategoryTabNextButton_Click);
             // 
@@ -459,13 +432,13 @@
             // 
             this.CategoryTabPreviousButton.BackColor = System.Drawing.Color.Tomato;
             this.CategoryTabPreviousButton.Enabled = false;
-            this.CategoryTabPreviousButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabPreviousButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CategoryTabPreviousButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(17, 124);
+            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(326, 123);
             this.CategoryTabPreviousButton.Name = "CategoryTabPreviousButton";
-            this.CategoryTabPreviousButton.Size = new System.Drawing.Size(104, 30);
+            this.CategoryTabPreviousButton.Size = new System.Drawing.Size(62, 34);
             this.CategoryTabPreviousButton.TabIndex = 1;
-            this.CategoryTabPreviousButton.Text = "Previous";
+            this.CategoryTabPreviousButton.Text = "<";
             this.CategoryTabPreviousButton.UseVisualStyleBackColor = false;
             this.CategoryTabPreviousButton.Click += new System.EventHandler(this.CategoryTabPreviousButton_Click);
             // 
@@ -485,7 +458,7 @@
             // 
             // tabType
             // 
-            this.tabType.Controls.Add(this.btSearch);
+            this.tabType.Controls.Add(this.label11);
             this.tabType.Controls.Add(this.txtSearch);
             this.tabType.Controls.Add(this.btNewType);
             this.tabType.Controls.Add(this.btPreviousType);
@@ -498,22 +471,9 @@
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
             // 
-            // btSearch
-            // 
-            this.btSearch.BackColor = System.Drawing.Color.Tomato;
-            this.btSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btSearch.Location = new System.Drawing.Point(623, 35);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(75, 39);
-            this.btSearch.TabIndex = 5;
-            this.btSearch.Text = "Search";
-            this.btSearch.UseVisualStyleBackColor = false;
-            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
-            this.btSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btSearch_KeyDown);
-            // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(614, 4);
+            this.txtSearch.Location = new System.Drawing.Point(275, 104);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search...";
             this.txtSearch.Size = new System.Drawing.Size(100, 23);
@@ -523,24 +483,24 @@
             // 
             this.btNewType.BackColor = System.Drawing.Color.Tomato;
             this.btNewType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btNewType.Location = new System.Drawing.Point(442, 103);
+            this.btNewType.Location = new System.Drawing.Point(3, 99);
             this.btNewType.Name = "btNewType";
-            this.btNewType.Size = new System.Drawing.Size(106, 42);
+            this.btNewType.Size = new System.Drawing.Size(86, 33);
             this.btNewType.TabIndex = 3;
-            this.btNewType.Text = "New Type";
+            this.btNewType.Text = "Add";
             this.btNewType.UseVisualStyleBackColor = false;
             this.btNewType.Click += new System.EventHandler(this.btNewType_Click);
             // 
             // btPreviousType
             // 
             this.btPreviousType.BackColor = System.Drawing.Color.Tomato;
-            this.btPreviousType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btPreviousType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btPreviousType.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btPreviousType.Location = new System.Drawing.Point(34, 111);
+            this.btPreviousType.Location = new System.Drawing.Point(425, 96);
             this.btPreviousType.Name = "btPreviousType";
-            this.btPreviousType.Size = new System.Drawing.Size(100, 33);
+            this.btPreviousType.Size = new System.Drawing.Size(62, 34);
             this.btPreviousType.TabIndex = 2;
-            this.btPreviousType.Text = "Previous ";
+            this.btPreviousType.Text = "<";
             this.btPreviousType.UseVisualStyleBackColor = false;
             this.btPreviousType.Click += new System.EventHandler(this.btPreviousType_Click);
             // 
@@ -561,12 +521,12 @@
             // btNextType
             // 
             this.btNextType.BackColor = System.Drawing.Color.Tomato;
-            this.btNextType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btNextType.Location = new System.Drawing.Point(191, 111);
+            this.btNextType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btNextType.Location = new System.Drawing.Point(502, 95);
             this.btNextType.Name = "btNextType";
-            this.btNextType.Size = new System.Drawing.Size(97, 34);
+            this.btNextType.Size = new System.Drawing.Size(62, 34);
             this.btNextType.TabIndex = 1;
-            this.btNextType.Text = "Next";
+            this.btNextType.Text = ">";
             this.btNextType.UseVisualStyleBackColor = false;
             this.btNextType.Click += new System.EventHandler(this.btNextType_Click);
             // 
@@ -591,7 +551,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(490, 22);
+            this.label6.Location = new System.Drawing.Point(103, 174);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 15);
             this.label6.TabIndex = 6;
@@ -599,8 +559,9 @@
             // 
             // textNameCountry
             // 
-            this.textNameCountry.Location = new System.Drawing.Point(492, 40);
+            this.textNameCountry.Location = new System.Drawing.Point(211, 171);
             this.textNameCountry.Name = "textNameCountry";
+            this.textNameCountry.PlaceholderText = "Search...";
             this.textNameCountry.Size = new System.Drawing.Size(100, 23);
             this.textNameCountry.TabIndex = 5;
             this.textNameCountry.TextChanged += new System.EventHandler(this.textNameCountry_TextChanged);
@@ -608,24 +569,24 @@
             // PreviousBtn
             // 
             this.PreviousBtn.BackColor = System.Drawing.Color.Tomato;
-            this.PreviousBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PreviousBtn.Location = new System.Drawing.Point(4, 158);
+            this.PreviousBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PreviousBtn.Location = new System.Drawing.Point(330, 160);
             this.PreviousBtn.Name = "PreviousBtn";
-            this.PreviousBtn.Size = new System.Drawing.Size(108, 42);
+            this.PreviousBtn.Size = new System.Drawing.Size(62, 34);
             this.PreviousBtn.TabIndex = 3;
-            this.PreviousBtn.Text = "Previous page";
+            this.PreviousBtn.Text = "<";
             this.PreviousBtn.UseVisualStyleBackColor = false;
             this.PreviousBtn.Click += new System.EventHandler(this.PreviousBtn_Click);
             // 
             // NextBtn
             // 
             this.NextBtn.BackColor = System.Drawing.Color.Tomato;
-            this.NextBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NextBtn.Location = new System.Drawing.Point(154, 163);
+            this.NextBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextBtn.Location = new System.Drawing.Point(398, 160);
             this.NextBtn.Name = "NextBtn";
-            this.NextBtn.Size = new System.Drawing.Size(115, 44);
+            this.NextBtn.Size = new System.Drawing.Size(62, 34);
             this.NextBtn.TabIndex = 2;
-            this.NextBtn.Text = "Next page";
+            this.NextBtn.Text = ">";
             this.NextBtn.UseVisualStyleBackColor = false;
             this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
             // 
@@ -633,11 +594,11 @@
             // 
             this.NewCountry.BackColor = System.Drawing.Color.Tomato;
             this.NewCountry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NewCountry.Location = new System.Drawing.Point(337, 163);
+            this.NewCountry.Location = new System.Drawing.Point(11, 164);
             this.NewCountry.Name = "NewCountry";
-            this.NewCountry.Size = new System.Drawing.Size(123, 37);
+            this.NewCountry.Size = new System.Drawing.Size(86, 33);
             this.NewCountry.TabIndex = 1;
-            this.NewCountry.Text = "New Country";
+            this.NewCountry.Text = "Add";
             this.NewCountry.UseVisualStyleBackColor = false;
             this.NewCountry.Click += new System.EventHandler(this.NewCountry_Click);
             // 
@@ -707,24 +668,24 @@
             // NextDistrict
             // 
             this.NextDistrict.BackColor = System.Drawing.Color.Tomato;
-            this.NextDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextDistrict.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NextDistrict.Location = new System.Drawing.Point(155, 160);
             this.NextDistrict.Name = "NextDistrict";
-            this.NextDistrict.Size = new System.Drawing.Size(115, 44);
+            this.NextDistrict.Size = new System.Drawing.Size(62, 34);
             this.NextDistrict.TabIndex = 3;
-            this.NextDistrict.Text = "Next page";
+            this.NextDistrict.Text = ">";
             this.NextDistrict.UseVisualStyleBackColor = false;
             this.NextDistrict.Click += new System.EventHandler(this.NextDistrict_Click);
             // 
             // PreviousPageDistrict
             // 
             this.PreviousPageDistrict.BackColor = System.Drawing.Color.Tomato;
-            this.PreviousPageDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PreviousPageDistrict.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.PreviousPageDistrict.Location = new System.Drawing.Point(19, 160);
             this.PreviousPageDistrict.Name = "PreviousPageDistrict";
-            this.PreviousPageDistrict.Size = new System.Drawing.Size(115, 44);
+            this.PreviousPageDistrict.Size = new System.Drawing.Size(62, 34);
             this.PreviousPageDistrict.TabIndex = 2;
-            this.PreviousPageDistrict.Text = "Previous page";
+            this.PreviousPageDistrict.Text = "<";
             this.PreviousPageDistrict.UseVisualStyleBackColor = false;
             this.PreviousPageDistrict.Click += new System.EventHandler(this.PreviousPageDistrict_Click);
             // 
@@ -732,11 +693,11 @@
             // 
             this.NewDistrict.BackColor = System.Drawing.Color.Tomato;
             this.NewDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NewDistrict.Location = new System.Drawing.Point(360, 160);
+            this.NewDistrict.Location = new System.Drawing.Point(32, 210);
             this.NewDistrict.Name = "NewDistrict";
-            this.NewDistrict.Size = new System.Drawing.Size(115, 44);
+            this.NewDistrict.Size = new System.Drawing.Size(86, 33);
             this.NewDistrict.TabIndex = 1;
-            this.NewDistrict.Text = "New District";
+            this.NewDistrict.Text = "Add";
             this.NewDistrict.UseVisualStyleBackColor = false;
             this.NewDistrict.Click += new System.EventHandler(this.NewDistrict_Click);
             // 
@@ -998,6 +959,24 @@
             this.tabSpeakerColumnRating.Name = "tabSpeakerColumnRating";
             this.tabSpeakerColumnRating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(95, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 15);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Insert filter criteria";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(130, 107);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 15);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Insert filter criteria";
+            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1100,13 +1079,11 @@
         private System.Windows.Forms.DataGridView CategoryTabGrid;
         private ButonCircular CategoryTabNextButton;
         private ButonCircular CategoryTabPreviousButton;
-        private ButonCircular CategoryTabSearchButton;
         private System.Windows.Forms.TextBox CategoryTabSearchTextBox;
         private ButonCircular CategoryTabAddButton;
         private ButonCircular btPreviousType;
         private ButonCircular btNextType;
         private ButonCircular btNewType;
-        private ButonCircular btSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private ButonCircular PreviousBtn;
         private ButonCircular NextBtn;
@@ -1124,7 +1101,6 @@
         private ButonCircular tabSpeakerAdd;
         private ButonCircular tabSpeakerNextButton;
         private ButonCircular tabSpeakerPreviousButton;
-        private ButonCircular tabSpeakerFilterButton;
         private System.Windows.Forms.TextBox tabSpeakerFilterText;
         private System.Windows.Forms.DataGridViewTextBoxColumn DistrictId;
         private System.Windows.Forms.Label label9;
@@ -1132,5 +1108,7 @@
         private System.Windows.Forms.TextBox tabSpeakerEntryNumberText;
         private System.Windows.Forms.TextBox tabCityEntryText;
         private System.Windows.Forms.Label tabCityEntryLabel;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

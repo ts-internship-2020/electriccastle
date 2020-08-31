@@ -40,6 +40,7 @@
             this.OrganizerEndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.OrganizerStartDatePicker = new System.Windows.Forms.DateTimePicker();
             this.TabParticipant = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.entryPageTextBox = new System.Windows.Forms.TextBox();
             this.entryPageLabel = new System.Windows.Forms.Label();
             this.BackButtonParticipant = new ConferencePlanner.WinUi.ButonCircular();
@@ -196,6 +197,7 @@
             // 
             this.TabParticipant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabParticipant.BackgroundImage")));
             this.TabParticipant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TabParticipant.Controls.Add(this.label1);
             this.TabParticipant.Controls.Add(this.entryPageTextBox);
             this.TabParticipant.Controls.Add(this.entryPageLabel);
             this.TabParticipant.Controls.Add(this.BackButtonParticipant);
@@ -204,6 +206,7 @@
             this.TabParticipant.Controls.Add(this.DatePickerParticipantEnd);
             this.TabParticipant.Controls.Add(this.DatePickerParticipantStart);
             this.TabParticipant.Controls.Add(this.ConferencesParticipant);
+            this.TabParticipant.ForeColor = System.Drawing.Color.Black;
             this.TabParticipant.Location = new System.Drawing.Point(4, 24);
             this.TabParticipant.Name = "TabParticipant";
             this.TabParticipant.Padding = new System.Windows.Forms.Padding(3);
@@ -211,6 +214,19 @@
             this.TabParticipant.TabIndex = 0;
             this.TabParticipant.Text = "Participants";
             this.TabParticipant.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(667, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 17);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Filter using both dates";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // entryPageTextBox
             // 
@@ -229,8 +245,8 @@
             this.entryPageLabel.AutoSize = true;
             this.entryPageLabel.BackColor = System.Drawing.Color.Transparent;
             this.entryPageLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.entryPageLabel.ForeColor = System.Drawing.Color.Red;
-            this.entryPageLabel.Location = new System.Drawing.Point(10, 347);
+            this.entryPageLabel.ForeColor = System.Drawing.Color.White;
+            this.entryPageLabel.Location = new System.Drawing.Point(10, 343);
             this.entryPageLabel.Name = "entryPageLabel";
             this.entryPageLabel.Size = new System.Drawing.Size(108, 17);
             this.entryPageLabel.TabIndex = 10;
@@ -270,7 +286,7 @@
             this.FilterParticipants.BackColor = System.Drawing.Color.LightCoral;
             this.FilterParticipants.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.FilterParticipants.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.FilterParticipants.Location = new System.Drawing.Point(684, 22);
+            this.FilterParticipants.Location = new System.Drawing.Point(670, 35);
             this.FilterParticipants.Name = "FilterParticipants";
             this.FilterParticipants.Size = new System.Drawing.Size(107, 36);
             this.FilterParticipants.TabIndex = 7;
@@ -477,5 +493,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn ColumnJoinButton;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnWithdrawButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnState;
+        private System.Windows.Forms.Label label1;
     }
 }
