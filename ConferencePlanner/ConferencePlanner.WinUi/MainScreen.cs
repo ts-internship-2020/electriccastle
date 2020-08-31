@@ -181,7 +181,7 @@ namespace ConferencePlanner.WinUi
         }
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           // _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
+            _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
 
             if (e.ColumnIndex == 7 )
             {

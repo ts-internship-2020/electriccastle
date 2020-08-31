@@ -362,7 +362,7 @@
             // 
             this.CategoryTabAddButton.BackColor = System.Drawing.Color.Tomato;
             this.CategoryTabAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CategoryTabAddButton.Location = new System.Drawing.Point(419, 83);
+            this.CategoryTabAddButton.Location = new System.Drawing.Point(293, 124);
             this.CategoryTabAddButton.Name = "CategoryTabAddButton";
             this.CategoryTabAddButton.Size = new System.Drawing.Size(119, 35);
             this.CategoryTabAddButton.TabIndex = 5;
@@ -745,7 +745,7 @@
             // 
             this.PrevoiusCity.BackColor = System.Drawing.Color.Tomato;
             this.PrevoiusCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PrevoiusCity.Location = new System.Drawing.Point(4, 160);
+            this.PrevoiusCity.Location = new System.Drawing.Point(4, 156);
             this.PrevoiusCity.Name = "PrevoiusCity";
             this.PrevoiusCity.Size = new System.Drawing.Size(115, 44);
             this.PrevoiusCity.TabIndex = 4;
