@@ -12,13 +12,19 @@ using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using static ConferencePlanner.WinUi.Program;
-
-
+using QRCoder;
+using System.IO;
+using System.Drawing;
+using System.Net.Mail;
+using System.Net.Mime;
 
 
 
 namespace ConferencePlanner.WinUi
 {
+   
+   
+
     public partial class MainScreen : Form
     {
         //private string emailParticipantLogare;
@@ -42,6 +48,8 @@ namespace ConferencePlanner.WinUi
         private int numberEntry;
 
         public static int SetValueIdSpeker = 0;
+
+        public object QRCodeGenerator { get; private set; }
 
         public MainScreen(IParticipantsConferencesRepository _getParticipantRepository,
             IOrganizerConferencesRepository organizerConferencesRepository,
@@ -193,24 +201,26 @@ namespace ConferencePlanner.WinUi
         }
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
+            _email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
 
-            if (e.ColumnIndex == 7 )
+            if (e.ColumnIndex == 7)
             {
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
-                    ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
-                    ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
-                
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
+                ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+
+
             }
-            else if(e.ColumnIndex == 8)
+
+            else if (e.ColumnIndex == 8)
             {
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes <= 5)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
-                
+
                 //if (ts.TotalMinutes > 5)
                 //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].di = false;
                 Form f = new WebViewConnection();
@@ -219,13 +229,13 @@ namespace ConferencePlanner.WinUi
             }
             else if (e.ColumnIndex == 9)
             {
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes >= 6)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[9].Style.BackColor = System.Drawing.Color.Red;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Withdraw";
-                
+
             }
 
             if (e.ColumnIndex == 6)
@@ -239,6 +249,7 @@ namespace ConferencePlanner.WinUi
            
         }
 
+     
 
         private void OrganizerStartDatePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -261,6 +272,7 @@ namespace ConferencePlanner.WinUi
             OrganizerPreviousButton.Enabled = paginationHelper.HasPreviousPage();
             OrganizerNextButton.Enabled = paginationHelper.HasNextPage();
         }
+
 
         private void AddConferenceButton_Click_1(object sender, EventArgs e)
         {
