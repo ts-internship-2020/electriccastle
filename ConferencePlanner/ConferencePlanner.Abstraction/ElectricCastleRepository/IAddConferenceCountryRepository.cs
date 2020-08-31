@@ -13,6 +13,6 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 
         public void UpdateConferenceCountry(string cod, string name, int index);
 
-        public void DeleteConferenceCoutry();
+        public void DeleteConferenceCoutry(string index);
     }
 }

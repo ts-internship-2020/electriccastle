@@ -72,26 +72,35 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
       
         public void UpdateConferenceCountry(string cod, string name, int index)
         {
-            SqlParameter[] parameters = new SqlParameter[2];
+            SqlParameter[] parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@Cod", cod);
             parameters[1] = new SqlParameter("@Name", name);
-
+            parameters[2] = new SqlParameter("@index", index);
 
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-           
+            
 
-            sqlCommand.CommandText = $"update DictionaryCountry set CountryCode=@Cod ,DictionaryCountryName=@Name where index=DictionaryCountryId)";
-           
+            sqlCommand.CommandText = $"update DictionaryCountry set CountryCode=@Cod ,DictionaryCountryName=@Name where DictionaryCountryId= @index";
+
             sqlCommand.Parameters.Add(parameters[0]);
             sqlCommand.Parameters.Add(parameters[1]);
+            sqlCommand.Parameters.Add(parameters[2]);
+
 
             sqlCommand.ExecuteNonQuery();
         }
 
-        public void DeleteConferenceCoutry()
+        public void DeleteConferenceCoutry(string index)
         {
-            throw new NotImplementedException();
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@index", index);
+            sqlCommand.Parameters.Add(parameters[0]);
+            sqlCommand.CommandText = $"delete from DictionaryCountry where CountryCode like '@index'";
+           
+            sqlCommand.ExecuteNonQuery();
         }
+
 
       
     }
