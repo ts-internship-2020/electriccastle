@@ -300,6 +300,8 @@
             this.tabSpeakerDeleteColumn});
             this.tabSpeakerGrid.Location = new System.Drawing.Point(3, 3);
             this.tabSpeakerGrid.Name = "tabSpeakerGrid";
+            this.tabSpeakerGrid.ReadOnly = true;
+            this.tabSpeakerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tabSpeakerGrid.Size = new System.Drawing.Size(720, 126);
             this.tabSpeakerGrid.TabIndex = 0;
             this.tabSpeakerGrid.Text = "dataGridView1";
@@ -310,36 +312,43 @@
             // 
             this.tabSpeakerNameColumn.HeaderText = "Name";
             this.tabSpeakerNameColumn.Name = "tabSpeakerNameColumn";
+            this.tabSpeakerNameColumn.ReadOnly = true;
             // 
             // tabSpeakerRatingColumn
             // 
             this.tabSpeakerRatingColumn.HeaderText = "Rating";
             this.tabSpeakerRatingColumn.Name = "tabSpeakerRatingColumn";
+            this.tabSpeakerRatingColumn.ReadOnly = true;
             // 
             // tabSpeakerNationalityColumn
             // 
             this.tabSpeakerNationalityColumn.HeaderText = "Nationality";
             this.tabSpeakerNationalityColumn.Name = "tabSpeakerNationalityColumn";
+            this.tabSpeakerNationalityColumn.ReadOnly = true;
             // 
             // tabSpeakerMainColumn
             // 
             this.tabSpeakerMainColumn.HeaderText = "Main";
             this.tabSpeakerMainColumn.Name = "tabSpeakerMainColumn";
+            this.tabSpeakerMainColumn.ReadOnly = true;
             // 
             // tabSpeakerParticipantColumn
             // 
             this.tabSpeakerParticipantColumn.HeaderText = "Participant";
             this.tabSpeakerParticipantColumn.Name = "tabSpeakerParticipantColumn";
+            this.tabSpeakerParticipantColumn.ReadOnly = true;
             // 
             // tabSpeakerEditColumn
             // 
             this.tabSpeakerEditColumn.HeaderText = "Edit";
             this.tabSpeakerEditColumn.Name = "tabSpeakerEditColumn";
+            this.tabSpeakerEditColumn.ReadOnly = true;
             // 
             // tabSpeakerDeleteColumn
             // 
             this.tabSpeakerDeleteColumn.HeaderText = "Delete";
             this.tabSpeakerDeleteColumn.Name = "tabSpeakerDeleteColumn";
+            this.tabSpeakerDeleteColumn.ReadOnly = true;
             // 
             // tabCategory
             // 
@@ -374,7 +383,7 @@
             // 
             this.CategoryTabSearchButton.BackColor = System.Drawing.Color.Tomato;
             this.CategoryTabSearchButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CategoryTabSearchButton.Location = new System.Drawing.Point(525, 9);
+            this.CategoryTabSearchButton.Location = new System.Drawing.Point(577, 17);
             this.CategoryTabSearchButton.Name = "CategoryTabSearchButton";
             this.CategoryTabSearchButton.Size = new System.Drawing.Size(95, 35);
             this.CategoryTabSearchButton.TabIndex = 4;
@@ -384,7 +393,7 @@
             // 
             // CategoryTabSearchTextBox
             // 
-            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(419, 17);
+            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(471, 17);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;
@@ -421,8 +430,11 @@
             // 
             this.CategoryTabGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoryTabGrid.Location = new System.Drawing.Point(3, 3);
+            this.CategoryTabGrid.MultiSelect = false;
             this.CategoryTabGrid.Name = "CategoryTabGrid";
-            this.CategoryTabGrid.Size = new System.Drawing.Size(409, 115);
+            this.CategoryTabGrid.ReadOnly = true;
+            this.CategoryTabGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CategoryTabGrid.Size = new System.Drawing.Size(462, 115);
             this.CategoryTabGrid.TabIndex = 0;
             this.CategoryTabGrid.Text = "dataGridView1";
             this.CategoryTabGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryTabGrid_CellClick);
@@ -493,7 +505,10 @@
             // 
             this.dataGridViewType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewType.Location = new System.Drawing.Point(-2, 2);
+            this.dataGridViewType.MultiSelect = false;
             this.dataGridViewType.Name = "dataGridViewType";
+            this.dataGridViewType.ReadOnly = true;
+            this.dataGridViewType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewType.Size = new System.Drawing.Size(566, 88);
             this.dataGridViewType.TabIndex = 0;
             this.dataGridViewType.Text = "dataGridView3";
@@ -590,7 +605,10 @@
             this.CountryName,
             this.CountryCod});
             this.DGVCountry.Location = new System.Drawing.Point(4, 4);
+            this.DGVCountry.MultiSelect = false;
             this.DGVCountry.Name = "DGVCountry";
+            this.DGVCountry.ReadOnly = true;
+            this.DGVCountry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVCountry.Size = new System.Drawing.Size(456, 150);
             this.DGVCountry.TabIndex = 0;
             this.DGVCountry.Text = "dataGridView5";
@@ -600,11 +618,13 @@
             // 
             this.CountryName.HeaderText = "Name";
             this.CountryName.Name = "CountryName";
+            this.CountryName.ReadOnly = true;
             // 
             // CountryCod
             // 
             this.CountryCod.HeaderText = "Cod";
             this.CountryCod.Name = "CountryCod";
+            this.CountryCod.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -684,27 +704,32 @@
             this.DistrictCod,
             this.DistrictId});
             this.DGVDistrict.Location = new System.Drawing.Point(4, 4);
+            this.DGVDistrict.MultiSelect = false;
             this.DGVDistrict.Name = "DGVDistrict";
+            this.DGVDistrict.ReadOnly = true;
+            this.DGVDistrict.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVDistrict.Size = new System.Drawing.Size(461, 150);
             this.DGVDistrict.TabIndex = 0;
             this.DGVDistrict.Text = "dataGridView7";
             this.DGVDistrict.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDistrict_CellClick);
-            this.DGVDistrict.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGVDistrict_DataBindingComplete);
             // 
             // DictrictName
             // 
             this.DictrictName.HeaderText = "Name";
             this.DictrictName.Name = "DictrictName";
+            this.DictrictName.ReadOnly = true;
             // 
             // DistrictCod
             // 
             this.DistrictCod.HeaderText = "Cod";
             this.DistrictCod.Name = "DistrictCod";
+            this.DistrictCod.ReadOnly = true;
             // 
             // DistrictId
             // 
             this.DistrictId.HeaderText = "Id";
             this.DistrictId.Name = "DistrictId";
+            this.DistrictId.ReadOnly = true;
             // 
             // tabPage3
             // 
@@ -785,7 +810,10 @@
             this.CityName,
             this.CityCod});
             this.DGVCity.Location = new System.Drawing.Point(4, 4);
+            this.DGVCity.MultiSelect = false;
             this.DGVCity.Name = "DGVCity";
+            this.DGVCity.ReadOnly = true;
+            this.DGVCity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVCity.Size = new System.Drawing.Size(454, 150);
             this.DGVCity.TabIndex = 0;
             this.DGVCity.Text = "dataGridView6";
@@ -795,12 +823,14 @@
             // 
             this.CityName.HeaderText = "Name";
             this.CityName.Name = "CityName";
+            this.CityName.ReadOnly = true;
             this.CityName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // CityCod
             // 
             this.CityCod.HeaderText = "Cod";
             this.CityCod.Name = "CityCod";
+            this.CityCod.ReadOnly = true;
             this.CityCod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Organ
