@@ -239,6 +239,7 @@
             this.Controls.Add(this.newSpeakerName);
             this.Controls.Add(this.newSpeakerCode);
             this.Name = "AddSpeakerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewSpeaker";
             this.Load += new System.EventHandler(this.NewSpeaker_Load);
             ((System.ComponentModel.ISupportInitialize)(this.newSpeakerPictureBox)).EndInit();

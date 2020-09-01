@@ -72,11 +72,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(349, 204);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.txtButton);
             this.Name = "StartScreen";
-            this.Text = "StartScreen";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Event Skills";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmailText)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
