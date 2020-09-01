@@ -14,10 +14,30 @@ SELECT * FROM ConferenceXDictionarySpeaker ORDER BY ConferenceId;
 SELECT * FROM ConferenceParticipant WHERE ConferenceId = 8  CP
 JOIN DictionaryParticipantState D ON D.DictionaryParticipantStateId = CP.DictionaryParticipantStateId;
 
+BEGIN TRAN
+
+INSERT INTO Conference(ConferenceName, OrganizerEmail, OrganizerName,
+StartDate, EndDate, DictionaryConferenceCategoryId, DictionaryConferenceTypeId,
+LocationId) 
+VALUES ('Una noua', 'eventskill@gmail.com', 'Mircea Dumitru', '2021-03-08 9:00:00', '2021-03-10 15:00:00', 10, 1, 7) 
+
+UPDATE Conference
+SET ConferenceName = , 
+	OrganizerEmail = , 
+	OrganizerName = ,
+	StartDate = , 
+	EndDate = , 
+	DictionaryConferenceCategoryId = , 
+	DictionaryConferenceTypeId = ,
+	LocationId = );
+
+
+
+ROLLBACK
 
 -- populare grid organizator
 
-select DISTINCT c.ConferenceId, c.ConferenceName, c.OrganizerName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName, 
+select c.ConferenceId, c.ConferenceName, c.OrganizerName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName, 
 dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName 
 from Conference c  
 join Location l on l.LocationId = c.LocationId 
@@ -30,6 +50,11 @@ join ConferenceXDictionarySpeaker cds on cds.ConferenceId = c.ConferenceId
 join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId 
 where cds.IsMainSpeaker = 1
 and c.OrganizerEmail = 'eventskill@gmail.com';
+
+SELECT ConferenceId, ConferenceName, OrganizerEmail, OrganizerName,
+StartDate, EndDate, DictionaryConferenceCategoryId, DictionaryConferenceTypeId,
+LocationId FROM Conference 
+WHERE ConferenceId = 13;
 
 SELECT DictionaryConferenceCategoryId, DictionaryConferenceCategoryName, ConferenceCategoryCode FROM DictionaryConferenceCategory;
 

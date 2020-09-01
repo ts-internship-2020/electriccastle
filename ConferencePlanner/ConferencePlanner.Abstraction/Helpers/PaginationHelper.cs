@@ -9,7 +9,7 @@ namespace ConferencePlanner.Abstraction.Helpers
     {
         private List<T> items = new List<T>();
 
-        private int pageNumber;
+        public int pageNumber { get; set; }
 
         private int pageSize;
 
@@ -52,6 +52,11 @@ namespace ConferencePlanner.Abstraction.Helpers
         public bool HasNextPage()
         {
             return (pageNumber < lastPageNumber);
+        }
+
+        public int GetPageForIndex(int index)
+        {
+            return (int)Math.Ceiling(index / (double)pageSize);
         }
     }
 }

@@ -65,7 +65,9 @@
             this.btPreviousType = new ConferencePlanner.WinUi.ButonCircular();
             this.dataGridViewType = new System.Windows.Forms.DataGridView();
             this.btNextType = new ConferencePlanner.WinUi.ButonCircular();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabCountryEntryLabel = new System.Windows.Forms.TabPage();
+            this.tabCountryEntryText = new System.Windows.Forms.TextBox();
+            this.tabCountryEntryLb = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textNameCountry = new System.Windows.Forms.TextBox();
             this.PreviousBtn = new ConferencePlanner.WinUi.ButonCircular();
@@ -75,6 +77,8 @@
             this.CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabDistrictEntryLable = new System.Windows.Forms.Label();
+            this.tabDistrictEntryText = new System.Windows.Forms.TextBox();
             this.DistrictFilter = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.NextDistrict = new ConferencePlanner.WinUi.ButonCircular();
@@ -115,7 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).BeginInit();
-            this.tabPage1.SuspendLayout();
+            this.tabCountryEntryLabel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).BeginInit();
@@ -190,7 +194,7 @@
             this.tabConferance.Controls.Add(this.tabSpeakers);
             this.tabConferance.Controls.Add(this.tabCategory);
             this.tabConferance.Controls.Add(this.tabType);
-            this.tabConferance.Controls.Add(this.tabPage1);
+            this.tabConferance.Controls.Add(this.tabCountryEntryLabel);
             this.tabConferance.Controls.Add(this.tabPage2);
             this.tabConferance.Controls.Add(this.tabPage3);
             this.tabConferance.Location = new System.Drawing.Point(25, 140);
@@ -328,7 +332,7 @@
             this.tabSpeakerDeleteColumn});
             this.tabSpeakerGrid.Location = new System.Drawing.Point(3, 3);
             this.tabSpeakerGrid.Name = "tabSpeakerGrid";
-            this.tabSpeakerGrid.ReadOnly = true;
+            this.tabSpeakerGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.tabSpeakerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tabSpeakerGrid.Size = new System.Drawing.Size(720, 126);
             this.tabSpeakerGrid.TabIndex = 0;
@@ -340,43 +344,43 @@
             // 
             this.tabSpeakerNameColumn.HeaderText = "Name";
             this.tabSpeakerNameColumn.Name = "tabSpeakerNameColumn";
-            this.tabSpeakerNameColumn.ReadOnly = true;
+            this.tabSpeakerNameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabSpeakerRatingColumn
             // 
             this.tabSpeakerRatingColumn.HeaderText = "Rating";
             this.tabSpeakerRatingColumn.Name = "tabSpeakerRatingColumn";
-            this.tabSpeakerRatingColumn.ReadOnly = true;
+            this.tabSpeakerRatingColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabSpeakerNationalityColumn
             // 
             this.tabSpeakerNationalityColumn.HeaderText = "Nationality";
             this.tabSpeakerNationalityColumn.Name = "tabSpeakerNationalityColumn";
-            this.tabSpeakerNationalityColumn.ReadOnly = true;
+            this.tabSpeakerNationalityColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabSpeakerMainColumn
             // 
             this.tabSpeakerMainColumn.HeaderText = "Main";
             this.tabSpeakerMainColumn.Name = "tabSpeakerMainColumn";
-            this.tabSpeakerMainColumn.ReadOnly = true;
+            this.tabSpeakerMainColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabSpeakerParticipantColumn
             // 
             this.tabSpeakerParticipantColumn.HeaderText = "Participant";
             this.tabSpeakerParticipantColumn.Name = "tabSpeakerParticipantColumn";
-            this.tabSpeakerParticipantColumn.ReadOnly = true;
+            this.tabSpeakerParticipantColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabSpeakerEditColumn
             // 
             this.tabSpeakerEditColumn.HeaderText = "Edit";
             this.tabSpeakerEditColumn.Name = "tabSpeakerEditColumn";
-            this.tabSpeakerEditColumn.ReadOnly = true;
+            this.tabSpeakerEditColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabSpeakerDeleteColumn
             // 
             this.tabSpeakerDeleteColumn.HeaderText = "Delete";
             this.tabSpeakerDeleteColumn.Name = "tabSpeakerDeleteColumn";
-            this.tabSpeakerDeleteColumn.ReadOnly = true;
+            this.tabSpeakerDeleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // tabCategory
             // 
@@ -530,23 +534,45 @@
             this.btNextType.UseVisualStyleBackColor = false;
             this.btNextType.Click += new System.EventHandler(this.btNextType_Click);
             // 
-            // tabPage1
+            // tabCountryEntryLabel
             // 
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.textNameCountry);
-            this.tabPage1.Controls.Add(this.PreviousBtn);
-            this.tabPage1.Controls.Add(this.NextBtn);
-            this.tabPage1.Controls.Add(this.NewCountry);
-            this.tabPage1.Controls.Add(this.DGVCountry);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage1.Size = new System.Drawing.Size(899, 347);
-            this.tabPage1.TabIndex = 4;
-            this.tabPage1.Text = "Country";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryText);
+            this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryLb);
+            this.tabCountryEntryLabel.Controls.Add(this.label6);
+            this.tabCountryEntryLabel.Controls.Add(this.textNameCountry);
+            this.tabCountryEntryLabel.Controls.Add(this.PreviousBtn);
+            this.tabCountryEntryLabel.Controls.Add(this.NextBtn);
+            this.tabCountryEntryLabel.Controls.Add(this.NewCountry);
+            this.tabCountryEntryLabel.Controls.Add(this.DGVCountry);
+            this.tabCountryEntryLabel.Location = new System.Drawing.Point(4, 24);
+            this.tabCountryEntryLabel.Name = "tabCountryEntryLabel";
+            this.tabCountryEntryLabel.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCountryEntryLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabCountryEntryLabel.Size = new System.Drawing.Size(899, 347);
+            this.tabCountryEntryLabel.TabIndex = 4;
+            this.tabCountryEntryLabel.Text = "Country";
+            this.tabCountryEntryLabel.UseVisualStyleBackColor = true;
+            this.tabCountryEntryLabel.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // tabCountryEntryText
+            // 
+            this.tabCountryEntryText.Location = new System.Drawing.Point(606, 163);
+            this.tabCountryEntryText.Name = "tabCountryEntryText";
+            this.tabCountryEntryText.Size = new System.Drawing.Size(25, 23);
+            this.tabCountryEntryText.TabIndex = 8;
+            this.tabCountryEntryText.Text = "5";
+            this.tabCountryEntryText.TextChanged += new System.EventHandler(this.tabCountryEntryText_TextChanged);
+            // 
+            // tabCountryEntryLb
+            // 
+            this.tabCountryEntryLb.AutoSize = true;
+            this.tabCountryEntryLb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabCountryEntryLb.ForeColor = System.Drawing.Color.Red;
+            this.tabCountryEntryLb.Location = new System.Drawing.Point(492, 163);
+            this.tabCountryEntryLb.Name = "tabCountryEntryLb";
+            this.tabCountryEntryLb.Size = new System.Drawing.Size(108, 17);
+            this.tabCountryEntryLb.TabIndex = 7;
+            this.tabCountryEntryLb.Text = "Entries per Page";
             // 
             // label6
             // 
@@ -633,6 +659,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tabDistrictEntryLable);
+            this.tabPage2.Controls.Add(this.tabDistrictEntryText);
             this.tabPage2.Controls.Add(this.DistrictFilter);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.NextDistrict);
@@ -647,6 +675,26 @@
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "District";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabDistrictEntryLable
+            // 
+            this.tabDistrictEntryLable.AutoSize = true;
+            this.tabDistrictEntryLable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabDistrictEntryLable.ForeColor = System.Drawing.Color.Red;
+            this.tabDistrictEntryLable.Location = new System.Drawing.Point(482, 138);
+            this.tabDistrictEntryLable.Name = "tabDistrictEntryLable";
+            this.tabDistrictEntryLable.Size = new System.Drawing.Size(99, 17);
+            this.tabDistrictEntryLable.TabIndex = 7;
+            this.tabDistrictEntryLable.Text = "Entry per Page";
+            // 
+            // tabDistrictEntryText
+            // 
+            this.tabDistrictEntryText.Location = new System.Drawing.Point(598, 138);
+            this.tabDistrictEntryText.Name = "tabDistrictEntryText";
+            this.tabDistrictEntryText.Size = new System.Drawing.Size(27, 23);
+            this.tabDistrictEntryText.TabIndex = 6;
+            this.tabDistrictEntryText.Text = "5";
+            this.tabDistrictEntryText.TextChanged += new System.EventHandler(this.tabDistrictEntryText_TextChanged);
             // 
             // DistrictFilter
             // 
@@ -891,6 +939,7 @@
             this.btSaveAndNew.Text = "Save and New";
             this.btSaveAndNew.UseVisualStyleBackColor = true;
             this.btSaveAndNew.Visible = false;
+            this.btSaveAndNew.Click += new System.EventHandler(this.btSaveAndNew_Click);
             // 
             // dateTimePicker1
             // 
@@ -1012,8 +1061,8 @@
             this.tabType.ResumeLayout(false);
             this.tabType.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabCountryEntryLabel.ResumeLayout(false);
+            this.tabCountryEntryLabel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -1049,7 +1098,7 @@
         private System.Windows.Forms.DataGridView dataGridViewType;
         private System.Windows.Forms.Button btBack;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabCountryEntryLabel;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
 
@@ -1069,13 +1118,6 @@
         private System.Windows.Forms.DataGridView DGVDistrict;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerColumnRating;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerRatingColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNationalityColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerMainColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
         private System.Windows.Forms.DataGridView CategoryTabGrid;
         private ButonCircular CategoryTabNextButton;
         private ButonCircular CategoryTabPreviousButton;
@@ -1103,11 +1145,24 @@
         private ButonCircular tabSpeakerPreviousButton;
         private System.Windows.Forms.TextBox tabSpeakerFilterText;
         private System.Windows.Forms.DataGridViewTextBoxColumn DistrictId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerRatingColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNationalityColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerMainColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label tabSpeakerEntryNumberLabel;
         private System.Windows.Forms.TextBox tabSpeakerEntryNumberText;
         private System.Windows.Forms.TextBox tabCityEntryText;
         private System.Windows.Forms.Label tabCityEntryLabel;
+        private System.Windows.Forms.Label ountry;
+        private System.Windows.Forms.TextBox tabCountryEntryText;
+        private System.Windows.Forms.Label tabDistrictEntryLable;
+        private System.Windows.Forms.TextBox tabDistrictEntryText;
+        private System.Windows.Forms.Label tab;
+        private System.Windows.Forms.Label tabCountryEntryLb;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
     }

@@ -77,6 +77,7 @@ namespace ConferencePlanner.WinUi
 
             services.AddScoped<ISpeakerRepository, SpeakerRepository>();
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
+            services.AddScoped<IConferenceRepository, ConferenceRepository>();
            
 
             services.AddSingleton<SqlConnection>(a =>
