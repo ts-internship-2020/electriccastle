@@ -272,6 +272,9 @@ namespace ConferencePlanner.WinUi
             GenerateDeleteButtonDistrict();
             GenerateDeleteButtonCity();
 
+            CategoryTabEntriesTextBox.Text = categoryTabPageSize.ToString();
+            TypeTabEntriesTextBox.Text = typeTabPageSize.ToString();
+
             InitializeUIData();
         }
 

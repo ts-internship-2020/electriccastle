@@ -114,8 +114,10 @@ namespace ConferencePlanner.WinUi
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
             populateGridParticipants(conferences, scrollVal, numberEntry);
 
+
             organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
             paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
+            OrganizerTabEntriesTextBox.Text = pageSize.ToString();
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             OrganizerGrid.AutoGenerateColumns = true;
             GenerateOrganizerEditButtons();
@@ -336,9 +338,9 @@ namespace ConferencePlanner.WinUi
 
         private void OrganizerTabTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (OrganizerTabTextBox.Text != string.Empty)
+            if (OrganizerTabEntriesTextBox.Text != string.Empty)
             {
-                paginationHelper.pageSize = Convert.ToInt32(OrganizerTabTextBox.Text);
+                paginationHelper.pageSize = Convert.ToInt32(OrganizerTabEntriesTextBox.Text);
                 paginationHelper.pageNumber = 1;
                 // Nu stergeti
                 //categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value) + 1);
