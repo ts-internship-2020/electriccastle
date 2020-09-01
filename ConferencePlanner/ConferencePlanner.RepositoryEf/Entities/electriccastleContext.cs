@@ -41,6 +41,10 @@ namespace ConferencePlanner.Repository.Ef.Entities
         {
             modelBuilder.Entity<Conference>(entity =>
             {
+                entity.Property(e => e.ConferenceName)
+                    .IsRequired()
+                    .HasMaxLength(255);
+
                 entity.Property(e => e.EndDate).HasColumnType("datetime");
 
                 entity.Property(e => e.OrganizerEmail)
@@ -76,6 +80,8 @@ namespace ConferencePlanner.Repository.Ef.Entities
                     .HasName("PK__Conferen__D492EDE75CAEE4A0");
 
                 entity.Property(e => e.ParticipantEmail).HasMaxLength(255);
+
+                entity.Property(e => e.EmailCode).HasMaxLength(255);
 
                 entity.HasOne(d => d.Conference)
                     .WithMany(p => p.ConferenceParticipant)
@@ -228,6 +234,10 @@ namespace ConferencePlanner.Repository.Ef.Entities
 
                 entity.Property(e => e.Nationality).HasMaxLength(255);
 
+                entity.Property(e => e.Picture)
+                    .HasMaxLength(255)
+                    .HasDefaultValueSql("('https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80')");
+
                 entity.Property(e => e.Rating).HasColumnType("numeric(30, 2)");
 
                 entity.Property(e => e.SpeakerCode).HasMaxLength(10);
@@ -235,6 +245,8 @@ namespace ConferencePlanner.Repository.Ef.Entities
 
             modelBuilder.Entity<Location>(entity =>
             {
+                entity.Property(e => e.AdressDetails).HasMaxLength(255);
+
                 entity.Property(e => e.Latitude).HasMaxLength(255);
 
                 entity.Property(e => e.Longitude).HasMaxLength(255);
