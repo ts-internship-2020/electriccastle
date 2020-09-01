@@ -37,7 +37,8 @@ SET ConferenceName = ,
 	DictionaryConferenceTypeId = ,
 	LocationId = );
 
-
+INSERT INTO ConferenceXDictionarySpeaker (DictionarySpeakerId, ConferenceId, IsMainSpeaker)
+VALUES ();
 
 ROLLBACK
 

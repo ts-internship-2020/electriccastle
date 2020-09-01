@@ -333,5 +333,18 @@ namespace ConferencePlanner.WinUi
             //label1.BackColor = Color.Transparent;
             //label1.BackColor = System.Drawing.Color.Transparent;
         }
+
+        private void OrganizerTabTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (OrganizerTabTextBox.Text != string.Empty)
+            {
+                paginationHelper.pageSize = Convert.ToInt32(OrganizerTabTextBox.Text);
+                paginationHelper.pageNumber = 1;
+                // Nu stergeti
+                //categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value) + 1);
+                OrganizerGrid.DataSource = paginationHelper.GetPage();
+                ManageOrganizerPaginationButtonsState();
+            }
+        }
     }
 }

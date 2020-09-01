@@ -20,61 +20,73 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 
         public void AddConference(ConferenceModel conference)
         {
-            try
+            using (SqlTransaction sqlTransaction = _sqlConnection.BeginTransaction())
             {
-                SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-                sqlCommand.Connection = _sqlConnection;
-                sqlCommand.Parameters.AddWithValue("@ConferenceName", conference.ConferenceName);
-                sqlCommand.Parameters.AddWithValue("@OrganizerEmail", conference.OrganizerEmail);
-                sqlCommand.Parameters.AddWithValue("@OrganizerName", conference.OrganizerName);
-                sqlCommand.Parameters.AddWithValue("@StartDate", conference.StartDate);
-                sqlCommand.Parameters.AddWithValue("@EndDate", conference.EndDate);
-                sqlCommand.Parameters.AddWithValue("@DictionaryConferenceCategoryId", conference.DictionaryConferenceCategoryId);
-                sqlCommand.Parameters.AddWithValue("@DictionaryConferenceTypeId", conference.DictionaryConferenceTypeId);
-                sqlCommand.Parameters.AddWithValue("@LocationId", conference.LocationId);
-                sqlCommand.CommandText = "INSERT INTO Conference(ConferenceName, OrganizerEmail, OrganizerName," +
-                                         " StartDate, EndDate, DictionaryConferenceCategoryId, DictionaryConferenceTypeId, LocationId) " +
-                                         " VALUES(@ConferenceName, @OrganizerEmail, @OrganizerName, @StartDate, @EndDate," +
-                                         " @DictionaryConferenceCategoryId, @DictionaryConferenceTypeId, @LocationId)";
-
-                int rowsAdded = sqlCommand.ExecuteNonQuery();
-
-                //SqlCommand sqlCommandSpeakers = _sqlConnection.CreateCommand();
-                //sqlCommandSpeakers.Connection = _sqlConnection;
-                //sqlCommandSpeakers.Transaction = sqlTransaction;
-                //sqlCommandSpeakers.Parameters.Add(new SqlParameter("@key", SqlDbType.NChar));
-                //sqlCommandSpeakers.Parameters.Add(new SqlParameter("@value", SqlDbType.NChar));
-                //sqlCommandSpeakers.CommandText = "INSERT INTO [Setting] ([Key], [Value]) VALUES (@key, @value);";
-                //using (SqlTransaction sqlTransaction = _sqlConnection.BeginTransaction())
-                //{
-                //    try
-                //    {
-                //        foreach (var oSetting in settings)
-                //        {
-                //            sqlCommandSpeakers.Parameters[0].Value = oSetting.Key;
-                //            sqlCommandSpeakers.Parameters[1].Value = oSetting.Value;
-                //            if (sqlCommandSpeakers.ExecuteNonQuery() != 1)
-                //            {
-                //                //'handled as needed, 
-                //                //' but this snippet will throw an exception to force a rollback
-                //                throw new InvalidProgramException();
-                //            }
-                //        }
-                //        sqlTransaction.Commit();
-                //    }
-                //    catch (Exception)
-                //    {
-                //        sqlTransaction.Rollback();
-                //        throw;
-                //    }
-                //}
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
+                using (SqlCommand sqlCommand = _sqlConnection.CreateCommand())
+                {
+                    sqlCommand.Transaction = sqlTransaction;
+                    sqlCommand.Connection = _sqlConnection;
+                    sqlCommand.Parameters.AddWithValue("@ConferenceName", conference.ConferenceName);
+                    sqlCommand.Parameters.AddWithValue("@OrganizerEmail", conference.OrganizerEmail);
+                    sqlCommand.Parameters.AddWithValue("@OrganizerName", conference.OrganizerName);
+                    sqlCommand.Parameters.AddWithValue("@StartDate", conference.StartDate);
+                    sqlCommand.Parameters.AddWithValue("@EndDate", conference.EndDate);
+                    sqlCommand.Parameters.AddWithValue("@DictionaryConferenceCategoryId", conference.DictionaryConferenceCategoryId);
+                    sqlCommand.Parameters.AddWithValue("@DictionaryConferenceTypeId", conference.DictionaryConferenceTypeId);
+                    sqlCommand.Parameters.AddWithValue("@LocationId", conference.LocationId);
+                    sqlCommand.CommandText = "INSERT INTO Conference(ConferenceName, OrganizerEmail, OrganizerName," +
+                                                " StartDate, EndDate, DictionaryConferenceCategoryId, DictionaryConferenceTypeId, LocationId) " +
+                                                " VALUES(@ConferenceName, @OrganizerEmail, @OrganizerName, @StartDate, @EndDate," +
+                                                " @DictionaryConferenceCategoryId, @DictionaryConferenceTypeId, @LocationId)";
+                    try
+                    {
+                        if (sqlCommand.ExecuteNonQuery() != 1)
+                        {
+                            throw new InvalidProgramException();
+                        }
+                        sqlTransaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        sqlTransaction.Rollback();
+                        throw;
+                    }
+                }
             }
 
-            // + cod pentru insert in celelalte tabele
+            using (SqlTransaction sqlTransaction = _sqlConnection.BeginTransaction())
+            {
+                using (SqlCommand sqlCommand = _sqlConnection.CreateCommand())
+                {
+                    sqlCommand.Transaction = sqlTransaction;
+                    sqlCommand.Connection = _sqlConnection;
+                    //sqlCommand.Parameters.Add(new SqlParameter("@DictionarySpeakerId", SqlDbType.Int));
+                    //sqlCommand.Parameters.Add(new SqlParameter("@IsMainSpeaker", SqlDbType.NVarChar));
+                    sqlCommand.CommandText = "INSERT INTO [Setting] ([Key], [Value]) VALUES (@key, @value);";
+                    try
+                    {
+                        foreach (SpeakerListModel speaker in conference.Speakers)
+                        {
+                            //sqlCommand.Parameters["@key"].Value = speaker.DictionarySpeakerId;
+                            //sqlCommand.Parameters["@value"].Value = speaker.IsMainSpeaker;
+                            sqlCommand.Parameters.AddWithValue("@DictionarySpeakerId", speaker.DictionarySpeakerId);
+                            sqlCommand.Parameters.AddWithValue("@IsMainSpeaker", speaker.IsMainSpeaker);
+                            if (sqlCommand.ExecuteNonQuery() != 1)
+                            {
+                                //'handled as needed, 
+                                //' but this snippet will throw an exception to force a rollback
+                                throw new InvalidProgramException();
+                            }
+                        }
+                        sqlTransaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        sqlTransaction.Rollback();
+                        throw;
+                    }
+                }
+            }
         }
 
         public void DeleteConference(int conferenceId)

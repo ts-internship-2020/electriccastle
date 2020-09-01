@@ -61,6 +61,8 @@
             this.ColumnWithdrawButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabControrConferences = new System.Windows.Forms.TabControl();
+            this.OrganizerTabEntriesLabel = new System.Windows.Forms.Label();
+            this.OrganizerTabTextBox = new System.Windows.Forms.TextBox();
             this.TabOrganizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
             this.TabParticipant.SuspendLayout();
@@ -71,6 +73,8 @@
             // TabOrganizer
             // 
             this.TabOrganizer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabOrganizer.BackgroundImage")));
+            this.TabOrganizer.Controls.Add(this.OrganizerTabTextBox);
+            this.TabOrganizer.Controls.Add(this.OrganizerTabEntriesLabel);
             this.TabOrganizer.Controls.Add(this.OrganizerFilterButton);
             this.TabOrganizer.Controls.Add(this.OrganizerNextButton);
             this.TabOrganizer.Controls.Add(this.OrganizerPreviousButton);
@@ -434,6 +438,23 @@
             this.TabControrConferences.Size = new System.Drawing.Size(808, 398);
             this.TabControrConferences.TabIndex = 0;
             // 
+            // OrganizerTabEntriesLabel
+            // 
+            this.OrganizerTabEntriesLabel.AutoSize = true;
+            this.OrganizerTabEntriesLabel.Location = new System.Drawing.Point(24, 334);
+            this.OrganizerTabEntriesLabel.Name = "OrganizerTabEntriesLabel";
+            this.OrganizerTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
+            this.OrganizerTabEntriesLabel.TabIndex = 13;
+            this.OrganizerTabEntriesLabel.Text = "Entries per page";
+            // 
+            // OrganizerTabTextBox
+            // 
+            this.OrganizerTabTextBox.Location = new System.Drawing.Point(122, 334);
+            this.OrganizerTabTextBox.Name = "OrganizerTabTextBox";
+            this.OrganizerTabTextBox.Size = new System.Drawing.Size(27, 23);
+            this.OrganizerTabTextBox.TabIndex = 14;
+            this.OrganizerTabTextBox.TextChanged += new System.EventHandler(this.OrganizerTabTextBox_TextChanged);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -496,5 +517,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn ColumnWithdrawButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnState;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox OrganizerTabTextBox;
+        private System.Windows.Forms.Label OrganizerTabEntriesLabel;
     }
 }
