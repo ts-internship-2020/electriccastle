@@ -163,13 +163,11 @@ namespace ConferencePlanner.WinUi
 
         private void AddConference(object sender, EventArgs e)
         {
-            ConferenceId = conferenceDistrictRepository.GetNextId();
             conferenceRepository.AddConference(PopulateConferenceObject());
         }
 
         private void EditConference(object sender, EventArgs e)
         {
-            //ConferenceId = //din interfata
             conferenceRepository.EditConference(PopulateConferenceObject());
         }
 

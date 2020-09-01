@@ -38,6 +38,36 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                                          " @DictionaryConferenceCategoryId, @DictionaryConferenceTypeId, @LocationId)";
 
                 int rowsAdded = sqlCommand.ExecuteNonQuery();
+
+                //SqlCommand sqlCommandSpeakers = _sqlConnection.CreateCommand();
+                //sqlCommandSpeakers.Connection = _sqlConnection;
+                //sqlCommandSpeakers.Transaction = sqlTransaction;
+                //sqlCommandSpeakers.Parameters.Add(new SqlParameter("@key", SqlDbType.NChar));
+                //sqlCommandSpeakers.Parameters.Add(new SqlParameter("@value", SqlDbType.NChar));
+                //sqlCommandSpeakers.CommandText = "INSERT INTO [Setting] ([Key], [Value]) VALUES (@key, @value);";
+                //using (SqlTransaction sqlTransaction = _sqlConnection.BeginTransaction())
+                //{
+                //    try
+                //    {
+                //        foreach (var oSetting in settings)
+                //        {
+                //            sqlCommandSpeakers.Parameters[0].Value = oSetting.Key;
+                //            sqlCommandSpeakers.Parameters[1].Value = oSetting.Value;
+                //            if (sqlCommandSpeakers.ExecuteNonQuery() != 1)
+                //            {
+                //                //'handled as needed, 
+                //                //' but this snippet will throw an exception to force a rollback
+                //                throw new InvalidProgramException();
+                //            }
+                //        }
+                //        sqlTransaction.Commit();
+                //    }
+                //    catch (Exception)
+                //    {
+                //        sqlTransaction.Rollback();
+                //        throw;
+                //    }
+                //}
             }
             catch (Exception e)
             {
@@ -90,13 +120,18 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             sqlCommand.Connection = _sqlConnection;
             sqlCommand.Parameters.AddWithValue("@ConferenceId", conferenceId);
-            sqlCommand.CommandText = "SELECT ConferenceId, ConferenceName, OrganizerEmail, OrganizerName," +
-                                     " StartDate, EndDate, DictionaryConferenceCategoryId, DictionaryConferenceTypeId," +
-                                     " LocationId FROM Conference" +
-                                     " WHERE ConferenceId = @ConferenceId";
+            sqlCommand.CommandText = "SELECT C.ConferenceId, C.ConferenceName, C.OrganizerEmail, C.OrganizerName," +
+                                    " C.StartDate, C.EndDate, C.DictionaryConferenceCategoryId, C.DictionaryConferenceTypeId," +
+                                    " C.LocationId, L.AdressDetails, DC.DictionaryCityId, DD.DictionaryDistrictId," +
+                                    " DCN.DictionaryCountryId FROM Conference C" +
+                                    " JOIN Location L ON C.LocationId = L.LocationId" +
+                                    " JOIN DictionaryCity DC ON DC.DictionaryCityId = L.DictionaryCityId" +
+                                    " JOIN DictionaryDistrict DD ON DD.DictionaryDistrictId = DC.DictionaryDistrictId" +
+                                    " JOIN DictionaryCountry DCN ON DCN.DictionaryCountryId = DD.DictionaryCountryId" +
+                                    " WHERE ConferenceId = @ConferenceId";
 
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader(); 
+            
             ConferenceModel conference = null;
 
             if (sqlDataReader.HasRows)
@@ -113,13 +148,41 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                         EndDate = sqlDataReader.GetDateTime("EndDate"),
                         DictionaryConferenceCategoryId = sqlDataReader.GetInt32("DictionaryConferenceCategoryId"),
                         DictionaryConferenceTypeId = sqlDataReader.GetInt32("DictionaryConferenceTypeId"),
-                        LocationId = sqlDataReader.GetInt32("LocationId")
+                        LocationId = sqlDataReader.GetInt32("LocationId"),
+                        AdressDetails = sqlDataReader.GetString("AdressDetails"),
+                        DictionaryCityId = sqlDataReader.GetInt32("DictionaryCityId"),
+                        DictionaryDistrictId = sqlDataReader.GetInt32("DictionaryDistrictId"),
+                        DictionaryCountryId = sqlDataReader.GetInt32("DictionaryCountryId")
                     };
                 }
             }
+
             sqlDataReader.Close();
 
-            // + cod pentru luat din celelalte tabele
+            SqlCommand sqlCommandSpeakers = _sqlConnection.CreateCommand();
+            sqlCommandSpeakers.Connection = _sqlConnection;
+            sqlCommandSpeakers.Parameters.AddWithValue("@ConferenceId", conferenceId);
+            sqlCommandSpeakers.CommandText = "SELECT DictionarySpeakerId, ConferenceId, IsMainSpeaker" +
+                                            " FROM ConferenceXDictionarySpeaker" +
+                                            " WHERE ConferenceId = @ConferenceId; ";
+
+            SqlDataReader sqlDataReaderSpeakers = sqlCommandSpeakers.ExecuteReader();
+
+            conference.Speakers = new List<SpeakerListModel>();
+
+            if (sqlDataReaderSpeakers.HasRows)
+            {
+                while (sqlDataReaderSpeakers.Read())
+                {
+                    conference.Speakers.Add(new SpeakerListModel
+                    {
+                        DictionarySpeakerId = sqlDataReaderSpeakers.GetInt32("DictionarySpeakerId"),
+                        IsMainSpeaker = sqlDataReaderSpeakers.GetBoolean("IsMainSpeaker")
+                    });
+                }
+            }
+
+            sqlDataReaderSpeakers.Close();
 
             return conference;
         }

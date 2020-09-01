@@ -14,6 +14,12 @@ SELECT * FROM ConferenceXDictionarySpeaker ORDER BY ConferenceId;
 SELECT * FROM ConferenceParticipant WHERE ConferenceId = 8  CP
 JOIN DictionaryParticipantState D ON D.DictionaryParticipantStateId = CP.DictionaryParticipantStateId;
 
+
+-- select speaker related data for conference
+SELECT DictionarySpeakerId, ConferenceId, IsMainSpeaker 
+FROM ConferenceXDictionarySpeaker
+WHERE ConferenceId = 13;
+
 BEGIN TRAN
 
 INSERT INTO Conference(ConferenceName, OrganizerEmail, OrganizerName,
@@ -51,10 +57,19 @@ join DictionarySpeaker ds on ds.DictionarySpeakerId = cds.DictionarySpeakerId
 where cds.IsMainSpeaker = 1
 and c.OrganizerEmail = 'eventskill@gmail.com';
 
-SELECT ConferenceId, ConferenceName, OrganizerEmail, OrganizerName,
-StartDate, EndDate, DictionaryConferenceCategoryId, DictionaryConferenceTypeId,
-LocationId FROM Conference 
+-- select pentru conferinta
+
+SELECT C.ConferenceId, C.ConferenceName, C.OrganizerEmail, C.OrganizerName,
+C.StartDate, C.EndDate, C.DictionaryConferenceCategoryId, C.DictionaryConferenceTypeId,
+C.LocationId, L.AdressDetails, DC.DictionaryCityId, DD.DictionaryDistrictId,
+DCN.DictionaryCountryId FROM Conference C
+JOIN Location L ON C.LocationId = L.LocationId
+JOIN DictionaryCity DC ON DC.DictionaryCityId = L.DictionaryCityId 
+JOIN DictionaryDistrict DD ON DD.DictionaryDistrictId = DC.DictionaryDistrictId 
+JOIN DictionaryCountry DCN ON DCN.DictionaryCountryId = DD.DictionaryCountryId 
 WHERE ConferenceId = 13;
+
+
 
 SELECT DictionaryConferenceCategoryId, DictionaryConferenceCategoryName, ConferenceCategoryCode FROM DictionaryConferenceCategory;
 

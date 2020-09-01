@@ -26,9 +26,7 @@ namespace ConferencePlanner.Abstraction.ElectricCastleModel
 
         public string AdressDetails { get; set; }
 
-        public int DictionarySpeakerId { get; set; }
-
-        public bool IsMainSpeaker { get; set; }
+        public List<SpeakerListModel> Speakers { get; set; }
 
         public int DictionaryCityId { get; set; }
 
