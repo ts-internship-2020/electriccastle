@@ -113,6 +113,7 @@
             this.Controls.Add(this.label1);
             this.Name = "NewConferanceType";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Type";
             this.Activated += new System.EventHandler(this.NewConferanceType_Activated);
             this.Load += new System.EventHandler(this.NewConferanceType_Load);

@@ -180,6 +180,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "NewCityForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "City";
             this.Load += new System.EventHandler(this.NewCityForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

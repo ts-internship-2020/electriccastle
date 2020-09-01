@@ -162,6 +162,7 @@
             this.Controls.Add(this.pictureBox);
             this.Name = "NewDistrictForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "District";
             this.Activated += new System.EventHandler(this.NewDistrictForm_Activated);
             this.Load += new System.EventHandler(this.NewDistrictForm_Load);

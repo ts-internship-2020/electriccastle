@@ -155,6 +155,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "NewCountryForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Country";
             this.Load += new System.EventHandler(this.NewCountryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -54,12 +54,14 @@
             this.tabSpeakerEditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
             this.CategoryTabAddButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabSearchTextBox = new System.Windows.Forms.TextBox();
             this.CategoryTabNextButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
             this.tabType = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btNewType = new ConferencePlanner.WinUi.ButonCircular();
             this.btPreviousType = new ConferencePlanner.WinUi.ButonCircular();
@@ -110,8 +112,6 @@
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
@@ -255,7 +255,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(743, 64);
+            this.label9.Location = new System.Drawing.Point(296, 140);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(102, 15);
             this.label9.TabIndex = 27;
@@ -267,7 +267,7 @@
             this.tabSpeakerFilterText.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tabSpeakerFilterText.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabSpeakerFilterText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerFilterText.Location = new System.Drawing.Point(746, 82);
+            this.tabSpeakerFilterText.Location = new System.Drawing.Point(415, 135);
             this.tabSpeakerFilterText.Name = "tabSpeakerFilterText";
             this.tabSpeakerFilterText.Size = new System.Drawing.Size(99, 25);
             this.tabSpeakerFilterText.TabIndex = 26;
@@ -399,6 +399,15 @@
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(95, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 15);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Insert filter criteria";
+            // 
             // CategoryTabAddButton
             // 
             this.CategoryTabAddButton.BackColor = System.Drawing.Color.Tomato;
@@ -475,6 +484,15 @@
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(130, 107);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 15);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Insert filter criteria";
+            // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(275, 104);
@@ -516,7 +534,7 @@
             this.dataGridViewType.Name = "dataGridViewType";
             this.dataGridViewType.ReadOnly = true;
             this.dataGridViewType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewType.Size = new System.Drawing.Size(566, 88);
+            this.dataGridViewType.Size = new System.Drawing.Size(898, 88);
             this.dataGridViewType.TabIndex = 0;
             this.dataGridViewType.Text = "dataGridView3";
             this.dataGridViewType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewType_CellClick);
@@ -640,7 +658,7 @@
             this.DGVCountry.Name = "DGVCountry";
             this.DGVCountry.ReadOnly = true;
             this.DGVCountry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVCountry.Size = new System.Drawing.Size(456, 150);
+            this.DGVCountry.Size = new System.Drawing.Size(892, 150);
             this.DGVCountry.TabIndex = 0;
             this.DGVCountry.Text = "dataGridView5";
             this.DGVCountry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
@@ -681,7 +699,7 @@
             this.tabDistrictEntryLable.AutoSize = true;
             this.tabDistrictEntryLable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabDistrictEntryLable.ForeColor = System.Drawing.Color.Red;
-            this.tabDistrictEntryLable.Location = new System.Drawing.Point(482, 138);
+            this.tabDistrictEntryLable.Location = new System.Drawing.Point(695, 180);
             this.tabDistrictEntryLable.Name = "tabDistrictEntryLable";
             this.tabDistrictEntryLable.Size = new System.Drawing.Size(99, 17);
             this.tabDistrictEntryLable.TabIndex = 7;
@@ -689,7 +707,7 @@
             // 
             // tabDistrictEntryText
             // 
-            this.tabDistrictEntryText.Location = new System.Drawing.Point(598, 138);
+            this.tabDistrictEntryText.Location = new System.Drawing.Point(800, 179);
             this.tabDistrictEntryText.Name = "tabDistrictEntryText";
             this.tabDistrictEntryText.Size = new System.Drawing.Size(27, 23);
             this.tabDistrictEntryText.TabIndex = 6;
@@ -698,7 +716,7 @@
             // 
             // DistrictFilter
             // 
-            this.DistrictFilter.Location = new System.Drawing.Point(482, 42);
+            this.DistrictFilter.Location = new System.Drawing.Point(204, 171);
             this.DistrictFilter.Name = "DistrictFilter";
             this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
             this.DistrictFilter.TabIndex = 5;
@@ -707,7 +725,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(482, 24);
+            this.label7.Location = new System.Drawing.Point(96, 174);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 15);
             this.label7.TabIndex = 4;
@@ -717,7 +735,7 @@
             // 
             this.NextDistrict.BackColor = System.Drawing.Color.Tomato;
             this.NextDistrict.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NextDistrict.Location = new System.Drawing.Point(155, 160);
+            this.NextDistrict.Location = new System.Drawing.Point(403, 160);
             this.NextDistrict.Name = "NextDistrict";
             this.NextDistrict.Size = new System.Drawing.Size(62, 34);
             this.NextDistrict.TabIndex = 3;
@@ -729,7 +747,7 @@
             // 
             this.PreviousPageDistrict.BackColor = System.Drawing.Color.Tomato;
             this.PreviousPageDistrict.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PreviousPageDistrict.Location = new System.Drawing.Point(19, 160);
+            this.PreviousPageDistrict.Location = new System.Drawing.Point(335, 160);
             this.PreviousPageDistrict.Name = "PreviousPageDistrict";
             this.PreviousPageDistrict.Size = new System.Drawing.Size(62, 34);
             this.PreviousPageDistrict.TabIndex = 2;
@@ -741,7 +759,7 @@
             // 
             this.NewDistrict.BackColor = System.Drawing.Color.Tomato;
             this.NewDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NewDistrict.Location = new System.Drawing.Point(32, 210);
+            this.NewDistrict.Location = new System.Drawing.Point(4, 164);
             this.NewDistrict.Name = "NewDistrict";
             this.NewDistrict.Size = new System.Drawing.Size(86, 33);
             this.NewDistrict.TabIndex = 1;
@@ -807,7 +825,7 @@
             // 
             // tabCityEntryText
             // 
-            this.tabCityEntryText.Location = new System.Drawing.Point(596, 173);
+            this.tabCityEntryText.Location = new System.Drawing.Point(819, 167);
             this.tabCityEntryText.Name = "tabCityEntryText";
             this.tabCityEntryText.Size = new System.Drawing.Size(28, 23);
             this.tabCityEntryText.TabIndex = 8;
@@ -820,7 +838,7 @@
             this.tabCityEntryLabel.AutoSize = true;
             this.tabCityEntryLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabCityEntryLabel.ForeColor = System.Drawing.Color.Red;
-            this.tabCityEntryLabel.Location = new System.Drawing.Point(482, 174);
+            this.tabCityEntryLabel.Location = new System.Drawing.Point(693, 170);
             this.tabCityEntryLabel.Name = "tabCityEntryLabel";
             this.tabCityEntryLabel.Size = new System.Drawing.Size(108, 17);
             this.tabCityEntryLabel.TabIndex = 7;
@@ -829,7 +847,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(482, 17);
+            this.label8.Location = new System.Drawing.Point(92, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(122, 15);
             this.label8.TabIndex = 6;
@@ -837,7 +855,7 @@
             // 
             // filterCity
             // 
-            this.filterCity.Location = new System.Drawing.Point(482, 35);
+            this.filterCity.Location = new System.Drawing.Point(220, 168);
             this.filterCity.Name = "filterCity";
             this.filterCity.Size = new System.Drawing.Size(100, 23);
             this.filterCity.TabIndex = 5;
@@ -846,24 +864,24 @@
             // PrevoiusCity
             // 
             this.PrevoiusCity.BackColor = System.Drawing.Color.Tomato;
-            this.PrevoiusCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PrevoiusCity.Location = new System.Drawing.Point(4, 156);
+            this.PrevoiusCity.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PrevoiusCity.Location = new System.Drawing.Point(328, 162);
             this.PrevoiusCity.Name = "PrevoiusCity";
-            this.PrevoiusCity.Size = new System.Drawing.Size(115, 44);
+            this.PrevoiusCity.Size = new System.Drawing.Size(62, 34);
             this.PrevoiusCity.TabIndex = 4;
-            this.PrevoiusCity.Text = "Previous page";
+            this.PrevoiusCity.Text = "<";
             this.PrevoiusCity.UseVisualStyleBackColor = false;
             this.PrevoiusCity.Click += new System.EventHandler(this.PrevoiusCity_Click);
             // 
             // NextCity
             // 
             this.NextCity.BackColor = System.Drawing.Color.Tomato;
-            this.NextCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NextCity.Location = new System.Drawing.Point(143, 156);
+            this.NextCity.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextCity.Location = new System.Drawing.Point(396, 162);
             this.NextCity.Name = "NextCity";
-            this.NextCity.Size = new System.Drawing.Size(115, 44);
+            this.NextCity.Size = new System.Drawing.Size(62, 34);
             this.NextCity.TabIndex = 3;
-            this.NextCity.Text = "Next page";
+            this.NextCity.Text = ">";
             this.NextCity.UseVisualStyleBackColor = false;
             this.NextCity.Click += new System.EventHandler(this.NextCity_Click);
             // 
@@ -871,11 +889,11 @@
             // 
             this.NewCity.BackColor = System.Drawing.Color.Tomato;
             this.NewCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NewCity.Location = new System.Drawing.Point(343, 160);
+            this.NewCity.Location = new System.Drawing.Point(0, 160);
             this.NewCity.Name = "NewCity";
-            this.NewCity.Size = new System.Drawing.Size(115, 44);
+            this.NewCity.Size = new System.Drawing.Size(86, 33);
             this.NewCity.TabIndex = 1;
-            this.NewCity.Text = "New City";
+            this.NewCity.Text = "Add";
             this.NewCity.UseVisualStyleBackColor = false;
             this.NewCity.Click += new System.EventHandler(this.NewCity_Click);
             // 
@@ -1007,24 +1025,6 @@
             this.tabSpeakerColumnRating.HeaderText = "Rating";
             this.tabSpeakerColumnRating.Name = "tabSpeakerColumnRating";
             this.tabSpeakerColumnRating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(95, 134);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 15);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Insert filter criteria";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(130, 107);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 15);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Insert filter criteria";
             // 
             // AddConferance
             // 

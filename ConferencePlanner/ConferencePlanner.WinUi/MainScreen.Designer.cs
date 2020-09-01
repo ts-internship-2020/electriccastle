@@ -441,6 +441,7 @@
             this.Controls.Add(this.TabControrConferences);
             this.Name = "MainScreen";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Page";
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.TabOrganizer.ResumeLayout(false);
