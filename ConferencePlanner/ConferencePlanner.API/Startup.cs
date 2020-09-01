@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using ConferencePlanner.Api.Swagger;
 using Microsoft.OpenApi.Models;
-
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
 
 namespace ConferencePlanner.Api
 {
@@ -46,6 +46,7 @@ namespace ConferencePlanner.Api
                 });
 
             services.AddScoped<IGetDemoRepository, GetDemoRepository>();
+            services.AddScoped<IConferenceRepository, ConferenceRepository>();
 
             services.AddSwagger();
         }
