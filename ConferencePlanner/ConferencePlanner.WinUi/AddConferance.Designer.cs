@@ -643,7 +643,7 @@
             // 
             this.NextBtn.BackColor = System.Drawing.Color.Tomato;
             this.NextBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NextBtn.Location = new System.Drawing.Point(398, 160);
+            this.NextBtn.Location = new System.Drawing.Point(834, 163);
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.Size = new System.Drawing.Size(62, 34);
             this.NextBtn.TabIndex = 2;
