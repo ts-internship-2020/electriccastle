@@ -232,6 +232,7 @@
             this.Controls.Add(this.editSpeakerCode);
             this.Controls.Add(this.editSpeakerPictureBox);
             this.Name = "EditSpeakerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditSpeakerForm";
             this.Load += new System.EventHandler(this.EditSpeakerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.editSpeakerPictureBox)).EndInit();

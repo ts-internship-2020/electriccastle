@@ -52,6 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(103, 37);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(122, 73);
@@ -124,12 +125,14 @@
             this.butonCircular1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.butonCircular1.BackColor = System.Drawing.Color.Tomato;
+            this.butonCircular1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.butonCircular1.Location = new System.Drawing.Point(103, 325);
             this.butonCircular1.Name = "butonCircular1";
             this.butonCircular1.Size = new System.Drawing.Size(100, 51);
             this.butonCircular1.TabIndex = 6;
-            this.butonCircular1.Text = "Add city";
-            this.butonCircular1.UseVisualStyleBackColor = true;
+            this.butonCircular1.Text = "Upload city";
+            this.butonCircular1.UseVisualStyleBackColor = false;
             this.butonCircular1.Click += new System.EventHandler(this.butonCircular1_Click);
             // 
             // errorProviderCityName
@@ -176,7 +179,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "NewCityForm";
-            this.Text = "NewCityForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "City";
             this.Load += new System.EventHandler(this.NewCityForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCityName)).EndInit();

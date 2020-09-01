@@ -50,6 +50,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(101, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(136, 67);
@@ -122,12 +123,14 @@
             this.AddCountryFromButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddCountryFromButton.BackColor = System.Drawing.Color.Tomato;
+            this.AddCountryFromButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.AddCountryFromButton.Location = new System.Drawing.Point(111, 249);
             this.AddCountryFromButton.Name = "AddCountryFromButton";
-            this.AddCountryFromButton.Size = new System.Drawing.Size(100, 44);
+            this.AddCountryFromButton.Size = new System.Drawing.Size(110, 44);
             this.AddCountryFromButton.TabIndex = 6;
-            this.AddCountryFromButton.Text = "Add country";
-            this.AddCountryFromButton.UseVisualStyleBackColor = true;
+            this.AddCountryFromButton.Text = "Upload country";
+            this.AddCountryFromButton.UseVisualStyleBackColor = false;
             this.AddCountryFromButton.Click += new System.EventHandler(this.AddCountryFromButton_Click);
             // 
             // errorProviderCountryName
@@ -151,7 +154,9 @@
             this.Controls.Add(this.CountryNameTv);
             this.Controls.Add(this.pictureBox1);
             this.Name = "NewCountryForm";
-            this.Text = "NewCountryForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Country";
             this.Load += new System.EventHandler(this.NewCountryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCountryName)).EndInit();

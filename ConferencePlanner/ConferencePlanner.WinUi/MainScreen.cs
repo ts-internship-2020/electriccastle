@@ -16,8 +16,14 @@ using System.Net.Mail;
 using Windows.ApplicationModel.VoiceCommands;
 using System.Net;
 
+
+
+
 namespace ConferencePlanner.WinUi
 {
+   
+   
+
     public partial class MainScreen : Form
     {
         //private string emailParticipantLogare;
@@ -39,8 +45,16 @@ namespace ConferencePlanner.WinUi
 
         private int scrollVal;
 
+        private int numberEntry;
+
         public static int SetValueIdSpeker = 0;
 
+        public object QRCodeGenerator { get; private set; }
+
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository,
+            IOrganizerConferencesRepository organizerConferencesRepository,
+            IEmailParticipant _emailPart
+            )
         public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IConferenceParticipant conferenceParticipant)
         {
             this._getParticipantRepository = _getParticipantRepository;
@@ -48,16 +62,22 @@ namespace ConferencePlanner.WinUi
             this.conferenceParticipant = conferenceParticipant;
             scrollVal = 0;
             InitializeComponent();
+            
         }
 
        
-        void populateGridParticipants(List<ParticipantsConferencesModel> conferenceParticipants, int scrollVal)
+        void populateGridParticipants(List<ParticipantsConferencesModel> conferenceParticipants, int scrollVal, int entries)
         {
+           
             ConferencesParticipant.Rows.Clear();
             int nr = conferenceParticipants.Count;
             int i;
-            int numberRowsPage = 5;
-            if(nr - scrollVal < numberRowsPage)
+            int numberRowsPage = entries;
+            if (numberRowsPage > nr)
+            {
+                numberRowsPage = nr;
+            }
+            if (nr - scrollVal < numberRowsPage)
             {
                 numberRowsPage = nr - scrollVal;
             }
@@ -67,13 +87,21 @@ namespace ConferencePlanner.WinUi
                 ParticipantsConferencesModel listElement = conferenceParticipants.ElementAt(scrollVal+i);
 
                 ConferencesParticipant.Rows[n].Cells[0].Value = listElement.Name.ToString();
+               
                 ConferencesParticipant.Rows[n].Cells[1].Value = listElement.StartDate.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[2].Value = listElement.EndDate.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[3].Value = listElement.ConferenceType.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[4].Value = listElement.ConferenceCategory.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[5].Value = listElement.Address.ToString();
+               
                 ConferencesParticipant.Rows[n].Cells[6].Value = listElement.Speaker.ToString();
+                
                 ConferencesParticipant.Rows[n].Cells[7].Value = "Attend";
+                
                 ConferencesParticipant.Rows[n].Cells[8].Value = "Join";
                 ConferencesParticipant.Rows[n].Cells[9].Value = "Withdraw";
                 ConferencesParticipant.Rows[n].Cells[10].Value = listElement.StateName.ToString();
@@ -81,13 +109,15 @@ namespace ConferencePlanner.WinUi
                 
             }
 
+            
+
         }
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
             conferences = _getParticipantRepository.GetParticipantsConferences();
-
-            populateGridParticipants(conferences, scrollVal);
+            numberEntry = Convert.ToInt32(entryPageTextBox.Text);
+            populateGridParticipants(conferences, scrollVal, numberEntry);
 
             organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
             paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
@@ -112,7 +142,7 @@ namespace ConferencePlanner.WinUi
             scrollVal = 0;
             List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
             conferences = conferenceParticipants.Where(conference => conference.StartDate >= DatePickerParticipantStart.Value).ToList();
-            populateGridParticipants(conferences, scrollVal);
+            populateGridParticipants(conferences, scrollVal, numberEntry);
 
         }
 
@@ -121,7 +151,7 @@ namespace ConferencePlanner.WinUi
             scrollVal = 0;
             List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
             conferences = conferenceParticipants.Where(conference => conference.EndDate <= DatePickerParticipantEnd.Value).ToList();
-            populateGridParticipants(conferences, scrollVal);
+            populateGridParticipants(conferences, scrollVal, numberEntry);
         }
 
         private void FilterParticipants_Click(object sender, EventArgs e)
@@ -131,7 +161,7 @@ namespace ConferencePlanner.WinUi
             List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
             conferences = conferenceParticipants.Where(conference => (conference.StartDate >= DatePickerParticipantStart.Value) && 
                                                         (conference.EndDate <= DatePickerParticipantEnd.Value) ).ToList();
-            populateGridParticipants(conferences, scrollVal);
+            populateGridParticipants(conferences, scrollVal, numberEntry);
         }
 
 
@@ -139,12 +169,12 @@ namespace ConferencePlanner.WinUi
         {
 
             
-            scrollVal = scrollVal - 5;
+            scrollVal = scrollVal - numberEntry;
             if (scrollVal < 0)
             {
                 scrollVal = 0;
             }
-            populateGridParticipants(conferences, scrollVal);
+            populateGridParticipants(conferences, scrollVal, numberEntry);
         }
 
         private void NextButtonParticipant_Click(object sender, EventArgs e)
@@ -152,12 +182,12 @@ namespace ConferencePlanner.WinUi
             
 
             int nr = conferences.Count;
-            scrollVal = scrollVal + 5;
+            scrollVal = scrollVal + numberEntry;
             if (scrollVal >= nr)
             {
-                scrollVal = scrollVal - 5;
+                scrollVal = scrollVal - numberEntry;
             }
-            populateGridParticipants(conferences, scrollVal);
+            populateGridParticipants(conferences, scrollVal, numberEntry);
         }
 
         private void OrganizerPreviousButton_Click(object sender, EventArgs e)
@@ -214,9 +244,9 @@ namespace ConferencePlanner.WinUi
 
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           // _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
+            _email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
 
-            if (e.ColumnIndex == 7 )
+            if (e.ColumnIndex == 7)
             {
               
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
@@ -226,16 +256,22 @@ namespace ConferencePlanner.WinUi
                   
 
 
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
+                ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
+                ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+
+
             }
-            else if(e.ColumnIndex == 8)
+
+            else if (e.ColumnIndex == 8)
             {
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes <= 5)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
-                
+
                 //if (ts.TotalMinutes > 5)
                 //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].di = false;
                 Form f = new WebViewConnection();
@@ -244,13 +280,13 @@ namespace ConferencePlanner.WinUi
             }
             else if (e.ColumnIndex == 9)
             {
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
+                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes >= 6)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[9].Style.BackColor = System.Drawing.Color.Red;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Withdraw";
-                
+
             }
 
             if (e.ColumnIndex == 6)
@@ -264,6 +300,7 @@ namespace ConferencePlanner.WinUi
            
         }
 
+     
 
         private void OrganizerStartDatePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -287,13 +324,16 @@ namespace ConferencePlanner.WinUi
             OrganizerNextButton.Enabled = paginationHelper.HasNextPage();
         }
 
+
         private void AddConferenceButton_Click_1(object sender, EventArgs e)
         {
+
             AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
            
 
             addConferance.ConferenceId = null;
             addConferance.ShowDialog();
+
         }
 
         private void OrganizerGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -316,6 +356,27 @@ namespace ConferencePlanner.WinUi
         private void OrganizerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void entryPageTextBox_TextChanged(object sender, EventArgs e)
+        {
+            scrollVal = 0;
+            if (entryPageTextBox.Text == string.Empty)
+            {
+                numberEntry = 0;
+            }
+            else
+            {
+                numberEntry = Convert.ToInt32(entryPageTextBox.Text);
+            }
+
+            populateGridParticipants(conferences, scrollVal, numberEntry);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //label1.BackColor = Color.Transparent;
+            //label1.BackColor = System.Drawing.Color.Transparent;
         }
     }
 }

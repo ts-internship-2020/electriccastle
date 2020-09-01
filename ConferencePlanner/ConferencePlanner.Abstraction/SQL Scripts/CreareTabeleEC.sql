@@ -45,6 +45,7 @@ CREATE TABLE Location (
 	DictionaryCityId INT,
 	Longitude NVARCHAR(255),
 	Latitude NVARCHAR(255),
+	AdressDetails NVARCHAR(255),
 	PRIMARY KEY (LocationId),
 	FOREIGN KEY (DictionaryCityId) REFERENCES DictionaryCity(DictionaryCityId)
 );
@@ -82,6 +83,7 @@ CREATE TABLE ConferenceParticipant(
 	ConferenceId INT,
 	ParticipantEmail NVARCHAR(255) NOT NULL,
 	DictionaryParticipantStateId INT,
+	EmailCode NVARCHAR(255),
 	PRIMARY KEY (ConferenceId, ParticipantEmail),
 	FOREIGN KEY (ConferenceId) REFERENCES Conference(ConferenceId),
 	FOREIGN KEY (DictionaryParticipantStateId) REFERENCES DictionaryParticipantState(DictionaryParticipantStateId)

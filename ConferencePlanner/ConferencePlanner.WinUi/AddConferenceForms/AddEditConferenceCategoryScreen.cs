@@ -109,5 +109,15 @@ namespace ConferencePlanner.WinUi
             CategoryNameTextBoxErrorProvider.SetError(CategoryNameTextBox, "");
             CategoryCodeTextBoxErrorProvider.SetError(CategoryCodeTextBox, "");
         }
+
+        private void CategoryNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
