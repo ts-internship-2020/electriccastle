@@ -15,6 +15,7 @@ namespace ConferencePlanner.Repository.Ef.Entities
         public string DictionarySpeakerName { get; set; }
         public decimal? Rating { get; set; }
         public string Nationality { get; set; }
+        public string Picture { get; set; }
 
         public virtual ICollection<ConferenceXdictionarySpeaker> ConferenceXdictionarySpeaker { get; set; }
     }
