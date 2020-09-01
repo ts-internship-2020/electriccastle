@@ -12,8 +12,9 @@ using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using static ConferencePlanner.WinUi.Program;
-
-
+using System.Net.Mail;
+using Windows.ApplicationModel.VoiceCommands;
+using System.Net;
 
 namespace ConferencePlanner.WinUi
 {
@@ -24,6 +25,7 @@ namespace ConferencePlanner.WinUi
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
+        private readonly IConferenceParticipant conferenceParticipant;
 
         private List<OrganizerConferencesModel> organizerConferences;
 
@@ -39,10 +41,11 @@ namespace ConferencePlanner.WinUi
 
         public static int SetValueIdSpeker = 0;
 
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository)
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IConferenceParticipant conferenceParticipant)
         {
             this._getParticipantRepository = _getParticipantRepository;
             this.organizerConferencesRepository = organizerConferencesRepository;
+            this.conferenceParticipant = conferenceParticipant;
             scrollVal = 0;
             InitializeComponent();
         }
@@ -179,16 +182,50 @@ namespace ConferencePlanner.WinUi
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             ManageOrganizerPaginationButtonsState();
         }
+
+    
+        private void sendMail(String email)
+        {
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+
+                mail.From = new MailAddress("totalevents12@gmail.com");
+                mail.To.Add(email);
+                mail.Subject = "Authentication code ";
+                Random random=new Random();
+                String code = random.Next().ToString();
+                mail.Body = "Your code is: " + code;
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("totalevents12@gmail.com", "12parola34");
+                 SmtpServer.EnableSsl = true;
+                 SmtpServer.Send(mail);
+         
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+ 
+
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            // _email.InsertEmailParticipantBD(e.RowIndex, EmailParticipants);
 
             if (e.ColumnIndex == 7 )
             {
+              
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
                     ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                     ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
-                
+                sendMail(EmailParticipants);
+                  
+
+
             }
             else if(e.ColumnIndex == 8)
             {
@@ -253,6 +290,8 @@ namespace ConferencePlanner.WinUi
         private void AddConferenceButton_Click_1(object sender, EventArgs e)
         {
             AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+           
+
             addConferance.ConferenceId = null;
             addConferance.ShowDialog();
         }
