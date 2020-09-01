@@ -254,6 +254,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(296, 140);
             this.label9.Name = "label9";
@@ -263,7 +264,7 @@
             // 
             // tabSpeakerFilterText
             // 
-            this.tabSpeakerFilterText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSpeakerFilterText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tabSpeakerFilterText.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tabSpeakerFilterText.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabSpeakerFilterText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -278,7 +279,7 @@
             this.tabSpeakerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSpeakerNextButton.BackColor = System.Drawing.Color.Tomato;
             this.tabSpeakerNextButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerNextButton.Location = new System.Drawing.Point(661, 130);
+            this.tabSpeakerNextButton.Location = new System.Drawing.Point(834, 135);
             this.tabSpeakerNextButton.Name = "tabSpeakerNextButton";
             this.tabSpeakerNextButton.Size = new System.Drawing.Size(62, 42);
             this.tabSpeakerNextButton.TabIndex = 25;
@@ -292,7 +293,7 @@
             this.tabSpeakerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSpeakerPreviousButton.BackColor = System.Drawing.Color.Tomato;
             this.tabSpeakerPreviousButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerPreviousButton.Location = new System.Drawing.Point(597, 130);
+            this.tabSpeakerPreviousButton.Location = new System.Drawing.Point(770, 136);
             this.tabSpeakerPreviousButton.Name = "tabSpeakerPreviousButton";
             this.tabSpeakerPreviousButton.Size = new System.Drawing.Size(58, 41);
             this.tabSpeakerPreviousButton.TabIndex = 24;
@@ -334,7 +335,7 @@
             this.tabSpeakerGrid.Name = "tabSpeakerGrid";
             this.tabSpeakerGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.tabSpeakerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tabSpeakerGrid.Size = new System.Drawing.Size(720, 126);
+            this.tabSpeakerGrid.Size = new System.Drawing.Size(893, 126);
             this.tabSpeakerGrid.TabIndex = 0;
             this.tabSpeakerGrid.Text = "dataGridView1";
             this.tabSpeakerGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabSpeakerGrid_CellClick);
@@ -401,6 +402,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(95, 134);
             this.label10.Name = "label10";
@@ -422,6 +424,7 @@
             // 
             // CategoryTabSearchTextBox
             // 
+            this.CategoryTabSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(203, 131);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
@@ -457,13 +460,17 @@
             // 
             // CategoryTabGrid
             // 
+            this.CategoryTabGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryTabGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CategoryTabGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoryTabGrid.Location = new System.Drawing.Point(3, 3);
             this.CategoryTabGrid.MultiSelect = false;
             this.CategoryTabGrid.Name = "CategoryTabGrid";
             this.CategoryTabGrid.ReadOnly = true;
             this.CategoryTabGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CategoryTabGrid.Size = new System.Drawing.Size(462, 115);
+            this.CategoryTabGrid.Size = new System.Drawing.Size(893, 115);
             this.CategoryTabGrid.TabIndex = 0;
             this.CategoryTabGrid.Text = "dataGridView1";
             this.CategoryTabGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryTabGrid_CellClick);
@@ -486,6 +493,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(130, 107);
             this.label11.Name = "label11";
@@ -495,6 +503,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(275, 104);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search...";
@@ -528,6 +537,10 @@
             // 
             // dataGridViewType
             // 
+            this.dataGridViewType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewType.Location = new System.Drawing.Point(-2, 2);
             this.dataGridViewType.MultiSelect = false;
@@ -574,6 +587,7 @@
             // 
             // tabCountryEntryText
             // 
+            this.tabCountryEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabCountryEntryText.Location = new System.Drawing.Point(606, 163);
             this.tabCountryEntryText.Name = "tabCountryEntryText";
             this.tabCountryEntryText.Size = new System.Drawing.Size(25, 23);
@@ -583,6 +597,7 @@
             // 
             // tabCountryEntryLb
             // 
+            this.tabCountryEntryLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabCountryEntryLb.AutoSize = true;
             this.tabCountryEntryLb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabCountryEntryLb.ForeColor = System.Drawing.Color.Red;
@@ -594,6 +609,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(103, 174);
             this.label6.Name = "label6";
@@ -603,6 +619,7 @@
             // 
             // textNameCountry
             // 
+            this.textNameCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textNameCountry.Location = new System.Drawing.Point(211, 171);
             this.textNameCountry.Name = "textNameCountry";
             this.textNameCountry.PlaceholderText = "Search...";
@@ -649,6 +666,10 @@
             // DGVCountry
             // 
             this.DGVCountry.AllowUserToAddRows = false;
+            this.DGVCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVCountry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVCountry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCountry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CountryName,
@@ -696,6 +717,7 @@
             // 
             // tabDistrictEntryLable
             // 
+            this.tabDistrictEntryLable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabDistrictEntryLable.AutoSize = true;
             this.tabDistrictEntryLable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabDistrictEntryLable.ForeColor = System.Drawing.Color.Red;
@@ -707,6 +729,7 @@
             // 
             // tabDistrictEntryText
             // 
+            this.tabDistrictEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabDistrictEntryText.Location = new System.Drawing.Point(800, 179);
             this.tabDistrictEntryText.Name = "tabDistrictEntryText";
             this.tabDistrictEntryText.Size = new System.Drawing.Size(27, 23);
@@ -716,6 +739,7 @@
             // 
             // DistrictFilter
             // 
+            this.DistrictFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DistrictFilter.Location = new System.Drawing.Point(204, 171);
             this.DistrictFilter.Name = "DistrictFilter";
             this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
@@ -724,6 +748,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(96, 174);
             this.label7.Name = "label7";
@@ -770,6 +795,10 @@
             // DGVDistrict
             // 
             this.DGVDistrict.AllowUserToAddRows = false;
+            this.DGVDistrict.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVDistrict.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVDistrict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVDistrict.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DictrictName,
@@ -780,7 +809,7 @@
             this.DGVDistrict.Name = "DGVDistrict";
             this.DGVDistrict.ReadOnly = true;
             this.DGVDistrict.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVDistrict.Size = new System.Drawing.Size(461, 150);
+            this.DGVDistrict.Size = new System.Drawing.Size(892, 150);
             this.DGVDistrict.TabIndex = 0;
             this.DGVDistrict.Text = "dataGridView7";
             this.DGVDistrict.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDistrict_CellClick);
@@ -825,6 +854,7 @@
             // 
             // tabCityEntryText
             // 
+            this.tabCityEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabCityEntryText.Location = new System.Drawing.Point(819, 167);
             this.tabCityEntryText.Name = "tabCityEntryText";
             this.tabCityEntryText.Size = new System.Drawing.Size(28, 23);
@@ -835,6 +865,7 @@
             // 
             // tabCityEntryLabel
             // 
+            this.tabCityEntryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabCityEntryLabel.AutoSize = true;
             this.tabCityEntryLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabCityEntryLabel.ForeColor = System.Drawing.Color.Red;
@@ -846,6 +877,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(92, 170);
             this.label8.Name = "label8";
@@ -855,6 +887,7 @@
             // 
             // filterCity
             // 
+            this.filterCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.filterCity.Location = new System.Drawing.Point(220, 168);
             this.filterCity.Name = "filterCity";
             this.filterCity.Size = new System.Drawing.Size(100, 23);
@@ -900,6 +933,10 @@
             // DGVCity
             // 
             this.DGVCity.AllowUserToAddRows = false;
+            this.DGVCity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVCity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVCity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCity.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CityName,
@@ -909,7 +946,7 @@
             this.DGVCity.Name = "DGVCity";
             this.DGVCity.ReadOnly = true;
             this.DGVCity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVCity.Size = new System.Drawing.Size(454, 150);
+            this.DGVCity.Size = new System.Drawing.Size(892, 150);
             this.DGVCity.TabIndex = 0;
             this.DGVCity.Text = "dataGridView6";
             this.DGVCity.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCity_CellContentClick);
@@ -1031,6 +1068,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(944, 560);
             this.Controls.Add(this.btBack);
             this.Controls.Add(this.label5);
@@ -1048,7 +1086,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "AddConferance";
-            this.Text = "Start Date";
+            this.ShowIcon = false;
+            this.Text = "Add Conference";
             this.Activated += new System.EventHandler(this.AddConferance_Activated);
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
