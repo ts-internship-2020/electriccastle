@@ -15,9 +15,9 @@ using static ConferencePlanner.WinUi.Program;
 using System.Net.Mail;
 using Windows.ApplicationModel.VoiceCommands;
 using System.Net;
-
-
-
+using BarcodeLib;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace ConferencePlanner.WinUi
 {
@@ -51,15 +51,14 @@ namespace ConferencePlanner.WinUi
 
         public object QRCodeGenerator { get; private set; }
 
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository,
-            IOrganizerConferencesRepository organizerConferencesRepository,
-            IEmailParticipant _emailPart
-            )
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IConferenceParticipant conferenceParticipant)
+      
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IConferenceParticipant conferenceParticipant, IEmailParticipant _emailPart)
         {
             this._getParticipantRepository = _getParticipantRepository;
             this.organizerConferencesRepository = organizerConferencesRepository;
             this.conferenceParticipant = conferenceParticipant;
+            this._email = _emailPart;
+           
             scrollVal = 0;
             InitializeComponent();
             
@@ -226,7 +225,15 @@ namespace ConferencePlanner.WinUi
                 mail.Subject = "Authentication code ";
                 Random random=new Random();
                 String code = random.Next().ToString();
-                mail.Body = "Your code is: " + code;
+                Barcode barcode = new Barcode();
+                Color foreColor = Color.Black;
+                Color backColor = Color.Transparent;
+                Image imageBarCode = barcode.Encode(TYPE.UPCA, code+"12", foreColor, backColor);
+                mail.Body = "Your code is: " ;
+                var stream = new MemoryStream();
+                imageBarCode.Save(stream, ImageFormat.Jpeg);
+                stream.Position = 0;
+                mail.Attachments.Add(new Attachment(stream, "imageBarCode/jpeg"));
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("totalevents12@gmail.com", "12parola34");
@@ -244,21 +251,19 @@ namespace ConferencePlanner.WinUi
 
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
+            //_email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
 
             if (e.ColumnIndex == 7)
             {
               
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
-                    ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
-                    ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
-                sendMail(EmailParticipants);
-                  
-
-
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
+                //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex);
+                //    ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
+                //    ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+                
+               // _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+               sendMail(EmailParticipants);
 
 
             }
