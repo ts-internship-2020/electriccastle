@@ -316,6 +316,33 @@ namespace ConferencePlanner.WinUi
                                                                      .First();
                 dataGridViewType.Rows[typeTabRow.Index].Selected = true;
 
+
+                List<SpeakerListModel> editConferenceSpeakers = new List<SpeakerListModel>();
+                editConferenceSpeakers = conference.Speakers;
+                scrollValSpeaker = 0;
+                getSpeakerList = getSpeakerRepository.GetSpeaker();
+                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+
+                foreach (SpeakerListModel speakerEdit in editConferenceSpeakers)
+                {
+                    int index = -1;
+                    var number = currentSpeakerGridPage.FindIndex(districtsTxt => districtsTxt.Id == speakerEdit.DictionarySpeakerId);
+                    index = number;
+                    if(index != -1)
+                    {
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)tabSpeakerGrid.Rows[index].Cells[tabSpeakerGrid.Columns["tabSpeakerParticipantColumn"].Index];
+                        chk.Value = chk.TrueValue;
+                        //tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[4].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[4].Value;
+                        if (speakerEdit.IsMainSpeaker == true)
+                        {
+
+                            tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[3].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[3].Value;
+                            //chkMain.Value = chkMain.TrueValue;
+                        }
+                    }
+                }
+
+
             }
         }
 
@@ -596,6 +623,8 @@ namespace ConferencePlanner.WinUi
             tabSpeakerGrid.Columns[0].ReadOnly = true;
             tabSpeakerGrid.Columns[1].ReadOnly = true;
             tabSpeakerGrid.Columns[2].ReadOnly = true;
+
+
         }
 
         List<SpeakerModel> getListSpeakerInConference()
