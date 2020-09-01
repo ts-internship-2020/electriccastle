@@ -32,7 +32,7 @@ namespace ConferencePlanner.Api
         {
             services.AddControllersWithViews();
             services.AddEntityFrameworkSqlServer()
-                .AddDbContext<neverseaContext>((serviceProvider, options) =>
+                .AddDbContext<electriccastleContext > ((serviceProvider, options) =>
                 {
                     var configuration = serviceProvider.GetService<IConfiguration>();
                     var connectionString = configuration.GetConnectionString("DbConnection");

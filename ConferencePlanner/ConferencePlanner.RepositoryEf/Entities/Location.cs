@@ -14,6 +14,7 @@ namespace ConferencePlanner.Repository.Ef.Entities
         public int? DictionaryCityId { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
+        public string AdressDetails { get; set; }
 
         public virtual DictionaryCity DictionaryCity { get; set; }
         public virtual ICollection<Conference> Conference { get; set; }
