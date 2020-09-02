@@ -14,6 +14,8 @@ using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.UI.Xaml.Controls;
 using Windows.ApplicationModel.Activation;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ConferencePlanner.WinUi
 {
@@ -242,9 +244,51 @@ namespace ConferencePlanner.WinUi
             //    }
             //}
         }
+        private async Task PostDeleteCity()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/DeleteCity");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+        private async Task PostDeleteSpeaker()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/DeleteSpeaker");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
+        private async Task GetResponseCity()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/City");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+        private async Task GetResponseSpeaker()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/Speaker");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
 
         private void AddConferance_Load(object sender, EventArgs e)
         {
+            GetResponseSpeaker();
             getSpeakerList = getSpeakerRepository.GetSpeaker();
             entryNumberTabSpeaker = Convert.ToInt32(tabSpeakerEntryNumberText.Text);
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
@@ -259,6 +303,7 @@ namespace ConferencePlanner.WinUi
             districtModel = conferenceDistrictRepository.GetConferencesDistrict();
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
 
+            GetResponseCity();
             entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
             cityModel = _getCity.GetConferencesCity();
             populateGridCity(cityModel, scrollVal, entryNumberTabCity);
@@ -682,6 +727,7 @@ namespace ConferencePlanner.WinUi
 
         }
 
+
         private void tabSpeakerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
@@ -703,6 +749,7 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 6)//Delete
             {
+                PostDeleteSpeaker();
                 getSpeakerRepository.deleteSpeaker(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
                 scrollValSpeaker = 0;
                 getSpeakerList = getSpeakerRepository.GetSpeaker();
@@ -1102,6 +1149,7 @@ namespace ConferencePlanner.WinUi
             // check if Delete Button is pressed
             else if (e.ColumnIndex == DGVCity.Columns["Delete"].Index)
             {
+                PostDeleteCity();
                 _getCity.deleteCity(currentCityGridPage.ElementAt(e.RowIndex).DictionaryCityId);
                 scrollVal = 0;
                 cityModel = _getCity.GetConferencesCity();

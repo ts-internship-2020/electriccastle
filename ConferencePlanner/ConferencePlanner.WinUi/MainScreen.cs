@@ -12,9 +12,8 @@ using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using static ConferencePlanner.WinUi.Program;
-
-
-
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ConferencePlanner.WinUi
 {
@@ -108,8 +107,31 @@ namespace ConferencePlanner.WinUi
 
         }
 
+        private async Task GetResponseParticipantsConference()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/ConferenceParticipants/ParticipantsConference");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
+        private async Task PostParticipantsConferenceState()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/ConferenceParticipants/ParticipantState");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
         private void MainScreen_Load(object sender, EventArgs e)
         {
+            GetResponseParticipantsConference();
             conferences = _getParticipantRepository.GetParticipantsConferences();
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
             populateGridParticipants(conferences, scrollVal, numberEntry);
@@ -213,6 +235,7 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 7)
             {
+                PostParticipantsConferenceState();
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
@@ -222,6 +245,7 @@ namespace ConferencePlanner.WinUi
 
             else if (e.ColumnIndex == 8)
             {
+                PostParticipantsConferenceState();
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
@@ -237,6 +261,7 @@ namespace ConferencePlanner.WinUi
             }
             else if (e.ColumnIndex == 9)
             {
+                PostParticipantsConferenceState();
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;

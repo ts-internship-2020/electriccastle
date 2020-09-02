@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using System.Globalization;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 //using System.Text.RegularExpression;
 
@@ -120,7 +122,16 @@ namespace ConferencePlanner.WinUi
             //dcvff
             
         }
+        private async Task PostUpdateSpeaker()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/UpdateSpeaker");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
 
+        }
         private void butonCircular1_Click(object sender, EventArgs e)
         {
             decimal number;
@@ -139,7 +150,7 @@ namespace ConferencePlanner.WinUi
                 //modifiedSpeaker.Rating = number;
                 //modifiedSpeaker.Nationality = editSpeakerNationalityTextBox.Text;
                 //modifiedSpeaker.Picture = editSpeakerPictureTextBox.Text;
-
+                PostUpdateSpeaker();
                 _getSpeakerRepository.editSpeaker(AddConferance.editedSpeaker.Id, editSpeakerCodeTextBox.Text, editSpeakerNameTextBox.Text, number, editSpeakerNationalityTextBox.Text, editSpeakerPictureTextBox.Text);
                 this.Close();
 
