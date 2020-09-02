@@ -64,9 +64,9 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<AddSpeakerForm>();
 
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
-            services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
+            services.AddScoped<IOrganizerConferencesRepository, Repository.Ado.ElectricCastleRepository.OrganizerConferencesRepository>();
             services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();
-            services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
+            services.AddScoped<ISpeakerDetailRepository, Repository.Ado.ElectricCastleRepository.SpeakerDetailRepository>();
             services.AddScoped<IConferenceCategoryRepository, ConferenceCategoryRepository>();
             services.AddScoped<IAddConferenceCityRepository, AddConferenceCityRepository>();
             services.AddScoped<IAddConferenceCountryRepository, GetCountryRepositoryEntFr>();
@@ -77,7 +77,7 @@ namespace ConferencePlanner.WinUi
 
             services.AddScoped<ISpeakerRepository, SpeakerRepository>();
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
-            services.AddScoped<IConferenceRepository, ConferenceRepository>();
+            services.AddScoped<IConferenceRepository, Repository.Ado.ElectricCastleRepository.ConferenceRepository>();
            
 
             services.AddSingleton<SqlConnection>(a =>
