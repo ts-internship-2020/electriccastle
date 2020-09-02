@@ -1,7 +1,6 @@
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Repository;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
-
 using ConferencePlanner.Repository.Ado.Repository;
 using ConferencePlanner.Repository.Ef.Repository;
 using Microsoft.Extensions.DependencyInjection;
@@ -90,10 +89,5 @@ namespace ConferencePlanner.WinUi
             ServiceProvider = services.BuildServiceProvider();
         }
     }
-        
-
-
-
-      
-    }
+}
 

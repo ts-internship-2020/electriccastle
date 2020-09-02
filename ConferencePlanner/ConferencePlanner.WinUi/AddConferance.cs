@@ -276,6 +276,9 @@ namespace ConferencePlanner.WinUi
             GenerateDeleteButtonDistrict();
             GenerateDeleteButtonCity();
 
+            CategoryTabEntriesTextBox.Text = categoryTabPageSize.ToString();
+            TypeTabEntriesTextBox.Text = typeTabPageSize.ToString();
+
             InitializeUIData();
         }
 
@@ -288,6 +291,9 @@ namespace ConferencePlanner.WinUi
                 txtAddress.Text = "";
                 dateTimePicker1.Value = DateTime.Now;
                 dateTimePicker2.Value = DateTime.Now;
+
+                CategoryTabReloadData();
+                TypeReloadData();
             }
             else
             {
@@ -1276,6 +1282,32 @@ namespace ConferencePlanner.WinUi
             }
 
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
+        }
+
+        private void CategoryTabEntriesTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (CategoryTabEntriesTextBox.Text != string.Empty)
+            {
+                categoryTabPaginationHelper.pageSize = Convert.ToInt32(CategoryTabEntriesTextBox.Text);
+                categoryTabPaginationHelper.pageNumber = 1;
+                // Nu stergeti
+                //categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value) + 1);
+                CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+                ManageCategoryTabPaginationButtonsState();
+            }
+        }
+
+        private void TypeTabEntriesTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (TypeTabEntriesTextBox.Text != string.Empty)
+            {
+                conferanceTypePaginationHelper.pageSize = Convert.ToInt32(TypeTabEntriesTextBox.Text);
+                conferanceTypePaginationHelper.pageNumber = 1;
+                // Nu stergeti
+                //categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value) + 1);
+                dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+                ManageTypeTabPaginationButtonsState();
+            }
         }
     }
 }
