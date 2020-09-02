@@ -5,12 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Helpers;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
+using ConferencePlanner.Repository.Ef.Repository;
 
 namespace ConferencePlanner.WinUi
 {
@@ -19,20 +22,36 @@ namespace ConferencePlanner.WinUi
 
         private readonly IAddConferenceCountryRepository _getCountry;
 
+        //private readonly GetCountryRepositoryEntFr _getCountryEntFr;
+
         private AddConferenceCountryModel editCountry;
 
         List<AddConferenceCountryModel> countrys;
 
-        public NewCountryForm(IAddConferenceCountryRepository getCountry)
+        public NewCountryForm(IAddConferenceCountryRepository _getCountry)
         {
-            this._getCountry = getCountry;
+            this._getCountry = _getCountry;
             InitializeComponent();
+            
+        }
+
+        private async Task GetResponse()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            if(s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+
         }
 
         private void colorButton1_Click(object sender, EventArgs e)
         {
 
         }
+
 
 
         private void AddCountryFromButton_Click(object sender, EventArgs e)
@@ -68,7 +87,7 @@ namespace ConferencePlanner.WinUi
             if (editCountry == null)
             { 
                 _getCountry.InsertConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text);
-
+               
                 this.Close();
             } 
 
@@ -80,6 +99,8 @@ namespace ConferencePlanner.WinUi
             }
         }
 
+
+       
 
         private void NewCountryForm_Load(object sender, EventArgs e)
         {
@@ -106,8 +127,8 @@ namespace ConferencePlanner.WinUi
                 CoutryNameTb.Text = string.Empty;
                
             }
+            GetResponse();
 
-            
         }
 
 

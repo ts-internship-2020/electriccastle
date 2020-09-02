@@ -34,5 +34,18 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 
             sqlCommand.ExecuteNonQuery();
         }
+
+        public void UpdateEmail(string Email, string EmailCode)
+        {
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            sqlCommand.Connection = _sqlConnection;
+            sqlCommand.Parameters.AddWithValue("@EmailCode", EmailCode);
+            sqlCommand.Parameters.AddWithValue("@ParticipantEmail", Email);
+
+            sqlCommand.CommandText = "UPDATE ConferenceParticipant set EmailCode=@EmailCode where ParticipantEmail=@ParticipantEmail";
+
+
+            int rows = sqlCommand.ExecuteNonQuery();
+        }
     }
 }

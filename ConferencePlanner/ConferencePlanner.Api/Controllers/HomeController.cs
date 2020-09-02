@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using ConferencePlanner.Api.Models;
 using ConferencePlanner.Abstraction.Repository;
 using ConferencePlanner.Abstraction.Model;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
 
 namespace ConferencePlanner.Api.Controllers
 {
@@ -39,12 +40,15 @@ namespace ConferencePlanner.Api.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        [Route("{DemoName}")]
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult DeleteDemo()
-        {
-            return Ok();
-        }
+        //[HttpDelete]
+        //[Route("{DemoName}")]
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult DeleteDemo()
+        //{
+
+        //}
+       
+
+
     }
 }

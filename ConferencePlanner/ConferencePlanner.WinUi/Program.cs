@@ -1,9 +1,8 @@
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Repository;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
-
 using ConferencePlanner.Repository.Ado.Repository;
-
+using ConferencePlanner.Repository.Ef.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
@@ -65,19 +64,22 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<AddSpeakerForm>();
 
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
-            services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
+            services.AddScoped<IOrganizerConferencesRepository, Repository.Ado.ElectricCastleRepository.OrganizerConferencesRepository>();
             services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();
-            services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
+            services.AddScoped<ISpeakerDetailRepository, Repository.Ado.ElectricCastleRepository.SpeakerDetailRepository>();
             services.AddScoped<IConferenceCategoryRepository, ConferenceCategoryRepository>();
             services.AddScoped<IAddConferenceCityRepository, AddConferenceCityRepository>();
-            services.AddScoped<IAddConferenceCountryRepository, AddConferenceCountryRepository>();
+            services.AddScoped<IAddConferenceCountryRepository, GetCountryRepositoryEntFr>();
             services.AddScoped<IAddConferenceDistrictRepository, AddConferenceDistrictRepository>();
             services.AddScoped<IEmailParticipant, InsertEmailParticipant>();
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
+            services.AddScoped<IAddConferenceCountryRepository, AddConferenceCountryRepository>();
 
             services.AddScoped<ISpeakerRepository, SpeakerRepository>();
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
-            services.AddScoped<IConferenceRepository, ConferenceRepository>();
+            services.AddScoped<IConferenceRepository, Repository.Ado.ElectricCastleRepository.ConferenceRepository>();
+           
+           
            
 
             services.AddSingleton<SqlConnection>(a =>
@@ -89,10 +91,5 @@ namespace ConferencePlanner.WinUi
             ServiceProvider = services.BuildServiceProvider();
         }
     }
-        
-
-
-
-      
-    }
+}
 

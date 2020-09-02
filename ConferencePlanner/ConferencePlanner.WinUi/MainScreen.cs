@@ -12,6 +12,13 @@ using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using static ConferencePlanner.WinUi.Program;
+using System.Net.Mail;
+using Windows.ApplicationModel.VoiceCommands;
+using System.Net;
+using BarcodeLib;
+using System.IO;
+using System.Drawing.Imaging;
+using Tulpep.NotificationWindow;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -27,6 +34,7 @@ namespace ConferencePlanner.WinUi
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
+      
 
         private List<OrganizerConferencesModel> organizerConferences;
 
@@ -46,14 +54,14 @@ namespace ConferencePlanner.WinUi
 
         public object QRCodeGenerator { get; private set; }
 
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository,
-            IOrganizerConferencesRepository organizerConferencesRepository,
-            IEmailParticipant _emailPart
-            )
+      
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IEmailParticipant _emailPart)
         {
             this._getParticipantRepository = _getParticipantRepository;
             this.organizerConferencesRepository = organizerConferencesRepository;
+           
             this._email = _emailPart;
+           
             scrollVal = 0;
             InitializeComponent();
             
@@ -136,8 +144,10 @@ namespace ConferencePlanner.WinUi
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
             populateGridParticipants(conferences, scrollVal, numberEntry);
 
+
             organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
             paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
+            OrganizerTabEntriesTextBox.Text = pageSize.ToString();
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             OrganizerGrid.AutoGenerateColumns = true;
             GenerateOrganizerEditButtons();
@@ -229,9 +239,61 @@ namespace ConferencePlanner.WinUi
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             ManageOrganizerPaginationButtonsState();
         }
+
+    
+        private void sendMail(String email)
+        {
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+
+                mail.From = new MailAddress("totalevents12@gmail.com");
+                mail.To.Add("oblojaoana98@gmail.com");
+                mail.Subject = "Authentication code ";
+                Random random = new Random();
+
+                String code = random.Next().ToString();
+                while (code.Length != 10)
+                {
+                    code = random.Next().ToString();
+                }
+                code = code + "12";
+                Barcode barcode = new Barcode();
+                Color foreColor = Color.Black;
+                Color backColor = Color.Transparent;
+                Image imageBarCode = barcode.Encode(TYPE.UPCA, code, foreColor, backColor);
+             
+                mail.Body = "Your code is: " +code;
+                MemoryStream stream = new MemoryStream();
+                imageBarCode.Save(stream, ImageFormat.Png);
+
+                mail.Attachments.Add(new Attachment(stream, "imageBarCode/png"));
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("totalevents12@gmail.com", "12parola34");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+                PopupNotifier popup = new PopupNotifier();
+               // popup.Image = Properties.Resources.info;
+                popup.TitleText = "Mail";
+                popup.ContentText = "Verify you email";
+                popup.Popup();
+                _email.UpdateEmail(email, code);
+              
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+ 
+
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
+            //_email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
 
             if (e.ColumnIndex == 7)
             {
@@ -239,6 +301,7 @@ namespace ConferencePlanner.WinUi
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+               sendMail(EmailParticipants);
 
 
             }
@@ -311,6 +374,8 @@ namespace ConferencePlanner.WinUi
         {
 
             AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+           
+
             addConferance.ConferenceId = null;
             addConferance.ShowDialog();
 
@@ -357,6 +422,19 @@ namespace ConferencePlanner.WinUi
         {
             //label1.BackColor = Color.Transparent;
             //label1.BackColor = System.Drawing.Color.Transparent;
+        }
+
+        private void OrganizerTabTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (OrganizerTabEntriesTextBox.Text != string.Empty)
+            {
+                paginationHelper.pageSize = Convert.ToInt32(OrganizerTabEntriesTextBox.Text);
+                paginationHelper.pageNumber = 1;
+                // Nu stergeti
+                //categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value) + 1);
+                OrganizerGrid.DataSource = paginationHelper.GetPage();
+                ManageOrganizerPaginationButtonsState();
+            }
         }
     }
 }
