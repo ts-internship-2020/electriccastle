@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using ConferencePlanner.Api.Swagger;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;//
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Repository.Ef.Entities;
