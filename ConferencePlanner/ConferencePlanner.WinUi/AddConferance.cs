@@ -385,14 +385,11 @@ namespace ConferencePlanner.WinUi
                     index = number;
                     if(index != -1)
                     {
-                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)tabSpeakerGrid.Rows[index].Cells[tabSpeakerGrid.Columns["tabSpeakerParticipantColumn"].Index];
-                        chk.Value = chk.TrueValue;
-                        //tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[4].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[4].Value;
+                        tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[4].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[4].Value;
                         if (speakerEdit.IsMainSpeaker == true)
                         {
 
-                            tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[3].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[3].Value;
-                            //chkMain.Value = chkMain.TrueValue;
+                            tabSpeakerGrid.Rows[index].Cells[3].Value = tabSpeakerGrid.Rows[index].Cells[3].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[3].Value;
                         }
                     }
                 }
