@@ -20,17 +20,77 @@ namespace ConferencePlanner.Repository.Ef.Repository
 
         public void AddConference(ConferenceModel conference)
         {
-            throw new NotImplementedException();
+
+            context.Conference.Add(new Conference
+            {
+                ConferenceName = conference.ConferenceName,
+                OrganizerEmail = conference.OrganizerEmail,
+                OrganizerName = conference.OrganizerName,
+                StartDate = conference.StartDate,
+                EndDate = conference.EndDate,
+                DictionaryConferenceCategoryId = conference.DictionaryConferenceCategoryId,
+                DictionaryConferenceTypeId = conference.DictionaryConferenceTypeId,
+                Location = new Location {
+                    DictionaryCityId = conference.DictionaryCityId,
+                    AdressDetails = conference.AdressDetails
+                },
+                ConferenceXdictionarySpeaker = conference.Speakers.Select(confSpeaker => new ConferenceXdictionarySpeaker { 
+                    DictionarySpeakerId = confSpeaker.DictionarySpeakerId,
+                    IsMainSpeaker = confSpeaker.IsMainSpeaker,
+                }).ToList()
+            });
+
+            context.SaveChanges();
         }
 
         public void DeleteConference(int conferenceId)
         {
-            throw new NotImplementedException();
+            Conference conference = context.Conference.Find(conferenceId);
+
+            Location location = context.Location.Find(conference.LocationId);
+
+            List<ConferenceXdictionarySpeaker> conferenceXdictionarySpeaker = 
+                context.ConferenceXdictionarySpeaker.Where(confspeaker => confspeaker.ConferenceId == conferenceId)
+                                                    .ToList();
+
+            context.ConferenceXdictionarySpeaker.RemoveRange(conferenceXdictionarySpeaker);
+
+            context.SaveChanges();
+
+            context.Conference.Remove(conference);
+
+            context.SaveChanges();
+
+            context.Location.Remove(location);
+
+            context.SaveChanges();
+
         }
 
         public void EditConference(ConferenceModel conference)
         {
-            throw new NotImplementedException();
+            Conference EFconference = context.Conference.Include(conf => conf.Location)
+                                                            .ThenInclude(location => location.DictionaryCity)
+                                                        .Include(conf => conf.ConferenceXdictionarySpeaker)
+                                                        .Where(conf => conf.ConferenceId == conference.ConferenceId)
+                                                        .FirstOrDefault();
+
+            EFconference.ConferenceName = conference.ConferenceName;
+            EFconference.OrganizerEmail = conference.OrganizerEmail;
+            EFconference.OrganizerName = conference.OrganizerName;
+            EFconference.Location.AdressDetails = conference.AdressDetails;
+            EFconference.StartDate = conference.StartDate;
+            EFconference.EndDate = conference.EndDate;
+            EFconference.DictionaryConferenceCategoryId = conference.DictionaryConferenceCategoryId;
+            EFconference.DictionaryConferenceTypeId = conference.DictionaryConferenceTypeId;
+            EFconference.Location.DictionaryCityId = conference.DictionaryCityId;
+            EFconference.ConferenceXdictionarySpeaker = conference.Speakers.Select(confSpeaker => new ConferenceXdictionarySpeaker
+            {
+                DictionarySpeakerId = confSpeaker.DictionarySpeakerId,
+                IsMainSpeaker = confSpeaker.IsMainSpeaker,
+            }).ToList();
+
+            context.SaveChanges();
         }
 
         public ConferenceModel GetConference(int conferenceId)
