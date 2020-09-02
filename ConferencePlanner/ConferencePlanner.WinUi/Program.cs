@@ -3,7 +3,7 @@ using ConferencePlanner.Abstraction.Repository;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
 
 using ConferencePlanner.Repository.Ado.Repository;
-
+using ConferencePlanner.Repository.Ef.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
@@ -70,10 +70,11 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
             services.AddScoped<IConferenceCategoryRepository, ConferenceCategoryRepository>();
             services.AddScoped<IAddConferenceCityRepository, AddConferenceCityRepository>();
-            services.AddScoped<IAddConferenceCountryRepository, AddConferenceCountryRepository>();
+            services.AddScoped<IAddConferenceCountryRepository, GetCountryRepositoryEntFr>();
             services.AddScoped<IAddConferenceDistrictRepository, AddConferenceDistrictRepository>();
             services.AddScoped<IEmailParticipant, InsertEmailParticipant>();
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();
+            services.AddScoped<IAddConferenceCountryRepository, AddConferenceCountryRepository>();
 
             services.AddScoped<ISpeakerRepository, SpeakerRepository>();
             services.AddScoped<IConferenceTypeRepository, ConferenceTypeRepository>();

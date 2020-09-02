@@ -14,7 +14,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using ConferencePlanner.Api.Swagger;
 using Microsoft.OpenApi.Models;
-
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Repository.Ef.Repository;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Repository.Ef.Repository;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ConferencePlanner.Api
 {
@@ -46,7 +51,9 @@ namespace ConferencePlanner.Api
                 });
 
             services.AddScoped<IGetDemoRepository, GetDemoRepository>();
-
+            services.AddScoped<IAddConferenceCountryRepository, GetCountryRepositoryEntFr>();
+            services.AddScoped<IAddConferenceDistrictRepository, GetDistrictRepositoryEntFrcs>();
+           
             services.AddSwagger();
         }
 
