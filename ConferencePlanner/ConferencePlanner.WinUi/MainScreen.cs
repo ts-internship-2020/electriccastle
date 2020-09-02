@@ -18,6 +18,7 @@ using System.Net;
 using BarcodeLib;
 using System.IO;
 using System.Drawing.Imaging;
+using Tulpep.NotificationWindow;
 
 namespace ConferencePlanner.WinUi
 {
@@ -31,7 +32,7 @@ namespace ConferencePlanner.WinUi
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
-        private readonly IConferenceParticipant conferenceParticipant;
+      
 
         private List<OrganizerConferencesModel> organizerConferences;
 
@@ -52,11 +53,11 @@ namespace ConferencePlanner.WinUi
         public object QRCodeGenerator { get; private set; }
 
       
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IConferenceParticipant conferenceParticipant, IEmailParticipant _emailPart)
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IEmailParticipant _emailPart)
         {
             this._getParticipantRepository = _getParticipantRepository;
             this.organizerConferencesRepository = organizerConferencesRepository;
-            this.conferenceParticipant = conferenceParticipant;
+           
             this._email = _emailPart;
            
             scrollVal = 0;
@@ -221,25 +222,39 @@ namespace ConferencePlanner.WinUi
                 MailMessage mail = new MailMessage();
 
                 mail.From = new MailAddress("totalevents12@gmail.com");
-                mail.To.Add(email);
+                mail.To.Add("oblojaoana98@gmail.com");
                 mail.Subject = "Authentication code ";
-                Random random=new Random();
+                Random random = new Random();
+
                 String code = random.Next().ToString();
+                while (code.Length != 10)
+                {
+                    code = random.Next().ToString();
+                }
+                code = code + "12";
                 Barcode barcode = new Barcode();
                 Color foreColor = Color.Black;
                 Color backColor = Color.Transparent;
-                Image imageBarCode = barcode.Encode(TYPE.UPCA, code+"12", foreColor, backColor);
-                mail.Body = "Your code is: " ;
-                var stream = new MemoryStream();
-                imageBarCode.Save(stream, ImageFormat.Jpeg);
-                stream.Position = 0;
-                mail.Attachments.Add(new Attachment(stream, "imageBarCode/jpeg"));
+                Image imageBarCode = barcode.Encode(TYPE.UPCA, code, foreColor, backColor);
+             
+                mail.Body = "Your code is: " +code;
+                MemoryStream stream = new MemoryStream();
+                imageBarCode.Save(stream, ImageFormat.Png);
+
+                mail.Attachments.Add(new Attachment(stream, "imageBarCode/png"));
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("totalevents12@gmail.com", "12parola34");
-                 SmtpServer.EnableSsl = true;
-                 SmtpServer.Send(mail);
-         
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+                PopupNotifier popup = new PopupNotifier();
+               // popup.Image = Properties.Resources.info;
+                popup.TitleText = "Mail";
+                popup.ContentText = "Verify you email";
+                popup.Popup();
+                _email.UpdateEmail(email, code);
+              
+
 
             }
             catch (Exception ex)
