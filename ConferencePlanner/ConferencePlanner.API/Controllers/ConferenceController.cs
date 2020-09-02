@@ -22,7 +22,7 @@ namespace ConferencePlanner.Api.Controllers
 
         [HttpGet]
         [Route("{conferenceId}")]
-        public IActionResult GetCoference([FromRoute] int? conferenceId)
+        public IActionResult GetConference([FromRoute] int? conferenceId)
         {
             if (conferenceId == null)
             {
@@ -60,7 +60,7 @@ namespace ConferencePlanner.Api.Controllers
             {
                 return BadRequest();
             }
-            conferenceRepository.DeleteConference((int)conferenceId);
+            //conferenceRepository.DeleteConference((int)conferenceId);
             return Ok();
         }
     }
