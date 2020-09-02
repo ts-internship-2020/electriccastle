@@ -11,7 +11,7 @@ namespace ConferencePlanner.Abstraction.Helpers
 
         public int pageNumber { get; set; }
 
-        private int pageSize;
+        public int pageSize { get; set; }
 
         private int lastPageNumber;
 

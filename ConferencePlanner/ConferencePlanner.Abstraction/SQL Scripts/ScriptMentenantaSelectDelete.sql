@@ -3,6 +3,7 @@ DBCC CHECKIDENT ('Conference', RESEED, 14);
 
 SELECT * FROM Conference;
 SELECT * FROM Location;
+SELECT * FROM ConferenceXDictionarySpeaker ORDER BY ConferenceId;
 SELECT * FROM DictionaryCity;
 SELECT * FROM DictionaryDistrict;
 SELECT * FROM DictionaryCountry;
@@ -13,7 +14,6 @@ SELECT * FROM DictionaryParticipantState;
 SELECT * FROM ConferenceXDictionarySpeaker ORDER BY ConferenceId;
 SELECT * FROM ConferenceParticipant WHERE ConferenceId = 8  CP
 JOIN DictionaryParticipantState D ON D.DictionaryParticipantStateId = CP.DictionaryParticipantStateId;
-
 
 -- select speaker related data for conference
 SELECT DictionarySpeakerId, ConferenceId, IsMainSpeaker 
@@ -37,7 +37,8 @@ SET ConferenceName = ,
 	DictionaryConferenceTypeId = ,
 	LocationId = );
 
-
+INSERT INTO ConferenceXDictionarySpeaker (DictionarySpeakerId, ConferenceId, IsMainSpeaker)
+VALUES ();
 
 ROLLBACK
 

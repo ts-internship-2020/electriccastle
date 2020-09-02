@@ -14,6 +14,9 @@ using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.UI.Xaml.Controls;
 using Windows.ApplicationModel.Activation;
+using ConferencePlanner.Repository.Ef.Repository;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ConferencePlanner.WinUi
 {
@@ -43,6 +46,7 @@ namespace ConferencePlanner.WinUi
         private List<AddConferenceCountryModel> currentCountryGridPage;
         public int scrollValCountry;
         private int entryNumberTabCountry;
+       //private readonly GetCountryRepositoryEntFr _countryEF;
 
         //District Tab
         private readonly IAddConferenceDistrictRepository conferenceDistrictRepository;
@@ -272,6 +276,9 @@ namespace ConferencePlanner.WinUi
             GenerateDeleteButtonDistrict();
             GenerateDeleteButtonCity();
 
+            CategoryTabEntriesTextBox.Text = categoryTabPageSize.ToString();
+            TypeTabEntriesTextBox.Text = typeTabPageSize.ToString();
+
             InitializeUIData();
         }
 
@@ -284,6 +291,9 @@ namespace ConferencePlanner.WinUi
                 txtAddress.Text = "";
                 dateTimePicker1.Value = DateTime.Now;
                 dateTimePicker2.Value = DateTime.Now;
+
+                CategoryTabReloadData();
+                TypeReloadData();
             }
             else
             {
@@ -1037,18 +1047,32 @@ namespace ConferencePlanner.WinUi
             if (e.ColumnIndex == DGVCountry.Columns["Edit"].Index)
             { 
                 editedCountry = currentCountryGridPage.ElementAt(e.RowIndex);
+                EditCountry();
                 NewCountryForm fc = Program.ServiceProvider.GetService<NewCountryForm>();
                 fc.ShowDialog();
             }
 
             else if (e.ColumnIndex == DGVCountry.Columns["Delete"].Index)
             {
-                _getCity.deleteCity(currentCountryGridPage.ElementAt(e.RowIndex).DictionaryCountryId);
+                _getCountry.DeleteConferenceCoutry(currentCountryGridPage.ElementAt(e.RowIndex).DictionaryCountryId);
+                DeleteCountry();
                 scrollValCountry = 0;
                 countryModel = _getCountry.GetConferencesCountry();
                 populateGridCountry(countryModel, scrollValCountry, entryNumberTabCountry);
+                
             }
             else return;
+        }
+
+        private async Task EditCountry()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
         }
 
         private void DGVCity_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1077,6 +1101,7 @@ namespace ConferencePlanner.WinUi
                 scrollVal = 0;
                 cityModel = _getCity.GetConferencesCity();
                 populateGridCity(cityModel, scrollVal, entryNumberTabCity);
+                
             }
             else if (e.RowIndex > 0 && e.ColumnIndex != DGVCity.Columns["Edit"].Index && e.ColumnIndex != DGVCity.Columns["Delete"].Index)
             {
@@ -1094,6 +1119,17 @@ namespace ConferencePlanner.WinUi
             }
         }
 
+        private async Task DeleteCountry()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+        }
+
         private void DGVDistrict_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || (e.ColumnIndex != DGVDistrict.Columns["Edit"].Index
@@ -1104,6 +1140,7 @@ namespace ConferencePlanner.WinUi
             if (e.ColumnIndex == DGVDistrict.Columns["Edit"].Index)
             {
                 NewDistrictForm addEditCategory = Program.ServiceProvider.GetService<NewDistrictForm>();
+                EditDistrict();
                 addEditCategory.DistrictId = districtId;
                 addEditCategory.ShowDialog();
             }
@@ -1111,6 +1148,7 @@ namespace ConferencePlanner.WinUi
             if (e.ColumnIndex == DGVDistrict.Columns["Delete"].Index)
             {
                 string districtName = DGVDistrict[DGVDistrict.Columns["DictrictName"].Index, e.RowIndex].Value.ToString();
+                DeleteDistrict();
                 DialogResult dialogResult = DisplayDeleteConfirmation("Are you sure you want to delete " + districtName + "?", "Delete District");
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -1118,6 +1156,28 @@ namespace ConferencePlanner.WinUi
                 }
             }
 
+        }
+
+        private async Task EditDistrict()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+        }
+
+        private async Task DeleteDistrict()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
         }
 
         private void btSearch_KeyDown(object sender, KeyEventArgs e)
@@ -1222,6 +1282,32 @@ namespace ConferencePlanner.WinUi
             }
 
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
+        }
+
+        private void CategoryTabEntriesTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (CategoryTabEntriesTextBox.Text != string.Empty)
+            {
+                categoryTabPaginationHelper.pageSize = Convert.ToInt32(CategoryTabEntriesTextBox.Text);
+                categoryTabPaginationHelper.pageNumber = 1;
+                // Nu stergeti
+                //categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value) + 1);
+                CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
+                ManageCategoryTabPaginationButtonsState();
+            }
+        }
+
+        private void TypeTabEntriesTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (TypeTabEntriesTextBox.Text != string.Empty)
+            {
+                conferanceTypePaginationHelper.pageSize = Convert.ToInt32(TypeTabEntriesTextBox.Text);
+                conferanceTypePaginationHelper.pageNumber = 1;
+                // Nu stergeti
+                //categoryTabPaginationHelper.pageNumber = categoryTabPaginationHelper.GetPageForIndex(conferenceCategories.FindIndex(cat => cat.ConferenceCategoryId == (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value) + 1);
+                dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+                ManageTypeTabPaginationButtonsState();
+            }
         }
     }
 }

@@ -17,6 +17,12 @@ using Microsoft.OpenApi.Models;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Repository.Ef.Repository;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Repository.Ef.Repository;
+using Microsoft.Extensions.DependencyInjection;
 namespace ConferencePlanner.Api
 {
     public class Startup
@@ -47,6 +53,13 @@ namespace ConferencePlanner.Api
                 });
 
             services.AddScoped<IGetDemoRepository, GetDemoRepository>();
+            services.AddScoped<IConferenceRepository, ConferenceRepository>();
+            services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
+            services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
+
+            services.AddScoped<IAddConferenceCountryRepository, GetCountryRepositoryEntFr>();
+            services.AddScoped<IAddConferenceDistrictRepository, GetDistrictRepositoryEntFrcs>();
+           
             services.AddScoped<IConferenceTypeRepository, TypeRepository>();
             services.AddScoped<IConferenceCategoryRepository, CategoryRepository>();
             services.AddScoped<IEmailParticipant, EmailRepository>();
