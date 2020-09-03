@@ -12,9 +12,15 @@ using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using static ConferencePlanner.WinUi.Program;
-
-
-
+using System.Net.Mail;
+using Windows.ApplicationModel.VoiceCommands;
+using System.Net;
+using BarcodeLib;
+using System.IO;
+using System.Drawing.Imaging;
+using Tulpep.NotificationWindow;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ConferencePlanner.WinUi
 {
@@ -28,6 +34,7 @@ namespace ConferencePlanner.WinUi
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
 
         private readonly IOrganizerConferencesRepository organizerConferencesRepository;
+      
 
         private List<OrganizerConferencesModel> organizerConferences;
 
@@ -47,14 +54,14 @@ namespace ConferencePlanner.WinUi
 
         public object QRCodeGenerator { get; private set; }
 
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository,
-            IOrganizerConferencesRepository organizerConferencesRepository,
-            IEmailParticipant _emailPart
-            )
+      
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IEmailParticipant _emailPart)
         {
             this._getParticipantRepository = _getParticipantRepository;
             this.organizerConferencesRepository = organizerConferencesRepository;
+           
             this._email = _emailPart;
+           
             scrollVal = 0;
             InitializeComponent();
             
@@ -108,8 +115,31 @@ namespace ConferencePlanner.WinUi
 
         }
 
+        private async Task GetResponseParticipantsConference()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/ConferenceParticipants/ParticipantsConference");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
+        private async Task PostParticipantsConferenceState()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/ConferenceParticipants/ParticipantState");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
         private void MainScreen_Load(object sender, EventArgs e)
         {
+            GetResponseParticipantsConference();
             conferences = _getParticipantRepository.GetParticipantsConferences();
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
             populateGridParticipants(conferences, scrollVal, numberEntry);
@@ -209,21 +239,76 @@ namespace ConferencePlanner.WinUi
             OrganizerGrid.DataSource = paginationHelper.GetPage();
             ManageOrganizerPaginationButtonsState();
         }
+
+    
+        private void sendMail(String email)
+        {
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+
+                mail.From = new MailAddress("totalevents12@gmail.com");
+                mail.To.Add("oblojaoana98@gmail.com");
+                mail.Subject = "Authentication code ";
+                Random random = new Random();
+
+                String code = random.Next().ToString();
+                while (code.Length != 10)
+                {
+                    code = random.Next().ToString();
+                }
+                code = code + "12";
+                Barcode barcode = new Barcode();
+                Color foreColor = Color.Black;
+                Color backColor = Color.Transparent;
+                Image imageBarCode = barcode.Encode(TYPE.UPCA, code, foreColor, backColor);
+             
+                mail.Body = "Your code is: " +code;
+                MemoryStream stream = new MemoryStream();
+                imageBarCode.Save(stream, ImageFormat.Png);
+
+                mail.Attachments.Add(new Attachment(stream, "imageBarCode/png"));
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("totalevents12@gmail.com", "12parola34");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+                PopupNotifier popup = new PopupNotifier();
+               // popup.Image = Properties.Resources.info;
+                popup.TitleText = "Mail";
+                popup.ContentText = "Verify you email";
+                popup.Popup();
+                _email.UpdateEmail(email, code);
+              
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+ 
+
         private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
+            //_email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
 
             if (e.ColumnIndex == 7)
             {
+                PostParticipantsConferenceState();
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
+               sendMail(EmailParticipants);
 
 
             }
 
             else if (e.ColumnIndex == 8)
             {
+                PostParticipantsConferenceState();
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
@@ -239,6 +324,7 @@ namespace ConferencePlanner.WinUi
             }
             else if (e.ColumnIndex == 9)
             {
+                PostParticipantsConferenceState();
                 _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
@@ -288,6 +374,8 @@ namespace ConferencePlanner.WinUi
         {
 
             AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+           
+
             addConferance.ConferenceId = null;
             addConferance.ShowDialog();
 

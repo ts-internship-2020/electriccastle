@@ -372,9 +372,11 @@
             // 
             // tabSpeakerParticipantColumn
             // 
+            this.tabSpeakerParticipantColumn.FalseValue = "false";
             this.tabSpeakerParticipantColumn.HeaderText = "Participant";
             this.tabSpeakerParticipantColumn.Name = "tabSpeakerParticipantColumn";
             this.tabSpeakerParticipantColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabSpeakerParticipantColumn.TrueValue = "true";
             // 
             // tabSpeakerEditColumn
             // 
@@ -1231,13 +1233,6 @@
         private ButonCircular tabSpeakerPreviousButton;
         private System.Windows.Forms.TextBox tabSpeakerFilterText;
         private System.Windows.Forms.DataGridViewTextBoxColumn DistrictId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerRatingColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNationalityColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerMainColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label tabSpeakerEntryNumberLabel;
         private System.Windows.Forms.TextBox tabSpeakerEntryNumberText;
@@ -1251,6 +1246,13 @@
         private System.Windows.Forms.Label tabCountryEntryLb;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerRatingColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNationalityColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerMainColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabSpeakerParticipantColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerEditColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn tabSpeakerDeleteColumn;
         private System.Windows.Forms.Label CategoryTabEntriesLabel;
         private System.Windows.Forms.TextBox CategoryTabEntriesTextBox;
         private System.Windows.Forms.TextBox TypeTabEntriesTextBox;

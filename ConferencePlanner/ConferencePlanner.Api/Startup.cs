@@ -13,9 +13,19 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using ConferencePlanner.Api.Swagger;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;//
+using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Repository.Ef.Entities;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
 
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Repository.Ef.Repository;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Repository.Ef.Repository;
+using Microsoft.Extensions.DependencyInjection;
 namespace ConferencePlanner.Api
 {
     public class Startup
@@ -50,6 +60,17 @@ namespace ConferencePlanner.Api
             services.AddScoped<IOrganizerConferencesRepository, OrganizerConferencesRepository>();
             services.AddScoped<ISpeakerDetailRepository, SpeakerDetailRepository>();
 
+            services.AddScoped<IAddConferenceCountryRepository, GetCountryRepositoryEntFr>();
+            services.AddScoped<IAddConferenceDistrictRepository, GetDistrictRepositoryEntFrcs>();
+           
+            services.AddScoped<IConferenceTypeRepository, TypeRepository>();
+            services.AddScoped<IConferenceCategoryRepository, CategoryRepository>();
+            services.AddScoped<IEmailParticipant, EmailRepository>();
+
+
+            services.AddScoped<IAddConferenceCityRepository, DictionaryCityRepositoryEF>();
+            services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferenceRepositoryEf>();
+            services.AddScoped<ISpeakerRepository, SpeakerRepositoryEf>();
             services.AddSwagger();
         }
 

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ConferencePlanner.Abstraction.ElectricRepository;
+﻿using System.Collections.Generic;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+
 
 namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
 {
@@ -90,13 +87,13 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             sqlCommand.ExecuteNonQuery();
         }
 
-        public void DeleteConferenceCoutry(string index)
+        public void DeleteConferenceCoutry(int index)
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
             SqlParameter[] parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("@index", index);
             sqlCommand.Parameters.Add(parameters[0]);
-            sqlCommand.CommandText = $"delete from DictionaryCountry where CountryCode like '@index'";
+            sqlCommand.CommandText = $"delete from DictionaryCountry where DictionaryCountryId =@index";
            
             sqlCommand.ExecuteNonQuery();
         }

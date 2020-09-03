@@ -7,15 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BarcodeLib" Version="2.2.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.7" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
     <PackageReference Include="QRCoder" Version="1.3.9" />
+    <PackageReference Include="Tulpep.NotificationWindow" Version="1.1.37" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ConferencePlanner.Abstraction\ConferencePlanner.Abstraction.csproj" />
     <ProjectReference Include="..\ConferencePlanner.RepositoryAdo\ConferencePlanner.Repository.Ado.csproj" />
     <ProjectReference Include="..\ConferencePlanner.RepositoryApi\ConferencePlanner.Repository.Api.csproj" />
+    <ProjectReference Include="..\ConferencePlanner.RepositoryEf\ConferencePlanner.Repository.Ef.csproj" />
   </ItemGroup>
 
   <ItemGroup>

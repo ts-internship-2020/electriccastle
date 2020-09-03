@@ -9,7 +9,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Windows.UI.Xaml.Controls;
-
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 namespace ConferencePlanner.WinUi
 {
     public partial class NewDistrictForm : Form
@@ -32,8 +36,23 @@ namespace ConferencePlanner.WinUi
             this.conferenceCountryRepository = conferenceCountryRepository;
         }
 
+        private async Task GetResponse()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+
+        }
+
+       
+
         private void NewDistrictForm_Load(object sender, EventArgs e)
         {
+            GetResponse();
             countries = conferenceCountryRepository.GetConferencesCountry();
             CountryComboBox.DataSource = countries;
             CountryComboBox.DisplayMember = "DictionaryCountryName";
@@ -54,6 +73,7 @@ namespace ConferencePlanner.WinUi
                 SaveButton.Click += new EventHandler(EditDistrict);
                 CountryComboBox.SelectedValue = district.DictionaryCountryId;
             }
+           
         }
 
         private void AddDistrict(object sender, EventArgs e)

@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ConferencePlanner.WinUi
 {
@@ -35,6 +37,16 @@ namespace ConferencePlanner.WinUi
         {
 
         }
+        private async Task PostAddSpeaker()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/AddSpeaker");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
 
         private void saveAddSpeaker_Click(object sender, EventArgs e)
         {
@@ -54,8 +66,9 @@ namespace ConferencePlanner.WinUi
                 //addedSpeaker.Rating = number;
                 //addedSpeaker.Nationality = newSpeakerNationalityTextBox.Text;
                 //addedSpeaker.Picture = newSpeakerPictureTextBox.Text;
-
-                _getSpeakerRepository.addSpeaker(AddConferance.maxIdSpeaker + 1, newSpeakerCodeTextBox.Text, newSpeakerNameTextBox.Text, number, newSpeakerNationalityTextBox.Text, newSpeakerPictureTextBox.Text);
+                PostAddSpeaker();
+       
+                    _getSpeakerRepository.addSpeaker(AddConferance.maxIdSpeaker + 1, newSpeakerCodeTextBox.Text, newSpeakerNameTextBox.Text, number, newSpeakerNationalityTextBox.Text, newSpeakerPictureTextBox.Text);
                 this.Close();
             }
         }

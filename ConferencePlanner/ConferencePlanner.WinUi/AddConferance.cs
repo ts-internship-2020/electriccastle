@@ -14,6 +14,11 @@ using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.UI.Xaml.Controls;
 using Windows.ApplicationModel.Activation;
+using ConferencePlanner.Repository.Ef.Repository;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ConferencePlanner.WinUi
 {
@@ -43,6 +48,7 @@ namespace ConferencePlanner.WinUi
         private List<AddConferenceCountryModel> currentCountryGridPage;
         public int scrollValCountry;
         private int entryNumberTabCountry;
+       //private readonly GetCountryRepositoryEntFr _countryEF;
 
         //District Tab
         private readonly IAddConferenceDistrictRepository conferenceDistrictRepository;
@@ -244,9 +250,51 @@ namespace ConferencePlanner.WinUi
             //    }
             //}
         }
+        private async Task PostDeleteCity()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/DeleteCity");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+        private async Task PostDeleteSpeaker()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/DeleteSpeaker");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
+        private async Task GetResponseCity()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/City");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+        private async Task GetResponseSpeaker()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/Speaker");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
 
         private void AddConferance_Load(object sender, EventArgs e)
         {
+            GetResponseSpeaker();
             getSpeakerList = getSpeakerRepository.GetSpeaker();
             entryNumberTabSpeaker = Convert.ToInt32(tabSpeakerEntryNumberText.Text);
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
@@ -261,6 +309,7 @@ namespace ConferencePlanner.WinUi
             districtModel = conferenceDistrictRepository.GetConferencesDistrict();
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
 
+            GetResponseCity();
             entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
             cityModel = _getCity.GetConferencesCity();
             populateGridCity(cityModel, scrollVal, entryNumberTabCity);
@@ -323,6 +372,30 @@ namespace ConferencePlanner.WinUi
                                                                      .Where(row => (int)row.Cells["ConferenceTypeId"].Value == conference.DictionaryConferenceTypeId)
                                                                      .First();
                 dataGridViewType.Rows[typeTabRow.Index].Selected = true;
+
+
+                List<SpeakerListModel> editConferenceSpeakers = new List<SpeakerListModel>();
+                editConferenceSpeakers = conference.Speakers;
+                scrollValSpeaker = 0;
+                getSpeakerList = getSpeakerRepository.GetSpeaker();
+                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+
+                foreach (SpeakerListModel speakerEdit in editConferenceSpeakers)
+                {
+                    int index = -1;
+                    var number = currentSpeakerGridPage.FindIndex(districtsTxt => districtsTxt.Id == speakerEdit.DictionarySpeakerId);
+                    index = number;
+                    if(index != -1)
+                    {
+                        tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[4].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[4].Value;
+                        if (speakerEdit.IsMainSpeaker == true)
+                        {
+
+                            tabSpeakerGrid.Rows[index].Cells[3].Value = tabSpeakerGrid.Rows[index].Cells[3].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[3].Value;
+                        }
+                    }
+                }
+
 
             }
         }
@@ -605,6 +678,8 @@ namespace ConferencePlanner.WinUi
             tabSpeakerGrid.Columns[0].ReadOnly = true;
             tabSpeakerGrid.Columns[1].ReadOnly = true;
             tabSpeakerGrid.Columns[2].ReadOnly = true;
+
+
         }
 
         List<SpeakerModel> getListSpeakerInConference()
@@ -662,6 +737,7 @@ namespace ConferencePlanner.WinUi
 
         }
 
+
         private void tabSpeakerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
@@ -683,6 +759,7 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 6)//Delete
             {
+                PostDeleteSpeaker();
                 getSpeakerRepository.deleteSpeaker(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
                 scrollValSpeaker = 0;
                 getSpeakerList = getSpeakerRepository.GetSpeaker();
@@ -898,7 +975,7 @@ namespace ConferencePlanner.WinUi
 
         private void dataGridViewType_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || (e.ColumnIndex != dataGridViewType.Columns["Edit"].Index && e.ColumnIndex != dataGridViewType.Columns["Delete"].Index)) return;
+             if (e.RowIndex < 0 || (e.ColumnIndex != dataGridViewType.Columns["Edit"].Index && e.ColumnIndex != dataGridViewType.Columns["Delete"].Index)) return;
 
 
             Int32 typeId = (Int32)dataGridViewType[dataGridViewType.Columns["ConferenceTypeId"].Index, e.RowIndex].Value;
@@ -1046,18 +1123,32 @@ namespace ConferencePlanner.WinUi
             if (e.ColumnIndex == DGVCountry.Columns["Edit"].Index)
             { 
                 editedCountry = currentCountryGridPage.ElementAt(e.RowIndex);
+                EditCountry();
                 NewCountryForm fc = Program.ServiceProvider.GetService<NewCountryForm>();
                 fc.ShowDialog();
             }
 
             else if (e.ColumnIndex == DGVCountry.Columns["Delete"].Index)
             {
-                _getCity.deleteCity(currentCountryGridPage.ElementAt(e.RowIndex).DictionaryCountryId);
+                _getCountry.DeleteConferenceCoutry(currentCountryGridPage.ElementAt(e.RowIndex).DictionaryCountryId);
+                DeleteCountry();
                 scrollValCountry = 0;
                 countryModel = _getCountry.GetConferencesCountry();
                 populateGridCountry(countryModel, scrollValCountry, entryNumberTabCountry);
+                
             }
             else return;
+        }
+
+        private async Task EditCountry()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
         }
 
         private void DGVCity_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1082,10 +1173,12 @@ namespace ConferencePlanner.WinUi
             // check if Delete Button is pressed
             else if (e.ColumnIndex == DGVCity.Columns["Delete"].Index)
             {
+                PostDeleteCity();
                 _getCity.deleteCity(currentCityGridPage.ElementAt(e.RowIndex).DictionaryCityId);
                 scrollVal = 0;
                 cityModel = _getCity.GetConferencesCity();
                 populateGridCity(cityModel, scrollVal, entryNumberTabCity);
+                
             }
             else if (e.RowIndex > 0 && e.ColumnIndex != DGVCity.Columns["Edit"].Index && e.ColumnIndex != DGVCity.Columns["Delete"].Index)
             {
@@ -1103,6 +1196,17 @@ namespace ConferencePlanner.WinUi
             }
         }
 
+        private async Task DeleteCountry()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+        }
+
         private void DGVDistrict_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || (e.ColumnIndex != DGVDistrict.Columns["Edit"].Index
@@ -1113,6 +1217,7 @@ namespace ConferencePlanner.WinUi
             if (e.ColumnIndex == DGVDistrict.Columns["Edit"].Index)
             {
                 NewDistrictForm addEditCategory = Program.ServiceProvider.GetService<NewDistrictForm>();
+                EditDistrict();
                 addEditCategory.DistrictId = districtId;
                 addEditCategory.ShowDialog();
             }
@@ -1120,6 +1225,7 @@ namespace ConferencePlanner.WinUi
             if (e.ColumnIndex == DGVDistrict.Columns["Delete"].Index)
             {
                 string districtName = DGVDistrict[DGVDistrict.Columns["DictrictName"].Index, e.RowIndex].Value.ToString();
+                DeleteDistrict();
                 DialogResult dialogResult = DisplayDeleteConfirmation("Are you sure you want to delete " + districtName + "?", "Delete District");
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -1127,6 +1233,28 @@ namespace ConferencePlanner.WinUi
                 }
             }
 
+        }
+
+        private async Task EditDistrict()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+        }
+
+        private async Task DeleteDistrict()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
         }
 
         private void btSearch_KeyDown(object sender, KeyEventArgs e)
