@@ -100,6 +100,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             {
                 SqlCommand sqlCommand = _sqlConnection.CreateCommand();
                 sqlCommand.Connection = _sqlConnection;
+                sqlCommand.Parameters.AddWithValue("@ConferenceId", conference.ConferenceId);
                 sqlCommand.Parameters.AddWithValue("@ConferenceName", conference.ConferenceName);
                 sqlCommand.Parameters.AddWithValue("@OrganizerEmail", conference.OrganizerEmail);
                 sqlCommand.Parameters.AddWithValue("@OrganizerName", conference.OrganizerName);
@@ -116,7 +117,8 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                                             " EndDate = @EndDate," +
                                             " DictionaryConferenceCategoryId = @DictionaryConferenceCategoryId," +
                                             " DictionaryConferenceTypeId = @DictionaryConferenceTypeId," +
-                                            " LocationId = @LocationId)";
+                                            " LocationId = @LocationId)" +
+                                            " WHERE ConferenceId = @ConferenceId";
 
                 int rowsEdited = sqlCommand.ExecuteNonQuery();
             }

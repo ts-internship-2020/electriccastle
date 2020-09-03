@@ -104,7 +104,8 @@
             this.NewCity = new ConferencePlanner.WinUi.ButonCircular();
             this.DGVCity = new System.Windows.Forms.DataGridView();
             this.CityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CityCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CityCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CityId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Organ = new System.Windows.Forms.Label();
             this.txtOrganizer = new System.Windows.Forms.TextBox();
             this.btSaveAndNew = new System.Windows.Forms.Button();
@@ -982,7 +983,8 @@
             this.DGVCity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCity.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CityName,
-            this.CityCod});
+            this.CityCode,
+            this.CityId});
             this.DGVCity.Location = new System.Drawing.Point(4, 4);
             this.DGVCity.MultiSelect = false;
             this.DGVCity.Name = "DGVCity";
@@ -998,14 +1000,19 @@
             this.CityName.HeaderText = "Name";
             this.CityName.Name = "CityName";
             this.CityName.ReadOnly = true;
-            this.CityName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // CityCod
+            // CityCode
             // 
-            this.CityCod.HeaderText = "Cod";
-            this.CityCod.Name = "CityCod";
-            this.CityCod.ReadOnly = true;
-            this.CityCod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CityCode.HeaderText = "Code";
+            this.CityCode.Name = "CityCode";
+            this.CityCode.ReadOnly = true;
+            // 
+            // CityId
+            // 
+            this.CityId.HeaderText = "Id";
+            this.CityId.Name = "CityId";
+            this.CityId.ReadOnly = true;
+            this.CityId.Visible = false;
             // 
             // Organ
             // 
@@ -1194,8 +1201,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DictrictName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DistrictCod;
         private ButonCircular NewCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CityName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CityCod;
         private System.Windows.Forms.DataGridView DGVDistrict;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerColumnRating;
@@ -1250,5 +1255,8 @@
         private System.Windows.Forms.TextBox CategoryTabEntriesTextBox;
         private System.Windows.Forms.TextBox TypeTabEntriesTextBox;
         private System.Windows.Forms.Label TypeTabEntriesLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CityName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CityCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CityId;
     }
 }
