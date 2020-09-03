@@ -1,5 +1,6 @@
 ﻿using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Repository.Ef.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace ConferencePlanner.WinUi
        
         public int ? ConferanceTypeId { get; set; }
         private readonly IConferenceTypeRepository conferanceTypeRepository;
+       
+        
 
 
         public NewConferanceType(IConferenceTypeRepository conferanceTypeRepository)
@@ -60,6 +63,7 @@ namespace ConferencePlanner.WinUi
                     {
                         type.ConferenceTypeName = txtNameType.Text;
                         type.ConferenceTypeCode = txtCodeType.Text;
+                        
                         conferanceTypeRepository.getType(type);
                     }
                     else
@@ -72,7 +76,7 @@ namespace ConferencePlanner.WinUi
                             ConferanceTypeId = 0;
                             typeNew.ConferenceTypeName = txtNameType.Text;
                             typeNew.ConferenceTypeCode = txtCodeType.Text;
-
+                        
                             conferanceTypeRepository.insertType(typeNew);
                         }
                     }

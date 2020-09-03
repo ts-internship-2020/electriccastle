@@ -19,6 +19,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Newtonsoft.Json;
 
 namespace ConferencePlanner.WinUi
@@ -116,6 +117,7 @@ namespace ConferencePlanner.WinUi
             getSpeakerInConference = new List<int>(); 
             conferenceCategories = conferenceCategoryRepository.GetAllCategories();
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
+           
             conferanceTypeModels = conferanceTypeRepository.getAllTypes();
             conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
         }
@@ -923,7 +925,14 @@ namespace ConferencePlanner.WinUi
 
         private async void TypeReloadData()
         {
-            conferanceTypeModels = conferanceTypeRepository.getAllTypes();
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Type/f");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+                conferanceTypeModels = (List<ConferenceTypeModel>)JsonConvert.DeserializeObject<IEnumerable<ConferenceTypeModel>>(resp);
+            }
+            //conferanceTypeModels = conferanceTypeRepository.getAllTypes();
             conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
             dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
             dataGridViewType.AutoGenerateColumns = true;
@@ -944,9 +953,18 @@ namespace ConferencePlanner.WinUi
             populateGridCity(cityModel, scrollVal, entryNumberTabCity);
 
         }
-        private void CategoryTabReloadData()
+        private async void CategoryTabReloadData()
         {
-            conferenceCategories = conferenceCategoryRepository.GetAllCategories();
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Category");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+                conferanceTypeModels = (List<ConferenceTypeModel>)JsonConvert.DeserializeObject<IEnumerable<ConferenceTypeModel>>(resp);
+            }
+
+            // conferenceCategories = conferenceCategoryRepository.GetAllCategories();
+
             categoryTabPaginationHelper = new PaginationHelper<ConferenceCategoryModel>(conferenceCategories, categoryTabPageSize);
             CategoryTabGrid.DataSource = categoryTabPaginationHelper.GetPage();
             CategoryTabGrid.AutoGenerateColumns = true;
@@ -1023,7 +1041,7 @@ namespace ConferencePlanner.WinUi
             this.dataGridViewType.Columns["ConferenceTypeId"].Visible = false;
         }
 
-        private void dataGridViewType_CellClick(object sender, DataGridViewCellEventArgs e)
+        private  async void dataGridViewType_CellClick(object sender, DataGridViewCellEventArgs e)
         {
              if (e.RowIndex < 0 || (e.ColumnIndex != dataGridViewType.Columns["Edit"].Index && e.ColumnIndex != dataGridViewType.Columns["Delete"].Index)) return;
 
@@ -1035,7 +1053,9 @@ namespace ConferencePlanner.WinUi
 
             {
                 NewConferanceType newConferanceType = Program.ServiceProvider.GetService<NewConferanceType>();
+        
                 newConferanceType.ConferanceTypeId = typeId;
+               // HttpClientAsync("http://localhost:2794/api/Type/{Id}");
                 newConferanceType.ShowDialog();
                
             }
@@ -1047,6 +1067,8 @@ namespace ConferencePlanner.WinUi
                     DialogResult dialogResult = MessageBox.Show("Are you sure you want delete " + typeName+ "?", "Delete", MessageBoxButtons.YesNo);
                     if(dialogResult==DialogResult.Yes)
                     {
+
+
                         conferanceTypeRepository.deleteType(typeId);
                         TypeReloadData();
                     }
@@ -1294,8 +1316,21 @@ namespace ConferencePlanner.WinUi
                 string resp = await s.Content.ReadAsStringAsync();
 
             }
+          
         }
 
+      
+
+        private async Task HttpClientAsync(String localHost)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync(localHost);
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+        }
         private async Task DeleteDistrict()
         {
             HttpClient client = new HttpClient();
@@ -1305,7 +1340,12 @@ namespace ConferencePlanner.WinUi
                 string resp = await s.Content.ReadAsStringAsync();
 
             }
+
+          
+          
         }
+
+
 
         private void btSearch_KeyDown(object sender, KeyEventArgs e)
         {

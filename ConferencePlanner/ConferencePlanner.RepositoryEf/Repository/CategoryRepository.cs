@@ -21,7 +21,10 @@ namespace ConferencePlanner.Repository.Ef.Repository
         public void AddCategory(ConferenceCategoryModel conferenceCategory)
         {
             var result = _electriccastleContextCategory.DictionaryConferenceCategory.ToList();
-           
+            var conferenceCategoryModel = new DictionaryConferenceCategory { DictionaryConferenceCategoryId = _electriccastleContextCategory.DictionaryConferenceCategory.Max(x => x.DictionaryConferenceCategoryId) + 1, DictionaryConferenceCategoryName = conferenceCategory.ConferenceCategoryName, ConferenceCategoryCode = conferenceCategory.ConferenceCategoryCode };
+            _electriccastleContextCategory.DictionaryConferenceCategory.Add(conferenceCategoryModel);
+            _electriccastleContextCategory.SaveChanges();
+
         }
 
         public void DeleteCategory(int categoryId)
@@ -54,7 +57,14 @@ namespace ConferencePlanner.Repository.Ef.Repository
 
         public ConferenceCategoryModel GetCategory(int categoryId)
         {
-            throw new NotImplementedException();
+
+            DictionaryConferenceCategory categoryModel = _electriccastleContextCategory.DictionaryConferenceCategory.FirstOrDefault(x => x.DictionaryConferenceCategoryId == categoryId);
+           ConferenceCategoryModel category = new ConferenceCategoryModel();
+            category.ConferenceCategoryId = categoryModel.DictionaryConferenceCategoryId;
+            category.ConferenceCategoryName = categoryModel.DictionaryConferenceCategoryName;
+            category.ConferenceCategoryCode = categoryModel.ConferenceCategoryCode;
+            return category;
+
         }
 
         public ConferenceCategoryModel GetCategoryForConference(int conferenceId)

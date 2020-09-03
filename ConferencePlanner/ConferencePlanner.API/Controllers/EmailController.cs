@@ -14,6 +14,12 @@ namespace ConferencePlanner.Api.Controllers
     public class EmailController : ControllerBase
     {
         private readonly IEmailParticipant emailParticipant;
+
+        public EmailController(IEmailParticipant emailParticipant)
+        {
+            this.emailParticipant = emailParticipant;
+           
+        }
         // GET: api/<EmailController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -22,8 +28,11 @@ namespace ConferencePlanner.Api.Controllers
         }
 
         // GET api/<EmailController>/5
+       
+
+        // POST api/<EmailController>
         [HttpPost] //add, edit
-        [Route("{Email}")]
+        [Route("{EmailUser}")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Post(String email, String code)
         {
@@ -32,11 +41,6 @@ namespace ConferencePlanner.Api.Controllers
             return Ok(emailParticipant);
         }
 
-        // POST api/<EmailController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
         // PUT api/<EmailController>/5
         [HttpPut("{id}")]
