@@ -43,7 +43,7 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void butonCircular1_Click(object sender, EventArgs e)
+        private async void butonCircular1_Click(object sender, EventArgs e)
         {
             System.Text.RegularExpressions.Regex name = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z]+$");
 
@@ -99,14 +99,14 @@ namespace ConferencePlanner.WinUi
             if (editCity == null && errorProviderCityCod.GetError(CityCodTb) == "" &&
                                    errorProviderCityName.GetError(CityNameTb) == "")
             {
-                PostAddCity();
+               // PostAddCity();
                 getAddConferenceCityRepository.insertCity(maxCityId + 1, getDistrictId(), CityCodTb.Text, CityNameTb.Text);
                 this.Close();
             }
             else if (editCity != null && errorProviderCityCod.GetError(CityCodTb) == "" &&
                        errorProviderCityName.GetError(CityNameTb) == "")
             {
-                PostUpdateCity();
+                //await PostUpdateCity(editCity.DictionaryCityId, CityCodTb.Text, CityNameTb.Text, getDistrictId());
                 getAddConferenceCityRepository.updateCity(editCity.DictionaryCityId, CityCodTb.Text, CityNameTb.Text, getDistrictId());
                 this.Close();
             }
@@ -153,15 +153,18 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private async Task PostUpdateCity()
+
+        private async Task PostUpdateCity(int id, string code, string name, int disId)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/UpdateCity");
-            if (msg.IsSuccessStatusCode)
-            {
-                string response = await msg.Content.ReadAsStringAsync();
-            }
+            string url = "http://localhost:2794/api/DictionaryCity/UpdateCity?dictionaryCityId=" + id + "&cityCode=" + code + "&dictionaryCityName=" + name + "&dictionaryDistrictId=" + disId;
+            HttpContent content = new StringContent("", Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(url, content);
 
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Data not loaded properly from API");
+            }
         }
 
         private async void NewCityForm_Load(object sender, EventArgs e)

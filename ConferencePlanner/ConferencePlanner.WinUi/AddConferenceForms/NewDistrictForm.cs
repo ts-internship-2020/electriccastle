@@ -91,6 +91,7 @@ namespace ConferencePlanner.WinUi
             }
         }
 
+        
         private void EditDistrict(object sender, EventArgs e)
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
