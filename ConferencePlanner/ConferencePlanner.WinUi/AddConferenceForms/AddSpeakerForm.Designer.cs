@@ -35,7 +35,6 @@
             this.newSpeakerRating = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.newSpeakerPicture = new System.Windows.Forms.Label();
-            this.newSpeakerPictureBox = new System.Windows.Forms.PictureBox();
             this.newSpeakerCodeTextBox = new System.Windows.Forms.TextBox();
             this.newSpeakerNameTextBox = new System.Windows.Forms.TextBox();
             this.newSpeakerRatingTextBox = new System.Windows.Forms.TextBox();
@@ -47,7 +46,6 @@
             this.errorProviderAddSpeakerNationality = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderAddSpeakerPicture = new System.Windows.Forms.ErrorProvider(this.components);
             this.saveAddSpeaker = new ConferencePlanner.WinUi.ButonCircular();
-            ((System.ComponentModel.ISupportInitialize)(this.newSpeakerPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerRating)).BeginInit();
@@ -59,7 +57,7 @@
             // 
             this.newSpeakerCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.newSpeakerCode.AutoSize = true;
-            this.newSpeakerCode.BackColor = System.Drawing.Color.Aqua;
+            this.newSpeakerCode.BackColor = System.Drawing.SystemColors.Window;
             this.newSpeakerCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.newSpeakerCode.Location = new System.Drawing.Point(417, 78);
             this.newSpeakerCode.Name = "newSpeakerCode";
@@ -72,7 +70,7 @@
             // 
             this.newSpeakerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.newSpeakerName.AutoSize = true;
-            this.newSpeakerName.BackColor = System.Drawing.Color.Aqua;
+            this.newSpeakerName.BackColor = System.Drawing.SystemColors.Window;
             this.newSpeakerName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.newSpeakerName.Location = new System.Drawing.Point(417, 116);
             this.newSpeakerName.Name = "newSpeakerName";
@@ -113,20 +111,6 @@
             this.newSpeakerPicture.Size = new System.Drawing.Size(89, 17);
             this.newSpeakerPicture.TabIndex = 4;
             this.newSpeakerPicture.Text = "Picture Link :";
-            // 
-            // newSpeakerPictureBox
-            // 
-            this.newSpeakerPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.newSpeakerPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("newSpeakerPictureBox.Image")));
-            this.newSpeakerPictureBox.InitialImage = null;
-            this.newSpeakerPictureBox.Location = new System.Drawing.Point(60, 78);
-            this.newSpeakerPictureBox.Name = "newSpeakerPictureBox";
-            this.newSpeakerPictureBox.Size = new System.Drawing.Size(251, 174);
-            this.newSpeakerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.newSpeakerPictureBox.TabIndex = 5;
-            this.newSpeakerPictureBox.TabStop = false;
             // 
             // newSpeakerCodeTextBox
             // 
@@ -210,9 +194,10 @@
             // 
             // saveAddSpeaker
             // 
-            this.saveAddSpeaker.BackColor = System.Drawing.Color.BlueViolet;
+            this.saveAddSpeaker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveAddSpeaker.BackColor = System.Drawing.SystemColors.Window;
             this.saveAddSpeaker.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.saveAddSpeaker.Location = new System.Drawing.Point(550, 302);
+            this.saveAddSpeaker.Location = new System.Drawing.Point(494, 287);
             this.saveAddSpeaker.Name = "saveAddSpeaker";
             this.saveAddSpeaker.Size = new System.Drawing.Size(91, 45);
             this.saveAddSpeaker.TabIndex = 11;
@@ -224,7 +209,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Aqua;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.saveAddSpeaker);
             this.Controls.Add(this.newSpeakerPictureTextBox);
@@ -232,17 +219,16 @@
             this.Controls.Add(this.newSpeakerRatingTextBox);
             this.Controls.Add(this.newSpeakerNameTextBox);
             this.Controls.Add(this.newSpeakerCodeTextBox);
-            this.Controls.Add(this.newSpeakerPictureBox);
             this.Controls.Add(this.newSpeakerPicture);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newSpeakerRating);
             this.Controls.Add(this.newSpeakerName);
             this.Controls.Add(this.newSpeakerCode);
             this.Name = "AddSpeakerForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NewSpeaker";
+            this.Text = "Add new speaker";
             this.Load += new System.EventHandler(this.NewSpeaker_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.newSpeakerPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddSpeakerRating)).EndInit();

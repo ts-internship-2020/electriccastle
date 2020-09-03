@@ -411,6 +411,7 @@
             // 
             // CategoryTabEntriesTextBox
             // 
+            this.CategoryTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabEntriesTextBox.Location = new System.Drawing.Point(192, 131);
             this.CategoryTabEntriesTextBox.Name = "CategoryTabEntriesTextBox";
             this.CategoryTabEntriesTextBox.Size = new System.Drawing.Size(25, 23);
@@ -419,6 +420,7 @@
             // 
             // CategoryTabEntriesLabel
             // 
+            this.CategoryTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabEntriesLabel.AutoSize = true;
             this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(95, 134);
             this.CategoryTabEntriesLabel.Name = "CategoryTabEntriesLabel";
@@ -428,7 +430,7 @@
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(261, 134);
             this.label10.Name = "label10";
@@ -438,6 +440,7 @@
             // 
             // CategoryTabAddButton
             // 
+            this.CategoryTabAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabAddButton.BackColor = System.Drawing.Color.Tomato;
             this.CategoryTabAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CategoryTabAddButton.Location = new System.Drawing.Point(3, 124);
@@ -450,7 +453,7 @@
             // 
             // CategoryTabSearchTextBox
             // 
-            this.CategoryTabSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryTabSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(367, 131);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
@@ -460,9 +463,10 @@
             // 
             // CategoryTabNextButton
             // 
+            this.CategoryTabNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryTabNextButton.BackColor = System.Drawing.Color.Tomato;
             this.CategoryTabNextButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CategoryTabNextButton.Location = new System.Drawing.Point(541, 123);
+            this.CategoryTabNextButton.Location = new System.Drawing.Point(834, 124);
             this.CategoryTabNextButton.Name = "CategoryTabNextButton";
             this.CategoryTabNextButton.Size = new System.Drawing.Size(62, 34);
             this.CategoryTabNextButton.TabIndex = 2;
@@ -472,11 +476,12 @@
             // 
             // CategoryTabPreviousButton
             // 
+            this.CategoryTabPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryTabPreviousButton.BackColor = System.Drawing.Color.Tomato;
             this.CategoryTabPreviousButton.Enabled = false;
             this.CategoryTabPreviousButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CategoryTabPreviousButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(473, 124);
+            this.CategoryTabPreviousButton.Location = new System.Drawing.Point(766, 124);
             this.CategoryTabPreviousButton.Name = "CategoryTabPreviousButton";
             this.CategoryTabPreviousButton.Size = new System.Drawing.Size(62, 34);
             this.CategoryTabPreviousButton.TabIndex = 1;
@@ -521,6 +526,7 @@
             // 
             // TypeTabEntriesTextBox
             // 
+            this.TypeTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeTabEntriesTextBox.Location = new System.Drawing.Point(205, 107);
             this.TypeTabEntriesTextBox.Name = "TypeTabEntriesTextBox";
             this.TypeTabEntriesTextBox.Size = new System.Drawing.Size(24, 23);
@@ -529,6 +535,7 @@
             // 
             // TypeTabEntriesLabel
             // 
+            this.TypeTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeTabEntriesLabel.AutoSize = true;
             this.TypeTabEntriesLabel.Location = new System.Drawing.Point(108, 109);
             this.TypeTabEntriesLabel.Name = "TypeTabEntriesLabel";
@@ -538,7 +545,7 @@
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(264, 109);
             this.label11.Name = "label11";
@@ -548,7 +555,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtSearch.Location = new System.Drawing.Point(372, 104);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search...";
@@ -557,6 +564,7 @@
             // 
             // btNewType
             // 
+            this.btNewType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btNewType.BackColor = System.Drawing.Color.Tomato;
             this.btNewType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btNewType.Location = new System.Drawing.Point(3, 99);
@@ -569,10 +577,11 @@
             // 
             // btPreviousType
             // 
+            this.btPreviousType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btPreviousType.BackColor = System.Drawing.Color.Tomato;
             this.btPreviousType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btPreviousType.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btPreviousType.Location = new System.Drawing.Point(478, 96);
+            this.btPreviousType.Location = new System.Drawing.Point(766, 96);
             this.btPreviousType.Name = "btPreviousType";
             this.btPreviousType.Size = new System.Drawing.Size(62, 34);
             this.btPreviousType.TabIndex = 2;
@@ -600,9 +609,10 @@
             // 
             // btNextType
             // 
+            this.btNextType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btNextType.BackColor = System.Drawing.Color.Tomato;
             this.btNextType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btNextType.Location = new System.Drawing.Point(546, 96);
+            this.btNextType.Location = new System.Drawing.Point(834, 95);
             this.btNextType.Name = "btNextType";
             this.btNextType.Size = new System.Drawing.Size(62, 34);
             this.btNextType.TabIndex = 1;
@@ -664,7 +674,7 @@
             // 
             // textNameCountry
             // 
-            this.textNameCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textNameCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textNameCountry.Location = new System.Drawing.Point(211, 171);
             this.textNameCountry.Name = "textNameCountry";
             this.textNameCountry.PlaceholderText = "Search...";
@@ -674,6 +684,7 @@
             // 
             // PreviousBtn
             // 
+            this.PreviousBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PreviousBtn.BackColor = System.Drawing.Color.Tomato;
             this.PreviousBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.PreviousBtn.Location = new System.Drawing.Point(766, 163);
@@ -686,6 +697,7 @@
             // 
             // NextBtn
             // 
+            this.NextBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NextBtn.BackColor = System.Drawing.Color.Tomato;
             this.NextBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NextBtn.Location = new System.Drawing.Point(834, 163);
@@ -698,6 +710,7 @@
             // 
             // NewCountry
             // 
+            this.NewCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.NewCountry.BackColor = System.Drawing.Color.Tomato;
             this.NewCountry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NewCountry.Location = new System.Drawing.Point(11, 164);
@@ -766,7 +779,7 @@
             this.tabDistrictEntryLable.AutoSize = true;
             this.tabDistrictEntryLable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabDistrictEntryLable.ForeColor = System.Drawing.Color.Red;
-            this.tabDistrictEntryLable.Location = new System.Drawing.Point(695, 180);
+            this.tabDistrictEntryLable.Location = new System.Drawing.Point(445, 167);
             this.tabDistrictEntryLable.Name = "tabDistrictEntryLable";
             this.tabDistrictEntryLable.Size = new System.Drawing.Size(99, 17);
             this.tabDistrictEntryLable.TabIndex = 7;
@@ -775,7 +788,7 @@
             // tabDistrictEntryText
             // 
             this.tabDistrictEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabDistrictEntryText.Location = new System.Drawing.Point(800, 179);
+            this.tabDistrictEntryText.Location = new System.Drawing.Point(550, 166);
             this.tabDistrictEntryText.Name = "tabDistrictEntryText";
             this.tabDistrictEntryText.Size = new System.Drawing.Size(27, 23);
             this.tabDistrictEntryText.TabIndex = 6;
@@ -784,8 +797,8 @@
             // 
             // DistrictFilter
             // 
-            this.DistrictFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DistrictFilter.Location = new System.Drawing.Point(204, 171);
+            this.DistrictFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DistrictFilter.Location = new System.Drawing.Point(238, 166);
             this.DistrictFilter.Name = "DistrictFilter";
             this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
             this.DistrictFilter.TabIndex = 5;
@@ -793,9 +806,9 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(96, 174);
+            this.label7.Location = new System.Drawing.Point(116, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 15);
             this.label7.TabIndex = 4;
@@ -803,9 +816,10 @@
             // 
             // NextDistrict
             // 
+            this.NextDistrict.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NextDistrict.BackColor = System.Drawing.Color.Tomato;
             this.NextDistrict.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NextDistrict.Location = new System.Drawing.Point(403, 160);
+            this.NextDistrict.Location = new System.Drawing.Point(833, 155);
             this.NextDistrict.Name = "NextDistrict";
             this.NextDistrict.Size = new System.Drawing.Size(62, 34);
             this.NextDistrict.TabIndex = 3;
@@ -815,9 +829,10 @@
             // 
             // PreviousPageDistrict
             // 
+            this.PreviousPageDistrict.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PreviousPageDistrict.BackColor = System.Drawing.Color.Tomato;
             this.PreviousPageDistrict.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PreviousPageDistrict.Location = new System.Drawing.Point(335, 160);
+            this.PreviousPageDistrict.Location = new System.Drawing.Point(765, 155);
             this.PreviousPageDistrict.Name = "PreviousPageDistrict";
             this.PreviousPageDistrict.Size = new System.Drawing.Size(62, 34);
             this.PreviousPageDistrict.TabIndex = 2;
@@ -827,9 +842,10 @@
             // 
             // NewDistrict
             // 
+            this.NewDistrict.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.NewDistrict.BackColor = System.Drawing.Color.Tomato;
             this.NewDistrict.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NewDistrict.Location = new System.Drawing.Point(4, 164);
+            this.NewDistrict.Location = new System.Drawing.Point(3, 159);
             this.NewDistrict.Name = "NewDistrict";
             this.NewDistrict.Size = new System.Drawing.Size(86, 33);
             this.NewDistrict.TabIndex = 1;
@@ -900,7 +916,7 @@
             // tabCityEntryText
             // 
             this.tabCityEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabCityEntryText.Location = new System.Drawing.Point(819, 167);
+            this.tabCityEntryText.Location = new System.Drawing.Point(612, 167);
             this.tabCityEntryText.Name = "tabCityEntryText";
             this.tabCityEntryText.Size = new System.Drawing.Size(28, 23);
             this.tabCityEntryText.TabIndex = 8;
@@ -914,7 +930,7 @@
             this.tabCityEntryLabel.AutoSize = true;
             this.tabCityEntryLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabCityEntryLabel.ForeColor = System.Drawing.Color.Red;
-            this.tabCityEntryLabel.Location = new System.Drawing.Point(693, 170);
+            this.tabCityEntryLabel.Location = new System.Drawing.Point(498, 168);
             this.tabCityEntryLabel.Name = "tabCityEntryLabel";
             this.tabCityEntryLabel.Size = new System.Drawing.Size(108, 17);
             this.tabCityEntryLabel.TabIndex = 7;
@@ -922,9 +938,9 @@
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(92, 170);
+            this.label8.Location = new System.Drawing.Point(116, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(122, 15);
             this.label8.TabIndex = 6;
@@ -932,8 +948,8 @@
             // 
             // filterCity
             // 
-            this.filterCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.filterCity.Location = new System.Drawing.Point(220, 168);
+            this.filterCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.filterCity.Location = new System.Drawing.Point(271, 168);
             this.filterCity.Name = "filterCity";
             this.filterCity.Size = new System.Drawing.Size(100, 23);
             this.filterCity.TabIndex = 5;
@@ -941,9 +957,10 @@
             // 
             // PrevoiusCity
             // 
+            this.PrevoiusCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PrevoiusCity.BackColor = System.Drawing.Color.Tomato;
             this.PrevoiusCity.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PrevoiusCity.Location = new System.Drawing.Point(328, 162);
+            this.PrevoiusCity.Location = new System.Drawing.Point(766, 162);
             this.PrevoiusCity.Name = "PrevoiusCity";
             this.PrevoiusCity.Size = new System.Drawing.Size(62, 34);
             this.PrevoiusCity.TabIndex = 4;
@@ -953,9 +970,10 @@
             // 
             // NextCity
             // 
+            this.NextCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NextCity.BackColor = System.Drawing.Color.Tomato;
             this.NextCity.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NextCity.Location = new System.Drawing.Point(396, 162);
+            this.NextCity.Location = new System.Drawing.Point(834, 162);
             this.NextCity.Name = "NextCity";
             this.NextCity.Size = new System.Drawing.Size(62, 34);
             this.NextCity.TabIndex = 3;
@@ -965,6 +983,7 @@
             // 
             // NewCity
             // 
+            this.NewCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.NewCity.BackColor = System.Drawing.Color.Tomato;
             this.NewCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NewCity.Location = new System.Drawing.Point(0, 160);

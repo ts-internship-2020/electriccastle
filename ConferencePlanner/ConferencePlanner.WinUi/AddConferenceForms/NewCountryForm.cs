@@ -14,6 +14,7 @@ using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Helpers;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
 using ConferencePlanner.Repository.Ef.Repository;
+using MySqlX.XDevAPI.Common;
 
 namespace ConferencePlanner.WinUi
 {
@@ -40,6 +41,19 @@ namespace ConferencePlanner.WinUi
             HttpClient client = new HttpClient();
             HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
             if(s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+
+            }
+
+        }
+
+        private async Task InsertData(string codul, string nameul)
+        {
+            //List<AddConferenceCountryModel> countrys = new List<AddConferenceCountryModel>();
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/");
+            if (s.IsSuccessStatusCode)
             {
                 string resp = await s.Content.ReadAsStringAsync();
 
@@ -85,9 +99,9 @@ namespace ConferencePlanner.WinUi
 
 
             if (editCountry == null)
-            { 
+            {
                 _getCountry.InsertConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text);
-               
+                //InsertData(CountryCodTb.Text, CoutryNameTb.Text);
                 this.Close();
             } 
 
@@ -113,7 +127,7 @@ namespace ConferencePlanner.WinUi
             editCountry = AddConferance.editedCountry;
 
             countrys = _getCountry.GetConferencesCountry();
-
+            //GetResponse();
             if (editCountry != null)
             {
                 CountryCodTb.Text = editCountry.CountryCode;
@@ -127,7 +141,7 @@ namespace ConferencePlanner.WinUi
                 CoutryNameTb.Text = string.Empty;
                
             }
-            GetResponse();
+           
 
         }
 

@@ -158,6 +158,7 @@ namespace ConferencePlanner.WinUi
 
                 if (ConferenceId == null)
                 {
+
                     button1.Click += new EventHandler(AddConference);
                 }
                 else
@@ -298,8 +299,8 @@ namespace ConferencePlanner.WinUi
             getSpeakerList = getSpeakerRepository.GetSpeaker();
             entryNumberTabSpeaker = Convert.ToInt32(tabSpeakerEntryNumberText.Text);
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+
             getMaxId(getSpeakerList);
-            List<SpeakerModel> getSpeakerInConference = new List<SpeakerModel>();
 
             entryNumberTabCountry = Convert.ToInt32(tabCountryEntryText.Text);
             countryModel = _getCountry.GetConferencesCountry();
@@ -646,7 +647,7 @@ namespace ConferencePlanner.WinUi
         void populateTabSpeakersGrid(List<SpeakerModel> speakerList, int scrollValue, int speakerEntry)
         {
             List<SpeakerModel> speakers = new List<SpeakerModel>();
-           // currentSpeakerGridPage.Clear();
+            // currentSpeakerGridPage.Clear();
             tabSpeakerGrid.Rows.Clear();
             int numberElements = speakerList.Count;
             int i;
@@ -679,8 +680,30 @@ namespace ConferencePlanner.WinUi
             tabSpeakerGrid.Columns[1].ReadOnly = true;
             tabSpeakerGrid.Columns[2].ReadOnly = true;
 
-
+            //elementMainSpeakerId
+            var indexMainSpeaker = currentSpeakerGridPage.FindIndex(mainTxt => mainTxt.Id == elementMainSpeakerId);
+            if(indexMainSpeaker >=0)
+            {
+                tabSpeakerGrid.Rows[indexMainSpeaker].Cells[3].Value = true;
+            }
+            for(int j = 0; j< currentSpeakerGridPage.Count; j++)
+            {
+                if(j!= indexMainSpeaker)
+                {
+                    tabSpeakerGrid.Rows[j].Cells[3].Value = false;
+                }
+            }
+            for (int inconf = 0; inconf < getSpeakerInConference.Count; inconf++)
+            {
+                var index = currentSpeakerGridPage.FindIndex(speakerTxt => speakerTxt.Id == getSpeakerInConference.ElementAt(inconf));
+                if (index >=0)
+                {
+                    tabSpeakerGrid.Rows[index].Cells[4].Value = true;
+                }
+            } 
         }
+
+        
 
         List<SpeakerModel> getListSpeakerInConference()
         {
@@ -779,7 +802,10 @@ namespace ConferencePlanner.WinUi
                 }
                 if (Convert.ToBoolean(tabSpeakerGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == false)
                 {
-                    getSpeakerInConference.Add(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
+                    if (!getSpeakerInConference.Contains(currentSpeakerGridPage.ElementAt(e.RowIndex).Id))
+                    {
+                        getSpeakerInConference.Add(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
+                    }
 
                 }
             }
@@ -790,7 +816,24 @@ namespace ConferencePlanner.WinUi
                 if (Convert.ToBoolean(tabSpeakerGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == false)
                 {
                     elementMainSpeakerId = currentSpeakerGridPage.ElementAt(e.RowIndex).Id;
+                    if (!getSpeakerInConference.Contains(currentSpeakerGridPage.ElementAt(e.RowIndex).Id))
+                    {
+                        getSpeakerInConference.Add(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
+                        tabSpeakerGrid.Rows[e.RowIndex].Cells[4].Value = true;
+                    }
 
+                }
+                var indexMainSpeaker = currentSpeakerGridPage.FindIndex(mainTxt => mainTxt.Id == elementMainSpeakerId);
+                if (indexMainSpeaker >= 0)
+                {
+                    tabSpeakerGrid.Rows[indexMainSpeaker].Cells[3].Value = true;
+                }
+                for (int j = 0; j < currentSpeakerGridPage.Count; j++)
+                {
+                    if (j != indexMainSpeaker)
+                    {
+                        tabSpeakerGrid.Rows[j].Cells[3].Value = false;
+                    }
                 }
             }
         }

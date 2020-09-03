@@ -41,7 +41,7 @@ namespace ConferencePlanner.Api.Controllers
 
         [HttpPost]
         
-        public IActionResult UpdateDemo(string cod, string name, int index)
+        public IActionResult UpdateCountry(string cod, string name, int index)
         {
             _getCountry.UpdateConferenceCountry(cod, name, index);
             return Ok();
@@ -50,7 +50,7 @@ namespace ConferencePlanner.Api.Controllers
         [HttpDelete]
         [Route("{Country}")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult DeleteDemo(int index)
+        public IActionResult DeleteCountry(int index)
         {
             //List<AddConferenceCountryModel> demoModels = _getCountry.GetConferencesCountry();
             _getCountry.DeleteConferenceCoutry(index);
