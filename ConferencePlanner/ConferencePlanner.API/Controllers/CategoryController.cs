@@ -30,17 +30,36 @@ namespace ConferencePlanner.Api.Controllers
             return Ok(categoryModels);
         }
 
+        [HttpGet]
+        [Route("{Id}")]
+
+        public IActionResult GetCategory(int Id)
+        {
+            ConferenceCategoryModel category = conferenceCategory.GetCategory(Id);
+            return Ok(category);
+        }
 
 
 
 
         // POST api/<CategoryController>
         [HttpPost] //add, edit
-              
+        [Route("{Id}")]     
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Post(int Id, ConferenceCategoryModel conferenceCategoryModel)
+        {
+            conferenceCategoryModel.ConferenceCategoryId = Id;
+            conferenceCategory.EditCategory(conferenceCategoryModel);
+            return Ok(conferenceCategoryModel);
+        }
+
+
+        [HttpPost]
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Post(ConferenceCategoryModel conferenceCategoryModel)
         {
-            conferenceCategory.EditCategory(conferenceCategoryModel);
+            conferenceCategory.AddCategory(conferenceCategoryModel);
             return Ok(conferenceCategoryModel);
         }
 
