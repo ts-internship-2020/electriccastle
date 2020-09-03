@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
-using ConferencePlanner.Abstraction.ElectricRepository;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -92,7 +90,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             int nr = sqlCommand.ExecuteNonQuery();
         }
 
-        public void insertCity(int cityId, string cityCode, string cityName, int cityDistrictId)
+        public void insertCity(int cityId, int cityDistrictId, string cityCode, string cityName)
         {
             SqlParameter[] parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@Id", cityId);

@@ -73,6 +73,7 @@
             // TabOrganizer
             // 
             this.TabOrganizer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabOrganizer.BackgroundImage")));
+            this.TabOrganizer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TabOrganizer.Controls.Add(this.OrganizerTabEntriesTextBox);
             this.TabOrganizer.Controls.Add(this.OrganizerTabEntriesLabel);
             this.TabOrganizer.Controls.Add(this.OrganizerFilterButton);
@@ -94,6 +95,7 @@
             // 
             // OrganizerTabEntriesTextBox
             // 
+            this.OrganizerTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizerTabEntriesTextBox.Location = new System.Drawing.Point(122, 334);
             this.OrganizerTabEntriesTextBox.Name = "OrganizerTabEntriesTextBox";
             this.OrganizerTabEntriesTextBox.Size = new System.Drawing.Size(27, 23);
@@ -102,6 +104,7 @@
             // 
             // OrganizerTabEntriesLabel
             // 
+            this.OrganizerTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizerTabEntriesLabel.AutoSize = true;
             this.OrganizerTabEntriesLabel.Location = new System.Drawing.Point(24, 334);
             this.OrganizerTabEntriesLabel.Name = "OrganizerTabEntriesLabel";

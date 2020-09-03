@@ -52,7 +52,7 @@ namespace ConferencePlanner.WinUi
 
         private void NewDistrictForm_Load(object sender, EventArgs e)
         {
-            GetResponse();
+          
             countries = conferenceCountryRepository.GetConferencesCountry();
             CountryComboBox.DataSource = countries;
             CountryComboBox.DisplayMember = "DictionaryCountryName";

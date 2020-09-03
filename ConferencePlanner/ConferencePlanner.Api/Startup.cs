@@ -13,7 +13,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using ConferencePlanner.Api.Swagger;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;//
+using ConferencePlanner.Abstraction.ElectricCastleModel;
+using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using ConferencePlanner.Repository.Ef.Entities;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 
@@ -65,6 +68,9 @@ namespace ConferencePlanner.Api
             services.AddScoped<IEmailParticipant, EmailRepository>();
 
 
+            services.AddScoped<IAddConferenceCityRepository, DictionaryCityRepositoryEF>();
+            services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferenceRepositoryEf>();
+            services.AddScoped<ISpeakerRepository, SpeakerRepositoryEf>();
             services.AddSwagger();
         }
 

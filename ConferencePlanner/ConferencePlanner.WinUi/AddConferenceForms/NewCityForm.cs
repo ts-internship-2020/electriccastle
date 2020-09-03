@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
@@ -96,13 +98,14 @@ namespace ConferencePlanner.WinUi
             if (editCity == null && errorProviderCityCod.GetError(CityCodTb) == "" &&
                                    errorProviderCityName.GetError(CityNameTb) == "")
             {
-               
-                getAddConferenceCityRepository.insertCity(maxCityId + 1, CityCodTb.Text, CityNameTb.Text, getDistrictId());
+                PostAddCity();
+                getAddConferenceCityRepository.insertCity(maxCityId + 1, getDistrictId(), CityCodTb.Text, CityNameTb.Text);
                 this.Close();
             }
             else if (editCity != null && errorProviderCityCod.GetError(CityCodTb) == "" &&
                        errorProviderCityName.GetError(CityNameTb) == "")
             {
+                PostUpdateCity();
                 getAddConferenceCityRepository.updateCity(editCity.DictionaryCityId, CityCodTb.Text, CityNameTb.Text, getDistrictId());
                 this.Close();
             }
@@ -112,9 +115,44 @@ namespace ConferencePlanner.WinUi
             }
         }
 
+        private async Task GetResponseCity()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/City");
+            if(msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
+        private async Task PostAddCity()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/AddCity");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
+        private async Task PostUpdateCity()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/UpdateCity");
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+            }
+
+        }
+
         private void NewCityForm_Load(object sender, EventArgs e)
         {
             int i;
+
+            GetResponseCity();
             errorProviderCityName.SetError(CityNameTb, "");
             errorProviderCityCod.SetError(CityCodTb, "");
             CityCodTb.Text = string.Empty;

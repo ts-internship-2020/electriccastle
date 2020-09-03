@@ -12,7 +12,7 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 
         public void updateCity(int cityId, string cityCode, string cityName, int cityDistrictId);
 
-        public void insertCity(int cityId, string cityCode, string cityName, int cityDistrictId);
+        public void insertCity(int cityId, int cityDistrictId, string cityCode, string cityName);
 
 
         public void deleteCity( int cityId);

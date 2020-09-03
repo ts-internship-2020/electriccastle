@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSpeakerForm));
-            this.editSpeakerPictureBox = new System.Windows.Forms.PictureBox();
             this.editSpeakerCode = new System.Windows.Forms.Label();
             this.editSpeakerName = new System.Windows.Forms.Label();
             this.editSpeakerRating = new System.Windows.Forms.Label();
@@ -47,26 +46,12 @@
             this.errorProviderEditSpeakerNationality = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEditSpeakerPicture = new System.Windows.Forms.ErrorProvider(this.components);
             this.butonCircular1 = new ConferencePlanner.WinUi.ButonCircular();
-            ((System.ComponentModel.ISupportInitialize)(this.editSpeakerPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerNationality)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerPicture)).BeginInit();
             this.SuspendLayout();
-            // 
-            // editSpeakerPictureBox
-            // 
-            this.editSpeakerPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.editSpeakerPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("editSpeakerPictureBox.Image")));
-            this.editSpeakerPictureBox.Location = new System.Drawing.Point(72, 82);
-            this.editSpeakerPictureBox.Name = "editSpeakerPictureBox";
-            this.editSpeakerPictureBox.Size = new System.Drawing.Size(332, 212);
-            this.editSpeakerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.editSpeakerPictureBox.TabIndex = 0;
-            this.editSpeakerPictureBox.TabStop = false;
             // 
             // editSpeakerCode
             // 
@@ -202,10 +187,11 @@
             // 
             // butonCircular1
             // 
-            this.butonCircular1.BackColor = System.Drawing.Color.Lime;
+            this.butonCircular1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butonCircular1.BackColor = System.Drawing.SystemColors.Window;
             this.butonCircular1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.butonCircular1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.butonCircular1.Location = new System.Drawing.Point(632, 350);
+            this.butonCircular1.Location = new System.Drawing.Point(550, 319);
             this.butonCircular1.Name = "butonCircular1";
             this.butonCircular1.Size = new System.Drawing.Size(94, 39);
             this.butonCircular1.TabIndex = 11;
@@ -218,6 +204,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(860, 463);
             this.Controls.Add(this.butonCircular1);
             this.Controls.Add(this.editSpeakerPictureTextBox);
@@ -230,12 +218,10 @@
             this.Controls.Add(this.editSpeakerRating);
             this.Controls.Add(this.editSpeakerName);
             this.Controls.Add(this.editSpeakerCode);
-            this.Controls.Add(this.editSpeakerPictureBox);
             this.Name = "EditSpeakerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditSpeakerForm";
             this.Load += new System.EventHandler(this.EditSpeakerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.editSpeakerPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerRating)).EndInit();
@@ -259,7 +245,6 @@
         private System.Windows.Forms.TextBox editSpeakerRatingTextBox;
         private System.Windows.Forms.TextBox editSpeakerNationalityTextBox;
         private System.Windows.Forms.TextBox editSpeakerPictureTextBox;
-        private System.Windows.Forms.PictureBox editSpeakerPictureBox;
         private System.Windows.Forms.ErrorProvider errorProviderEditSpeakerCode;
         private System.Windows.Forms.ErrorProvider errorProviderEditSpeakerName;
         private System.Windows.Forms.ErrorProvider errorProviderEditSpeakerRating;

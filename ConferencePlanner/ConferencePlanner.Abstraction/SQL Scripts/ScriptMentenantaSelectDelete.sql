@@ -20,6 +20,8 @@ SELECT DictionarySpeakerId, ConferenceId, IsMainSpeaker
 FROM ConferenceXDictionarySpeaker
 WHERE ConferenceId = 13;
 
+COMMIT
+
 BEGIN TRAN
 
 INSERT INTO Conference(ConferenceName, OrganizerEmail, OrganizerName,
