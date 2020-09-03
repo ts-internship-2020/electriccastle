@@ -11,7 +11,6 @@ using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.Helpers;
 using static ConferencePlanner.WinUi.Program;
 using Microsoft.Extensions.DependencyInjection;
-using static ConferencePlanner.WinUi.Program;
 using System.Net.Mail;
 using Windows.ApplicationModel.VoiceCommands;
 using System.Net;
@@ -21,6 +20,7 @@ using System.Drawing.Imaging;
 using Tulpep.NotificationWindow;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ConferencePlanner.WinUi
 {
@@ -29,11 +29,11 @@ namespace ConferencePlanner.WinUi
 
     public partial class MainScreen : Form
     {
+        private HttpClient httpClient;
+
         //private string emailParticipantLogare;
 
         private readonly IParticipantsConferencesRepository _getParticipantRepository;
-
-        private readonly IOrganizerConferencesRepository organizerConferencesRepository;
       
 
         private List<OrganizerConferencesModel> organizerConferences;
@@ -55,13 +55,14 @@ namespace ConferencePlanner.WinUi
         public object QRCodeGenerator { get; private set; }
 
       
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IOrganizerConferencesRepository organizerConferencesRepository, IEmailParticipant _emailPart)
+        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IEmailParticipant _emailPart)
         {
             this._getParticipantRepository = _getParticipantRepository;
-            this.organizerConferencesRepository = organizerConferencesRepository;
            
             this._email = _emailPart;
-           
+            httpClient = new HttpClient();
+
+
             scrollVal = 0;
             InitializeComponent();
             
@@ -115,15 +116,16 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private async Task GetResponseParticipantsConference()
+        private async Task<List<ParticipantsConferencesModel>> GetResponseParticipantsConference()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/ConferenceParticipants/ParticipantsConference");
+            HttpResponseMessage msg = await httpClient.GetAsync("http://localhost:2794/api/ConferenceParticipants/ParticipantsConference");
+            List<ParticipantsConferencesModel> participants = new List<ParticipantsConferencesModel>();
             if (msg.IsSuccessStatusCode)
             {
                 string response = await msg.Content.ReadAsStringAsync();
+                participants = JsonConvert.DeserializeObject<List<ParticipantsConferencesModel>>(response);
             }
-
+            return participants;
         }
 
         private async Task PostParticipantsConferenceState()
@@ -137,15 +139,15 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void MainScreen_Load(object sender, EventArgs e)
+        private async void MainScreen_Load(object sender, EventArgs e)
         {
-            GetResponseParticipantsConference();
-            conferences = _getParticipantRepository.GetParticipantsConferences();
+            conferences = await GetResponseParticipantsConference();
+
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
             populateGridParticipants(conferences, scrollVal, numberEntry);
 
+            await GetOrganizerConferencesViaAPI();
 
-            organizerConferences = this.organizerConferencesRepository.GetConferencesForOrganizer(EmailParticipants);
             paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
             OrganizerTabEntriesTextBox.Text = pageSize.ToString();
             OrganizerGrid.DataSource = paginationHelper.GetPage();
@@ -153,6 +155,8 @@ namespace ConferencePlanner.WinUi
             GenerateOrganizerEditButtons();
             ManageOrganizerPaginationButtonsState();
         }
+
+
         
         private void GenerateOrganizerEditButtons()
         {
@@ -164,28 +168,28 @@ namespace ConferencePlanner.WinUi
             buttonEdit.UseColumnTextForButtonValue = true;
         }
       
-        private void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
+        private async void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
         {
             scrollVal = 0;
-            List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            List<ParticipantsConferencesModel> conferenceParticipants = await GetResponseParticipantsConference();
             conferences = conferenceParticipants.Where(conference => conference.StartDate >= DatePickerParticipantStart.Value).ToList();
             populateGridParticipants(conferences, scrollVal, numberEntry);
 
         }
 
-        private void DatePickerParticipantEnd_ValueChanged(object sender, EventArgs e)
+        private async void DatePickerParticipantEnd_ValueChanged(object sender, EventArgs e)
         {
             scrollVal = 0;
-            List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            List<ParticipantsConferencesModel> conferenceParticipants = await GetResponseParticipantsConference();
             conferences = conferenceParticipants.Where(conference => conference.EndDate <= DatePickerParticipantEnd.Value).ToList();
             populateGridParticipants(conferences, scrollVal, numberEntry);
         }
 
-        private void FilterParticipants_Click(object sender, EventArgs e)
+        private async void FilterParticipants_Click(object sender, EventArgs e)
         {
           
             scrollVal = 0;
-            List<ParticipantsConferencesModel> conferenceParticipants = _getParticipantRepository.GetParticipantsConferences();
+            List<ParticipantsConferencesModel> conferenceParticipants = await GetResponseParticipantsConference();
             conferences = conferenceParticipants.Where(conference => (conference.StartDate >= DatePickerParticipantStart.Value) && 
                                                         (conference.EndDate <= DatePickerParticipantEnd.Value) ).ToList();
             populateGridParticipants(conferences, scrollVal, numberEntry);
@@ -435,6 +439,19 @@ namespace ConferencePlanner.WinUi
                 OrganizerGrid.DataSource = paginationHelper.GetPage();
                 ManageOrganizerPaginationButtonsState();
             }
+        }
+
+        //List<ParticipantsConferencesModel>
+        private async Task GetOrganizerConferencesViaAPI()
+        {
+            HttpResponseMessage message = await httpClient.GetAsync("http://localhost:2794/api/OrganizerConferences/" + EmailParticipants);
+            //List<OrganizerConferencesModel> conferences = new List<OrganizerConferencesModel>();
+            if (message.IsSuccessStatusCode)
+            {
+                string resp = await message.Content.ReadAsStringAsync();
+                organizerConferences = JsonConvert.DeserializeObject<List<OrganizerConferencesModel>>(resp);
+            }
+            //return conferences;
         }
     }
 }
