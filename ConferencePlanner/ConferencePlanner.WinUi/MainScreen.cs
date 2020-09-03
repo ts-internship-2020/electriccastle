@@ -34,9 +34,6 @@ namespace ConferencePlanner.WinUi
 
         //private string emailParticipantLogare;
 
-        private readonly IParticipantsConferencesRepository _getParticipantRepository;
-      
-
         private List<OrganizerConferencesModel> organizerConferences;
 
         private PaginationHelper<OrganizerConferencesModel> paginationHelper;
@@ -58,10 +55,8 @@ namespace ConferencePlanner.WinUi
         public object QRCodeGenerator { get; private set; }
 
       
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IEmailParticipant _emailPart)
+        public MainScreen(IEmailParticipant _emailPart)
         {
-            this._getParticipantRepository = _getParticipantRepository;
-           
             this._email = _emailPart;
             httpClient = new HttpClient();
 
