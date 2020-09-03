@@ -1508,6 +1508,8 @@ namespace ConferencePlanner.WinUi
                 ManageTypeTabPaginationButtonsState();
             }
         }
+
+      
     }
 }
 
