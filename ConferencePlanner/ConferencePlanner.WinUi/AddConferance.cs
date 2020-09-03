@@ -332,7 +332,6 @@ namespace ConferencePlanner.WinUi
             }
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
 
-            GetResponseCity();
             entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
             cityModel = await GetResponseCity();
                 //_getCity.GetConferencesCity();
