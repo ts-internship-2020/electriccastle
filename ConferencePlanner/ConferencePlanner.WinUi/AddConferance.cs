@@ -275,31 +275,36 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private async Task GetResponseCity()
+        private async Task<List<AddConferenceCityModel>> GetResponseCity()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/City");
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/DictionaryCity/City");
+            List<AddConferenceCityModel> city = new List<AddConferenceCityModel>();
             if (msg.IsSuccessStatusCode)
             {
                 string response = await msg.Content.ReadAsStringAsync();
+                city = JsonConvert.DeserializeObject<List<AddConferenceCityModel>>(response);
             }
-
+            return city;
         }
-        private async Task GetResponseSpeaker()
+        private async Task<List<SpeakerModel>> GetResponseSpeaker()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/Speaker");
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/DictionarySpeaker/Speaker");
+            List<SpeakerModel> speaker = new List<SpeakerModel>();
             if (msg.IsSuccessStatusCode)
             {
                 string response = await msg.Content.ReadAsStringAsync();
+                speaker = JsonConvert.DeserializeObject<List<SpeakerModel>>(response);
             }
-
+            return speaker;
         }
 
         private async void AddConferance_Load(object sender, EventArgs e)
         {
-            GetResponseSpeaker();
-            getSpeakerList = getSpeakerRepository.GetSpeaker();
+            
+            getSpeakerList = await GetResponseSpeaker();
+            //getSpeakerRepository.GetSpeaker();
             entryNumberTabSpeaker = Convert.ToInt32(tabSpeakerEntryNumberText.Text);
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
 
@@ -329,7 +334,8 @@ namespace ConferencePlanner.WinUi
 
             GetResponseCity();
             entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
-            cityModel = _getCity.GetConferencesCity();
+            cityModel = await GetResponseCity();
+                //_getCity.GetConferencesCity();
             populateGridCity(cityModel, scrollVal, entryNumberTabCity);
             
 
@@ -347,7 +353,7 @@ namespace ConferencePlanner.WinUi
             InitializeUIData();
         }
 
-        private void InitializeUIData()
+        private async void InitializeUIData()
         {
             if (ConferenceId == null)
             {
@@ -395,7 +401,7 @@ namespace ConferencePlanner.WinUi
                 List<SpeakerListModel> editConferenceSpeakers = new List<SpeakerListModel>();
                 editConferenceSpeakers = conference.Speakers;
                 scrollValSpeaker = 0;
-                getSpeakerList = getSpeakerRepository.GetSpeaker();
+                getSpeakerList = await GetResponseSpeaker();
                 populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
 
                 foreach (SpeakerListModel speakerEdit in editConferenceSpeakers)
@@ -778,7 +784,7 @@ namespace ConferencePlanner.WinUi
         }
 
 
-        private void tabSpeakerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void tabSpeakerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //DataGridViewButtonColumn buttonDelete = new DataGridViewButtonColumn();
             //CategoryTabGrid.Columns.Add(buttonDelete);
@@ -802,7 +808,7 @@ namespace ConferencePlanner.WinUi
                 PostDeleteSpeaker();
                 getSpeakerRepository.deleteSpeaker(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
                 scrollValSpeaker = 0;
-                getSpeakerList = getSpeakerRepository.GetSpeaker();
+                getSpeakerList = await GetResponseSpeaker();
                 populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
 
             }
@@ -921,11 +927,11 @@ namespace ConferencePlanner.WinUi
             addEditCategory.ShowDialog();
         }
 
-        private void AddConferance_Activated(object sender, EventArgs e)
+        private async void AddConferance_Activated(object sender, EventArgs e)
         {
 
             scrollValSpeaker = 0;
-            getSpeakerList = getSpeakerRepository.GetSpeaker();
+            getSpeakerList = await GetResponseSpeaker();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
             getMaxId(getSpeakerList);
         }
@@ -952,12 +958,12 @@ namespace ConferencePlanner.WinUi
             populateGridCountry(countryModel, scrollValCountry, entryNumberTabCountry);
 
             scrollValSpeaker = 0;
-            getSpeakerList = getSpeakerRepository.GetSpeaker();
+            getSpeakerList = await GetResponseSpeaker();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
             getMaxId(getSpeakerList);
 
             scrollVal = 0;
-            cityModel = _getCity.GetConferencesCity();
+            cityModel = await GetResponseCity();
             populateGridCity(cityModel, scrollVal, entryNumberTabCity);
 
         }
@@ -1181,10 +1187,10 @@ namespace ConferencePlanner.WinUi
         
 
 
-        private void filterCity_TextChanged(object sender, EventArgs e)
+        private async void filterCity_TextChanged(object sender, EventArgs e)
         {
             scrollVal = 0;
-            List<AddConferenceCityModel> cityModelTxt = _getCity.GetConferencesCity();
+            List<AddConferenceCityModel> cityModelTxt = await GetResponseCity();
 
             cityModel = cityModelTxt.Where(cityModel => (cityModel.DictionaryCityName.Contains(filterCity.Text)) ||
             (cityModel.CityCode.Contains(filterCity.Text))).ToList();
@@ -1231,7 +1237,7 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-        private void DGVCity_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVCity_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             editedCity = null;
             //check if only Delete or Edit button is pressed
@@ -1256,7 +1262,7 @@ namespace ConferencePlanner.WinUi
                 PostDeleteCity();
                 _getCity.deleteCity(currentCityGridPage.ElementAt(e.RowIndex).DictionaryCityId);
                 scrollVal = 0;
-                cityModel = _getCity.GetConferencesCity();
+                cityModel = await GetResponseCity();
                 populateGridCity(cityModel, scrollVal, entryNumberTabCity);
                 
             }
@@ -1361,10 +1367,10 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void tabSpeakerFilterText_TextChanged(object sender, EventArgs e)
+        private async void tabSpeakerFilterText_TextChanged(object sender, EventArgs e)
         {
             scrollValSpeaker = 0;
-            List<SpeakerModel> speakerModelTxt = getSpeakerRepository.GetSpeaker();
+            List<SpeakerModel> speakerModelTxt = await GetResponseSpeaker();
             getSpeakerList = speakerModelTxt.Where(getSpeakerList => (getSpeakerList.Name.Contains(tabSpeakerFilterText.Text)) ||
             (getSpeakerList.Code.Contains(tabSpeakerFilterText.Text))).ToList();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);

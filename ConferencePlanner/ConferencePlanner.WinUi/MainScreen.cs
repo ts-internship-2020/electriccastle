@@ -21,6 +21,7 @@ using Tulpep.NotificationWindow;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace ConferencePlanner.WinUi
 {
@@ -128,15 +129,16 @@ namespace ConferencePlanner.WinUi
             return participants;
         }
 
-        private async Task PostParticipantsConferenceState()
+        private async Task PostParticipantsConferenceState(int index)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/ConferenceParticipants/ParticipantState");
-            if (msg.IsSuccessStatusCode)
-            {
-                string response = await msg.Content.ReadAsStringAsync();
-            }
+            string url = "http://localhost:2794/api/ConferenceParticipants/ParticipantState?index=" + index + "&email=" + EmailParticipants;
+            HttpContent content = new StringContent("", Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await httpClient.PostAsync(url, content);
 
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Data not loaded properly from API");
+            }
         }
 
         private async void MainScreen_Load(object sender, EventArgs e)
@@ -295,14 +297,14 @@ namespace ConferencePlanner.WinUi
         }
  
 
-        private void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //_email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
 
             if (e.ColumnIndex == 7)
             {
-                PostParticipantsConferenceState();
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
+                await PostParticipantsConferenceState(e.ColumnIndex);
+                //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
                sendMail(EmailParticipants);
@@ -312,8 +314,8 @@ namespace ConferencePlanner.WinUi
 
             else if (e.ColumnIndex == 8)
             {
-                PostParticipantsConferenceState();
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
+                await PostParticipantsConferenceState(e.ColumnIndex);
+                //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
@@ -328,8 +330,8 @@ namespace ConferencePlanner.WinUi
             }
             else if (e.ColumnIndex == 9)
             {
-                PostParticipantsConferenceState();
-                _getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
+                await PostParticipantsConferenceState(e.ColumnIndex);
+                //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;
                 if (ts.TotalMinutes >= 6)
