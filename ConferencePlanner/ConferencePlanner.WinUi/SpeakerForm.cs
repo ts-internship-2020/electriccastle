@@ -11,6 +11,9 @@ using System.Net;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ConferencePlanner.WinUi
 {
@@ -19,7 +22,6 @@ namespace ConferencePlanner.WinUi
 
         private readonly ISpeakerDetailRepository _getSpeakerDetailRepository;
 
-        //private List<SpeakerDetailModel> speakerDetail;
 
         public SpeakerForm(ISpeakerDetailRepository _getSpeakerDetailRepository)
         {
@@ -27,15 +29,17 @@ namespace ConferencePlanner.WinUi
             InitializeComponent();
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
+        private async Task<List<SpeakerDetailModel>> GetResponseSpeakerDetail()
         {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/SpeakerDetail");
+            List<SpeakerDetailModel> speakers = new List<SpeakerDetailModel>();
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+                speakers = JsonConvert.DeserializeObject<List<SpeakerDetailModel>>(response);
+            }
+            return speakers;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -43,32 +47,27 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void SpeakerForm_Load(object sender, EventArgs e)
+        private async void SpeakerForm_Load(object sender, EventArgs e)
         {
             int i;
             int nrElements;
             SpeakerDetailModel listElement;
 
-            List<SpeakerDetailModel> speakerDetail = _getSpeakerDetailRepository.GetSpeakerDetail();
+            List<SpeakerDetailModel> speakerDetail = await GetResponseSpeakerDetail();
             nrElements = speakerDetail.Count;
             
             for (i = 0; i < nrElements; i++)
             {
                 listElement = speakerDetail.ElementAt(i);
-                if (MainScreen.SetValueIdSpeker.ToString() == listElement.Id.ToString())
+                if (MainScreen.SetValueIdSpeker == listElement.Name)
                 {
                     speakerNameText.Text = listElement.Name.ToString();
                     speakerRatingText.Text = listElement.Rating.ToString();
                     speakerNationalityText.Text = listElement.Nationality.ToString(); 
                     pictureSpeaker.LoadAsync(listElement.Picture.ToString());
-
+                    break;
                 }
             }
-
-        }
-
-        private void SpeakerRating_Click(object sender, EventArgs e)
-        {
 
         }
     }
