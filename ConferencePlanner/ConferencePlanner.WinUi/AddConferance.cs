@@ -179,10 +179,10 @@ namespace ConferencePlanner.WinUi
             await AddConferenceViaAPI(conference);
         }
 
-        private void EditConference(object sender, EventArgs e)
+        private async void EditConference(object sender, EventArgs e)
         {
             ConferenceModel conference = PopulateConferenceObject();
-            conferenceRepository.EditConference(conference);
+            await EditConferenceViaAPI(conference);
         }
 
         private void btBack_Click(object sender, EventArgs e)
@@ -1397,7 +1397,7 @@ namespace ConferencePlanner.WinUi
             }
             else
             {
-                conferenceRepository.EditConference(conference);
+                await EditConferenceViaAPI(conference);
 
                 AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
                 addConferance.ConferenceId = null;
@@ -1501,6 +1501,18 @@ namespace ConferencePlanner.WinUi
         private async Task AddConferenceViaAPI(ConferenceModel conference)
         {
             string url = "http://localhost:2794/api/Conference/";
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(conference), Encoding.UTF8, "application/json");
+            HttpResponseMessage message = await httpClient.PostAsync(url, content);
+
+            if (!message.IsSuccessStatusCode)
+            {
+                throw new Exception("Data not loaded properly from API");
+            }
+        }
+
+        private async Task EditConferenceViaAPI(ConferenceModel conference)
+        {
+            string url = "http://localhost:2794/api/Conference/" + (int)ConferenceId;
             HttpContent content = new StringContent(JsonConvert.SerializeObject(conference), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await httpClient.PostAsync(url, content);
 
