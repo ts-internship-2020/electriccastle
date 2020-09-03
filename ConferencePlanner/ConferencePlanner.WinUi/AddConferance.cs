@@ -158,6 +158,7 @@ namespace ConferencePlanner.WinUi
 
                 if (ConferenceId == null)
                 {
+
                     button1.Click += new EventHandler(AddConference);
                 }
                 else
@@ -171,12 +172,14 @@ namespace ConferencePlanner.WinUi
 
         private void AddConference(object sender, EventArgs e)
         {
-            conferenceRepository.AddConference(PopulateConferenceObject());
+            ConferenceModel conference = PopulateConferenceObject();
+            conferenceRepository.AddConference(conference);
         }
 
         private void EditConference(object sender, EventArgs e)
         {
-            conferenceRepository.EditConference(PopulateConferenceObject());
+            ConferenceModel conference = PopulateConferenceObject();
+            conferenceRepository.EditConference(conference);
         }
 
         private void btBack_Click(object sender, EventArgs e)
@@ -296,8 +299,8 @@ namespace ConferencePlanner.WinUi
             getSpeakerList = getSpeakerRepository.GetSpeaker();
             entryNumberTabSpeaker = Convert.ToInt32(tabSpeakerEntryNumberText.Text);
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+
             getMaxId(getSpeakerList);
-            List<SpeakerModel> getSpeakerInConference = new List<SpeakerModel>();
 
             entryNumberTabCountry = Convert.ToInt32(tabCountryEntryText.Text);
             countryModel = _getCountry.GetConferencesCountry();
@@ -482,6 +485,7 @@ namespace ConferencePlanner.WinUi
 
                 DGVCity.Rows[n].Cells[0].Value = listCity.DictionaryCityName.ToString();
                 DGVCity.Rows[n].Cells[1].Value = listCity.CityCode.ToString();
+                DGVCity.Rows[n].Cells[2].Value = listCity.DictionaryCityId;
                 cities.Add(listCity);
             }
             currentCityGridPage = cities;
@@ -643,7 +647,7 @@ namespace ConferencePlanner.WinUi
         void populateTabSpeakersGrid(List<SpeakerModel> speakerList, int scrollValue, int speakerEntry)
         {
             List<SpeakerModel> speakers = new List<SpeakerModel>();
-           // currentSpeakerGridPage.Clear();
+            // currentSpeakerGridPage.Clear();
             tabSpeakerGrid.Rows.Clear();
             int numberElements = speakerList.Count;
             int i;
@@ -676,8 +680,30 @@ namespace ConferencePlanner.WinUi
             tabSpeakerGrid.Columns[1].ReadOnly = true;
             tabSpeakerGrid.Columns[2].ReadOnly = true;
 
-
+            //elementMainSpeakerId
+            var indexMainSpeaker = currentSpeakerGridPage.FindIndex(mainTxt => mainTxt.Id == elementMainSpeakerId);
+            if(indexMainSpeaker >=0)
+            {
+                tabSpeakerGrid.Rows[indexMainSpeaker].Cells[3].Value = true;
+            }
+            for(int j = 0; j< currentSpeakerGridPage.Count; j++)
+            {
+                if(j!= indexMainSpeaker)
+                {
+                    tabSpeakerGrid.Rows[j].Cells[3].Value = false;
+                }
+            }
+            for (int inconf = 0; inconf < getSpeakerInConference.Count; inconf++)
+            {
+                var index = currentSpeakerGridPage.FindIndex(speakerTxt => speakerTxt.Id == getSpeakerInConference.ElementAt(inconf));
+                if (index >=0)
+                {
+                    tabSpeakerGrid.Rows[index].Cells[4].Value = true;
+                }
+            } 
         }
+
+        
 
         List<SpeakerModel> getListSpeakerInConference()
         {
@@ -776,7 +802,10 @@ namespace ConferencePlanner.WinUi
                 }
                 if (Convert.ToBoolean(tabSpeakerGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == false)
                 {
+                    if (!getSpeakerInConference.Contains(currentSpeakerGridPage.ElementAt(e.RowIndex).Id))
+                    {
                         getSpeakerInConference.Add(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
+                    }
 
                 }
             }
@@ -787,7 +816,24 @@ namespace ConferencePlanner.WinUi
                 if (Convert.ToBoolean(tabSpeakerGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == false)
                 {
                     elementMainSpeakerId = currentSpeakerGridPage.ElementAt(e.RowIndex).Id;
+                    if (!getSpeakerInConference.Contains(currentSpeakerGridPage.ElementAt(e.RowIndex).Id))
+                    {
+                        getSpeakerInConference.Add(currentSpeakerGridPage.ElementAt(e.RowIndex).Id);
+                        tabSpeakerGrid.Rows[e.RowIndex].Cells[4].Value = true;
+                    }
 
+                }
+                var indexMainSpeaker = currentSpeakerGridPage.FindIndex(mainTxt => mainTxt.Id == elementMainSpeakerId);
+                if (indexMainSpeaker >= 0)
+                {
+                    tabSpeakerGrid.Rows[indexMainSpeaker].Cells[3].Value = true;
+                }
+                for (int j = 0; j < currentSpeakerGridPage.Count; j++)
+                {
+                    if (j != indexMainSpeaker)
+                    {
+                        tabSpeakerGrid.Rows[j].Cells[3].Value = false;
+                    }
                 }
             }
         }
@@ -1302,9 +1348,10 @@ namespace ConferencePlanner.WinUi
 
         private void btSaveAndNew_Click(object sender, EventArgs e)
         {
+            ConferenceModel conference = PopulateConferenceObject();
             if (ConferenceId == null)
             {
-                conferenceRepository.AddConference(PopulateConferenceObject());
+                conferenceRepository.AddConference(conference);
 
                 AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
                 addConferance.ConferenceId = null;
@@ -1312,7 +1359,7 @@ namespace ConferencePlanner.WinUi
             }
             else
             {
-                conferenceRepository.EditConference(PopulateConferenceObject());
+                conferenceRepository.EditConference(conference);
 
                 AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
                 addConferance.ConferenceId = null;
@@ -1322,9 +1369,26 @@ namespace ConferencePlanner.WinUi
 
         private ConferenceModel PopulateConferenceObject()
         {
+            List<SpeakerListModel> speakers = new List<SpeakerListModel>();
+
+            speakers = getSpeakerInConference.Select(speakerId => new SpeakerListModel
+            {
+                DictionarySpeakerId = speakerId,
+                IsMainSpeaker =  speakerId == elementMainSpeakerId ? true : false
+            }).ToList();
+
             return new ConferenceModel
             {
-
+                ConferenceName = txtName.Text,
+                OrganizerEmail = EmailParticipants,
+                OrganizerName = txtOrganizer.Text,
+                StartDate = dateTimePicker1.Value,
+                EndDate = dateTimePicker2.Value,
+                DictionaryConferenceCategoryId = (int)CategoryTabGrid.SelectedRows[0].Cells["ConferenceCategoryId"].Value,
+                DictionaryConferenceTypeId = (int)dataGridViewType.SelectedRows[0].Cells["ConferenceTypeId"].Value,
+                AdressDetails = txtAddress.Text,
+                DictionaryCityId = (int)DGVCity.SelectedRows[0].Cells["CityId"].Value,
+                Speakers = speakers
             };
         }
 
