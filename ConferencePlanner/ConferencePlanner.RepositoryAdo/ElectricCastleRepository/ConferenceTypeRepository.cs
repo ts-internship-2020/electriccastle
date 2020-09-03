@@ -75,8 +75,8 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             sqlCommand.CommandText = "UPDATE DictionaryConferenceType set DictionaryConferenceTypeName=@DictionaryConferenceTypeName," +
                                        "ConferenceTypeCode=@DictionaryConferenceTypeCode where DictionaryConferenceTypeId=@DictionaryConferenceTypeId ";
 
-        int rows=  sqlCommand.ExecuteNonQuery();
-           
+            int rows = sqlCommand.ExecuteNonQuery();
+
 
         }
 
