@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ConferencePlanner.Abstraction.ElectricCastleModel;
 using ConferencePlanner.Abstraction.ElectricCastleRepository;
+using Newtonsoft.Json;
 
 namespace ConferencePlanner.WinUi
 {
@@ -115,15 +116,30 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-        private async Task GetResponseCity()
+        private async Task<List<AddConferenceCityModel>> GetResponseNewCity()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/City");
-            if(msg.IsSuccessStatusCode)
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/DictionaryCity/City");
+            List<AddConferenceCityModel> city = new List<AddConferenceCityModel>();
+            if (msg.IsSuccessStatusCode)
             {
                 string response = await msg.Content.ReadAsStringAsync();
+                city = JsonConvert.DeserializeObject<List<AddConferenceCityModel>>(response);
             }
+            return city;
+        }
 
+        private async Task<List<AddConferenceDistrictModel>> GetResponseNewDistrict()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            List<AddConferenceDistrictModel> district = new List<AddConferenceDistrictModel>();
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+                district = JsonConvert.DeserializeObject<List<AddConferenceDistrictModel>>(response);
+            }
+            return district;
         }
 
         private async Task PostAddCity()
@@ -148,19 +164,19 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void NewCityForm_Load(object sender, EventArgs e)
+        private async void NewCityForm_Load(object sender, EventArgs e)
         {
             int i;
 
-            GetResponseCity();
+
             errorProviderCityName.SetError(CityNameTb, "");
             errorProviderCityCod.SetError(CityCodTb, "");
             CityCodTb.Text = string.Empty;
             DistrictNameTb.Text = string.Empty;
             CityNameTb.Text = string.Empty;
             editCity = AddConferance.editedCity;
-            districts = getAddConferenceDistrictRepository.GetConferencesDistrict();
-            citiesCityForm = getAddConferenceCityRepository.GetConferencesCity();
+            districts = await GetResponseNewDistrict();
+            citiesCityForm = await GetResponseNewCity();
             MaxCityId();
 
             if (editCity != null)

@@ -14,7 +14,7 @@ using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Helpers;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
 using ConferencePlanner.Repository.Ef.Repository;
-//using MySqlX.XDevAPI.Common;
+
 
 namespace ConferencePlanner.WinUi
 {

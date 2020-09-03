@@ -307,14 +307,27 @@ namespace ConferencePlanner.WinUi
             getMaxId(getSpeakerList);
 
             entryNumberTabCountry = Convert.ToInt32(tabCountryEntryText.Text);
-            countryModel = _getCountry.GetConferencesCountry();
+            //countryModel = _getCountry.GetConferencesCountry();
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+                countryModel = (List<AddConferenceCountryModel>)JsonConvert.DeserializeObject<IEnumerable<AddConferenceCountryModel>>(resp);
+            }
             populateGridCountry(countryModel, scrollVal, entryNumberTabCountry);
 
             entryNumberTabDistrict = Convert.ToInt32(tabDistrictEntryText.Text);
-            districtModel = conferenceDistrictRepository.GetConferencesDistrict();
+            //districtModel = conferenceDistrictRepository.GetConferencesDistrict();
+            HttpClient client1 = new HttpClient();
+            HttpResponseMessage s2 = await client1.GetAsync("http://localhost:2794/api/District/{District}");
+            if (s2.IsSuccessStatusCode)
+            {
+                string resp = await s2.Content.ReadAsStringAsync();
+                districtModel = (List<AddConferenceDistrictModel>)JsonConvert.DeserializeObject<IEnumerable<AddConferenceDistrictModel>>(resp);
+            }
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
 
-            GetResponseCity();
             entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
             cityModel = await GetResponseCity();
                 //_getCity.GetConferencesCity();
