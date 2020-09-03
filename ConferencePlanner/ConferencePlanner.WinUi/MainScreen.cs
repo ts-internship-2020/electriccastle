@@ -34,9 +34,6 @@ namespace ConferencePlanner.WinUi
 
         //private string emailParticipantLogare;
 
-        private readonly IParticipantsConferencesRepository _getParticipantRepository;
-      
-
         private List<OrganizerConferencesModel> organizerConferences;
 
         private PaginationHelper<OrganizerConferencesModel> paginationHelper;
@@ -51,19 +48,19 @@ namespace ConferencePlanner.WinUi
 
         private int numberEntry;
 
-        public static int SetValueIdSpeker = 0;
+        public static string SetValueIdSpeker;
+
+        private List<ParticipantsConferencesModel> currentPageConferences;
 
         public object QRCodeGenerator { get; private set; }
 
       
-        public MainScreen(IParticipantsConferencesRepository _getParticipantRepository, IEmailParticipant _emailPart)
+        public MainScreen(IEmailParticipant _emailPart)
         {
-            this._getParticipantRepository = _getParticipantRepository;
-           
             this._email = _emailPart;
             httpClient = new HttpClient();
 
-
+            //currentPageConferences = new List<ParticipantsConferencesModel>();
             scrollVal = 0;
             InitializeComponent();
             
@@ -72,7 +69,7 @@ namespace ConferencePlanner.WinUi
        
         void populateGridParticipants(List<ParticipantsConferencesModel> conferenceParticipants, int scrollVal, int entries)
         {
-           
+            List<ParticipantsConferencesModel> conf = new List<ParticipantsConferencesModel>();
             ConferencesParticipant.Rows.Clear();
             int nr = conferenceParticipants.Count;
             int i;
@@ -109,11 +106,12 @@ namespace ConferencePlanner.WinUi
                 ConferencesParticipant.Rows[n].Cells[8].Value = "Join";
                 ConferencesParticipant.Rows[n].Cells[9].Value = "Withdraw";
                 ConferencesParticipant.Rows[n].Cells[10].Value = listElement.StateName.ToString();
-
+                conf.Add(listElement);
                 
             }
+            currentPageConferences = conf;
 
-            
+
 
         }
 
@@ -342,7 +340,7 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 6)
             {
-                SetValueIdSpeker = conferences.ElementAt(e.RowIndex).Id;
+                SetValueIdSpeker = currentPageConferences.ElementAt(e.RowIndex).Speaker.ToString(); ;
                 SpeakerForm sf = Program.ServiceProvider.GetService<SpeakerForm>();
                 sf.ShowDialog();
             }

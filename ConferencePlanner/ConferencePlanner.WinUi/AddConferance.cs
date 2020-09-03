@@ -26,7 +26,8 @@ namespace ConferencePlanner.WinUi
 {
     public partial class AddConferance : Form
     {
-        private readonly IConferanceCategory _getConferanceCategory;
+        private HttpClient httpClient;
+
 
         private readonly IConferenceRepository conferenceRepository;
 
@@ -90,8 +91,7 @@ namespace ConferencePlanner.WinUi
 
         public int? ConferenceId { get; set; }
 
-        public AddConferance(IConferanceCategory getConferanceCategory,
-                             IConferenceCategoryRepository conferenceCategoryRepository,
+        public AddConferance(IConferenceCategoryRepository conferenceCategoryRepository,
                              IAddConferenceCityRepository getCity,
                              IAddConferenceCountryRepository getCountry,
                              IAddConferenceDistrictRepository getDistrict,
@@ -105,13 +105,13 @@ namespace ConferencePlanner.WinUi
             this._getCountry = getCountry;
             scrollVal = 0;
             InitializeComponent();
-            _getConferanceCategory = getConferanceCategory;
+            httpClient = new HttpClient();
+
             this.conferenceCategoryRepository = conferenceCategoryRepository;
             this.conferanceTypeRepository = conferanceTypeRepository;
             this.conferenceRepository = conferenceRepository;
-
-
             this.getSpeakerRepository = getSpeakerRepository;
+
             scrollValSpeaker = 0;
             elementMainSpeakerId = 0;
             getSpeakerInConference = new List<int>(); 
@@ -173,10 +173,10 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void AddConference(object sender, EventArgs e)
+        private async void AddConference(object sender, EventArgs e)
         {
             ConferenceModel conference = PopulateConferenceObject();
-            conferenceRepository.AddConference(conference);
+            await AddConferenceViaAPI(conference);
         }
 
         private void EditConference(object sender, EventArgs e)
@@ -256,8 +256,7 @@ namespace ConferencePlanner.WinUi
         }
         private async Task PostDeleteCity()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionaryCity/DeleteCity");
+            HttpResponseMessage msg = await httpClient.GetAsync("http://localhost:2794/DictionaryCity/DeleteCity");
             if (msg.IsSuccessStatusCode)
             {
                 string response = await msg.Content.ReadAsStringAsync();
@@ -266,8 +265,7 @@ namespace ConferencePlanner.WinUi
         }
         private async Task PostDeleteSpeaker()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/DictionarySpeaker/DeleteSpeaker");
+            HttpResponseMessage msg = await httpClient.GetAsync("http://localhost:2794/DictionarySpeaker/DeleteSpeaker");
             if (msg.IsSuccessStatusCode)
             {
                 string response = await msg.Content.ReadAsStringAsync();
@@ -277,8 +275,7 @@ namespace ConferencePlanner.WinUi
 
         private async Task<List<AddConferenceCityModel>> GetResponseCity()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/DictionaryCity/City");
+            HttpResponseMessage msg = await httpClient.GetAsync("http://localhost:2794/api/DictionaryCity/City");
             List<AddConferenceCityModel> city = new List<AddConferenceCityModel>();
             if (msg.IsSuccessStatusCode)
             {
@@ -289,8 +286,7 @@ namespace ConferencePlanner.WinUi
         }
         private async Task<List<SpeakerModel>> GetResponseSpeaker()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/DictionarySpeaker/Speaker");
+            HttpResponseMessage msg = await httpClient.GetAsync("http://localhost:2794/api/DictionarySpeaker/Speaker");
             List<SpeakerModel> speaker = new List<SpeakerModel>();
             if (msg.IsSuccessStatusCode)
             {
@@ -332,7 +328,6 @@ namespace ConferencePlanner.WinUi
             }
             populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
 
-            GetResponseCity();
             entryNumberTabCity = Convert.ToInt32(tabCityEntryText.Text);
             cityModel = await GetResponseCity();
                 //_getCity.GetConferencesCity();
@@ -368,7 +363,7 @@ namespace ConferencePlanner.WinUi
             }
             else
             {
-                ConferenceModel conference = conferenceRepository.GetConference((int)ConferenceId);
+                ConferenceModel conference = await GetConferenceViaAPI();
                 txtName.Text = conference.ConferenceName;
                 txtOrganizer.Text = conference.OrganizerName;
                 txtAddress.Text = conference.AdressDetails;
@@ -939,12 +934,11 @@ namespace ConferencePlanner.WinUi
 
         private async void TypeReloadData()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Type/f");
+            HttpResponseMessage s = await httpClient.GetAsync("http://localhost:2794/api/Type/f");
             if (s.IsSuccessStatusCode)
             {
                 string resp = await s.Content.ReadAsStringAsync();
-                conferanceTypeModels = (List<ConferenceTypeModel>)JsonConvert.DeserializeObject<IEnumerable<ConferenceTypeModel>>(resp);
+                conferanceTypeModels = JsonConvert.DeserializeObject<List<ConferenceTypeModel>>(resp);
             }
             //conferanceTypeModels = conferanceTypeRepository.getAllTypes();
             conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(conferanceTypeModels, typeTabPageSize);
@@ -969,12 +963,11 @@ namespace ConferencePlanner.WinUi
         }
         private async void CategoryTabReloadData()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Category");
+            HttpResponseMessage s = await httpClient.GetAsync("http://localhost:2794/api/Category");
             if (s.IsSuccessStatusCode)
             {
                 string resp = await s.Content.ReadAsStringAsync();
-                conferanceTypeModels = (List<ConferenceTypeModel>)JsonConvert.DeserializeObject<IEnumerable<ConferenceTypeModel>>(resp);
+                conferanceTypeModels = JsonConvert.DeserializeObject<List<ConferenceTypeModel>> (resp);
             }
 
             // conferenceCategories = conferenceCategoryRepository.GetAllCategories();
@@ -1228,8 +1221,7 @@ namespace ConferencePlanner.WinUi
 
         private async Task EditCountry()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            HttpResponseMessage s = await httpClient.GetAsync("http://localhost:2794/api/Country/{Country}");
             if (s.IsSuccessStatusCode)
             {
                 string resp = await s.Content.ReadAsStringAsync();
@@ -1284,8 +1276,7 @@ namespace ConferencePlanner.WinUi
 
         private async Task DeleteCountry()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            HttpResponseMessage s = await httpClient.GetAsync("http://localhost:2794/api/Country/{Country}");
             if (s.IsSuccessStatusCode)
             {
                 string resp = await s.Content.ReadAsStringAsync();
@@ -1323,8 +1314,7 @@ namespace ConferencePlanner.WinUi
 
         private async Task EditDistrict()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            HttpResponseMessage s = await httpClient.GetAsync("http://localhost:2794/api/District/{District}");
             if (s.IsSuccessStatusCode)
             {
                 string resp = await s.Content.ReadAsStringAsync();
@@ -1333,22 +1323,9 @@ namespace ConferencePlanner.WinUi
           
         }
 
-      
-
-        private async Task HttpClientAsync(String localHost)
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage s = await client.GetAsync(localHost);
-            if (s.IsSuccessStatusCode)
-            {
-                string resp = await s.Content.ReadAsStringAsync();
-
-            }
-        }
         private async Task DeleteDistrict()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/District/{District}");
+            HttpResponseMessage s = await httpClient.GetAsync("http://localhost:2794/api/District/{District}");
             if (s.IsSuccessStatusCode)
             {
                 string resp = await s.Content.ReadAsStringAsync();
@@ -1407,12 +1384,12 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void btSaveAndNew_Click(object sender, EventArgs e)
+        private async void btSaveAndNew_Click(object sender, EventArgs e)
         {
             ConferenceModel conference = PopulateConferenceObject();
             if (ConferenceId == null)
             {
-                conferenceRepository.AddConference(conference);
+                await AddConferenceViaAPI(conference);
 
                 AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
                 addConferance.ConferenceId = null;
@@ -1509,7 +1486,29 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-      
+        private async Task<ConferenceModel> GetConferenceViaAPI()
+        {
+            HttpResponseMessage message = await httpClient.GetAsync("http://localhost:2794/api/Conference/" + (int)ConferenceId);
+            ConferenceModel conference = new ConferenceModel();
+            if (message.IsSuccessStatusCode)
+            {
+                string response = await message.Content.ReadAsStringAsync();
+                conference = JsonConvert.DeserializeObject<ConferenceModel>(response);
+            }
+            return conference;
+        }
+
+        private async Task AddConferenceViaAPI(ConferenceModel conference)
+        {
+            string url = "http://localhost:2794/api/Conference/";
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(conference), Encoding.UTF8, "application/json");
+            HttpResponseMessage message = await httpClient.PostAsync(url, content);
+
+            if (!message.IsSuccessStatusCode)
+            {
+                throw new Exception("Data not loaded properly from API");
+            }
+        }
     }
 }
 
