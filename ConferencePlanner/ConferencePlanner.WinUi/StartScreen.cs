@@ -78,5 +78,10 @@ namespace ConferencePlanner.WinUi
         {
 
         }
+
+        private void StartScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
+        }
     }
 }
