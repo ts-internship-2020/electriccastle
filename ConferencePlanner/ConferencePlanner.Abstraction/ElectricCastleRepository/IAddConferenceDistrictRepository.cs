@@ -8,6 +8,9 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
     public interface IAddConferenceDistrictRepository
     {
+
+        public List<AddConferenceDistrictModel> GetConferencesDistrictForCountry(int CountryId);
+
         public List<AddConferenceDistrictModel> GetConferencesDistrict();
 
         public void InsertConferenceDistrict(AddConferenceDistrictModel conferenceDistrict);

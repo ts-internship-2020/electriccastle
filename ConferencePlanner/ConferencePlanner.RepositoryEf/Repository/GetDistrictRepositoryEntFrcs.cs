@@ -36,6 +36,11 @@ namespace ConferencePlanner.Repository.Ef.Repository
             return demoModels;
         }
 
+        public List<AddConferenceDistrictModel> GetConferencesDistrictForCountry(int CountryId)
+        {
+            throw new NotImplementedException();
+        }
+
         public AddConferenceDistrictModel GetDistrict(int districtId)
         {
             throw new NotImplementedException();
