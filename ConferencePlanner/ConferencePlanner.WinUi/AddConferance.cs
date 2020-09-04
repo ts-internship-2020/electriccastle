@@ -158,10 +158,9 @@ namespace ConferencePlanner.WinUi
             {
                 button1.Text = "Save";
                 btSaveAndNew.Visible = true;
-
+                button1.Click -= button1_Click;
                 if (ConferenceId == null)
                 {
-
                     button1.Click += new EventHandler(AddConference);
                 }
                 else
@@ -179,10 +178,10 @@ namespace ConferencePlanner.WinUi
             await AddConferenceViaAPI(conference);
         }
 
-        private void EditConference(object sender, EventArgs e)
+        private async void EditConference(object sender, EventArgs e)
         {
             ConferenceModel conference = PopulateConferenceObject();
-            conferenceRepository.EditConference(conference);
+            await EditConferenceViaAPI(conference);
         }
 
         private void btBack_Click(object sender, EventArgs e)
@@ -202,6 +201,15 @@ namespace ConferencePlanner.WinUi
                 button1.Text = "Next";
                 btSaveAndNew.Visible = false;
                 button1.Click += new EventHandler(button1_Click);
+                if (ConferenceId == null)
+                {
+
+                    button1.Click -= AddConference;
+                }
+                else
+                {
+                    button1.Click -= EditConference;
+                }
             }
 
         }
@@ -350,6 +358,8 @@ namespace ConferencePlanner.WinUi
 
         private async void InitializeUIData()
         {
+           
+
             if (ConferenceId == null)
             {
                 txtName.Text = "";
@@ -394,28 +404,44 @@ namespace ConferencePlanner.WinUi
 
 
                 List<SpeakerListModel> editConferenceSpeakers = new List<SpeakerListModel>();
+                List<int> econferenceSpeakers = new List<int>();
                 editConferenceSpeakers = conference.Speakers;
-                scrollValSpeaker = 0;
-                getSpeakerList = await GetResponseSpeaker();
-                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
-
                 foreach (SpeakerListModel speakerEdit in editConferenceSpeakers)
                 {
-                    int index = -1;
-                    var number = currentSpeakerGridPage.FindIndex(districtsTxt => districtsTxt.Id == speakerEdit.DictionarySpeakerId);
-                    index = number;
-                    if(index != -1)
+                    econferenceSpeakers.Add(speakerEdit.DictionarySpeakerId);
+                    if(speakerEdit.IsMainSpeaker)
                     {
-                        tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[4].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[4].Value;
-                        if (speakerEdit.IsMainSpeaker == true)
-                        {
-
-                            tabSpeakerGrid.Rows[index].Cells[3].Value = tabSpeakerGrid.Rows[index].Cells[3].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[3].Value;
-                        }
+                        elementMainSpeakerId = speakerEdit.DictionarySpeakerId;
                     }
                 }
+                scrollValSpeaker = 0;
+                getSpeakerList = await GetResponseSpeaker();
+                getSpeakerInConference = econferenceSpeakers;
+                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+
+                int countryId = conference.DictionaryCountryId;
+                int countryIndex = countryModel.FindIndex(cnt => cnt.DictionaryCountryId == countryId);
+                scrollVal = entryNumberTabCountry * (countryIndex / entryNumberTabCountry);
+                populateGridCountry(countryModel, scrollVal, entryNumberTabCountry);
+                DGVCountry.Rows[countryIndex - scrollVal].Selected = true;
+                DGVCountry.CurrentCell = DGVCountry.Rows[countryIndex - scrollVal].Cells[0];
+
+                int districtId = conference.DictionaryDistrictId;          
+                List<AddConferenceDistrictModel> dist = districtModel.Where(cnt => cnt.DictionaryCountryId == countryId).ToList();
+                int districtIndex = dist.FindIndex(cnt => cnt.DictionaryDistrictId == districtId);
+                scrollVal = entryNumberTabDistrict * (districtIndex / entryNumberTabDistrict);
+                populateGridDistrict(dist, scrollVal, entryNumberTabDistrict);
+                DGVDistrict.Rows[districtIndex - scrollVal].Selected = true;
+                DGVDistrict.CurrentCell = DGVDistrict.Rows[districtIndex - scrollVal].Cells[0];
 
 
+                int cityId = conference.DictionaryCityId;
+                List<AddConferenceCityModel> city = cityModel.Where(cnt => cnt.DictionaryDistrictId == districtId).ToList();
+                int cityIndex = city.FindIndex(cnt => cnt.DictionaryCityId == cityId);
+                scrollVal = entryNumberTabCity * (cityIndex / entryNumberTabCity);
+                populateGridCity(city, scrollVal, entryNumberTabCity);
+                DGVCity.Rows[cityIndex - scrollVal].Selected = true;
+                DGVCity.CurrentCell = DGVCity.Rows[cityIndex - scrollVal].Cells[0];
             }
         }
 
@@ -1397,7 +1423,7 @@ namespace ConferencePlanner.WinUi
             }
             else
             {
-                conferenceRepository.EditConference(conference);
+                await EditConferenceViaAPI(conference);
 
                 AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
                 addConferance.ConferenceId = null;
@@ -1501,6 +1527,18 @@ namespace ConferencePlanner.WinUi
         private async Task AddConferenceViaAPI(ConferenceModel conference)
         {
             string url = "http://localhost:2794/api/Conference/";
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(conference), Encoding.UTF8, "application/json");
+            HttpResponseMessage message = await httpClient.PostAsync(url, content);
+
+            if (!message.IsSuccessStatusCode)
+            {
+                throw new Exception("Data not loaded properly from API");
+            }
+        }
+
+        private async Task EditConferenceViaAPI(ConferenceModel conference)
+        {
+            string url = "http://localhost:2794/api/Conference/" + (int)ConferenceId;
             HttpContent content = new StringContent(JsonConvert.SerializeObject(conference), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await httpClient.PostAsync(url, content);
 
