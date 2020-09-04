@@ -158,10 +158,9 @@ namespace ConferencePlanner.WinUi
             {
                 button1.Text = "Save";
                 btSaveAndNew.Visible = true;
-
+                button1.Click -= button1_Click;
                 if (ConferenceId == null)
                 {
-
                     button1.Click += new EventHandler(AddConference);
                 }
                 else
@@ -202,6 +201,15 @@ namespace ConferencePlanner.WinUi
                 button1.Text = "Next";
                 btSaveAndNew.Visible = false;
                 button1.Click += new EventHandler(button1_Click);
+                if (ConferenceId == null)
+                {
+
+                    button1.Click -= AddConference;
+                }
+                else
+                {
+                    button1.Click -= EditConference;
+                }
             }
 
         }
