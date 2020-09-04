@@ -193,9 +193,6 @@
             // 
             // tabConferance
             // 
-            this.tabConferance.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabConferance.Controls.Add(this.tabSpeakers);
             this.tabConferance.Controls.Add(this.tabCategory);
             this.tabConferance.Controls.Add(this.tabType);
@@ -216,6 +213,7 @@
             // 
             // tabSpeakers
             // 
+            this.tabSpeakers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabSpeakers.Controls.Add(this.tabSpeakerEntryNumberText);
             this.tabSpeakers.Controls.Add(this.tabSpeakerEntryNumberLabel);
             this.tabSpeakers.Controls.Add(this.label9);
@@ -412,7 +410,7 @@
             // CategoryTabEntriesTextBox
             // 
             this.CategoryTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CategoryTabEntriesTextBox.Location = new System.Drawing.Point(192, 131);
+            this.CategoryTabEntriesTextBox.Location = new System.Drawing.Point(223, 131);
             this.CategoryTabEntriesTextBox.Name = "CategoryTabEntriesTextBox";
             this.CategoryTabEntriesTextBox.Size = new System.Drawing.Size(25, 23);
             this.CategoryTabEntriesTextBox.TabIndex = 8;
@@ -422,7 +420,7 @@
             // 
             this.CategoryTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabEntriesLabel.AutoSize = true;
-            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(95, 134);
+            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(126, 134);
             this.CategoryTabEntriesLabel.Name = "CategoryTabEntriesLabel";
             this.CategoryTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
             this.CategoryTabEntriesLabel.TabIndex = 7;
@@ -432,7 +430,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(261, 134);
+            this.label10.Location = new System.Drawing.Point(364, 134);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(102, 15);
             this.label10.TabIndex = 6;
@@ -454,7 +452,7 @@
             // CategoryTabSearchTextBox
             // 
             this.CategoryTabSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(367, 131);
+            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(472, 131);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;

@@ -33,7 +33,9 @@
             this.txtButton = new System.Windows.Forms.TextBox();
             this.submitButton = new ConferencePlanner.WinUi.ButonCircular();
             this.errorProviderEmailText = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmailText)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtButton
@@ -41,10 +43,10 @@
             this.txtButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtButton.Location = new System.Drawing.Point(85, 66);
+            this.txtButton.Location = new System.Drawing.Point(91, 104);
             this.txtButton.Name = "txtButton";
             this.txtButton.PlaceholderText = "                Insert your email";
-            this.txtButton.Size = new System.Drawing.Size(193, 23);
+            this.txtButton.Size = new System.Drawing.Size(484, 23);
             this.txtButton.TabIndex = 3;
             this.txtButton.TextChanged += new System.EventHandler(this.txtButton_TextChanged);
             this.txtButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtButton_KeyDown);
@@ -55,7 +57,7 @@
             this.submitButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("submitButton.BackgroundImage")));
             this.submitButton.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.submitButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.submitButton.Location = new System.Drawing.Point(127, 95);
+            this.submitButton.Location = new System.Drawing.Point(262, 133);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(104, 29);
             this.submitButton.TabIndex = 4;
@@ -67,13 +69,23 @@
             // 
             this.errorProviderEmailText.ContainerControl = this;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(30, 191);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(85, 176);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(349, 204);
+            this.ClientSize = new System.Drawing.Size(640, 422);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.txtButton);
             this.Name = "StartScreen";
@@ -81,6 +93,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Event Skills";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmailText)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,5 +105,6 @@
         private ButonCircular submitButton1;
         private ButonCircular submitButton;
         private System.Windows.Forms.ErrorProvider errorProviderEmailText;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
