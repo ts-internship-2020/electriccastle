@@ -46,7 +46,7 @@
             this.txtButton.Location = new System.Drawing.Point(91, 104);
             this.txtButton.Name = "txtButton";
             this.txtButton.PlaceholderText = "                Insert your email";
-            this.txtButton.Size = new System.Drawing.Size(484, 23);
+            this.txtButton.Size = new System.Drawing.Size(445, 23);
             this.txtButton.TabIndex = 3;
             this.txtButton.TextChanged += new System.EventHandler(this.txtButton_TextChanged);
             this.txtButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtButton_KeyDown);
@@ -72,9 +72,11 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(30, 191);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 176);
+            this.pictureBox1.Size = new System.Drawing.Size(95, 99);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
@@ -84,7 +86,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(640, 422);
+            this.ClientSize = new System.Drawing.Size(601, 354);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.txtButton);
