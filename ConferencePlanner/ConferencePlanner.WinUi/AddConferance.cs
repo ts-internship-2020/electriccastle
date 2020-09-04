@@ -350,6 +350,8 @@ namespace ConferencePlanner.WinUi
 
         private async void InitializeUIData()
         {
+           
+
             if (ConferenceId == null)
             {
                 txtName.Text = "";
@@ -394,28 +396,44 @@ namespace ConferencePlanner.WinUi
 
 
                 List<SpeakerListModel> editConferenceSpeakers = new List<SpeakerListModel>();
+                List<int> econferenceSpeakers = new List<int>();
                 editConferenceSpeakers = conference.Speakers;
-                scrollValSpeaker = 0;
-                getSpeakerList = await GetResponseSpeaker();
-                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
-
                 foreach (SpeakerListModel speakerEdit in editConferenceSpeakers)
                 {
-                    int index = -1;
-                    var number = currentSpeakerGridPage.FindIndex(districtsTxt => districtsTxt.Id == speakerEdit.DictionarySpeakerId);
-                    index = number;
-                    if(index != -1)
+                    econferenceSpeakers.Add(speakerEdit.DictionarySpeakerId);
+                    if(speakerEdit.IsMainSpeaker)
                     {
-                        tabSpeakerGrid.Rows[index].Cells[4].Value = tabSpeakerGrid.Rows[index].Cells[4].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[4].Value;
-                        if (speakerEdit.IsMainSpeaker == true)
-                        {
-
-                            tabSpeakerGrid.Rows[index].Cells[3].Value = tabSpeakerGrid.Rows[index].Cells[3].Value == null ? false : !(bool)tabSpeakerGrid.Rows[index].Cells[3].Value;
-                        }
+                        elementMainSpeakerId = speakerEdit.DictionarySpeakerId;
                     }
                 }
+                scrollValSpeaker = 0;
+                getSpeakerList = await GetResponseSpeaker();
+                getSpeakerInConference = econferenceSpeakers;
+                populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+
+                int countryId = conference.DictionaryCountryId;
+                int countryIndex = countryModel.FindIndex(cnt => cnt.DictionaryCountryId == countryId);
+                scrollVal = entryNumberTabCountry * (countryIndex / entryNumberTabCountry);
+                populateGridCountry(countryModel, scrollVal, entryNumberTabCountry);
+                DGVCountry.Rows[countryIndex - scrollVal].Selected = true;
+                DGVCountry.CurrentCell = DGVCountry.Rows[countryIndex - scrollVal].Cells[0];
+
+                int districtId = conference.DictionaryDistrictId;          
+                List<AddConferenceDistrictModel> dist = districtModel.Where(cnt => cnt.DictionaryCountryId == countryId).ToList();
+                int districtIndex = dist.FindIndex(cnt => cnt.DictionaryDistrictId == districtId);
+                scrollVal = entryNumberTabDistrict * (districtIndex / entryNumberTabDistrict);
+                populateGridDistrict(dist, scrollVal, entryNumberTabDistrict);
+                DGVDistrict.Rows[districtIndex - scrollVal].Selected = true;
+                DGVDistrict.CurrentCell = DGVDistrict.Rows[districtIndex - scrollVal].Cells[0];
 
 
+                int cityId = conference.DictionaryCityId;
+                List<AddConferenceCityModel> city = cityModel.Where(cnt => cnt.DictionaryDistrictId == districtId).ToList();
+                int cityIndex = city.FindIndex(cnt => cnt.DictionaryCityId == cityId);
+                scrollVal = entryNumberTabCity * (cityIndex / entryNumberTabCity);
+                populateGridCity(city, scrollVal, entryNumberTabCity);
+                DGVCity.Rows[cityIndex - scrollVal].Selected = true;
+                DGVCity.CurrentCell = DGVCity.Rows[cityIndex - scrollVal].Cells[0];
             }
         }
 
