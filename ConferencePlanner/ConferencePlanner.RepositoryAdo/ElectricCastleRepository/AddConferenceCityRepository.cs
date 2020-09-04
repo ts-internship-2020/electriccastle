@@ -109,5 +109,36 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             int nr = sqlCommand.ExecuteNonQuery();
 
         }
+
+        public List<AddConferenceCityModel> GetConferencesCityForDistrict(int DistrictId)
+        {
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            sqlCommand.Parameters.AddWithValue("@DistrictId", DistrictId);
+            sqlCommand.CommandText = "select DictionaryCityId, CityCode, DictionaryCityName , dd.DictionaryDistrictId  from DictionaryCity dcty " + 
+                                    " join DictionaryDistrict dd on dd.DictionaryDistrictId= dcty.DictionaryDistrictId" +
+                                    " where  dd.DictionaryDistrictId = @DistrictId";
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            List<AddConferenceCityModel> city = new List<AddConferenceCityModel>();
+
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    city.Add(new AddConferenceCityModel()
+                    {
+                        DictionaryCityId = sqlDataReader.GetInt32("DictionaryCityId"),
+                        CityCode = sqlDataReader.GetString("CityCode"),
+                        DictionaryCityName = sqlDataReader.GetString("DictionaryCityName"),
+                        DictionaryDistrictId = sqlDataReader.GetInt32("DictionaryDistrictId")
+                    });
+                }
+            }
+
+            sqlDataReader.Close();
+
+            return city;
+        }
     }
 }

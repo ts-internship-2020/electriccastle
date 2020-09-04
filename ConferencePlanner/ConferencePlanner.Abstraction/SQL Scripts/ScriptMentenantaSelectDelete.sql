@@ -15,6 +15,14 @@ SELECT * FROM ConferenceXDictionarySpeaker ORDER BY ConferenceId;
 SELECT * FROM ConferenceParticipant WHERE ConferenceId = 8  CP
 JOIN DictionaryParticipantState D ON D.DictionaryParticipantStateId = CP.DictionaryParticipantStateId;
 
+select DictionaryCityId, CityCode, DictionaryCityName , dd.DictionaryDistrictId  from DictionaryCity dcty
+                                    join DictionaryDistrict dd on dd.DictionaryDistrictId= dcty.DictionaryDistrictId
+                                    where  dd.DictionaryDistrictId = 7
+
+select DictionaryDistrictId ,DistrictCode ,DictionaryDistrictName, dc.DictionaryCountryId from DictionaryDistrict dd
+                                    join DictionaryCountry dc on dd.DictionaryCountryId= dc.DictionaryCountryId
+                                    where dc.DictionaryCountryId = 4
+
 -- select speaker related data for conference
 SELECT DictionarySpeakerId, ConferenceId, IsMainSpeaker 
 FROM ConferenceXDictionarySpeaker

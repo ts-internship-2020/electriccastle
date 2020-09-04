@@ -37,6 +37,11 @@ namespace ConferencePlanner.Repository.Ef.Repository
             
         }
 
+        public List<AddConferenceCityModel> GetConferencesCityForDistrict(int DistrictId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void insertCity(int id, int cityDistrictId, string cityCode, string cityName)
         {
             var idx = _electriccastleContext.DictionaryCity.Max(x => x.DictionaryCityId) + 1;

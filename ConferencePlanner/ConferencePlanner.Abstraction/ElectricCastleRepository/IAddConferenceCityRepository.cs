@@ -8,6 +8,9 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
     public interface IAddConferenceCityRepository
     {
+
+        public List<AddConferenceCityModel> GetConferencesCityForDistrict(int DistrictId);
+
         public List<AddConferenceCityModel> GetConferencesCity();
 
         public void updateCity(int cityId, string cityCode, string cityName, int cityDistrictId);
