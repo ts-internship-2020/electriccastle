@@ -14,7 +14,7 @@ using ConferencePlanner.Abstraction.ElectricCastleRepository;
 using ConferencePlanner.Abstraction.Helpers;
 using ConferencePlanner.Repository.Ado.ElectricCastleRepository;
 using ConferencePlanner.Repository.Ef.Repository;
-//using MySqlX.XDevAPI.Common;
+using Newtonsoft.Json;
 
 namespace ConferencePlanner.WinUi
 {
@@ -22,8 +22,6 @@ namespace ConferencePlanner.WinUi
     {
 
         private readonly IAddConferenceCountryRepository _getCountry;
-
-        //private readonly GetCountryRepositoryEntFr _getCountryEntFr;
 
         private AddConferenceCountryModel editCountry;
 
@@ -50,7 +48,7 @@ namespace ConferencePlanner.WinUi
 
         private async Task InsertData(string codul, string nameul)
         {
-            //List<AddConferenceCountryModel> countrys = new List<AddConferenceCountryModel>();
+            List<AddConferenceCountryModel> countrys = new List<AddConferenceCountryModel>();
             HttpClient client = new HttpClient();
             HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/");
             if (s.IsSuccessStatusCode)
@@ -61,14 +59,7 @@ namespace ConferencePlanner.WinUi
 
         }
 
-        private void colorButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void AddCountryFromButton_Click(object sender, EventArgs e)
+        private  async void AddCountryFromButton_Click(object sender, EventArgs e)
         {
             System.Text.RegularExpressions.Regex name = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z]+$");
 
@@ -101,22 +92,20 @@ namespace ConferencePlanner.WinUi
             if (editCountry == null)
             {
                 _getCountry.InsertConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text);
+                //PostConferenceCountry(getCountryId());
                 //InsertData(CountryCodTb.Text, CoutryNameTb.Text);
                 this.Close();
             } 
 
             if(editCountry!= null)
             {
-                _getCountry.UpdateConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text, getCountryId());
-
+                // _getCountry.UpdateConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text, getCountryId());
+                PostConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text, getCountryId());
                 this.Close();
             }
         }
 
-
-       
-
-        private void NewCountryForm_Load(object sender, EventArgs e)
+        private async void NewCountryForm_Load(object sender, EventArgs e)
         {
             int i;
             errorProviderCountryName.SetError(CoutryNameTb, "");
@@ -127,6 +116,7 @@ namespace ConferencePlanner.WinUi
             editCountry = AddConferance.editedCountry;
 
             countrys = _getCountry.GetConferencesCountry();
+            
             //GetResponse();
             if (editCountry != null)
             {
@@ -145,13 +135,38 @@ namespace ConferencePlanner.WinUi
 
         }
 
-
         public int getCountryId()
         {
             int number = 0;
             var index = countrys.FindIndex(countyName => countyName.CountryCode == CountryCodTb.Text);
             number = countrys.ElementAt(index).DictionaryCountryId;
             return number;
+        }
+
+        private async Task<List<AddConferenceCountryModel>> GetNewConferenceCountry()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage msg = await client.GetAsync("http://localhost:2794/api/Country/");
+            List<AddConferenceCountryModel> countrys = new List<AddConferenceCountryModel>();
+            if (msg.IsSuccessStatusCode)
+            {
+                string response = await msg.Content.ReadAsStringAsync();
+                countrys = JsonConvert.DeserializeObject<List<AddConferenceCountryModel>>(response);
+            }
+            return countrys;
+        }
+
+        private async Task PostConferenceCountry(string cod, string nume,int index)
+        {
+            HttpClient client = new HttpClient();
+            string url = "http://localhost:2794/api/Country?cod=" + cod + "&name="+ nume + "&index=" + index;
+            HttpContent content = new StringContent("", Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(url, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Data not loaded properly from API");
+            }
         }
     }
 }

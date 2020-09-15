@@ -20,7 +20,36 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             _sqlConnection = sqlConnection;
         }
 
-       
+        public List<AddConferenceDistrictModel> GetConferencesDistrictForCountry(int CountryId)
+        {
+            SqlCommand sqlCommand = _sqlConnection.CreateCommand();
+            sqlCommand.Parameters.AddWithValue("@CountryId", CountryId);
+            sqlCommand.CommandText = "select DictionaryDistrictId ,DistrictCode ,DictionaryDistrictName, dc.DictionaryCountryId from DictionaryDistrict dd " + 
+                                    " join DictionaryCountry dc on dd.DictionaryCountryId= dc.DictionaryCountryId" +
+                                    " where dc.DictionaryCountryId = @CountryId";
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            List<AddConferenceDistrictModel> district = new List<AddConferenceDistrictModel>();
+
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    district.Add(new AddConferenceDistrictModel()
+                    {
+                        DictionaryDistrictId = sqlDataReader.GetInt32("DictionaryDistrictId"),
+                        DistrictCode = sqlDataReader.GetString("DistrictCode"),
+                        DictionaryDistrictName = sqlDataReader.GetString("DictionaryDistrictName"),
+                        DictionaryCountryId = sqlDataReader.GetInt32("DictionaryCountryId")
+                    });
+                }
+            }
+
+            sqlDataReader.Close();
+
+            return district;
+        }
 
         public List<AddConferenceDistrictModel> GetConferencesDistrict()
         {

@@ -38,8 +38,6 @@ namespace ConferencePlanner.WinUi
             
         }
 
-    
-
         private void txtButton_Validating(object sender, CancelEventArgs e)
         {
             System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
@@ -49,7 +47,6 @@ namespace ConferencePlanner.WinUi
             {
                 if (!rEmail.IsMatch(txtButton.Text))
                 {
-                    // MessageBox.Show("Invalid email address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     errorProviderEmailText.SetError(txtButton, "Invalid email address");
                     txtButton.SelectAll();
                     e.Cancel = true;
@@ -57,8 +54,7 @@ namespace ConferencePlanner.WinUi
             }
             else
             {
-                //MessageBox.Show("Insert an email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //e.Cancel = true;
+
                 errorProviderEmailText.SetError(txtButton, "Insert an email");
                 txtButton.SelectAll();
                 e.Cancel = true;
@@ -77,6 +73,11 @@ namespace ConferencePlanner.WinUi
         private void txtButton_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void StartScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
         }
     }
 }
