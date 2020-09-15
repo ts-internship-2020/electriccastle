@@ -117,11 +117,6 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-        private void saveEditSpeaker_Click(object sender, EventArgs e)
-        {
-            //dcvff
-            
-        }
         private async Task PostUpdateSpeaker()
         {
             HttpClient client = new HttpClient();
@@ -144,12 +139,6 @@ namespace ConferencePlanner.WinUi
                errorProviderEditSpeakerRating.GetError(editSpeakerRatingTextBox) == ""
                )
             {
-                //modifiedSpeaker.Id = AddConferance.editedSpeaker.Id;
-                //modifiedSpeaker.Code = editSpeakerCodeTextBox.Text;
-                //modifiedSpeaker.Name = editSpeakerNameTextBox.Text;
-                //modifiedSpeaker.Rating = number;
-                //modifiedSpeaker.Nationality = editSpeakerNationalityTextBox.Text;
-                //modifiedSpeaker.Picture = editSpeakerPictureTextBox.Text;
                 PostUpdateSpeaker();
                 _getSpeakerRepository.editSpeaker(AddConferance.editedSpeaker.Id, editSpeakerCodeTextBox.Text, editSpeakerNameTextBox.Text, number, editSpeakerNationalityTextBox.Text, editSpeakerPictureTextBox.Text);
                 this.Close();

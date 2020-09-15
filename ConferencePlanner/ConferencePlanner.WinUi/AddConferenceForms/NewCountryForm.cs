@@ -23,8 +23,6 @@ namespace ConferencePlanner.WinUi
 
         private readonly IAddConferenceCountryRepository _getCountry;
 
-        //private readonly GetCountryRepositoryEntFr _getCountryEntFr;
-
         private AddConferenceCountryModel editCountry;
 
         List<AddConferenceCountryModel> countrys;
@@ -60,13 +58,6 @@ namespace ConferencePlanner.WinUi
             }
 
         }
-
-        private void colorButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private  async void AddCountryFromButton_Click(object sender, EventArgs e)
         {
@@ -114,9 +105,6 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-
-       
-
         private async void NewCountryForm_Load(object sender, EventArgs e)
         {
             int i;
@@ -146,7 +134,6 @@ namespace ConferencePlanner.WinUi
            
 
         }
-
 
         public int getCountryId()
         {

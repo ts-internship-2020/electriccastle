@@ -320,8 +320,6 @@ namespace ConferencePlanner.WinUi
                 if (ts.TotalMinutes <= 5)
                     ConferencesParticipant.Rows[e.RowIndex].Cells[8].Style.BackColor = System.Drawing.Color.Green;
 
-                //if (ts.TotalMinutes > 5)
-                //    ConferencesParticipant.Rows[e.RowIndex].Cells[8].di = false;
                 Form f = new WebViewConnection();
                 f.Show();
 
@@ -376,10 +374,8 @@ namespace ConferencePlanner.WinUi
 
         private void AddConferenceButton_Click_1(object sender, EventArgs e)
         {
-
             AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
            
-
             addConferance.ConferenceId = null;
             addConferance.ShowDialog();
 
@@ -441,7 +437,7 @@ namespace ConferencePlanner.WinUi
             }
         }
 
-        //List<ParticipantsConferencesModel>
+
         private async Task GetOrganizerConferencesViaAPI()
         {
             HttpResponseMessage message = await httpClient.GetAsync("http://localhost:2794/api/OrganizerConferences/" + EmailParticipants);
