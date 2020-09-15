@@ -25,10 +25,11 @@ using System.Net.Http.Headers;
 
 namespace ConferencePlanner.WinUi
 {
-   
-   
 
-    public partial class MainScreen : Form
+
+    
+
+    public  partial class MainScreen : Form
     {
         private HttpClient httpClient;
 
@@ -143,6 +144,8 @@ namespace ConferencePlanner.WinUi
 
         private async void MainScreen_Load(object sender, EventArgs e)
         {
+            
+              
             conferences = await GetResponseParticipantsConference();
 
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
@@ -246,7 +249,14 @@ namespace ConferencePlanner.WinUi
             ManageOrganizerPaginationButtonsState();
         }
 
-    
+        public  Stream ToStream( Image image, ImageFormat formaw)
+        {
+            var stream = new System.IO.MemoryStream();
+            image.Save(stream, formaw);
+            stream.Position = 0;
+            return stream;
+        }
+
         private void sendMail(String email)
         {
 
@@ -255,7 +265,7 @@ namespace ConferencePlanner.WinUi
                 MailMessage mail = new MailMessage();
 
                 mail.From = new MailAddress("totalevents12@gmail.com");
-                mail.To.Add("oblojaoana98@gmail.com");
+                mail.To.Add(email);
                 mail.Subject = "Authentication code ";
                 Random random = new Random();
 
@@ -269,12 +279,14 @@ namespace ConferencePlanner.WinUi
                 Color foreColor = Color.Black;
                 Color backColor = Color.Transparent;
                 Image imageBarCode = barcode.Encode(TYPE.UPCA, code, foreColor, backColor);
-             
+          
                 mail.Body = "Your code is: " +code;
-                MemoryStream stream = new MemoryStream();
-                imageBarCode.Save(stream, ImageFormat.Png);
+                var stream = ToStream(imageBarCode, ImageFormat.Png);
+                
+                mail.Attachments.Add(new Attachment(stream, "imageBarCode.png", "imageBarCode/png"));
 
-                mail.Attachments.Add(new Attachment(stream, "imageBarCode/png"));
+
+
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("totalevents12@gmail.com", "12parola34");
@@ -295,7 +307,8 @@ namespace ConferencePlanner.WinUi
                 MessageBox.Show(ex.ToString());
             }
         }
- 
+
+       
 
         private async void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

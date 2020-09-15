@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.TabOrganizer = new System.Windows.Forms.TabPage();
             this.OrganizerTabEntriesTextBox = new System.Windows.Forms.TextBox();
@@ -63,6 +64,7 @@
             this.ColumnWithdrawButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabControrConferences = new System.Windows.Forms.TabControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TabOrganizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
             this.TabParticipant.SuspendLayout();
@@ -85,10 +87,11 @@
             this.TabOrganizer.Controls.Add(this.OrganizerGrid);
             this.TabOrganizer.Controls.Add(this.OrganizerEndDatePicker);
             this.TabOrganizer.Controls.Add(this.OrganizerStartDatePicker);
-            this.TabOrganizer.Location = new System.Drawing.Point(4, 24);
+            this.TabOrganizer.ImageIndex = 1;
+            this.TabOrganizer.Location = new System.Drawing.Point(4, 54);
             this.TabOrganizer.Name = "TabOrganizer";
-            this.TabOrganizer.Padding = new System.Windows.Forms.Padding(3);
-            this.TabOrganizer.Size = new System.Drawing.Size(800, 370);
+            this.TabOrganizer.Padding = new System.Windows.Forms.Padding(4);
+            this.TabOrganizer.Size = new System.Drawing.Size(795, 348);
             this.TabOrganizer.TabIndex = 1;
             this.TabOrganizer.Text = "Organizers";
             this.TabOrganizer.UseVisualStyleBackColor = true;
@@ -96,7 +99,7 @@
             // OrganizerTabEntriesTextBox
             // 
             this.OrganizerTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OrganizerTabEntriesTextBox.Location = new System.Drawing.Point(122, 334);
+            this.OrganizerTabEntriesTextBox.Location = new System.Drawing.Point(123, 303);
             this.OrganizerTabEntriesTextBox.Name = "OrganizerTabEntriesTextBox";
             this.OrganizerTabEntriesTextBox.Size = new System.Drawing.Size(27, 23);
             this.OrganizerTabEntriesTextBox.TabIndex = 14;
@@ -106,7 +109,7 @@
             // 
             this.OrganizerTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizerTabEntriesLabel.AutoSize = true;
-            this.OrganizerTabEntriesLabel.Location = new System.Drawing.Point(24, 334);
+            this.OrganizerTabEntriesLabel.Location = new System.Drawing.Point(25, 303);
             this.OrganizerTabEntriesLabel.Name = "OrganizerTabEntriesLabel";
             this.OrganizerTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
             this.OrganizerTabEntriesLabel.TabIndex = 13;
@@ -117,7 +120,7 @@
             this.OrganizerFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerFilterButton.BackColor = System.Drawing.Color.Firebrick;
             this.OrganizerFilterButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.OrganizerFilterButton.Location = new System.Drawing.Point(681, 33);
+            this.OrganizerFilterButton.Location = new System.Drawing.Point(680, 34);
             this.OrganizerFilterButton.Name = "OrganizerFilterButton";
             this.OrganizerFilterButton.Size = new System.Drawing.Size(98, 36);
             this.OrganizerFilterButton.TabIndex = 12;
@@ -129,7 +132,7 @@
             // 
             this.OrganizerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerNextButton.BackColor = System.Drawing.Color.Crimson;
-            this.OrganizerNextButton.Location = new System.Drawing.Point(630, 334);
+            this.OrganizerNextButton.Location = new System.Drawing.Point(629, 303);
             this.OrganizerNextButton.Name = "OrganizerNextButton";
             this.OrganizerNextButton.Size = new System.Drawing.Size(149, 32);
             this.OrganizerNextButton.TabIndex = 11;
@@ -141,7 +144,7 @@
             // 
             this.OrganizerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerPreviousButton.BackColor = System.Drawing.Color.Crimson;
-            this.OrganizerPreviousButton.Location = new System.Drawing.Point(467, 334);
+            this.OrganizerPreviousButton.Location = new System.Drawing.Point(466, 303);
             this.OrganizerPreviousButton.Name = "OrganizerPreviousButton";
             this.OrganizerPreviousButton.Size = new System.Drawing.Size(149, 32);
             this.OrganizerPreviousButton.TabIndex = 10;
@@ -166,7 +169,7 @@
             // 
             this.OrganizerTabEndDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerTabEndDateLabel.AutoSize = true;
-            this.OrganizerTabEndDateLabel.Location = new System.Drawing.Point(402, 62);
+            this.OrganizerTabEndDateLabel.Location = new System.Drawing.Point(401, 63);
             this.OrganizerTabEndDateLabel.Name = "OrganizerTabEndDateLabel";
             this.OrganizerTabEndDateLabel.Size = new System.Drawing.Size(57, 15);
             this.OrganizerTabEndDateLabel.TabIndex = 8;
@@ -176,7 +179,7 @@
             // 
             this.OrganizerTabStartDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerTabStartDateLabel.AutoSize = true;
-            this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(402, 33);
+            this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(401, 34);
             this.OrganizerTabStartDateLabel.Name = "OrganizerTabStartDateLabel";
             this.OrganizerTabStartDateLabel.Size = new System.Drawing.Size(61, 15);
             this.OrganizerTabStartDateLabel.TabIndex = 7;
@@ -190,9 +193,9 @@
             this.OrganizerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrganizerGrid.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
             this.OrganizerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrganizerGrid.Location = new System.Drawing.Point(24, 85);
+            this.OrganizerGrid.Location = new System.Drawing.Point(25, 86);
             this.OrganizerGrid.Name = "OrganizerGrid";
-            this.OrganizerGrid.Size = new System.Drawing.Size(755, 242);
+            this.OrganizerGrid.Size = new System.Drawing.Size(753, 210);
             this.OrganizerGrid.TabIndex = 4;
             this.OrganizerGrid.Text = "dataGridView1";
             this.OrganizerGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrganizerGrid_CellClick);
@@ -202,7 +205,7 @@
             // OrganizerEndDatePicker
             // 
             this.OrganizerEndDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OrganizerEndDatePicker.Location = new System.Drawing.Point(467, 56);
+            this.OrganizerEndDatePicker.Location = new System.Drawing.Point(466, 57);
             this.OrganizerEndDatePicker.Name = "OrganizerEndDatePicker";
             this.OrganizerEndDatePicker.Size = new System.Drawing.Size(200, 23);
             this.OrganizerEndDatePicker.TabIndex = 2;
@@ -211,7 +214,7 @@
             // OrganizerStartDatePicker
             // 
             this.OrganizerStartDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OrganizerStartDatePicker.Location = new System.Drawing.Point(467, 27);
+            this.OrganizerStartDatePicker.Location = new System.Drawing.Point(466, 28);
             this.OrganizerStartDatePicker.Name = "OrganizerStartDatePicker";
             this.OrganizerStartDatePicker.Size = new System.Drawing.Size(200, 23);
             this.OrganizerStartDatePicker.TabIndex = 1;
@@ -219,8 +222,9 @@
             // 
             // TabParticipant
             // 
+            this.TabParticipant.BackColor = System.Drawing.Color.Transparent;
             this.TabParticipant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabParticipant.BackgroundImage")));
-            this.TabParticipant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TabParticipant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.TabParticipant.Controls.Add(this.label1);
             this.TabParticipant.Controls.Add(this.entryPageTextBox);
             this.TabParticipant.Controls.Add(this.entryPageLabel);
@@ -231,13 +235,13 @@
             this.TabParticipant.Controls.Add(this.DatePickerParticipantStart);
             this.TabParticipant.Controls.Add(this.ConferencesParticipant);
             this.TabParticipant.ForeColor = System.Drawing.Color.Black;
-            this.TabParticipant.Location = new System.Drawing.Point(4, 24);
+            this.TabParticipant.ImageIndex = 2;
+            this.TabParticipant.Location = new System.Drawing.Point(4, 54);
             this.TabParticipant.Name = "TabParticipant";
-            this.TabParticipant.Padding = new System.Windows.Forms.Padding(3);
-            this.TabParticipant.Size = new System.Drawing.Size(800, 370);
+            this.TabParticipant.Padding = new System.Windows.Forms.Padding(4);
+            this.TabParticipant.Size = new System.Drawing.Size(795, 348);
             this.TabParticipant.TabIndex = 0;
             this.TabParticipant.Text = "Participants";
-            this.TabParticipant.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -246,7 +250,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(667, 15);
+            this.label1.Location = new System.Drawing.Point(661, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 17);
             this.label1.TabIndex = 12;
@@ -256,7 +260,7 @@
             // entryPageTextBox
             // 
             this.entryPageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.entryPageTextBox.Location = new System.Drawing.Point(115, 343);
+            this.entryPageTextBox.Location = new System.Drawing.Point(116, 320);
             this.entryPageTextBox.Name = "entryPageTextBox";
             this.entryPageTextBox.Size = new System.Drawing.Size(27, 23);
             this.entryPageTextBox.TabIndex = 11;
@@ -271,7 +275,7 @@
             this.entryPageLabel.BackColor = System.Drawing.Color.Transparent;
             this.entryPageLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.entryPageLabel.ForeColor = System.Drawing.Color.White;
-            this.entryPageLabel.Location = new System.Drawing.Point(10, 343);
+            this.entryPageLabel.Location = new System.Drawing.Point(11, 320);
             this.entryPageLabel.Name = "entryPageLabel";
             this.entryPageLabel.Size = new System.Drawing.Size(108, 17);
             this.entryPageLabel.TabIndex = 10;
@@ -280,10 +284,10 @@
             // BackButtonParticipant
             // 
             this.BackButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BackButtonParticipant.BackColor = System.Drawing.Color.LightCoral;
+            this.BackButtonParticipant.BackColor = System.Drawing.Color.Tomato;
             this.BackButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.BackButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.BackButtonParticipant.Location = new System.Drawing.Point(464, 338);
+            this.BackButtonParticipant.Location = new System.Drawing.Point(458, 315);
             this.BackButtonParticipant.Name = "BackButtonParticipant";
             this.BackButtonParticipant.Size = new System.Drawing.Size(149, 32);
             this.BackButtonParticipant.TabIndex = 9;
@@ -294,10 +298,10 @@
             // NextButtonParticipant
             // 
             this.NextButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextButtonParticipant.BackColor = System.Drawing.Color.LightCoral;
+            this.NextButtonParticipant.BackColor = System.Drawing.Color.Tomato;
             this.NextButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.NextButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.NextButtonParticipant.Location = new System.Drawing.Point(642, 338);
+            this.NextButtonParticipant.Location = new System.Drawing.Point(636, 315);
             this.NextButtonParticipant.Name = "NextButtonParticipant";
             this.NextButtonParticipant.Size = new System.Drawing.Size(149, 32);
             this.NextButtonParticipant.TabIndex = 8;
@@ -308,10 +312,10 @@
             // FilterParticipants
             // 
             this.FilterParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilterParticipants.BackColor = System.Drawing.Color.LightCoral;
+            this.FilterParticipants.BackColor = System.Drawing.Color.Tomato;
             this.FilterParticipants.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.FilterParticipants.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.FilterParticipants.Location = new System.Drawing.Point(670, 35);
+            this.FilterParticipants.Location = new System.Drawing.Point(664, 36);
             this.FilterParticipants.Name = "FilterParticipants";
             this.FilterParticipants.Size = new System.Drawing.Size(107, 36);
             this.FilterParticipants.TabIndex = 7;
@@ -322,7 +326,7 @@
             // DatePickerParticipantEnd
             // 
             this.DatePickerParticipantEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DatePickerParticipantEnd.Location = new System.Drawing.Point(464, 51);
+            this.DatePickerParticipantEnd.Location = new System.Drawing.Point(458, 52);
             this.DatePickerParticipantEnd.Name = "DatePickerParticipantEnd";
             this.DatePickerParticipantEnd.Size = new System.Drawing.Size(200, 23);
             this.DatePickerParticipantEnd.TabIndex = 5;
@@ -331,7 +335,7 @@
             // DatePickerParticipantStart
             // 
             this.DatePickerParticipantStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DatePickerParticipantStart.Location = new System.Drawing.Point(464, 22);
+            this.DatePickerParticipantStart.Location = new System.Drawing.Point(458, 23);
             this.DatePickerParticipantStart.Name = "DatePickerParticipantStart";
             this.DatePickerParticipantStart.Size = new System.Drawing.Size(200, 23);
             this.DatePickerParticipantStart.TabIndex = 4;
@@ -360,9 +364,9 @@
             this.ColumnWithdrawButton,
             this.ColumnState});
             this.ConferencesParticipant.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ConferencesParticipant.Location = new System.Drawing.Point(10, 77);
+            this.ConferencesParticipant.Location = new System.Drawing.Point(11, 78);
             this.ConferencesParticipant.Name = "ConferencesParticipant";
-            this.ConferencesParticipant.Size = new System.Drawing.Size(781, 255);
+            this.ConferencesParticipant.Size = new System.Drawing.Size(774, 231);
             this.ConferencesParticipant.TabIndex = 3;
             this.ConferencesParticipant.Text = "dataGridView1";
             this.ConferencesParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConferencesParticipant_CellContentClick);
@@ -452,16 +456,28 @@
             this.TabControrConferences.Controls.Add(this.TabParticipant);
             this.TabControrConferences.Controls.Add(this.TabOrganizer);
             this.TabControrConferences.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TabControrConferences.Location = new System.Drawing.Point(-2, 2);
+            this.TabControrConferences.ImageList = this.imageList1;
+            this.TabControrConferences.ItemSize = new System.Drawing.Size(500, 50);
+            this.TabControrConferences.Location = new System.Drawing.Point(2, 0);
             this.TabControrConferences.Name = "TabControrConferences";
             this.TabControrConferences.SelectedIndex = 2;
-            this.TabControrConferences.Size = new System.Drawing.Size(808, 398);
+            this.TabControrConferences.Size = new System.Drawing.Size(803, 406);
             this.TabControrConferences.TabIndex = 0;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "637-512.png");
+            this.imageList1.Images.SetKeyName(1, "events-icon-png-217527-free-icons-library-schedule-of-events-png-512_512.jpg");
+            this.imageList1.Images.SetKeyName(2, "participant-png-png-image-participant-png-512_512.png");
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(805, 404);
             this.Controls.Add(this.TabControrConferences);
             this.Name = "MainScreen";
@@ -522,5 +538,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox OrganizerTabEntriesTextBox;
         private System.Windows.Forms.Label OrganizerTabEntriesLabel;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
