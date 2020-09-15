@@ -132,12 +132,11 @@ namespace ConferencePlanner.WinUi
      
         private void button1_Click(object sender, EventArgs e)
         {
-
-           checkCancel = false;
+            checkCancel = false;
             tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
                              tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
 
-
+          
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage3"])
             {
                 button1.Text = "Save";
@@ -179,7 +178,7 @@ namespace ConferencePlanner.WinUi
         
 
             }
-         
+
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage2"])
             {
                 button1.Text = "Next";
@@ -1031,8 +1030,9 @@ namespace ConferencePlanner.WinUi
                     if(dialogResult==DialogResult.Yes)
                     {
 
+                        
 
-                        conferanceTypeRepository.deleteType(typeId);
+                         conferanceTypeRepository.deleteType(typeId);
                         TypeReloadData();
                     }
                     
@@ -1442,6 +1442,29 @@ namespace ConferencePlanner.WinUi
                 dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
                 ManageTypeTabPaginationButtonsState();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TypeTabFilter()
+        {
+            string searchString = txtSearch.Text;
+            
+            List<ConferenceTypeModel> filteredData = conferanceTypeModels.Where(type => type.ConferenceTypeName.ToLower().Contains(searchString.ToLower())
+                                                                                                 || type.ConferenceTypeCode.ToLower().Contains(searchString.ToLower())).ToList();
+
+            conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(filteredData, typeTabPageSize);
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            ManageTypeTabPaginationButtonsState();
+            
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            TypeTabFilter();
         }
 
         private async Task<ConferenceModel> GetConferenceViaAPI()

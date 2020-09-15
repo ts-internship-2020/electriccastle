@@ -420,9 +420,11 @@
             // 
             this.CategoryTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabEntriesLabel.AutoSize = true;
-            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(126, 134);
+            this.CategoryTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabEntriesLabel.ForeColor = System.Drawing.Color.Red;
+            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(95, 134);
             this.CategoryTabEntriesLabel.Name = "CategoryTabEntriesLabel";
-            this.CategoryTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
+            this.CategoryTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
             this.CategoryTabEntriesLabel.TabIndex = 7;
             this.CategoryTabEntriesLabel.Text = "Entries per page";
             // 
@@ -535,9 +537,11 @@
             // 
             this.TypeTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeTabEntriesLabel.AutoSize = true;
-            this.TypeTabEntriesLabel.Location = new System.Drawing.Point(108, 109);
+            this.TypeTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TypeTabEntriesLabel.ForeColor = System.Drawing.Color.Red;
+            this.TypeTabEntriesLabel.Location = new System.Drawing.Point(89, 109);
             this.TypeTabEntriesLabel.Name = "TypeTabEntriesLabel";
-            this.TypeTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
+            this.TypeTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
             this.TypeTabEntriesLabel.TabIndex = 6;
             this.TypeTabEntriesLabel.Text = "Entries per page";
             // 
@@ -559,6 +563,7 @@
             this.txtSearch.PlaceholderText = "Search...";
             this.txtSearch.Size = new System.Drawing.Size(100, 23);
             this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btNewType
             // 
