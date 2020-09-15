@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewDistrictForm));
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.DistrictNameLabel = new System.Windows.Forms.Label();
             this.DistrictCodLabel = new System.Windows.Forms.Label();
             this.DistrictNameTextBox = new System.Windows.Forms.TextBox();
@@ -40,21 +39,10 @@
             this.errorProviderDistrictCode = new System.Windows.Forms.ErrorProvider(this.components);
             this.CountryComboBox = new System.Windows.Forms.ComboBox();
             this.CountryLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictCode)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-            this.pictureBox.Location = new System.Drawing.Point(106, 12);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(103, 119);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
             // 
             // DistrictNameLabel
             // 
@@ -62,8 +50,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DistrictNameLabel.AutoSize = true;
+            this.DistrictNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.DistrictNameLabel.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.DistrictNameLabel.Location = new System.Drawing.Point(25, 167);
+            this.DistrictNameLabel.Location = new System.Drawing.Point(25, 149);
             this.DistrictNameLabel.Name = "DistrictNameLabel";
             this.DistrictNameLabel.Size = new System.Drawing.Size(44, 17);
             this.DistrictNameLabel.TabIndex = 2;
@@ -75,8 +64,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DistrictCodLabel.AutoSize = true;
+            this.DistrictCodLabel.BackColor = System.Drawing.Color.Transparent;
             this.DistrictCodLabel.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.DistrictCodLabel.Location = new System.Drawing.Point(25, 209);
+            this.DistrictCodLabel.Location = new System.Drawing.Point(25, 192);
             this.DistrictCodLabel.Name = "DistrictCodLabel";
             this.DistrictCodLabel.Size = new System.Drawing.Size(39, 17);
             this.DistrictCodLabel.TabIndex = 3;
@@ -87,7 +77,7 @@
             this.DistrictNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DistrictNameTextBox.Location = new System.Drawing.Point(106, 161);
+            this.DistrictNameTextBox.Location = new System.Drawing.Point(106, 143);
             this.DistrictNameTextBox.Name = "DistrictNameTextBox";
             this.DistrictNameTextBox.Size = new System.Drawing.Size(136, 23);
             this.DistrictNameTextBox.TabIndex = 4;
@@ -98,7 +88,7 @@
             this.DistrictCodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DistrictCodeTextBox.Location = new System.Drawing.Point(106, 203);
+            this.DistrictCodeTextBox.Location = new System.Drawing.Point(106, 186);
             this.DistrictCodeTextBox.Name = "DistrictCodeTextBox";
             this.DistrictCodeTextBox.Size = new System.Drawing.Size(136, 23);
             this.DistrictCodeTextBox.TabIndex = 5;
@@ -107,12 +97,12 @@
             // SaveButton
             // 
             this.SaveButton.BackColor = System.Drawing.Color.Tomato;
-            this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.SaveButton.Location = new System.Drawing.Point(106, 296);
+            this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SaveButton.Location = new System.Drawing.Point(106, 282);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(113, 40);
             this.SaveButton.TabIndex = 6;
-            this.SaveButton.Text = "Upload district";
+            this.SaveButton.Text = "Save district";
             this.SaveButton.UseVisualStyleBackColor = false;
             // 
             // errorProviderDistrictName
@@ -126,7 +116,7 @@
             // CountryComboBox
             // 
             this.CountryComboBox.FormattingEnabled = true;
-            this.CountryComboBox.Location = new System.Drawing.Point(106, 246);
+            this.CountryComboBox.Location = new System.Drawing.Point(106, 232);
             this.CountryComboBox.Name = "CountryComboBox";
             this.CountryComboBox.Size = new System.Drawing.Size(121, 23);
             this.CountryComboBox.TabIndex = 7;
@@ -134,18 +124,32 @@
             // CountryLabel
             // 
             this.CountryLabel.AutoSize = true;
+            this.CountryLabel.BackColor = System.Drawing.Color.Transparent;
             this.CountryLabel.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.CountryLabel.Location = new System.Drawing.Point(25, 252);
+            this.CountryLabel.Location = new System.Drawing.Point(25, 232);
             this.CountryLabel.Name = "CountryLabel";
             this.CountryLabel.Size = new System.Drawing.Size(57, 17);
             this.CountryLabel.TabIndex = 8;
             this.CountryLabel.Text = "Country";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(106, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Insert new district";
+            // 
             // NewDistrictForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(306, 348);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.CountryLabel);
             this.Controls.Add(this.CountryComboBox);
             this.Controls.Add(this.SaveButton);
@@ -153,14 +157,12 @@
             this.Controls.Add(this.DistrictNameTextBox);
             this.Controls.Add(this.DistrictCodLabel);
             this.Controls.Add(this.DistrictNameLabel);
-            this.Controls.Add(this.pictureBox);
             this.Name = "NewDistrictForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "District";
+            this.Text = "   District";
             this.Activated += new System.EventHandler(this.NewDistrictForm_Activated);
             this.Load += new System.EventHandler(this.NewDistrictForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderDistrictCode)).EndInit();
             this.ResumeLayout(false);
@@ -169,8 +171,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label DistrictNameLabel;
         private System.Windows.Forms.Label DistrictCodLabel;
         private System.Windows.Forms.TextBox DistrictNameTextBox;
@@ -181,5 +181,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderDistrictCode;
         private System.Windows.Forms.Label CountryLabel;
         private System.Windows.Forms.ComboBox CountryComboBox;
+        private System.Windows.Forms.Label label1;
     }
 }
