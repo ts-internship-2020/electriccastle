@@ -72,7 +72,6 @@
             this.dataGridViewType = new System.Windows.Forms.DataGridView();
             this.btNextType = new ConferencePlanner.WinUi.ButonCircular();
             this.tabCountryEntryLabel = new System.Windows.Forms.TabPage();
-            this.DGVCountry = new System.Windows.Forms.DataGridView();
             this.tabCountryEntryText = new System.Windows.Forms.TextBox();
             this.tabCountryEntryLb = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -80,6 +79,7 @@
             this.PreviousBtn = new ConferencePlanner.WinUi.ButonCircular();
             this.NextBtn = new ConferencePlanner.WinUi.ButonCircular();
             this.NewCountry = new ConferencePlanner.WinUi.ButonCircular();
+            this.DGVCountry = new System.Windows.Forms.DataGridView();
             this.CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -117,6 +117,9 @@
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderOrganizer = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAddress = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
@@ -124,13 +127,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabCountryEntryLabel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOrganizer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddress)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -172,6 +178,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(163, 23);
             this.txtName.TabIndex = 5;
+            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // txtAddress
             // 
@@ -179,6 +186,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(163, 23);
             this.txtAddress.TabIndex = 6;
+            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
             // 
             // button1
             // 
@@ -273,6 +281,7 @@
             this.tabSpeakerFilterText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabSpeakerFilterText.Location = new System.Drawing.Point(415, 135);
             this.tabSpeakerFilterText.Name = "tabSpeakerFilterText";
+            this.tabSpeakerFilterText.PlaceholderText = "Search...";
             this.tabSpeakerFilterText.Size = new System.Drawing.Size(99, 25);
             this.tabSpeakerFilterText.TabIndex = 26;
             this.tabSpeakerFilterText.TextChanged += new System.EventHandler(this.tabSpeakerFilterText_TextChanged);
@@ -456,9 +465,9 @@
             this.CategoryTabSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(472, 131);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
+            this.CategoryTabSearchTextBox.PlaceholderText = "Search...";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;
-            this.CategoryTabSearchTextBox.Text = "Search...";
             this.CategoryTabSearchTextBox.TextChanged += new System.EventHandler(this.CategoryTabSearchTextBox_TextChanged);
             // 
             // CategoryTabNextButton
@@ -625,27 +634,6 @@
             // 
             // tabCountryEntryLabel
             // 
-            // 
-            // DGVCountry
-            // 
-            this.DGVCountry.AllowUserToAddRows = false;
-            this.DGVCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVCountry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGVCountry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVCountry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CountryName,
-            this.CountryCod});
-            this.DGVCountry.Location = new System.Drawing.Point(4, 4);
-            this.DGVCountry.MultiSelect = false;
-            this.DGVCountry.Name = "DGVCountry";
-            this.DGVCountry.ReadOnly = true;
-            this.DGVCountry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVCountry.Size = new System.Drawing.Size(892, 150);
-            this.DGVCountry.TabIndex = 0;
-            this.DGVCountry.Text = "dataGridView5";
-            this.DGVCountry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
             this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryText);
             this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryLb);
             this.tabCountryEntryLabel.Controls.Add(this.label6);
@@ -745,6 +733,27 @@
             this.NewCountry.UseVisualStyleBackColor = false;
             this.NewCountry.Click += new System.EventHandler(this.NewCountry_Click);
             // 
+            // DGVCountry
+            // 
+            this.DGVCountry.AllowUserToAddRows = false;
+            this.DGVCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVCountry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVCountry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVCountry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CountryName,
+            this.CountryCod});
+            this.DGVCountry.Location = new System.Drawing.Point(4, 4);
+            this.DGVCountry.MultiSelect = false;
+            this.DGVCountry.Name = "DGVCountry";
+            this.DGVCountry.ReadOnly = true;
+            this.DGVCountry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVCountry.Size = new System.Drawing.Size(892, 150);
+            this.DGVCountry.TabIndex = 0;
+            this.DGVCountry.Text = "dataGridView5";
+            this.DGVCountry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
+            // 
             // CountryName
             // 
             this.CountryName.HeaderText = "Name";
@@ -803,6 +812,7 @@
             this.DistrictFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DistrictFilter.Location = new System.Drawing.Point(238, 166);
             this.DistrictFilter.Name = "DistrictFilter";
+            this.DistrictFilter.PlaceholderText = "Search...";
             this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
             this.DistrictFilter.TabIndex = 5;
             this.DistrictFilter.TextChanged += new System.EventHandler(this.DistrictFilter_TextChanged);
@@ -954,6 +964,7 @@
             this.filterCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.filterCity.Location = new System.Drawing.Point(271, 168);
             this.filterCity.Name = "filterCity";
+            this.filterCity.PlaceholderText = "Search...";
             this.filterCity.Size = new System.Drawing.Size(100, 23);
             this.filterCity.TabIndex = 5;
             this.filterCity.TextChanged += new System.EventHandler(this.filterCity_TextChanged);
@@ -1056,6 +1067,8 @@
             this.txtOrganizer.Name = "txtOrganizer";
             this.txtOrganizer.Size = new System.Drawing.Size(163, 23);
             this.txtOrganizer.TabIndex = 11;
+            this.txtOrganizer.TextChanged += new System.EventHandler(this.txtOrganizer_TextChanged);
+            this.txtOrganizer.Validating += new System.ComponentModel.CancelEventHandler(this.txtOrganizer_Validating);
             // 
             // btSaveAndNew
             // 
@@ -1136,6 +1149,18 @@
             this.tabSpeakerColumnRating.Name = "tabSpeakerColumnRating";
             this.tabSpeakerColumnRating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // errorProviderName
+            // 
+            this.errorProviderName.ContainerControl = this;
+            // 
+            // errorProviderOrganizer
+            // 
+            this.errorProviderOrganizer.ContainerControl = this;
+            // 
+            // errorProviderAddress
+            // 
+            this.errorProviderAddress.ContainerControl = this;
+            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1173,9 +1198,9 @@
             this.tabType.ResumeLayout(false);
             this.tabType.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabCountryEntryLabel.ResumeLayout(false);
             this.tabCountryEntryLabel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).EndInit();
@@ -1183,6 +1208,9 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOrganizer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1282,5 +1310,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CityName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityId;
+        private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.ErrorProvider errorProviderOrganizer;
+        private System.Windows.Forms.ErrorProvider errorProviderAddress;
     }
 }
