@@ -145,5 +145,15 @@ namespace ConferencePlanner.WinUi
 
             }
         }
+
+        private void editSpeakerNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editSpeakerCode_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

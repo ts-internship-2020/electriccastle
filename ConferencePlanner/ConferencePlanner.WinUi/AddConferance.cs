@@ -132,26 +132,47 @@ namespace ConferencePlanner.WinUi
      
         private void button1_Click(object sender, EventArgs e)
         {
-
-           checkCancel = false;
-            tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
-                             tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
-
-
-            if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage3"])
+           
+                if (txtName.Text == string.Empty)
             {
-                button1.Text = "Save";
-                btSaveAndNew.Visible = true;
-                button1.Click -= button1_Click;
-                if (ConferenceId == null)
+                txtName.Focus();
+                errorProviderName.SetError(txtName, "Can't be empty");
+            }
+            else if (txtOrganizer.Text == string.Empty)
+            {
+                txtOrganizer.Focus();
+                errorProviderOrganizer.SetError(txtOrganizer, "Can't be empty");
+            }
+            else if (txtAddress.Text == string.Empty)
+            {
+                txtAddress.Focus();
+                errorProviderAddress.SetError(txtAddress, "Can't be empty");
+            }
+            if (txtName.Text != string.Empty && txtOrganizer.Text != string.Empty && txtAddress.Text != string.Empty)
+            {
+
+                checkCancel = false;
+                tabConferance.SelectedIndex = (tabConferance.SelectedIndex + 1 < tabConferance.TabCount) ?
+                                 tabConferance.SelectedIndex + 1 : tabConferance.SelectedIndex;
+
+
+                if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage3"])
                 {
-                    button1.Click += new EventHandler(AddConference);
-                }
-                else
-                {
-                    button1.Click += new EventHandler(EditConference);
+                    button1.Text = "Save";
+                    btSaveAndNew.Visible = true;
+                    button1.Click -= button1_Click;
+                    if (ConferenceId == null)
+                    {
+                        button1.Click += new EventHandler(AddConference);
+                    }
+                    else
+                    {
+                        button1.Click += new EventHandler(EditConference);
+                    }
                 }
             }
+            
+
 
 
         }
@@ -179,7 +200,7 @@ namespace ConferencePlanner.WinUi
         
 
             }
-         
+
             if (tabConferance.SelectedTab == tabConferance.TabPages["tabPage2"])
             {
                 button1.Text = "Next";
@@ -885,6 +906,10 @@ namespace ConferencePlanner.WinUi
             getSpeakerList = await GetResponseSpeaker();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
             getMaxId(getSpeakerList);
+            errorProviderName.SetError(txtName, "");
+            errorProviderOrganizer.SetError(txtOrganizer, "");
+            errorProviderAddress.SetError(txtAddress, "");
+
         }
          
 
@@ -1031,8 +1056,9 @@ namespace ConferencePlanner.WinUi
                     if(dialogResult==DialogResult.Yes)
                     {
 
+                        
 
-                        conferanceTypeRepository.deleteType(typeId);
+                         conferanceTypeRepository.deleteType(typeId);
                         TypeReloadData();
                     }
                     
@@ -1345,22 +1371,26 @@ namespace ConferencePlanner.WinUi
         private async void btSaveAndNew_Click(object sender, EventArgs e)
         {
             ConferenceModel conference = PopulateConferenceObject();
-            if (ConferenceId == null)
-            {
-                await AddConferenceViaAPI(conference);
+            
+           
+                if (ConferenceId == null)
+                {
+                    await AddConferenceViaAPI(conference);
 
-                AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
-                addConferance.ConferenceId = null;
-                addConferance.ShowDialog();
-            }
-            else
-            {
-                await EditConferenceViaAPI(conference);
+                    AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+                    addConferance.ConferenceId = null;
+                    addConferance.ShowDialog();
+                }
+                else
+                {
+                    await EditConferenceViaAPI(conference);
 
-                AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
-                addConferance.ConferenceId = null;
-                addConferance.ShowDialog();
-            }
+                    AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+                    addConferance.ConferenceId = null;
+                    addConferance.ShowDialog();
+                }
+            
+
         }
 
         private ConferenceModel PopulateConferenceObject()
@@ -1444,6 +1474,29 @@ namespace ConferencePlanner.WinUi
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TypeTabFilter()
+        {
+            string searchString = txtSearch.Text;
+            
+            List<ConferenceTypeModel> filteredData = conferanceTypeModels.Where(type => type.ConferenceTypeName.ToLower().Contains(searchString.ToLower())
+                                                                                                 || type.ConferenceTypeCode.ToLower().Contains(searchString.ToLower())).ToList();
+
+            conferanceTypePaginationHelper = new PaginationHelper<ConferenceTypeModel>(filteredData, typeTabPageSize);
+            dataGridViewType.DataSource = conferanceTypePaginationHelper.GetPage();
+            ManageTypeTabPaginationButtonsState();
+            
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            TypeTabFilter();
+        }
+
         private async Task<ConferenceModel> GetConferenceViaAPI()
         {
             HttpResponseMessage message = await httpClient.GetAsync("http://localhost:2794/api/Conference/" + (int)ConferenceId);
@@ -1479,6 +1532,35 @@ namespace ConferencePlanner.WinUi
                 throw new Exception("Data not loaded properly from API");
             }
         }
+
+        private void txtName_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = false;
+            errorProviderName.SetError(txtName, "");
+        }
+
+        private void txtOrganizer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOrganizer_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = false;
+           errorProviderOrganizer.SetError(txtOrganizer, "");
+        }
+
+        private void txtAddress_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = false;
+            errorProviderAddress.SetError(txtAddress, "");
+        }
+
     }
 }
 

@@ -72,7 +72,6 @@
             this.dataGridViewType = new System.Windows.Forms.DataGridView();
             this.btNextType = new ConferencePlanner.WinUi.ButonCircular();
             this.tabCountryEntryLabel = new System.Windows.Forms.TabPage();
-            this.DGVCountry = new System.Windows.Forms.DataGridView();
             this.tabCountryEntryText = new System.Windows.Forms.TextBox();
             this.tabCountryEntryLb = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -80,6 +79,7 @@
             this.PreviousBtn = new ConferencePlanner.WinUi.ButonCircular();
             this.NextBtn = new ConferencePlanner.WinUi.ButonCircular();
             this.NewCountry = new ConferencePlanner.WinUi.ButonCircular();
+            this.DGVCountry = new System.Windows.Forms.DataGridView();
             this.CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -117,6 +117,9 @@
             this.tabSpeakerColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSpeakerColumnRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderOrganizer = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAddress = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
@@ -124,13 +127,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabCountryEntryLabel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOrganizer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddress)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -172,6 +178,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(163, 23);
             this.txtName.TabIndex = 5;
+            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // txtAddress
             // 
@@ -179,6 +186,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(163, 23);
             this.txtAddress.TabIndex = 6;
+            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
             // 
             // button1
             // 
@@ -259,7 +267,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(296, 140);
+            this.label9.Location = new System.Drawing.Point(490, 145);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(102, 15);
             this.label9.TabIndex = 27;
@@ -271,8 +279,9 @@
             this.tabSpeakerFilterText.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tabSpeakerFilterText.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabSpeakerFilterText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerFilterText.Location = new System.Drawing.Point(415, 135);
+            this.tabSpeakerFilterText.Location = new System.Drawing.Point(632, 140);
             this.tabSpeakerFilterText.Name = "tabSpeakerFilterText";
+            this.tabSpeakerFilterText.PlaceholderText = "Search...";
             this.tabSpeakerFilterText.Size = new System.Drawing.Size(99, 25);
             this.tabSpeakerFilterText.TabIndex = 26;
             this.tabSpeakerFilterText.TextChanged += new System.EventHandler(this.tabSpeakerFilterText_TextChanged);
@@ -410,7 +419,7 @@
             // CategoryTabEntriesTextBox
             // 
             this.CategoryTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CategoryTabEntriesTextBox.Location = new System.Drawing.Point(223, 131);
+            this.CategoryTabEntriesTextBox.Location = new System.Drawing.Point(261, 128);
             this.CategoryTabEntriesTextBox.Name = "CategoryTabEntriesTextBox";
             this.CategoryTabEntriesTextBox.Size = new System.Drawing.Size(25, 23);
             this.CategoryTabEntriesTextBox.TabIndex = 8;
@@ -420,9 +429,11 @@
             // 
             this.CategoryTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CategoryTabEntriesLabel.AutoSize = true;
-            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(126, 134);
+            this.CategoryTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CategoryTabEntriesLabel.ForeColor = System.Drawing.Color.Red;
+            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(130, 129);
             this.CategoryTabEntriesLabel.Name = "CategoryTabEntriesLabel";
-            this.CategoryTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
+            this.CategoryTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
             this.CategoryTabEntriesLabel.TabIndex = 7;
             this.CategoryTabEntriesLabel.Text = "Entries per page";
             // 
@@ -430,7 +441,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(364, 134);
+            this.label10.Location = new System.Drawing.Point(422, 134);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(102, 15);
             this.label10.TabIndex = 6;
@@ -452,11 +463,11 @@
             // CategoryTabSearchTextBox
             // 
             this.CategoryTabSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(472, 131);
+            this.CategoryTabSearchTextBox.Location = new System.Drawing.Point(542, 131);
             this.CategoryTabSearchTextBox.Name = "CategoryTabSearchTextBox";
+            this.CategoryTabSearchTextBox.PlaceholderText = "Search...";
             this.CategoryTabSearchTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryTabSearchTextBox.TabIndex = 3;
-            this.CategoryTabSearchTextBox.Text = "Search...";
             this.CategoryTabSearchTextBox.TextChanged += new System.EventHandler(this.CategoryTabSearchTextBox_TextChanged);
             // 
             // CategoryTabNextButton
@@ -525,7 +536,7 @@
             // TypeTabEntriesTextBox
             // 
             this.TypeTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TypeTabEntriesTextBox.Location = new System.Drawing.Point(205, 107);
+            this.TypeTabEntriesTextBox.Location = new System.Drawing.Point(273, 103);
             this.TypeTabEntriesTextBox.Name = "TypeTabEntriesTextBox";
             this.TypeTabEntriesTextBox.Size = new System.Drawing.Size(24, 23);
             this.TypeTabEntriesTextBox.TabIndex = 7;
@@ -535,9 +546,11 @@
             // 
             this.TypeTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeTabEntriesLabel.AutoSize = true;
-            this.TypeTabEntriesLabel.Location = new System.Drawing.Point(108, 109);
+            this.TypeTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TypeTabEntriesLabel.ForeColor = System.Drawing.Color.Red;
+            this.TypeTabEntriesLabel.Location = new System.Drawing.Point(130, 107);
             this.TypeTabEntriesLabel.Name = "TypeTabEntriesLabel";
-            this.TypeTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
+            this.TypeTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
             this.TypeTabEntriesLabel.TabIndex = 6;
             this.TypeTabEntriesLabel.Text = "Entries per page";
             // 
@@ -545,7 +558,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(264, 109);
+            this.label11.Location = new System.Drawing.Point(451, 104);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(102, 15);
             this.label11.TabIndex = 5;
@@ -554,11 +567,12 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtSearch.Location = new System.Drawing.Point(372, 104);
+            this.txtSearch.Location = new System.Drawing.Point(600, 101);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search...";
             this.txtSearch.Size = new System.Drawing.Size(100, 23);
             this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btNewType
             // 
@@ -620,27 +634,6 @@
             // 
             // tabCountryEntryLabel
             // 
-            // 
-            // DGVCountry
-            // 
-            this.DGVCountry.AllowUserToAddRows = false;
-            this.DGVCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVCountry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGVCountry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVCountry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CountryName,
-            this.CountryCod});
-            this.DGVCountry.Location = new System.Drawing.Point(4, 4);
-            this.DGVCountry.MultiSelect = false;
-            this.DGVCountry.Name = "DGVCountry";
-            this.DGVCountry.ReadOnly = true;
-            this.DGVCountry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVCountry.Size = new System.Drawing.Size(892, 150);
-            this.DGVCountry.TabIndex = 0;
-            this.DGVCountry.Text = "dataGridView5";
-            this.DGVCountry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
             this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryText);
             this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryLb);
             this.tabCountryEntryLabel.Controls.Add(this.label6);
@@ -662,7 +655,7 @@
             // tabCountryEntryText
             // 
             this.tabCountryEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabCountryEntryText.Location = new System.Drawing.Point(606, 163);
+            this.tabCountryEntryText.Location = new System.Drawing.Point(234, 171);
             this.tabCountryEntryText.Name = "tabCountryEntryText";
             this.tabCountryEntryText.Size = new System.Drawing.Size(25, 23);
             this.tabCountryEntryText.TabIndex = 8;
@@ -675,7 +668,7 @@
             this.tabCountryEntryLb.AutoSize = true;
             this.tabCountryEntryLb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabCountryEntryLb.ForeColor = System.Drawing.Color.Red;
-            this.tabCountryEntryLb.Location = new System.Drawing.Point(492, 163);
+            this.tabCountryEntryLb.Location = new System.Drawing.Point(110, 172);
             this.tabCountryEntryLb.Name = "tabCountryEntryLb";
             this.tabCountryEntryLb.Size = new System.Drawing.Size(108, 17);
             this.tabCountryEntryLb.TabIndex = 7;
@@ -685,7 +678,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(103, 174);
+            this.label6.Location = new System.Drawing.Point(451, 177);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 15);
             this.label6.TabIndex = 6;
@@ -694,7 +687,7 @@
             // textNameCountry
             // 
             this.textNameCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textNameCountry.Location = new System.Drawing.Point(211, 171);
+            this.textNameCountry.Location = new System.Drawing.Point(559, 174);
             this.textNameCountry.Name = "textNameCountry";
             this.textNameCountry.PlaceholderText = "Search...";
             this.textNameCountry.Size = new System.Drawing.Size(100, 23);
@@ -740,6 +733,27 @@
             this.NewCountry.UseVisualStyleBackColor = false;
             this.NewCountry.Click += new System.EventHandler(this.NewCountry_Click);
             // 
+            // DGVCountry
+            // 
+            this.DGVCountry.AllowUserToAddRows = false;
+            this.DGVCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVCountry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVCountry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVCountry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CountryName,
+            this.CountryCod});
+            this.DGVCountry.Location = new System.Drawing.Point(4, 4);
+            this.DGVCountry.MultiSelect = false;
+            this.DGVCountry.Name = "DGVCountry";
+            this.DGVCountry.ReadOnly = true;
+            this.DGVCountry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVCountry.Size = new System.Drawing.Size(892, 150);
+            this.DGVCountry.TabIndex = 0;
+            this.DGVCountry.Text = "dataGridView5";
+            this.DGVCountry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
+            // 
             // CountryName
             // 
             this.CountryName.HeaderText = "Name";
@@ -777,7 +791,7 @@
             this.tabDistrictEntryLable.AutoSize = true;
             this.tabDistrictEntryLable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabDistrictEntryLable.ForeColor = System.Drawing.Color.Red;
-            this.tabDistrictEntryLable.Location = new System.Drawing.Point(445, 167);
+            this.tabDistrictEntryLable.Location = new System.Drawing.Point(109, 167);
             this.tabDistrictEntryLable.Name = "tabDistrictEntryLable";
             this.tabDistrictEntryLable.Size = new System.Drawing.Size(99, 17);
             this.tabDistrictEntryLable.TabIndex = 7;
@@ -786,7 +800,7 @@
             // tabDistrictEntryText
             // 
             this.tabDistrictEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabDistrictEntryText.Location = new System.Drawing.Point(550, 166);
+            this.tabDistrictEntryText.Location = new System.Drawing.Point(233, 167);
             this.tabDistrictEntryText.Name = "tabDistrictEntryText";
             this.tabDistrictEntryText.Size = new System.Drawing.Size(27, 23);
             this.tabDistrictEntryText.TabIndex = 6;
@@ -796,8 +810,9 @@
             // DistrictFilter
             // 
             this.DistrictFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DistrictFilter.Location = new System.Drawing.Point(238, 166);
+            this.DistrictFilter.Location = new System.Drawing.Point(612, 164);
             this.DistrictFilter.Name = "DistrictFilter";
+            this.DistrictFilter.PlaceholderText = "Search...";
             this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
             this.DistrictFilter.TabIndex = 5;
             this.DistrictFilter.TextChanged += new System.EventHandler(this.DistrictFilter_TextChanged);
@@ -806,7 +821,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(116, 167);
+            this.label7.Location = new System.Drawing.Point(490, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 15);
             this.label7.TabIndex = 4;
@@ -914,7 +929,7 @@
             // tabCityEntryText
             // 
             this.tabCityEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabCityEntryText.Location = new System.Drawing.Point(612, 167);
+            this.tabCityEntryText.Location = new System.Drawing.Point(240, 167);
             this.tabCityEntryText.Name = "tabCityEntryText";
             this.tabCityEntryText.Size = new System.Drawing.Size(28, 23);
             this.tabCityEntryText.TabIndex = 8;
@@ -928,7 +943,7 @@
             this.tabCityEntryLabel.AutoSize = true;
             this.tabCityEntryLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabCityEntryLabel.ForeColor = System.Drawing.Color.Red;
-            this.tabCityEntryLabel.Location = new System.Drawing.Point(498, 168);
+            this.tabCityEntryLabel.Location = new System.Drawing.Point(110, 167);
             this.tabCityEntryLabel.Name = "tabCityEntryLabel";
             this.tabCityEntryLabel.Size = new System.Drawing.Size(108, 17);
             this.tabCityEntryLabel.TabIndex = 7;
@@ -938,7 +953,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(116, 170);
+            this.label8.Location = new System.Drawing.Point(497, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(122, 15);
             this.label8.TabIndex = 6;
@@ -947,8 +962,9 @@
             // filterCity
             // 
             this.filterCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.filterCity.Location = new System.Drawing.Point(271, 168);
+            this.filterCity.Location = new System.Drawing.Point(637, 167);
             this.filterCity.Name = "filterCity";
+            this.filterCity.PlaceholderText = "Search...";
             this.filterCity.Size = new System.Drawing.Size(100, 23);
             this.filterCity.TabIndex = 5;
             this.filterCity.TextChanged += new System.EventHandler(this.filterCity_TextChanged);
@@ -1051,6 +1067,8 @@
             this.txtOrganizer.Name = "txtOrganizer";
             this.txtOrganizer.Size = new System.Drawing.Size(163, 23);
             this.txtOrganizer.TabIndex = 11;
+            this.txtOrganizer.TextChanged += new System.EventHandler(this.txtOrganizer_TextChanged);
+            this.txtOrganizer.Validating += new System.ComponentModel.CancelEventHandler(this.txtOrganizer_Validating);
             // 
             // btSaveAndNew
             // 
@@ -1131,6 +1149,18 @@
             this.tabSpeakerColumnRating.Name = "tabSpeakerColumnRating";
             this.tabSpeakerColumnRating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // errorProviderName
+            // 
+            this.errorProviderName.ContainerControl = this;
+            // 
+            // errorProviderOrganizer
+            // 
+            this.errorProviderOrganizer.ContainerControl = this;
+            // 
+            // errorProviderAddress
+            // 
+            this.errorProviderAddress.ContainerControl = this;
+            // 
             // AddConferance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1168,9 +1198,9 @@
             this.tabType.ResumeLayout(false);
             this.tabType.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabCountryEntryLabel.ResumeLayout(false);
             this.tabCountryEntryLabel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).EndInit();
@@ -1178,6 +1208,9 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOrganizer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1277,5 +1310,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CityName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityId;
+        private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.ErrorProvider errorProviderOrganizer;
+        private System.Windows.Forms.ErrorProvider errorProviderAddress;
     }
 }

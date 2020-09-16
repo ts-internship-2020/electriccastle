@@ -37,6 +37,7 @@
             this.btSaveType = new ConferencePlanner.WinUi.ButonCircular();
             this.errorProviderCode = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +48,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(46, 66);
+            this.label1.Location = new System.Drawing.Point(2, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 21);
             this.label1.TabIndex = 0;
@@ -58,7 +59,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(46, 126);
+            this.label2.Location = new System.Drawing.Point(2, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 21);
             this.label2.TabIndex = 1;
@@ -66,29 +67,29 @@
             // 
             // txtCodeType
             // 
-            this.txtCodeType.Location = new System.Drawing.Point(158, 68);
+            this.txtCodeType.Location = new System.Drawing.Point(196, 100);
             this.txtCodeType.Name = "txtCodeType";
-            this.txtCodeType.Size = new System.Drawing.Size(100, 23);
+            this.txtCodeType.Size = new System.Drawing.Size(130, 23);
             this.txtCodeType.TabIndex = 2;
             this.txtCodeType.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodeType_Validating);
             // 
             // txtNameType
             // 
-            this.txtNameType.Location = new System.Drawing.Point(158, 124);
+            this.txtNameType.Location = new System.Drawing.Point(196, 155);
             this.txtNameType.Name = "txtNameType";
-            this.txtNameType.Size = new System.Drawing.Size(100, 23);
+            this.txtNameType.Size = new System.Drawing.Size(130, 23);
             this.txtNameType.TabIndex = 3;
             this.txtNameType.Validating += new System.ComponentModel.CancelEventHandler(this.txtNameType_Validating);
             // 
             // btSaveType
             // 
             this.btSaveType.BackColor = System.Drawing.Color.Tomato;
-            this.btSaveType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.btSaveType.Location = new System.Drawing.Point(92, 206);
+            this.btSaveType.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btSaveType.Location = new System.Drawing.Point(99, 249);
             this.btSaveType.Name = "btSaveType";
             this.btSaveType.Size = new System.Drawing.Size(119, 32);
             this.btSaveType.TabIndex = 4;
-            this.btSaveType.Text = "Upload type";
+            this.btSaveType.Text = "Save type";
             this.btSaveType.UseVisualStyleBackColor = false;
             this.btSaveType.Click += new System.EventHandler(this.btSaveType_Click);
             // 
@@ -100,12 +101,25 @@
             // 
             this.errorProviderName.ContainerControl = this;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(122, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Insert new type";
+            // 
             // NewConferanceType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(308, 288);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(338, 335);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btSaveType);
             this.Controls.Add(this.txtNameType);
             this.Controls.Add(this.txtCodeType);
@@ -114,7 +128,7 @@
             this.Name = "NewConferanceType";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Type";
+            this.Text = "   Type";
             this.Activated += new System.EventHandler(this.NewConferanceType_Activated);
             this.Load += new System.EventHandler(this.NewConferanceType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCode)).EndInit();
@@ -133,5 +147,6 @@
         private ButonCircular btSaveType;
         private System.Windows.Forms.ErrorProvider errorProviderCode;
         private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.Label label3;
     }
 }
