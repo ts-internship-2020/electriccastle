@@ -22,9 +22,9 @@ namespace ConferencePlanner.Api.Controllers
 
         [HttpGet]
         [Route("{ParticipantState}")]
-        public IActionResult GetDistrict(string state)
+        public IActionResult GetState(string email)
         {
-            List<ParticipantStateDemo> demoModels = _getState.GetDictionaryParticipantStates(state);
+            List<ParticipantStateDemo> demoModels = _getState.GetDictionaryParticipantStates(email);
             return Ok(demoModels);
         }
 

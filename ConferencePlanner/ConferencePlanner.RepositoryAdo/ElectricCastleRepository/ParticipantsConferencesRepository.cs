@@ -23,7 +23,7 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         public List<ParticipantsConferencesModel> GetParticipantsConferences()
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            sqlCommand.CommandText = "select c.ConferenceName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName," +
+            sqlCommand.CommandText = "select c.ConferenceId, c.ConferenceName, c.StartDate, c.EndDate, dct.DictionaryConferenceTypeName," +
                 " dcc.DictionaryConferenceCategoryName , dc.DictionaryCityName + ', ' + dcn.CountryCode AS Address, ds.DictionarySpeakerName, ds.DictionarySpeakerId, dps.DictionaryParticipantStateName" +
                 " from Conference c " +
                 " join Location l on l.LocationId = c.LocationId" +
@@ -45,7 +45,8 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
                 while (sqlDataReader.Read())
                 {
                     participants.Add(new ParticipantsConferencesModel() 
-                        { Name = sqlDataReader.GetString("ConferenceName"),
+                        { ConferenceId = sqlDataReader.GetInt32("ConferenceId"),
+                        Name = sqlDataReader.GetString("ConferenceName"),
                           StartDate = sqlDataReader.GetDateTime("StartDate"),
                           EndDate = sqlDataReader.GetDateTime("EndDate"),
                           ConferenceType = sqlDataReader.GetString("DictionaryConferenceTypeName"),
@@ -66,20 +67,20 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
             return participants;
         }
 
-        public void UpdateParticipantsConferencesState(int index, string email)
+        public void UpdateParticipantsConferencesState(int index,int confeernceId, string email)
         {
            
 
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
 
             if(index == 7)
-                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 2 where ParticipantEmail = @Email ";
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 3 where ParticipantEmail = @Email ";
 
             if (index == 8)
                 sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 1 where ParticipantEmail = @Email";
 
             if (index == 9)
-                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 3 where ParticipantEmail = @Email ";
+                sqlCommand.CommandText = "update ConferenceParticipant set DictionaryParticipantStateId  = 2 where ParticipantEmail = @Email ";
             SqlParameter[] parameters = new SqlParameter[1];
 
             parameters[0] = new SqlParameter("@Email", email);

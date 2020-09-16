@@ -49,7 +49,7 @@ namespace ConferencePlanner.WinUi
             var services = new ServiceCollection();
 
           
-            services.AddScoped<IDictionaryParticipantState, GetDemoStateRepository>();
+            
 
             services.AddScoped<MainScreen>();
             services.AddScoped<StartScreen>();
@@ -63,6 +63,7 @@ namespace ConferencePlanner.WinUi
             services.AddScoped<EditSpeakerForm>();
             services.AddScoped<AddSpeakerForm>();
 
+            services.AddScoped<IDictionaryParticipantState, ParticipantStateRepository>();
             services.AddScoped<IParticipantsConferencesRepository, ParticipantsConferencesRepository>();
             services.AddScoped<IOrganizerConferencesRepository, Repository.Ado.ElectricCastleRepository.OrganizerConferencesRepository>();
             services.AddScoped<IConferanceCategory, ConferanceCategoryRepository>();

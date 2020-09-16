@@ -127,9 +127,9 @@ namespace ConferencePlanner.WinUi
             return participants;
         }
 
-        private async Task PostParticipantsConferenceState(int index)
+        private async Task PostParticipantsConferenceState(int index, int conferenceId)
         {
-            string url = "http://localhost:2794/api/ConferenceParticipants/ParticipantState?index=" + index + "&email=" + EmailParticipants;
+            string url = "http://localhost:2794/api/ConferenceParticipants/ParticipantState?index=" + index +"&conferenceId="+ conferenceId + "&email=" + EmailParticipants;
             HttpContent content = new StringContent("", Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync(url, content);
 
@@ -301,7 +301,7 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 7)
             {
-                await PostParticipantsConferenceState(e.ColumnIndex);
+                await PostParticipantsConferenceState(e.ColumnIndex, currentPageConferences.ElementAt(e.RowIndex).ConferenceId);
                 //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
@@ -312,7 +312,7 @@ namespace ConferencePlanner.WinUi
 
             else if (e.ColumnIndex == 8)
             {
-                await PostParticipantsConferenceState(e.ColumnIndex);
+                await PostParticipantsConferenceState(e.ColumnIndex, currentPageConferences.ElementAt(e.RowIndex).ConferenceId);
                 //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
@@ -326,7 +326,7 @@ namespace ConferencePlanner.WinUi
             }
             else if (e.ColumnIndex == 9)
             {
-                await PostParticipantsConferenceState(e.ColumnIndex);
+                await PostParticipantsConferenceState(e.ColumnIndex, currentPageConferences.ElementAt(e.RowIndex).ConferenceId);
                 //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;

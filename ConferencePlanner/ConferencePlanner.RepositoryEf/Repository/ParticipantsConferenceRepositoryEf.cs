@@ -26,28 +26,30 @@ namespace ConferencePlanner.Repository.Ef.Repository
                                                                             Include(cds => cds.ConferenceParticipant).ThenInclude(ds => ds.DictionaryParticipantState)
                                                                             .ToList();
             List<ParticipantsConferencesModel> participants = conferences.Select(pc => new ParticipantsConferencesModel() 
-            {   Name = pc.ConferenceName, 
+            {   ConferenceId = pc.ConferenceId,
+                Name = pc.ConferenceName, 
                 StartDate = pc.StartDate, 
                 EndDate = pc.EndDate, 
                 ConferenceType = pc.DictionaryConferenceType.DictionaryConferenceTypeName, 
                 ConferenceCategory = pc.DictionaryConferenceCategory.DictionaryConferenceCategoryName, 
                 Address = pc.Location.DictionaryCity.DictionaryCityName + ',' + pc.Location.DictionaryCity.DictionaryDistrict.DictionaryCountry.CountryCode,
                 Speaker = pc.ConferenceXdictionarySpeaker.Where(dic => dic.IsMainSpeaker).FirstOrDefault().DictionarySpeaker.DictionarySpeakerName,
-                Id = pc.LocationId,
-               StateName = "withdraw",
-               //pc.ConferenceParticipant.Where(dic => dic.DictionaryParticipantStateId ==2).FirstOrDefault().DictionaryParticipantState.DictionaryParticipantStateName
+                Id = pc.ConferenceXdictionarySpeaker.Where(dic => dic.IsMainSpeaker).FirstOrDefault().DictionarySpeaker.DictionarySpeakerId,
+                StateName = "Withdraw"
             }).ToList();
 
             return participants;
             throw new NotImplementedException();
         }
 
-        public void UpdateParticipantsConferencesState(int index, string email)
+        public void UpdateParticipantsConferencesState(int index, int conferenceId, string email)
         {
-            var ent = _electriccastleContext.ConferenceParticipant.FirstOrDefault((x => x.ParticipantEmail == email));
+            var ent = _electriccastleContext.ConferenceParticipant.Where((x => x.ParticipantEmail == email)).Where(x => x.ConferenceId == conferenceId).FirstOrDefault();
+            //var ent = list.Where(x => x.ConferenceId == conferenceId).First();
+
             if (index == 7)
             {
-                ent.DictionaryParticipantStateId = 2;
+                ent.DictionaryParticipantStateId = 3;
                 _electriccastleContext.ConferenceParticipant.Update(ent);
             }
 
@@ -59,7 +61,7 @@ namespace ConferencePlanner.Repository.Ef.Repository
 
             if (index == 9)
             {
-                ent.DictionaryParticipantStateId = 3;
+                ent.DictionaryParticipantStateId = 2;
                 _electriccastleContext.ConferenceParticipant.Update(ent);
             }
 

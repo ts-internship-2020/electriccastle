@@ -7,9 +7,7 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
 {
     public interface IDictionaryParticipantState
     {
-       public List<ParticipantStateDemo> GetDictionaryParticipantStates(string state);
+       public List<ParticipantStateDemo> GetDictionaryParticipantStates(string email);
 
-
-        public void updateState(string email);
     }
 }
