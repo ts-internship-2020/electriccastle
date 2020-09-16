@@ -23,7 +23,6 @@ namespace ConferencePlanner.Repository.Ado.ElectricCastleRepository
         public List<ParticipantStateDemo> GetDictionaryParticipantStates(string email)
         {
             SqlCommand sqlCommand = _sqlConnection.CreateCommand();
-            sqlCommand.Connection = _sqlConnection;
             sqlCommand.Parameters.AddWithValue("@email", email);
             sqlCommand.CommandText = "select cp.ConferenceId, dps.DictionaryParticipantStateId, dps.DictionaryParticipantStateName from ConferenceParticipant cp " +
                 "join DictionaryParticipantState dps on cp.DictionaryParticipantStateId = dps.DictionaryParticipantStateId " +
