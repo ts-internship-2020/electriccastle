@@ -57,19 +57,24 @@
             // 
             this.editSpeakerCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerCode.AutoSize = true;
+            this.editSpeakerCode.BackColor = System.Drawing.Color.Transparent;
             this.editSpeakerCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerCode.Location = new System.Drawing.Point(478, 82);
+            this.editSpeakerCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.editSpeakerCode.Location = new System.Drawing.Point(478, 104);
             this.editSpeakerCode.Name = "editSpeakerCode";
             this.editSpeakerCode.Size = new System.Drawing.Size(47, 17);
             this.editSpeakerCode.TabIndex = 1;
             this.editSpeakerCode.Text = "Code :";
+            this.editSpeakerCode.Click += new System.EventHandler(this.editSpeakerCode_Click);
             // 
             // editSpeakerName
             // 
             this.editSpeakerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerName.AutoSize = true;
+            this.editSpeakerName.BackColor = System.Drawing.Color.Transparent;
             this.editSpeakerName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerName.Location = new System.Drawing.Point(478, 126);
+            this.editSpeakerName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.editSpeakerName.Location = new System.Drawing.Point(478, 156);
             this.editSpeakerName.Name = "editSpeakerName";
             this.editSpeakerName.Size = new System.Drawing.Size(52, 17);
             this.editSpeakerName.TabIndex = 2;
@@ -79,8 +84,10 @@
             // 
             this.editSpeakerRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerRating.AutoSize = true;
+            this.editSpeakerRating.BackColor = System.Drawing.Color.Transparent;
             this.editSpeakerRating.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerRating.Location = new System.Drawing.Point(478, 171);
+            this.editSpeakerRating.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.editSpeakerRating.Location = new System.Drawing.Point(478, 211);
             this.editSpeakerRating.Name = "editSpeakerRating";
             this.editSpeakerRating.Size = new System.Drawing.Size(56, 17);
             this.editSpeakerRating.TabIndex = 3;
@@ -90,8 +97,10 @@
             // 
             this.editSpeakerNationnality.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerNationnality.AutoSize = true;
+            this.editSpeakerNationnality.BackColor = System.Drawing.Color.Transparent;
             this.editSpeakerNationnality.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerNationnality.Location = new System.Drawing.Point(478, 220);
+            this.editSpeakerNationnality.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.editSpeakerNationnality.Location = new System.Drawing.Point(478, 264);
             this.editSpeakerNationnality.Name = "editSpeakerNationnality";
             this.editSpeakerNationnality.Size = new System.Drawing.Size(85, 17);
             this.editSpeakerNationnality.TabIndex = 4;
@@ -102,8 +111,10 @@
             // 
             this.editSpeakerPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerPicture.AutoSize = true;
+            this.editSpeakerPicture.BackColor = System.Drawing.Color.Transparent;
             this.editSpeakerPicture.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerPicture.Location = new System.Drawing.Point(478, 266);
+            this.editSpeakerPicture.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.editSpeakerPicture.Location = new System.Drawing.Point(478, 310);
             this.editSpeakerPicture.Name = "editSpeakerPicture";
             this.editSpeakerPicture.Size = new System.Drawing.Size(89, 17);
             this.editSpeakerPicture.TabIndex = 5;
@@ -113,7 +124,7 @@
             // 
             this.editSpeakerCodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerCodeTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerCodeTextBox.Location = new System.Drawing.Point(585, 82);
+            this.editSpeakerCodeTextBox.Location = new System.Drawing.Point(617, 101);
             this.editSpeakerCodeTextBox.Name = "editSpeakerCodeTextBox";
             this.editSpeakerCodeTextBox.Size = new System.Drawing.Size(171, 25);
             this.editSpeakerCodeTextBox.TabIndex = 6;
@@ -125,18 +136,19 @@
             // 
             this.editSpeakerNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerNameTextBox.Location = new System.Drawing.Point(585, 125);
+            this.editSpeakerNameTextBox.Location = new System.Drawing.Point(617, 153);
             this.editSpeakerNameTextBox.Name = "editSpeakerNameTextBox";
             this.editSpeakerNameTextBox.Size = new System.Drawing.Size(171, 25);
             this.editSpeakerNameTextBox.TabIndex = 7;
             this.editSpeakerNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.editSpeakerNameTextBox.TextChanged += new System.EventHandler(this.editSpeakerNameTextBox_TextChanged);
             this.editSpeakerNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.editSpeakerNameTextBox_Validating);
             // 
             // editSpeakerRatingTextBox
             // 
             this.editSpeakerRatingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerRatingTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerRatingTextBox.Location = new System.Drawing.Point(585, 171);
+            this.editSpeakerRatingTextBox.Location = new System.Drawing.Point(617, 203);
             this.editSpeakerRatingTextBox.Name = "editSpeakerRatingTextBox";
             this.editSpeakerRatingTextBox.Size = new System.Drawing.Size(171, 25);
             this.editSpeakerRatingTextBox.TabIndex = 8;
@@ -147,7 +159,7 @@
             // 
             this.editSpeakerNationalityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerNationalityTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerNationalityTextBox.Location = new System.Drawing.Point(585, 220);
+            this.editSpeakerNationalityTextBox.Location = new System.Drawing.Point(617, 256);
             this.editSpeakerNationalityTextBox.Name = "editSpeakerNationalityTextBox";
             this.editSpeakerNationalityTextBox.Size = new System.Drawing.Size(171, 25);
             this.editSpeakerNationalityTextBox.TabIndex = 9;
@@ -158,7 +170,7 @@
             // 
             this.editSpeakerPictureTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editSpeakerPictureTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.editSpeakerPictureTextBox.Location = new System.Drawing.Point(585, 266);
+            this.editSpeakerPictureTextBox.Location = new System.Drawing.Point(617, 307);
             this.editSpeakerPictureTextBox.Name = "editSpeakerPictureTextBox";
             this.editSpeakerPictureTextBox.Size = new System.Drawing.Size(171, 25);
             this.editSpeakerPictureTextBox.TabIndex = 10;
@@ -191,7 +203,7 @@
             this.butonCircular1.BackColor = System.Drawing.SystemColors.Window;
             this.butonCircular1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.butonCircular1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.butonCircular1.Location = new System.Drawing.Point(550, 319);
+            this.butonCircular1.Location = new System.Drawing.Point(566, 355);
             this.butonCircular1.Name = "butonCircular1";
             this.butonCircular1.Size = new System.Drawing.Size(94, 39);
             this.butonCircular1.TabIndex = 11;
@@ -219,8 +231,9 @@
             this.Controls.Add(this.editSpeakerName);
             this.Controls.Add(this.editSpeakerCode);
             this.Name = "EditSpeakerForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EditSpeakerForm";
+            this.Text = "   Edit Speaker";
             this.Load += new System.EventHandler(this.EditSpeakerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEditSpeakerName)).EndInit();
