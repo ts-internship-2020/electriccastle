@@ -99,7 +99,7 @@
             // OrganizerTabEntriesTextBox
             // 
             this.OrganizerTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OrganizerTabEntriesTextBox.Location = new System.Drawing.Point(123, 303);
+            this.OrganizerTabEntriesTextBox.Location = new System.Drawing.Point(130, 302);
             this.OrganizerTabEntriesTextBox.Name = "OrganizerTabEntriesTextBox";
             this.OrganizerTabEntriesTextBox.Size = new System.Drawing.Size(27, 23);
             this.OrganizerTabEntriesTextBox.TabIndex = 14;
@@ -109,9 +109,11 @@
             // 
             this.OrganizerTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizerTabEntriesLabel.AutoSize = true;
+            this.OrganizerTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.OrganizerTabEntriesLabel.ForeColor = System.Drawing.SystemColors.Info;
             this.OrganizerTabEntriesLabel.Location = new System.Drawing.Point(25, 303);
             this.OrganizerTabEntriesLabel.Name = "OrganizerTabEntriesLabel";
-            this.OrganizerTabEntriesLabel.Size = new System.Drawing.Size(91, 15);
+            this.OrganizerTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
             this.OrganizerTabEntriesLabel.TabIndex = 13;
             this.OrganizerTabEntriesLabel.Text = "Entries per page";
             // 
@@ -132,11 +134,12 @@
             // 
             this.OrganizerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerNextButton.BackColor = System.Drawing.Color.Crimson;
-            this.OrganizerNextButton.Location = new System.Drawing.Point(629, 303);
+            this.OrganizerNextButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.OrganizerNextButton.Location = new System.Drawing.Point(716, 299);
             this.OrganizerNextButton.Name = "OrganizerNextButton";
-            this.OrganizerNextButton.Size = new System.Drawing.Size(149, 32);
+            this.OrganizerNextButton.Size = new System.Drawing.Size(62, 34);
             this.OrganizerNextButton.TabIndex = 11;
-            this.OrganizerNextButton.Text = "NEXT PAGE";
+            this.OrganizerNextButton.Text = ">";
             this.OrganizerNextButton.UseVisualStyleBackColor = false;
             this.OrganizerNextButton.Click += new System.EventHandler(this.OrganizerNextButton_Click);
             // 
@@ -144,11 +147,12 @@
             // 
             this.OrganizerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerPreviousButton.BackColor = System.Drawing.Color.Crimson;
-            this.OrganizerPreviousButton.Location = new System.Drawing.Point(466, 303);
+            this.OrganizerPreviousButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.OrganizerPreviousButton.Location = new System.Drawing.Point(659, 299);
             this.OrganizerPreviousButton.Name = "OrganizerPreviousButton";
-            this.OrganizerPreviousButton.Size = new System.Drawing.Size(149, 32);
+            this.OrganizerPreviousButton.Size = new System.Drawing.Size(62, 34);
             this.OrganizerPreviousButton.TabIndex = 10;
-            this.OrganizerPreviousButton.Text = "PREVIOUS PAGE";
+            this.OrganizerPreviousButton.Text = "<";
             this.OrganizerPreviousButton.UseVisualStyleBackColor = false;
             this.OrganizerPreviousButton.Click += new System.EventHandler(this.OrganizerPreviousButton_Click);
             // 
@@ -224,7 +228,7 @@
             // 
             this.TabParticipant.BackColor = System.Drawing.Color.Transparent;
             this.TabParticipant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabParticipant.BackgroundImage")));
-            this.TabParticipant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TabParticipant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TabParticipant.Controls.Add(this.label1);
             this.TabParticipant.Controls.Add(this.entryPageTextBox);
             this.TabParticipant.Controls.Add(this.entryPageLabel);
@@ -285,13 +289,13 @@
             // 
             this.BackButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButtonParticipant.BackColor = System.Drawing.Color.Tomato;
-            this.BackButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.BackButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BackButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.BackButtonParticipant.Location = new System.Drawing.Point(458, 303);
+            this.BackButtonParticipant.Location = new System.Drawing.Point(664, 299);
             this.BackButtonParticipant.Name = "BackButtonParticipant";
-            this.BackButtonParticipant.Size = new System.Drawing.Size(149, 32);
+            this.BackButtonParticipant.Size = new System.Drawing.Size(62, 34);
             this.BackButtonParticipant.TabIndex = 9;
-            this.BackButtonParticipant.Text = "PREVIOUS PAGE";
+            this.BackButtonParticipant.Text = "<";
             this.BackButtonParticipant.UseVisualStyleBackColor = false;
             this.BackButtonParticipant.Click += new System.EventHandler(this.BackButtonParticipant_Click);
             // 
@@ -299,13 +303,13 @@
             // 
             this.NextButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NextButtonParticipant.BackColor = System.Drawing.Color.Tomato;
-            this.NextButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.NextButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NextButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.NextButtonParticipant.Location = new System.Drawing.Point(636, 303);
+            this.NextButtonParticipant.Location = new System.Drawing.Point(723, 299);
             this.NextButtonParticipant.Name = "NextButtonParticipant";
-            this.NextButtonParticipant.Size = new System.Drawing.Size(149, 32);
+            this.NextButtonParticipant.Size = new System.Drawing.Size(62, 34);
             this.NextButtonParticipant.TabIndex = 8;
-            this.NextButtonParticipant.Text = "NEXT PAGE";
+            this.NextButtonParticipant.Text = ">";
             this.NextButtonParticipant.UseVisualStyleBackColor = false;
             this.NextButtonParticipant.Click += new System.EventHandler(this.NextButtonParticipant_Click);
             // 
