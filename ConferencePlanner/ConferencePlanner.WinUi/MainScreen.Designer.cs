@@ -91,7 +91,7 @@
             this.TabOrganizer.Location = new System.Drawing.Point(4, 54);
             this.TabOrganizer.Name = "TabOrganizer";
             this.TabOrganizer.Padding = new System.Windows.Forms.Padding(4);
-            this.TabOrganizer.Size = new System.Drawing.Size(795, 348);
+            this.TabOrganizer.Size = new System.Drawing.Size(795, 336);
             this.TabOrganizer.TabIndex = 1;
             this.TabOrganizer.Text = "Organizers";
             this.TabOrganizer.UseVisualStyleBackColor = true;
@@ -239,7 +239,7 @@
             this.TabParticipant.Location = new System.Drawing.Point(4, 54);
             this.TabParticipant.Name = "TabParticipant";
             this.TabParticipant.Padding = new System.Windows.Forms.Padding(4);
-            this.TabParticipant.Size = new System.Drawing.Size(795, 348);
+            this.TabParticipant.Size = new System.Drawing.Size(795, 336);
             this.TabParticipant.TabIndex = 0;
             this.TabParticipant.Text = "Participants";
             // 
@@ -260,7 +260,7 @@
             // entryPageTextBox
             // 
             this.entryPageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.entryPageTextBox.Location = new System.Drawing.Point(116, 320);
+            this.entryPageTextBox.Location = new System.Drawing.Point(116, 308);
             this.entryPageTextBox.Name = "entryPageTextBox";
             this.entryPageTextBox.Size = new System.Drawing.Size(27, 23);
             this.entryPageTextBox.TabIndex = 11;
@@ -275,7 +275,7 @@
             this.entryPageLabel.BackColor = System.Drawing.Color.Transparent;
             this.entryPageLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.entryPageLabel.ForeColor = System.Drawing.Color.White;
-            this.entryPageLabel.Location = new System.Drawing.Point(11, 320);
+            this.entryPageLabel.Location = new System.Drawing.Point(11, 308);
             this.entryPageLabel.Name = "entryPageLabel";
             this.entryPageLabel.Size = new System.Drawing.Size(108, 17);
             this.entryPageLabel.TabIndex = 10;
@@ -287,7 +287,7 @@
             this.BackButtonParticipant.BackColor = System.Drawing.Color.Tomato;
             this.BackButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.BackButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.BackButtonParticipant.Location = new System.Drawing.Point(458, 315);
+            this.BackButtonParticipant.Location = new System.Drawing.Point(458, 303);
             this.BackButtonParticipant.Name = "BackButtonParticipant";
             this.BackButtonParticipant.Size = new System.Drawing.Size(149, 32);
             this.BackButtonParticipant.TabIndex = 9;
@@ -301,7 +301,7 @@
             this.NextButtonParticipant.BackColor = System.Drawing.Color.Tomato;
             this.NextButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.NextButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.NextButtonParticipant.Location = new System.Drawing.Point(636, 315);
+            this.NextButtonParticipant.Location = new System.Drawing.Point(636, 303);
             this.NextButtonParticipant.Name = "NextButtonParticipant";
             this.NextButtonParticipant.Size = new System.Drawing.Size(149, 32);
             this.NextButtonParticipant.TabIndex = 8;
@@ -366,7 +366,7 @@
             this.ConferencesParticipant.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ConferencesParticipant.Location = new System.Drawing.Point(11, 78);
             this.ConferencesParticipant.Name = "ConferencesParticipant";
-            this.ConferencesParticipant.Size = new System.Drawing.Size(774, 231);
+            this.ConferencesParticipant.Size = new System.Drawing.Size(774, 219);
             this.ConferencesParticipant.TabIndex = 3;
             this.ConferencesParticipant.Text = "dataGridView1";
             this.ConferencesParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConferencesParticipant_CellContentClick);
@@ -458,10 +458,10 @@
             this.TabControrConferences.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TabControrConferences.ImageList = this.imageList1;
             this.TabControrConferences.ItemSize = new System.Drawing.Size(500, 50);
-            this.TabControrConferences.Location = new System.Drawing.Point(2, 0);
+            this.TabControrConferences.Location = new System.Drawing.Point(2, 12);
             this.TabControrConferences.Name = "TabControrConferences";
             this.TabControrConferences.SelectedIndex = 2;
-            this.TabControrConferences.Size = new System.Drawing.Size(803, 406);
+            this.TabControrConferences.Size = new System.Drawing.Size(803, 394);
             this.TabControrConferences.TabIndex = 0;
             // 
             // imageList1
@@ -478,6 +478,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(805, 404);
             this.Controls.Add(this.TabControrConferences);
             this.Name = "MainScreen";
