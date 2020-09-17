@@ -51,7 +51,7 @@ namespace ConferencePlanner.WinUi
         private List<AddConferenceCountryModel> currentCountryGridPage;
         public int scrollValCountry;
         private int entryNumberTabCountry;
-       //private readonly GetCountryRepositoryEntFr _countryEF;
+       
 
         //District Tab
         private readonly IAddConferenceDistrictRepository conferenceDistrictRepository;
@@ -903,8 +903,33 @@ namespace ConferencePlanner.WinUi
         {
 
             scrollValSpeaker = 0;
+            scrollVal = 0;
+
             getSpeakerList = await GetResponseSpeaker();
             populateTabSpeakersGrid(getSpeakerList, scrollValSpeaker, entryNumberTabSpeaker);
+
+            cityModel = await GetResponseCity();
+            populateGridCity(cityModel, scrollVal, entryNumberTabCity);
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage s = await client.GetAsync("http://localhost:2794/api/Country/{Country}");
+            if (s.IsSuccessStatusCode)
+            {
+                string resp = await s.Content.ReadAsStringAsync();
+                countryModel = (List<AddConferenceCountryModel>)JsonConvert.DeserializeObject<IEnumerable<AddConferenceCountryModel>>(resp);
+            }
+            populateGridCountry(countryModel, scrollVal, entryNumberTabCountry);
+
+
+            HttpClient client1 = new HttpClient();
+            HttpResponseMessage s2 = await client1.GetAsync("http://localhost:2794/api/District/{District}");
+            if (s2.IsSuccessStatusCode)
+            {
+                string resp2 = await s2.Content.ReadAsStringAsync();
+                districtModel = (List<AddConferenceDistrictModel>)JsonConvert.DeserializeObject<IEnumerable<AddConferenceDistrictModel>>(resp2);
+            }
+            populateGridDistrict(districtModel, scrollVal, entryNumberTabDistrict);
+
             getMaxId(getSpeakerList);
             errorProviderName.SetError(txtName, "");
             errorProviderOrganizer.SetError(txtOrganizer, "");
