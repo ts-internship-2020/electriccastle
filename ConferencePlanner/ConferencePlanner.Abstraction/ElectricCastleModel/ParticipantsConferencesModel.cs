@@ -6,6 +6,8 @@ namespace ConferencePlanner.Abstraction.ElectricCastleModel
 {
     public class ParticipantsConferencesModel
     {
+        public int ConferenceId { get; set; }
+
         public string Name { get; set; }
 
         public DateTime StartDate { get; set; }

@@ -33,9 +33,9 @@ namespace ConferencePlanner.Api.Controllers
 
         [HttpPost]
         [Route("ParticipantState")]
-        public IActionResult AddCity(int index, string email)
+        public IActionResult AddCity(int index,int conferenceId, string email)
         {
-            _getParticipantsConferencesRepository.UpdateParticipantsConferencesState(index, email);
+            _getParticipantsConferencesRepository.UpdateParticipantsConferencesState(index, conferenceId, email);
             return Ok();
         }
     }

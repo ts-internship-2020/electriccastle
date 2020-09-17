@@ -22,6 +22,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using ConferencePlanner.Abstraction.ElectricRepository;
 
 namespace ConferencePlanner.WinUi
 {
@@ -34,6 +35,7 @@ namespace ConferencePlanner.WinUi
         private HttpClient httpClient;
 
         //private string emailParticipantLogare;
+        private readonly IDictionaryParticipantState _getStates;
 
         private List<OrganizerConferencesModel> organizerConferences;
 
@@ -51,14 +53,21 @@ namespace ConferencePlanner.WinUi
 
         public static string SetValueIdSpeker;
 
+        private List<ParticipantStateDemo> participantState;
+
         private List<ParticipantsConferencesModel> currentPageConferences;
+
+
+       
+
 
         public object QRCodeGenerator { get; private set; }
 
       
-        public MainScreen(IEmailParticipant _emailPart)
+        public MainScreen(IEmailParticipant _emailPart, IDictionaryParticipantState getStates)
         {
             this._email = _emailPart;
+            this._getStates = getStates;
             httpClient = new HttpClient();
 
             //currentPageConferences = new List<ParticipantsConferencesModel>();
@@ -73,7 +82,7 @@ namespace ConferencePlanner.WinUi
             List<ParticipantsConferencesModel> conf = new List<ParticipantsConferencesModel>();
             ConferencesParticipant.Rows.Clear();
             int nr = conferenceParticipants.Count;
-            int i;
+            int i,j;
             int numberRowsPage = entries;
             if (numberRowsPage > nr)
             {
@@ -106,7 +115,19 @@ namespace ConferencePlanner.WinUi
                 
                 ConferencesParticipant.Rows[n].Cells[8].Value = "Join";
                 ConferencesParticipant.Rows[n].Cells[9].Value = "Withdraw";
-                ConferencesParticipant.Rows[n].Cells[10].Value = listElement.StateName.ToString();
+
+                ConferencesParticipant.Rows[n].Cells[10].Value = " ";
+               
+
+                for (j = 0; j < participantState.Count; j++)
+                {
+                    ParticipantStateDemo state = participantState.ElementAt(j);
+                    if (state.ConferenceId == listElement.ConferenceId)
+                    {
+                        ConferencesParticipant.Rows[n].Cells[10].Value = state.StateName.ToString();
+                        break;
+                    }
+                }
                 conf.Add(listElement);
                 
             }
@@ -128,9 +149,9 @@ namespace ConferencePlanner.WinUi
             return participants;
         }
 
-        private async Task PostParticipantsConferenceState(int index)
+        private async Task PostParticipantsConferenceState(int index, int conferenceId)
         {
-            string url = "http://localhost:2794/api/ConferenceParticipants/ParticipantState?index=" + index + "&email=" + EmailParticipants;
+            string url = "http://localhost:2794/api/ConferenceParticipants/ParticipantState?index=" + index +"&conferenceId="+ conferenceId + "&email=" + EmailParticipants;
             HttpContent content = new StringContent("", Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync(url, content);
 
@@ -142,10 +163,12 @@ namespace ConferencePlanner.WinUi
 
         private async void MainScreen_Load(object sender, EventArgs e)
         {
-            
-              
+            //currentPageConferences = new List<ParticipantsConferencesModel>();
+            //participantState = new List<ParticipantStateDemo>();
+
             conferences = await GetResponseParticipantsConference();
 
+            participantState = _getStates.GetDictionaryParticipantStates(EmailParticipants);
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
             populateGridParticipants(conferences, scrollVal, numberEntry);
 
@@ -174,6 +197,7 @@ namespace ConferencePlanner.WinUi
         private async void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
         {
             scrollVal = 0;
+            participantState = _getStates.GetDictionaryParticipantStates(EmailParticipants);
             List<ParticipantsConferencesModel> conferenceParticipants = await GetResponseParticipantsConference();
             conferences = conferenceParticipants.Where(conference => conference.StartDate >= DatePickerParticipantStart.Value).ToList();
             populateGridParticipants(conferences, scrollVal, numberEntry);
@@ -183,6 +207,7 @@ namespace ConferencePlanner.WinUi
         private async void DatePickerParticipantEnd_ValueChanged(object sender, EventArgs e)
         {
             scrollVal = 0;
+            participantState = _getStates.GetDictionaryParticipantStates(EmailParticipants);
             List<ParticipantsConferencesModel> conferenceParticipants = await GetResponseParticipantsConference();
             conferences = conferenceParticipants.Where(conference => conference.EndDate <= DatePickerParticipantEnd.Value).ToList();
             populateGridParticipants(conferences, scrollVal, numberEntry);
@@ -192,6 +217,7 @@ namespace ConferencePlanner.WinUi
         {
           
             scrollVal = 0;
+            participantState = _getStates.GetDictionaryParticipantStates(EmailParticipants);
             List<ParticipantsConferencesModel> conferenceParticipants = await GetResponseParticipantsConference();
             conferences = conferenceParticipants.Where(conference => (conference.StartDate >= DatePickerParticipantStart.Value) && 
                                                         (conference.EndDate <= DatePickerParticipantEnd.Value) ).ToList();
@@ -202,7 +228,7 @@ namespace ConferencePlanner.WinUi
         private void BackButtonParticipant_Click(object sender, EventArgs e)
         {
 
-            
+            participantState = _getStates.GetDictionaryParticipantStates(EmailParticipants);
             scrollVal = scrollVal - numberEntry;
             if (scrollVal < 0)
             {
@@ -213,8 +239,8 @@ namespace ConferencePlanner.WinUi
 
         private void NextButtonParticipant_Click(object sender, EventArgs e)
         {
-            
 
+            participantState = _getStates.GetDictionaryParticipantStates(EmailParticipants);
             int nr = conferences.Count;
             scrollVal = scrollVal + numberEntry;
             if (scrollVal >= nr)
@@ -314,7 +340,7 @@ namespace ConferencePlanner.WinUi
 
             if (e.ColumnIndex == 7)
             {
-                await PostParticipantsConferenceState(e.ColumnIndex);
+                await PostParticipantsConferenceState(e.ColumnIndex, currentPageConferences.ElementAt(e.RowIndex).ConferenceId);
                 //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[7].Style.BackColor = System.Drawing.Color.GreenYellow;
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Attended";
@@ -325,7 +351,7 @@ namespace ConferencePlanner.WinUi
 
             else if (e.ColumnIndex == 8)
             {
-                await PostParticipantsConferenceState(e.ColumnIndex);
+                await PostParticipantsConferenceState(e.ColumnIndex, currentPageConferences.ElementAt(e.RowIndex).ConferenceId);
                 //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 ConferencesParticipant.Rows[e.RowIndex].Cells[10].Value = "Joined";
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
@@ -339,7 +365,7 @@ namespace ConferencePlanner.WinUi
             }
             else if (e.ColumnIndex == 9)
             {
-                await PostParticipantsConferenceState(e.ColumnIndex);
+                await PostParticipantsConferenceState(e.ColumnIndex, currentPageConferences.ElementAt(e.RowIndex).ConferenceId);
                 //_getParticipantRepository.UpdateParticipantsConferencesState(e.ColumnIndex, EmailParticipants);
                 DateTime oDate = Convert.ToDateTime(ConferencesParticipant.Rows[e.RowIndex].Cells[1].Value);
                 TimeSpan ts = oDate - DateTime.Now;

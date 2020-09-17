@@ -10,6 +10,6 @@ namespace ConferencePlanner.Abstraction.ElectricCastleRepository
     {
         public List<ParticipantsConferencesModel> GetParticipantsConferences();
 
-        public void UpdateParticipantsConferencesState(int index, string email);
+        public void UpdateParticipantsConferencesState(int index,int conferenceId, string email);
     }
 }

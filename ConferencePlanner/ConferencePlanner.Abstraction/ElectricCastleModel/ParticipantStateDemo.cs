@@ -6,6 +6,10 @@ namespace ConferencePlanner.Abstraction.ElectricRepository
 {
     public class ParticipantStateDemo
     {
-        public string State { get; set; }
+        public int ConferenceId { get; set; }
+
+        public int StateId { get; set; }
+
+        public string StateName { get; set; }
     }
 }
