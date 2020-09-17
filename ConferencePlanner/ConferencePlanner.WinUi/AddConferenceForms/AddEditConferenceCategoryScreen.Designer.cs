@@ -47,7 +47,7 @@
             this.CategoryNameLabel.AutoSize = true;
             this.CategoryNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.CategoryNameLabel.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.CategoryNameLabel.Location = new System.Drawing.Point(85, 203);
+            this.CategoryNameLabel.Location = new System.Drawing.Point(121, 135);
             this.CategoryNameLabel.Name = "CategoryNameLabel";
             this.CategoryNameLabel.Size = new System.Drawing.Size(44, 17);
             this.CategoryNameLabel.TabIndex = 1;
@@ -58,7 +58,7 @@
             this.CategoryCodeLabel.AutoSize = true;
             this.CategoryCodeLabel.BackColor = System.Drawing.Color.Transparent;
             this.CategoryCodeLabel.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.CategoryCodeLabel.Location = new System.Drawing.Point(85, 258);
+            this.CategoryCodeLabel.Location = new System.Drawing.Point(121, 202);
             this.CategoryCodeLabel.Name = "CategoryCodeLabel";
             this.CategoryCodeLabel.Size = new System.Drawing.Size(39, 17);
             this.CategoryCodeLabel.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // CategoryNameTextBox
             // 
-            this.CategoryNameTextBox.Location = new System.Drawing.Point(202, 197);
+            this.CategoryNameTextBox.Location = new System.Drawing.Point(171, 135);
             this.CategoryNameTextBox.Name = "CategoryNameTextBox";
             this.CategoryNameTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryNameTextBox.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             // CategoryCodeTextBox
             // 
-            this.CategoryCodeTextBox.Location = new System.Drawing.Point(202, 258);
+            this.CategoryCodeTextBox.Location = new System.Drawing.Point(171, 201);
             this.CategoryCodeTextBox.Name = "CategoryCodeTextBox";
             this.CategoryCodeTextBox.Size = new System.Drawing.Size(100, 23);
             this.CategoryCodeTextBox.TabIndex = 4;
