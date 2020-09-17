@@ -336,7 +336,7 @@ namespace ConferencePlanner.WinUi
 
         private async void ConferencesParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //_email.InsertEmailParticipantBD(e.RowIndex+1, EmailParticipants);
+            _email.InsertEmailParticipantBD(currentPageConferences.ElementAt(e.RowIndex).ConferenceId, EmailParticipants);
 
             if (e.ColumnIndex == 7)
             {
