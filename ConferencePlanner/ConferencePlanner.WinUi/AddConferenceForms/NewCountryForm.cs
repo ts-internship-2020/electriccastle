@@ -99,8 +99,8 @@ namespace ConferencePlanner.WinUi
 
             if(editCountry!= null)
             {
-                // _getCountry.UpdateConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text, getCountryId());
-                PostConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text, getCountryId());
+                 _getCountry.UpdateConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text, editCountry.DictionaryCountryId);
+                //PostConferenceCountry(CountryCodTb.Text, CoutryNameTb.Text, getCountryId());
                 this.Close();
             }
         }
