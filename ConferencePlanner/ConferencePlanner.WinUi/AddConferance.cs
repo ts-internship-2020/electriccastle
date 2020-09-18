@@ -181,12 +181,14 @@ namespace ConferencePlanner.WinUi
         {
             ConferenceModel conference = PopulateConferenceObject();
             await AddConferenceViaAPI(conference);
+            Close();
         }
 
         private async void EditConference(object sender, EventArgs e)
         {
             ConferenceModel conference = PopulateConferenceObject();
             await EditConferenceViaAPI(conference);
+            Close();
         }
 
         private void btBack_Click(object sender, EventArgs e)

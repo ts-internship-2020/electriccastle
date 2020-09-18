@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.TabOrganizer = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.OrganizerTabEntriesTextBox = new System.Windows.Forms.TextBox();
             this.OrganizerFilterButton = new ConferencePlanner.WinUi.ButonCircular();
@@ -65,7 +66,6 @@
             this.ColumnState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabControrConferences = new System.Windows.Forms.TabControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.TabOrganizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
             this.TabParticipant.SuspendLayout();
@@ -97,6 +97,17 @@
             this.TabOrganizer.TabIndex = 1;
             this.TabOrganizer.Text = "Organizers";
             this.TabOrganizer.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.Info;
+            this.label3.Location = new System.Drawing.Point(668, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 17);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Filter using both dates";
             // 
             // label2
             // 
@@ -479,17 +490,6 @@
             this.imageList1.Images.SetKeyName(0, "637-512.png");
             this.imageList1.Images.SetKeyName(1, "events-icon-png-217527-free-icons-library-schedule-of-events-png-512_512.jpg");
             this.imageList1.Images.SetKeyName(2, "participant-png-png-image-participant-png-512_512.png");
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.SystemColors.Info;
-            this.label3.Location = new System.Drawing.Point(668, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 17);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Filter using both dates";
             // 
             // MainScreen
             // 
