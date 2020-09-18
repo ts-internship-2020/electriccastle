@@ -44,6 +44,8 @@
             this.OrganizerEndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.OrganizerStartDatePicker = new System.Windows.Forms.DateTimePicker();
             this.TabParticipant = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.entryPageTextBox = new System.Windows.Forms.TextBox();
             this.entryPageLabel = new System.Windows.Forms.Label();
@@ -101,6 +103,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.Info;
             this.label3.Location = new System.Drawing.Point(668, 16);
@@ -113,6 +116,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(4, 307);
@@ -187,6 +191,8 @@
             // 
             this.OrganizerTabEndDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerTabEndDateLabel.AutoSize = true;
+            this.OrganizerTabEndDateLabel.BackColor = System.Drawing.Color.Transparent;
+            this.OrganizerTabEndDateLabel.ForeColor = System.Drawing.Color.White;
             this.OrganizerTabEndDateLabel.Location = new System.Drawing.Point(401, 63);
             this.OrganizerTabEndDateLabel.Name = "OrganizerTabEndDateLabel";
             this.OrganizerTabEndDateLabel.Size = new System.Drawing.Size(57, 15);
@@ -197,6 +203,8 @@
             // 
             this.OrganizerTabStartDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrganizerTabStartDateLabel.AutoSize = true;
+            this.OrganizerTabStartDateLabel.BackColor = System.Drawing.Color.Transparent;
+            this.OrganizerTabStartDateLabel.ForeColor = System.Drawing.Color.White;
             this.OrganizerTabStartDateLabel.Location = new System.Drawing.Point(401, 34);
             this.OrganizerTabStartDateLabel.Name = "OrganizerTabStartDateLabel";
             this.OrganizerTabStartDateLabel.Size = new System.Drawing.Size(61, 15);
@@ -243,6 +251,8 @@
             this.TabParticipant.BackColor = System.Drawing.Color.Transparent;
             this.TabParticipant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabParticipant.BackgroundImage")));
             this.TabParticipant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TabParticipant.Controls.Add(this.label5);
+            this.TabParticipant.Controls.Add(this.label4);
             this.TabParticipant.Controls.Add(this.label1);
             this.TabParticipant.Controls.Add(this.entryPageTextBox);
             this.TabParticipant.Controls.Add(this.entryPageLabel);
@@ -260,6 +270,28 @@
             this.TabParticipant.Size = new System.Drawing.Size(795, 336);
             this.TabParticipant.TabIndex = 0;
             this.TabParticipant.Text = "Participants";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(389, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 15);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "End date";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(389, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Start date";
             // 
             // label1
             // 
@@ -560,5 +592,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
