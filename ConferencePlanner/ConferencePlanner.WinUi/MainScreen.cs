@@ -172,26 +172,29 @@ namespace ConferencePlanner.WinUi
             numberEntry = Convert.ToInt32(entryPageTextBox.Text);
             populateGridParticipants(conferences, scrollVal, numberEntry);
 
-            await GetOrganizerConferencesViaAPI();
+            //await GetOrganizerConferencesViaAPI();s
 
-            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
-            OrganizerTabEntriesTextBox.Text = pageSize.ToString();
-            OrganizerGrid.DataSource = paginationHelper.GetPage();
-            OrganizerGrid.AutoGenerateColumns = true;
-            GenerateOrganizerEditButtons();
-            ManageOrganizerPaginationButtonsState();
+            //paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
+            //OrganizerTabEntriesTextBox.Text = pageSize.ToString();
+            //OrganizerGrid.DataSource = paginationHelper.GetPage();
+            //OrganizerGrid.AutoGenerateColumns = true;
+            //GenerateOrganizerEditButtons();
+            //ManageOrganizerPaginationButtonsState();
         }
 
 
         
         private void GenerateOrganizerEditButtons()
         {
-            DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
-            OrganizerGrid.Columns.Add(buttonEdit);
-            buttonEdit.HeaderText = "Edit";
-            buttonEdit.Name = "Edit";
-            buttonEdit.Text = "Edit";
-            buttonEdit.UseColumnTextForButtonValue = true;
+            if (!OrganizerGrid.Columns.Contains("Edit"))
+            {
+                DataGridViewButtonColumn buttonEdit = new DataGridViewButtonColumn();
+                OrganizerGrid.Columns.Add(buttonEdit);
+                buttonEdit.HeaderText = "Edit";
+                buttonEdit.Name = "Edit";
+                buttonEdit.Text = "Edit";
+                buttonEdit.UseColumnTextForButtonValue = true;
+            }
         }
       
         private async void DatePickerParticipantStart_ValueChanged(object sender, EventArgs e)
@@ -487,6 +490,18 @@ namespace ConferencePlanner.WinUi
                 organizerConferences = JsonConvert.DeserializeObject<List<OrganizerConferencesModel>>(resp);
             }
             //return conferences;
+        }
+
+        private async void MainScreen_Activated(object sender, EventArgs e)
+        {
+            await GetOrganizerConferencesViaAPI();
+
+            paginationHelper = new PaginationHelper<OrganizerConferencesModel>(organizerConferences, pageSize);
+            OrganizerTabEntriesTextBox.Text = pageSize.ToString();
+            OrganizerGrid.DataSource = paginationHelper.GetPage();
+            OrganizerGrid.AutoGenerateColumns = true;
+            GenerateOrganizerEditButtons();
+            ManageOrganizerPaginationButtonsState();
         }
     }
 }

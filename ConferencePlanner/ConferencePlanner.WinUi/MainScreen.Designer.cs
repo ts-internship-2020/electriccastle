@@ -489,6 +489,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "   Main Page";
+            this.Activated += new System.EventHandler(this.MainScreen_Activated);
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.TabOrganizer.ResumeLayout(false);
             this.TabOrganizer.PerformLayout();
