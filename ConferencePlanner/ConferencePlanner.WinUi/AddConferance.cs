@@ -877,6 +877,7 @@ namespace ConferencePlanner.WinUi
                 AddEditConferenceCategoryScreen addEditCategory = Program.ServiceProvider.GetService<AddEditConferenceCategoryScreen>();
                 addEditCategory.CategoryId = categoryId;
                 addEditCategory.ShowDialog();
+                CategoryTabReloadData();
             }
 
             if (e.ColumnIndex == CategoryTabGrid.Columns["Delete"].Index)
@@ -1090,7 +1091,8 @@ namespace ConferencePlanner.WinUi
                 newConferanceType.ConferanceTypeId = typeId;
                // HttpClientAsync("http://localhost:2794/api/Type/{Id}");
                 newConferanceType.ShowDialog();
-               
+                TypeReloadData();
+
             }
             else
             {

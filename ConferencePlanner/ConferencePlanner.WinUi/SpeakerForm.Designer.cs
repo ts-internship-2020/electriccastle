@@ -51,7 +51,7 @@
             // 
             // speakerNameText
             // 
-            this.speakerNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.speakerNameText.AutoSize = true;
             this.speakerNameText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speakerNameText.Location = new System.Drawing.Point(73, 244);
@@ -62,7 +62,7 @@
             // 
             // speakerRatingText
             // 
-            this.speakerRatingText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerRatingText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.speakerRatingText.AutoSize = true;
             this.speakerRatingText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speakerRatingText.Location = new System.Drawing.Point(287, 244);
@@ -73,7 +73,7 @@
             // 
             // speakerNationalityText
             // 
-            this.speakerNationalityText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.speakerNationalityText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.speakerNationalityText.AutoSize = true;
             this.speakerNationalityText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speakerNationalityText.Location = new System.Drawing.Point(480, 244);
