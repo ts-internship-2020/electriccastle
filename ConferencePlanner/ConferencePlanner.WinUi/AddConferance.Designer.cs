@@ -247,12 +247,13 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.errorProviderOrganizer.SetIconAlignment(this.pictureBox1, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.pictureBox1.Location = new System.Drawing.Point(654, 239);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(654, 244);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
@@ -260,7 +261,7 @@
             // 
             this.tabSpeakerEntryNumberText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tabSpeakerEntryNumberText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerEntryNumberText.Location = new System.Drawing.Point(224, 245);
+            this.tabSpeakerEntryNumberText.Location = new System.Drawing.Point(224, 243);
             this.tabSpeakerEntryNumberText.Name = "tabSpeakerEntryNumberText";
             this.tabSpeakerEntryNumberText.Size = new System.Drawing.Size(28, 23);
             this.tabSpeakerEntryNumberText.TabIndex = 29;
@@ -274,7 +275,7 @@
             this.tabSpeakerEntryNumberLabel.AutoSize = true;
             this.tabSpeakerEntryNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabSpeakerEntryNumberLabel.ForeColor = System.Drawing.Color.Red;
-            this.tabSpeakerEntryNumberLabel.Location = new System.Drawing.Point(110, 246);
+            this.tabSpeakerEntryNumberLabel.Location = new System.Drawing.Point(110, 243);
             this.tabSpeakerEntryNumberLabel.Name = "tabSpeakerEntryNumberLabel";
             this.tabSpeakerEntryNumberLabel.Size = new System.Drawing.Size(108, 17);
             this.tabSpeakerEntryNumberLabel.TabIndex = 28;
@@ -426,18 +427,19 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(640, 237);
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(640, 243);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
             // CategoryTabEntriesTextBox
             // 
             this.CategoryTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CategoryTabEntriesTextBox.Location = new System.Drawing.Point(235, 243);
+            this.CategoryTabEntriesTextBox.Location = new System.Drawing.Point(224, 242);
             this.CategoryTabEntriesTextBox.Name = "CategoryTabEntriesTextBox";
             this.CategoryTabEntriesTextBox.Size = new System.Drawing.Size(25, 23);
             this.CategoryTabEntriesTextBox.TabIndex = 8;
@@ -449,7 +451,7 @@
             this.CategoryTabEntriesLabel.AutoSize = true;
             this.CategoryTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CategoryTabEntriesLabel.ForeColor = System.Drawing.Color.Red;
-            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(121, 244);
+            this.CategoryTabEntriesLabel.Location = new System.Drawing.Point(110, 243);
             this.CategoryTabEntriesLabel.Name = "CategoryTabEntriesLabel";
             this.CategoryTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
             this.CategoryTabEntriesLabel.TabIndex = 7;
@@ -545,11 +547,12 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(679, 241);
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(678, 248);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox3.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
             // 
@@ -665,18 +668,19 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(660, 244);
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(660, 250);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox4.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
             // 
             // tabCountryEntryText
             // 
             this.tabCountryEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabCountryEntryText.Location = new System.Drawing.Point(237, 249);
+            this.tabCountryEntryText.Location = new System.Drawing.Point(224, 249);
             this.tabCountryEntryText.Name = "tabCountryEntryText";
             this.tabCountryEntryText.Size = new System.Drawing.Size(25, 23);
             this.tabCountryEntryText.TabIndex = 8;
@@ -799,11 +803,12 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(677, 245);
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(676, 250);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox5.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
             // 
@@ -813,16 +818,16 @@
             this.tabDistrictEntryLable.AutoSize = true;
             this.tabDistrictEntryLable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabDistrictEntryLable.ForeColor = System.Drawing.Color.Red;
-            this.tabDistrictEntryLable.Location = new System.Drawing.Point(119, 252);
+            this.tabDistrictEntryLable.Location = new System.Drawing.Point(110, 251);
             this.tabDistrictEntryLable.Name = "tabDistrictEntryLable";
-            this.tabDistrictEntryLable.Size = new System.Drawing.Size(99, 17);
+            this.tabDistrictEntryLable.Size = new System.Drawing.Size(108, 17);
             this.tabDistrictEntryLable.TabIndex = 7;
-            this.tabDistrictEntryLable.Text = "Entry per Page";
+            this.tabDistrictEntryLable.Text = "Entries per Page";
             // 
             // tabDistrictEntryText
             // 
             this.tabDistrictEntryText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabDistrictEntryText.Location = new System.Drawing.Point(224, 252);
+            this.tabDistrictEntryText.Location = new System.Drawing.Point(224, 250);
             this.tabDistrictEntryText.Name = "tabDistrictEntryText";
             this.tabDistrictEntryText.Size = new System.Drawing.Size(27, 23);
             this.tabDistrictEntryText.TabIndex = 6;
@@ -941,11 +946,12 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.Location = new System.Drawing.Point(676, 244);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox6.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 9;
             this.pictureBox6.TabStop = false;
             // 

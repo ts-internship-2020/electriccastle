@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.TabOrganizer = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.OrganizerTabEntriesTextBox = new System.Windows.Forms.TextBox();
-            this.OrganizerTabEntriesLabel = new System.Windows.Forms.Label();
             this.OrganizerFilterButton = new ConferencePlanner.WinUi.ButonCircular();
             this.OrganizerNextButton = new ConferencePlanner.WinUi.ButonCircular();
             this.OrganizerPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
@@ -65,6 +65,7 @@
             this.ColumnState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabControrConferences = new System.Windows.Forms.TabControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.TabOrganizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrganizerGrid)).BeginInit();
             this.TabParticipant.SuspendLayout();
@@ -76,8 +77,9 @@
             // 
             this.TabOrganizer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TabOrganizer.BackgroundImage")));
             this.TabOrganizer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TabOrganizer.Controls.Add(this.label3);
+            this.TabOrganizer.Controls.Add(this.label2);
             this.TabOrganizer.Controls.Add(this.OrganizerTabEntriesTextBox);
-            this.TabOrganizer.Controls.Add(this.OrganizerTabEntriesLabel);
             this.TabOrganizer.Controls.Add(this.OrganizerFilterButton);
             this.TabOrganizer.Controls.Add(this.OrganizerNextButton);
             this.TabOrganizer.Controls.Add(this.OrganizerPreviousButton);
@@ -96,44 +98,45 @@
             this.TabOrganizer.Text = "Organizers";
             this.TabOrganizer.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(4, 307);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 17);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Entries per Page";
+            // 
             // OrganizerTabEntriesTextBox
             // 
             this.OrganizerTabEntriesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OrganizerTabEntriesTextBox.Location = new System.Drawing.Point(130, 302);
+            this.OrganizerTabEntriesTextBox.Location = new System.Drawing.Point(118, 306);
             this.OrganizerTabEntriesTextBox.Name = "OrganizerTabEntriesTextBox";
             this.OrganizerTabEntriesTextBox.Size = new System.Drawing.Size(27, 23);
             this.OrganizerTabEntriesTextBox.TabIndex = 14;
             this.OrganizerTabEntriesTextBox.TextChanged += new System.EventHandler(this.OrganizerTabTextBox_TextChanged);
             // 
-            // OrganizerTabEntriesLabel
-            // 
-            this.OrganizerTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OrganizerTabEntriesLabel.AutoSize = true;
-            this.OrganizerTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.OrganizerTabEntriesLabel.ForeColor = System.Drawing.Color.Transparent;
-            this.OrganizerTabEntriesLabel.Location = new System.Drawing.Point(25, 303);
-            this.OrganizerTabEntriesLabel.Name = "OrganizerTabEntriesLabel";
-            this.OrganizerTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
-            this.OrganizerTabEntriesLabel.TabIndex = 13;
-            this.OrganizerTabEntriesLabel.Text = "Entries per page";
-            // 
             // OrganizerFilterButton
             // 
             this.OrganizerFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OrganizerFilterButton.BackColor = System.Drawing.Color.Firebrick;
+            this.OrganizerFilterButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.OrganizerFilterButton.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.OrganizerFilterButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.OrganizerFilterButton.Location = new System.Drawing.Point(680, 34);
             this.OrganizerFilterButton.Name = "OrganizerFilterButton";
             this.OrganizerFilterButton.Size = new System.Drawing.Size(98, 36);
             this.OrganizerFilterButton.TabIndex = 12;
-            this.OrganizerFilterButton.Text = "Filter";
+            this.OrganizerFilterButton.Text = "FILTER";
             this.OrganizerFilterButton.UseVisualStyleBackColor = false;
             this.OrganizerFilterButton.Click += new System.EventHandler(this.OrganizerFilterButton_Click);
             // 
             // OrganizerNextButton
             // 
             this.OrganizerNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OrganizerNextButton.BackColor = System.Drawing.Color.Crimson;
+            this.OrganizerNextButton.BackColor = System.Drawing.Color.OrangeRed;
             this.OrganizerNextButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.OrganizerNextButton.Location = new System.Drawing.Point(716, 299);
             this.OrganizerNextButton.Name = "OrganizerNextButton";
@@ -146,7 +149,7 @@
             // OrganizerPreviousButton
             // 
             this.OrganizerPreviousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OrganizerPreviousButton.BackColor = System.Drawing.Color.Crimson;
+            this.OrganizerPreviousButton.BackColor = System.Drawing.Color.OrangeRed;
             this.OrganizerPreviousButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.OrganizerPreviousButton.Location = new System.Drawing.Point(659, 299);
             this.OrganizerPreviousButton.Name = "OrganizerPreviousButton";
@@ -158,7 +161,7 @@
             // 
             // AddConferenceButton
             // 
-            this.AddConferenceButton.BackColor = System.Drawing.Color.Crimson;
+            this.AddConferenceButton.BackColor = System.Drawing.Color.OrangeRed;
             this.AddConferenceButton.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddConferenceButton.ForeColor = System.Drawing.SystemColors.Desktop;
             this.AddConferenceButton.Location = new System.Drawing.Point(24, 24);
@@ -197,9 +200,9 @@
             this.OrganizerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrganizerGrid.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
             this.OrganizerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrganizerGrid.Location = new System.Drawing.Point(25, 86);
+            this.OrganizerGrid.Location = new System.Drawing.Point(6, 86);
             this.OrganizerGrid.Name = "OrganizerGrid";
-            this.OrganizerGrid.Size = new System.Drawing.Size(753, 210);
+            this.OrganizerGrid.Size = new System.Drawing.Size(772, 210);
             this.OrganizerGrid.TabIndex = 4;
             this.OrganizerGrid.Text = "dataGridView1";
             this.OrganizerGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrganizerGrid_CellClick);
@@ -279,7 +282,7 @@
             this.entryPageLabel.BackColor = System.Drawing.Color.Transparent;
             this.entryPageLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.entryPageLabel.ForeColor = System.Drawing.Color.White;
-            this.entryPageLabel.Location = new System.Drawing.Point(11, 308);
+            this.entryPageLabel.Location = new System.Drawing.Point(6, 309);
             this.entryPageLabel.Name = "entryPageLabel";
             this.entryPageLabel.Size = new System.Drawing.Size(108, 17);
             this.entryPageLabel.TabIndex = 10;
@@ -288,9 +291,9 @@
             // BackButtonParticipant
             // 
             this.BackButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BackButtonParticipant.BackColor = System.Drawing.Color.Tomato;
+            this.BackButtonParticipant.BackColor = System.Drawing.Color.OrangeRed;
             this.BackButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BackButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.BackButtonParticipant.ForeColor = System.Drawing.Color.Black;
             this.BackButtonParticipant.Location = new System.Drawing.Point(664, 299);
             this.BackButtonParticipant.Name = "BackButtonParticipant";
             this.BackButtonParticipant.Size = new System.Drawing.Size(62, 34);
@@ -302,9 +305,9 @@
             // NextButtonParticipant
             // 
             this.NextButtonParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextButtonParticipant.BackColor = System.Drawing.Color.Tomato;
+            this.NextButtonParticipant.BackColor = System.Drawing.Color.OrangeRed;
             this.NextButtonParticipant.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NextButtonParticipant.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.NextButtonParticipant.ForeColor = System.Drawing.Color.Black;
             this.NextButtonParticipant.Location = new System.Drawing.Point(723, 299);
             this.NextButtonParticipant.Name = "NextButtonParticipant";
             this.NextButtonParticipant.Size = new System.Drawing.Size(62, 34);
@@ -316,9 +319,9 @@
             // FilterParticipants
             // 
             this.FilterParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilterParticipants.BackColor = System.Drawing.Color.Tomato;
-            this.FilterParticipants.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.FilterParticipants.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.FilterParticipants.BackColor = System.Drawing.Color.OrangeRed;
+            this.FilterParticipants.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.FilterParticipants.ForeColor = System.Drawing.Color.White;
             this.FilterParticipants.Location = new System.Drawing.Point(664, 36);
             this.FilterParticipants.Name = "FilterParticipants";
             this.FilterParticipants.Size = new System.Drawing.Size(107, 36);
@@ -368,9 +371,9 @@
             this.ColumnWithdrawButton,
             this.ColumnState});
             this.ConferencesParticipant.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ConferencesParticipant.Location = new System.Drawing.Point(11, 78);
+            this.ConferencesParticipant.Location = new System.Drawing.Point(6, 78);
             this.ConferencesParticipant.Name = "ConferencesParticipant";
-            this.ConferencesParticipant.Size = new System.Drawing.Size(774, 219);
+            this.ConferencesParticipant.Size = new System.Drawing.Size(779, 219);
             this.ConferencesParticipant.TabIndex = 3;
             this.ConferencesParticipant.Text = "dataGridView1";
             this.ConferencesParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConferencesParticipant_CellContentClick);
@@ -477,6 +480,17 @@
             this.imageList1.Images.SetKeyName(1, "events-icon-png-217527-free-icons-library-schedule-of-events-png-512_512.jpg");
             this.imageList1.Images.SetKeyName(2, "participant-png-png-image-participant-png-512_512.png");
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.Info;
+            this.label3.Location = new System.Drawing.Point(668, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 17);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Filter using both dates";
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -542,7 +556,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnState;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox OrganizerTabEntriesTextBox;
-        private System.Windows.Forms.Label OrganizerTabEntriesLabel;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
