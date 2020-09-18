@@ -544,42 +544,54 @@ namespace ConferencePlanner.WinUi
         }
         private void GenerateEditButtonCountry()
         {
-            DataGridViewButtonColumn buttonEditCountry = new DataGridViewButtonColumn();
-            DGVCountry.Columns.Add(buttonEditCountry);
-            buttonEditCountry.HeaderText = "Edit";
-            buttonEditCountry.Name = "Edit";
-            buttonEditCountry.Text = "Edit";
-            buttonEditCountry.UseColumnTextForButtonValue = true;
+            if (!DGVCountry.Columns.Contains("Edit"))
+            {
+                DataGridViewButtonColumn buttonEditCountry = new DataGridViewButtonColumn();
+                DGVCountry.Columns.Add(buttonEditCountry);
+                buttonEditCountry.HeaderText = "Edit";
+                buttonEditCountry.Name = "Edit";
+                buttonEditCountry.Text = "Edit";
+                buttonEditCountry.UseColumnTextForButtonValue = true;
+            }
         }
 
         private void GenerateEditButtonDistrict()
         {
-            DataGridViewButtonColumn buttonEditDistrict = new DataGridViewButtonColumn();
-            DGVDistrict.Columns.Add(buttonEditDistrict);
-            buttonEditDistrict.HeaderText = "Edit";
-            buttonEditDistrict.Name = "Edit";
-            buttonEditDistrict.Text = "Edit";
-            buttonEditDistrict.UseColumnTextForButtonValue = true;
+            if (!DGVDistrict.Columns.Contains("Edit"))
+            {
+                DataGridViewButtonColumn buttonEditDistrict = new DataGridViewButtonColumn();
+                DGVDistrict.Columns.Add(buttonEditDistrict);
+                buttonEditDistrict.HeaderText = "Edit";
+                buttonEditDistrict.Name = "Edit";
+                buttonEditDistrict.Text = "Edit";
+                buttonEditDistrict.UseColumnTextForButtonValue = true;
+            }
         }
 
         private void GenerateEditButtonCity()
         {
-            DataGridViewButtonColumn buttonEditCity = new DataGridViewButtonColumn();
-            DGVCity.Columns.Add(buttonEditCity);
-            buttonEditCity.HeaderText = "Edit";
-            buttonEditCity.Name = "Edit";
-            buttonEditCity.Text = "Edit";
-            buttonEditCity.UseColumnTextForButtonValue = true;
+            if (!DGVCity.Columns.Contains("Edit"))
+            {
+                DataGridViewButtonColumn buttonEditCity = new DataGridViewButtonColumn();
+                DGVCity.Columns.Add(buttonEditCity);
+                buttonEditCity.HeaderText = "Edit";
+                buttonEditCity.Name = "Edit";
+                buttonEditCity.Text = "Edit";
+                buttonEditCity.UseColumnTextForButtonValue = true;
+            }
         }
 
         private void GenerateDeleteButtonCountry()
         {
-            DataGridViewButtonColumn buttonDeleteCountry = new DataGridViewButtonColumn();
-            DGVCountry.Columns.Add(buttonDeleteCountry);
-            buttonDeleteCountry.HeaderText = "Delete";
-            buttonDeleteCountry.Name = "Delete";
-            buttonDeleteCountry.Text = "Delete";
-            buttonDeleteCountry.UseColumnTextForButtonValue = true;
+            if (!DGVCountry.Columns.Contains("Delete"))
+            {
+                DataGridViewButtonColumn buttonDeleteCountry = new DataGridViewButtonColumn();
+                DGVCountry.Columns.Add(buttonDeleteCountry);
+                buttonDeleteCountry.HeaderText = "Delete";
+                buttonDeleteCountry.Name = "Delete";
+                buttonDeleteCountry.Text = "Delete";
+                buttonDeleteCountry.UseColumnTextForButtonValue = true;
+            }
         }
 
         private void GenerateCategoryTabEditDeleteButtons()
@@ -606,22 +618,28 @@ namespace ConferencePlanner.WinUi
         }
         private void GenerateDeleteButtonDistrict()
         {
-            DataGridViewButtonColumn buttonDeleteDistrict = new DataGridViewButtonColumn();
-            DGVDistrict.Columns.Add(buttonDeleteDistrict);
-            buttonDeleteDistrict.HeaderText = "Delete";
-            buttonDeleteDistrict.Name = "Delete";
-            buttonDeleteDistrict.Text = "Delete";
-            buttonDeleteDistrict.UseColumnTextForButtonValue = true;
+            if (!DGVDistrict.Columns.Contains("Delete"))
+            {
+                DataGridViewButtonColumn buttonDeleteDistrict = new DataGridViewButtonColumn();
+                DGVDistrict.Columns.Add(buttonDeleteDistrict);
+                buttonDeleteDistrict.HeaderText = "Delete";
+                buttonDeleteDistrict.Name = "Delete";
+                buttonDeleteDistrict.Text = "Delete";
+                buttonDeleteDistrict.UseColumnTextForButtonValue = true;
+            }
         }
 
         private void GenerateDeleteButtonCity()
         {
-            DataGridViewButtonColumn buttonDeleteCity = new DataGridViewButtonColumn();
-            DGVCity.Columns.Add(buttonDeleteCity);
-            buttonDeleteCity.HeaderText = "Delete";
-            buttonDeleteCity.Name = "Delete";
-            buttonDeleteCity.Text = "Delete";
-            buttonDeleteCity.UseColumnTextForButtonValue = true;
+            if (!DGVCity.Columns.Contains("Delete"))
+            {
+                DataGridViewButtonColumn buttonDeleteCity = new DataGridViewButtonColumn();
+                DGVCity.Columns.Add(buttonDeleteCity);
+                buttonDeleteCity.HeaderText = "Delete";
+                buttonDeleteCity.Name = "Delete";
+                buttonDeleteCity.Text = "Delete";
+                buttonDeleteCity.UseColumnTextForButtonValue = true;
+            }
         }
 
      
