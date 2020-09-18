@@ -110,7 +110,7 @@
             this.OrganizerTabEntriesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizerTabEntriesLabel.AutoSize = true;
             this.OrganizerTabEntriesLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.OrganizerTabEntriesLabel.ForeColor = System.Drawing.SystemColors.Info;
+            this.OrganizerTabEntriesLabel.ForeColor = System.Drawing.Color.Transparent;
             this.OrganizerTabEntriesLabel.Location = new System.Drawing.Point(25, 303);
             this.OrganizerTabEntriesLabel.Name = "OrganizerTabEntriesLabel";
             this.OrganizerTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
@@ -488,7 +488,7 @@
             this.Name = "MainScreen";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main Page";
+            this.Text = "   Main Page";
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.TabOrganizer.ResumeLayout(false);
             this.TabOrganizer.PerformLayout();

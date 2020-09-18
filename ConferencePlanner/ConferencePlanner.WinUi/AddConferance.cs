@@ -1401,19 +1401,23 @@ namespace ConferencePlanner.WinUi
                 if (ConferenceId == null)
                 {
                     await AddConferenceViaAPI(conference);
-
+                    this.Dispose();
+                   //Close();
+                    //Hide();
                     AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
                     addConferance.ConferenceId = null;
-                    addConferance.ShowDialog();
+                   // addConferance.ShowDialog();
                 }
                 else
                 {
                     await EditConferenceViaAPI(conference);
-
-                    AddConferance addConferance = Program.ServiceProvider.GetService<AddConferance>();
+                    this.Dispose();
+                    AddConferance addConferance =  Program.ServiceProvider.GetService<AddConferance>();
                     addConferance.ConferenceId = null;
-                    addConferance.ShowDialog();
-                }
+                     //AddConferance.ShowDialog();
+                    //Close();
+                    // addConferance.ShowDialog();
+            }
             
 
         }

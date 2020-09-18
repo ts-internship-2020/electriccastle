@@ -96,7 +96,7 @@
             this.Controls.Add(this.pictureSpeaker);
             this.Name = "SpeakerForm";
             this.ShowIcon = false;
-            this.Text = "Speaker details";
+            this.Text = "   Speaker details";
             this.Load += new System.EventHandler(this.SpeakerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureSpeaker)).EndInit();
             this.ResumeLayout(false);

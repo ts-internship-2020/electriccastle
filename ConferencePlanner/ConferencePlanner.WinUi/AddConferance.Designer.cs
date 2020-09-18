@@ -38,9 +38,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabConferance = new System.Windows.Forms.TabControl();
             this.tabSpeakers = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabSpeakerEntryNumberText = new System.Windows.Forms.TextBox();
             this.tabSpeakerEntryNumberLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabSpeakerFilterText = new System.Windows.Forms.TextBox();
             this.tabSpeakerNextButton = new ConferencePlanner.WinUi.ButonCircular();
             this.tabSpeakerPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
@@ -54,27 +54,27 @@
             this.tabSpeakerEditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSpeakerDeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabCategory = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.CategoryTabEntriesTextBox = new System.Windows.Forms.TextBox();
             this.CategoryTabEntriesLabel = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.CategoryTabAddButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabSearchTextBox = new System.Windows.Forms.TextBox();
             this.CategoryTabNextButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabPreviousButton = new ConferencePlanner.WinUi.ButonCircular();
             this.CategoryTabGrid = new System.Windows.Forms.DataGridView();
             this.tabType = new System.Windows.Forms.TabPage();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.TypeTabEntriesTextBox = new System.Windows.Forms.TextBox();
             this.TypeTabEntriesLabel = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btNewType = new ConferencePlanner.WinUi.ButonCircular();
             this.btPreviousType = new ConferencePlanner.WinUi.ButonCircular();
             this.dataGridViewType = new System.Windows.Forms.DataGridView();
             this.btNextType = new ConferencePlanner.WinUi.ButonCircular();
             this.tabCountryEntryLabel = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabCountryEntryText = new System.Windows.Forms.TextBox();
             this.tabCountryEntryLb = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.textNameCountry = new System.Windows.Forms.TextBox();
             this.PreviousBtn = new ConferencePlanner.WinUi.ButonCircular();
             this.NextBtn = new ConferencePlanner.WinUi.ButonCircular();
@@ -83,10 +83,10 @@
             this.CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountryCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tabDistrictEntryLable = new System.Windows.Forms.Label();
             this.tabDistrictEntryText = new System.Windows.Forms.TextBox();
             this.DistrictFilter = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.NextDistrict = new ConferencePlanner.WinUi.ButonCircular();
             this.PreviousPageDistrict = new ConferencePlanner.WinUi.ButonCircular();
             this.NewDistrict = new ConferencePlanner.WinUi.ButonCircular();
@@ -95,9 +95,9 @@
             this.DistrictCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DistrictId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.tabCityEntryText = new System.Windows.Forms.TextBox();
             this.tabCityEntryLabel = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.filterCity = new System.Windows.Forms.TextBox();
             this.PrevoiusCity = new ConferencePlanner.WinUi.ButonCircular();
             this.NextCity = new ConferencePlanner.WinUi.ButonCircular();
@@ -122,16 +122,22 @@
             this.errorProviderAddress = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabConferance.SuspendLayout();
             this.tabSpeakers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).BeginInit();
             this.tabCategory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).BeginInit();
             this.tabType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).BeginInit();
             this.tabCountryEntryLabel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
@@ -223,9 +229,9 @@
             // 
             this.tabSpeakers.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.tabSpeakers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabSpeakers.Controls.Add(this.pictureBox1);
             this.tabSpeakers.Controls.Add(this.tabSpeakerEntryNumberText);
             this.tabSpeakers.Controls.Add(this.tabSpeakerEntryNumberLabel);
-            this.tabSpeakers.Controls.Add(this.label9);
             this.tabSpeakers.Controls.Add(this.tabSpeakerFilterText);
             this.tabSpeakers.Controls.Add(this.tabSpeakerNextButton);
             this.tabSpeakers.Controls.Add(this.tabSpeakerPreviousButton);
@@ -238,6 +244,17 @@
             this.tabSpeakers.Size = new System.Drawing.Size(899, 347);
             this.tabSpeakers.TabIndex = 1;
             this.tabSpeakers.Text = "Speakers";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.errorProviderOrganizer.SetIconAlignment(this.pictureBox1, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.pictureBox1.Location = new System.Drawing.Point(654, 239);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
             // 
             // tabSpeakerEntryNumberText
             // 
@@ -263,23 +280,13 @@
             this.tabSpeakerEntryNumberLabel.TabIndex = 28;
             this.tabSpeakerEntryNumberLabel.Text = "Entries per Page";
             // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(503, 248);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 15);
-            this.label9.TabIndex = 27;
-            this.label9.Text = "Insert filter criteria";
-            // 
             // tabSpeakerFilterText
             // 
             this.tabSpeakerFilterText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tabSpeakerFilterText.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tabSpeakerFilterText.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabSpeakerFilterText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabSpeakerFilterText.Location = new System.Drawing.Point(612, 243);
+            this.tabSpeakerFilterText.Location = new System.Drawing.Point(549, 243);
             this.tabSpeakerFilterText.Name = "tabSpeakerFilterText";
             this.tabSpeakerFilterText.PlaceholderText = "Search...";
             this.tabSpeakerFilterText.Size = new System.Drawing.Size(99, 25);
@@ -401,9 +408,9 @@
             // 
             this.tabCategory.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.tabCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabCategory.Controls.Add(this.pictureBox2);
             this.tabCategory.Controls.Add(this.CategoryTabEntriesTextBox);
             this.tabCategory.Controls.Add(this.CategoryTabEntriesLabel);
-            this.tabCategory.Controls.Add(this.label10);
             this.tabCategory.Controls.Add(this.CategoryTabAddButton);
             this.tabCategory.Controls.Add(this.CategoryTabSearchTextBox);
             this.tabCategory.Controls.Add(this.CategoryTabNextButton);
@@ -416,6 +423,16 @@
             this.tabCategory.Size = new System.Drawing.Size(899, 347);
             this.tabCategory.TabIndex = 2;
             this.tabCategory.Text = "Category";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(640, 237);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // CategoryTabEntriesTextBox
             // 
@@ -437,16 +454,6 @@
             this.CategoryTabEntriesLabel.Size = new System.Drawing.Size(108, 17);
             this.CategoryTabEntriesLabel.TabIndex = 7;
             this.CategoryTabEntriesLabel.Text = "Entries per page";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(426, 246);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 15);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Insert filter criteria";
             // 
             // CategoryTabAddButton
             // 
@@ -521,9 +528,9 @@
             // 
             this.tabType.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.tabType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabType.Controls.Add(this.pictureBox3);
             this.tabType.Controls.Add(this.TypeTabEntriesTextBox);
             this.tabType.Controls.Add(this.TypeTabEntriesLabel);
-            this.tabType.Controls.Add(this.label11);
             this.tabType.Controls.Add(this.txtSearch);
             this.tabType.Controls.Add(this.btNewType);
             this.tabType.Controls.Add(this.btPreviousType);
@@ -535,6 +542,16 @@
             this.tabType.Size = new System.Drawing.Size(899, 347);
             this.tabType.TabIndex = 3;
             this.tabType.Text = "Type";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(679, 241);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox3.TabIndex = 8;
+            this.pictureBox3.TabStop = false;
             // 
             // TypeTabEntriesTextBox
             // 
@@ -557,20 +574,10 @@
             this.TypeTabEntriesLabel.TabIndex = 6;
             this.TypeTabEntriesLabel.Text = "Entries per page";
             // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(482, 251);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 15);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Insert filter criteria";
-            // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtSearch.Location = new System.Drawing.Point(612, 248);
+            this.txtSearch.Location = new System.Drawing.Point(572, 248);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search...";
             this.txtSearch.Size = new System.Drawing.Size(100, 23);
@@ -596,7 +603,7 @@
             this.btPreviousType.BackColor = System.Drawing.Color.Tomato;
             this.btPreviousType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btPreviousType.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btPreviousType.Location = new System.Drawing.Point(766, 247);
+            this.btPreviousType.Location = new System.Drawing.Point(766, 241);
             this.btPreviousType.Name = "btPreviousType";
             this.btPreviousType.Size = new System.Drawing.Size(62, 34);
             this.btPreviousType.TabIndex = 2;
@@ -627,7 +634,7 @@
             this.btNextType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btNextType.BackColor = System.Drawing.Color.Tomato;
             this.btNextType.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btNextType.Location = new System.Drawing.Point(834, 247);
+            this.btNextType.Location = new System.Drawing.Point(834, 241);
             this.btNextType.Name = "btNextType";
             this.btNextType.Size = new System.Drawing.Size(62, 34);
             this.btNextType.TabIndex = 1;
@@ -639,9 +646,9 @@
             // 
             this.tabCountryEntryLabel.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.tabCountryEntryLabel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabCountryEntryLabel.Controls.Add(this.pictureBox4);
             this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryText);
             this.tabCountryEntryLabel.Controls.Add(this.tabCountryEntryLb);
-            this.tabCountryEntryLabel.Controls.Add(this.label6);
             this.tabCountryEntryLabel.Controls.Add(this.textNameCountry);
             this.tabCountryEntryLabel.Controls.Add(this.PreviousBtn);
             this.tabCountryEntryLabel.Controls.Add(this.NextBtn);
@@ -655,6 +662,16 @@
             this.tabCountryEntryLabel.TabIndex = 4;
             this.tabCountryEntryLabel.Text = "Country";
             this.tabCountryEntryLabel.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Location = new System.Drawing.Point(660, 244);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
             // 
             // tabCountryEntryText
             // 
@@ -678,20 +695,10 @@
             this.tabCountryEntryLb.TabIndex = 7;
             this.tabCountryEntryLb.Text = "Entries per Page";
             // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(462, 252);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 15);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Insert filter criteria";
-            // 
             // textNameCountry
             // 
             this.textNameCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textNameCountry.Location = new System.Drawing.Point(587, 249);
+            this.textNameCountry.Location = new System.Drawing.Point(554, 249);
             this.textNameCountry.Name = "textNameCountry";
             this.textNameCountry.PlaceholderText = "Search...";
             this.textNameCountry.Size = new System.Drawing.Size(100, 23);
@@ -774,10 +781,10 @@
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage2.Controls.Add(this.pictureBox5);
             this.tabPage2.Controls.Add(this.tabDistrictEntryLable);
             this.tabPage2.Controls.Add(this.tabDistrictEntryText);
             this.tabPage2.Controls.Add(this.DistrictFilter);
-            this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.NextDistrict);
             this.tabPage2.Controls.Add(this.PreviousPageDistrict);
             this.tabPage2.Controls.Add(this.NewDistrict);
@@ -789,6 +796,16 @@
             this.tabPage2.Size = new System.Drawing.Size(899, 347);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "District";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(677, 245);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
             // 
             // tabDistrictEntryLable
             // 
@@ -815,22 +832,12 @@
             // DistrictFilter
             // 
             this.DistrictFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DistrictFilter.Location = new System.Drawing.Point(579, 251);
+            this.DistrictFilter.Location = new System.Drawing.Point(570, 251);
             this.DistrictFilter.Name = "DistrictFilter";
             this.DistrictFilter.PlaceholderText = "Search...";
             this.DistrictFilter.Size = new System.Drawing.Size(100, 23);
             this.DistrictFilter.TabIndex = 5;
             this.DistrictFilter.TextChanged += new System.EventHandler(this.DistrictFilter_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(471, 258);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 15);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Insert filter criteria";
             // 
             // NextDistrict
             // 
@@ -915,9 +922,9 @@
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage3.Controls.Add(this.pictureBox6);
             this.tabPage3.Controls.Add(this.tabCityEntryText);
             this.tabPage3.Controls.Add(this.tabCityEntryLabel);
-            this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.filterCity);
             this.tabPage3.Controls.Add(this.PrevoiusCity);
             this.tabPage3.Controls.Add(this.NextCity);
@@ -931,6 +938,16 @@
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "City";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox6.Location = new System.Drawing.Point(676, 244);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox6.TabIndex = 9;
+            this.pictureBox6.TabStop = false;
             // 
             // tabCityEntryText
             // 
@@ -955,20 +972,10 @@
             this.tabCityEntryLabel.TabIndex = 7;
             this.tabCityEntryLabel.Text = "Entries per Page";
             // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(484, 257);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 15);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Insert the filter criteria";
-            // 
             // filterCity
             // 
             this.filterCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.filterCity.Location = new System.Drawing.Point(612, 251);
+            this.filterCity.Location = new System.Drawing.Point(569, 243);
             this.filterCity.Name = "filterCity";
             this.filterCity.PlaceholderText = "Search...";
             this.filterCity.Size = new System.Drawing.Size(100, 23);
@@ -1191,27 +1198,33 @@
             this.Controls.Add(this.label1);
             this.Name = "AddConferance";
             this.ShowIcon = false;
-            this.Text = "Add Conference";
+            this.Text = "   Add Conference";
             this.Activated += new System.EventHandler(this.AddConferance_Activated);
             this.Load += new System.EventHandler(this.AddConferance_Load);
             this.tabConferance.ResumeLayout(false);
             this.tabSpeakers.ResumeLayout(false);
             this.tabSpeakers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabSpeakerGrid)).EndInit();
             this.tabCategory.ResumeLayout(false);
             this.tabCategory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CategoryTabGrid)).EndInit();
             this.tabType.ResumeLayout(false);
             this.tabType.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
             this.tabCountryEntryLabel.ResumeLayout(false);
             this.tabCountryEntryLabel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCountry)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDistrict)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
@@ -1279,17 +1292,13 @@
         private ButonCircular NextDistrict;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textNameCountry;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox DistrictFilter;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox filterCity;
         private ButonCircular tabSpeakerAdd;
         private ButonCircular tabSpeakerNextButton;
         private ButonCircular tabSpeakerPreviousButton;
         private System.Windows.Forms.TextBox tabSpeakerFilterText;
         private System.Windows.Forms.DataGridViewTextBoxColumn DistrictId;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label tabSpeakerEntryNumberLabel;
         private System.Windows.Forms.TextBox tabSpeakerEntryNumberText;
         private System.Windows.Forms.TextBox tabCityEntryText;
@@ -1300,8 +1309,6 @@
         private System.Windows.Forms.TextBox tabDistrictEntryText;
         private System.Windows.Forms.Label tab;
         private System.Windows.Forms.Label tabCountryEntryLb;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerRatingColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabSpeakerNationalityColumn;
@@ -1319,5 +1326,11 @@
         private System.Windows.Forms.ErrorProvider errorProviderName;
         private System.Windows.Forms.ErrorProvider errorProviderOrganizer;
         private System.Windows.Forms.ErrorProvider errorProviderAddress;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }

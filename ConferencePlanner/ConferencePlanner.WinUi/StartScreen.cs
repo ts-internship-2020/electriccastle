@@ -7,7 +7,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading;
 using static ConferencePlanner.WinUi.Program;
+
 
 namespace ConferencePlanner.WinUi
 {
@@ -16,14 +18,38 @@ namespace ConferencePlanner.WinUi
        
         public StartScreen()
         {
+            //Timer Clock = new Timer();
+            //Clock.Interval = 3000;
+            //StartLogo();
+            //Clock.Start();
+            //Clock.Tick += new EventHandler(Timer_Tick);
+
             //StartScreen.CenterToScreen();
+            Thread t = new Thread(new ThreadStart(StartLogo));
+             t.Start();
+            t.Join();
+            
+            //t.Abort();
             InitializeComponent();
+           
+           // InitializeComponent();
             this.ActiveControl = txtButton;
             txtButton.Focus();
             //StartScreen.CenterToScreen();
 
 
         }
+
+        public void StartLogo()
+        {
+            Logo l = new Logo();
+            l.Show();
+            Thread.Sleep(3000);
+            l.Hide();
+            
+        }
+
+
 
         private void submitButton_Click(object sender, EventArgs e)
         {

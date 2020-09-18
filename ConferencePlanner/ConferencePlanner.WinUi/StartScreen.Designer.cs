@@ -79,7 +79,7 @@
             this.Name = "StartScreen";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Event Skills";
+            this.Text = "   Event Skills";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartScreen_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmailText)).EndInit();
             this.ResumeLayout(false);
